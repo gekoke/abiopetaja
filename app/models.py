@@ -8,7 +8,7 @@ from tempfile import TemporaryDirectory
 from typing import Iterable
 
 from django.contrib.auth.models import AbstractBaseUser, AnonymousUser, User
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 from django.db.models import (
     CASCADE,
@@ -121,6 +121,7 @@ class Template(Entity):
             pset.author = self.author
             pset.template = self
             pset.name = str(pset.id)
+            pset.problem_count = len(problems)
             with open(pdf_file, "rb") as file:
                 pdf_file = File()
                 pdf_file.data = file.read()
@@ -159,6 +160,7 @@ class Pset(Entity):
     author = ForeignKey(User, on_delete=CASCADE)
     template = ForeignKey(Template, on_delete=CASCADE)
     name = models.CharField(max_length=255, validators=[MinLengthValidator(1)])
+    problem_count = models.IntegerField(validators=[MinValueValidator(1)])
     is_saved = models.BooleanField(default=False)
     """
     Whether the test should be persisted.
