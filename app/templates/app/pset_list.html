@@ -6,10 +6,11 @@
 {% endblock %}
 
 {% block content %}
+{% with psets=object_list %}
 <main class="container">
     <h1>{% translate "Problem Sets" %}</h1>
-    {% if object_list %}
-    {% for pset in object_list %}
+    {% if psets %}
+    {% for pset in psets %}
     <article>
         <h2>{{ pset.name }}</h2>
         <footer>
@@ -23,4 +24,5 @@
     <p>{% translate "You don't have any problem sets yet." %}</p>
     {% endif %}
 </main>
+{% endwith %}
 {% endblock %}
