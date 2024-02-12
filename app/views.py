@@ -99,11 +99,9 @@ class ProblemKindListView(ListView, LoginRequiredMixin):
         return context
 
 
-@login_required
-def template_list(request: HttpRequest) -> HttpResponse:
-    templates = Template.objects.filter(author=request.user)
-    context = {"templates": templates}
-    return render(request, "app/template_list.html", context)
+class TemplateListView(ListView, LoginRequiredMixin):
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
 
 
 @login_required

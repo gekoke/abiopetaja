@@ -3,19 +3,19 @@ from django.urls import path
 from app.views import (
     ProblemKindListView,
     PsetListView,
+    TemplateListView,
     dashboard,
     generate_pset,
     pset_generation,
     save_pset,
     template_detail,
-    template_list,
 )
 
 app_name = "app"
 
 urlpatterns = [
     path("", dashboard, name="dashboard"),
-    path("templates/", template_list, name="template-list"),
+    path("templates/", TemplateListView.as_view(), name="template-list"),
     path("templates/<uuid:template_id>/", template_detail, name="template-detail"),
     path("problem-kinds/", ProblemKindListView.as_view(), name="problemkind-list"),
     path("problem-sets/", PsetListView.as_view(), name="pset-list"),

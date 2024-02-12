@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for template in templates %}
+                {% for template in object_list %}
                 <tr>
                     <td><a href="{% url 'app:template-detail' template.id %}">{{ template.name }}</a></td>
                     <td>{{ template.problem_count }}</td>
