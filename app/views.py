@@ -10,6 +10,7 @@ from django.http import (
 )
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext as _
+from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
@@ -20,15 +21,18 @@ from app.models import ProblemKind, Pset, RenderError, Template
 logger = logging.getLogger(__name__)
 
 
-@login_required
-def dashboard(request: HttpRequest) -> HttpResponse:
-    context = {
-        "user": request.user,
-        "template_count": Template.objects.filter(author=request.user).count(),
-        "problemkind_count": len(ProblemKind.values),
-        "test_count": Pset.objects.filter(author=request.user, is_saved=True).count(),
-    }
-    return render(request, "app/dashboard.html", context)
+class DashboardView(TemplateView, LoginRequiredMixin):
+    template_name = "app/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(
+            user=self.request.user,
+            template_count=Template.objects.filter(author=self.request.user).count(),
+            problemkind_count=len(ProblemKind.values),
+            pset_count=Pset.objects.filter(author=self.request.user, is_saved=True).count(),
+        )
+        return context
 
 
 @login_required

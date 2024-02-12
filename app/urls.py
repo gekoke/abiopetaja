@@ -1,11 +1,11 @@
 from django.urls import path
 
 from app.views import (
+    DashboardView,
     ProblemKindListView,
     PsetListView,
     TemplateDetailView,
     TemplateListView,
-    dashboard,
     generate_pset,
     pset_generation,
     save_pset,
@@ -14,7 +14,7 @@ from app.views import (
 app_name = "app"
 
 urlpatterns = [
-    path("", dashboard, name="dashboard"),
+    path("", DashboardView.as_view(), name="dashboard"),
     path("templates/", TemplateListView.as_view(), name="template-list"),
     path(
         "templates/<uuid:pk>/",
