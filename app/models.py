@@ -69,7 +69,7 @@ class Template(Entity):
         unique_together = ["author", "name"]
 
     def get_absolute_url(self) -> str:
-        return reverse("template-detail")
+        return reverse("app:template-detail", kwargs={"pk": self.id})
 
     @property
     def problem_count(self) -> int:
