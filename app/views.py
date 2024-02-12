@@ -10,6 +10,7 @@ from django.http import (
 )
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext as _
+from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
@@ -104,11 +105,9 @@ class TemplateListView(ListView, LoginRequiredMixin):
         return Template.objects.filter(author=self.request.user)
 
 
-@login_required
-def template_detail(request: HttpRequest, template_id: UUID) -> HttpResponse:
-    template = get_object_or_404(Template, id=template_id, author=request.user)
-    context = {"template": template}
-    return render(request, "app/template_detail.html", context)
+class TemplateDetailView(DetailView, LoginRequiredMixin):
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
 
 
 class PsetListView(ListView, LoginRequiredMixin):
