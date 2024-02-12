@@ -32,9 +32,7 @@ def dashboard(request: HttpRequest) -> HttpResponse:
 
 
 @login_required
-def pset_generation(
-    request: HttpRequest, preview_pset_id: UUID | None = None
-) -> HttpResponse:
+def pset_generation(request: HttpRequest, preview_pset_id: UUID | None = None) -> HttpResponse:
     preview_pset = get_object_or_None(Pset, id=preview_pset_id, author=request.user)
     disable_save_form = preview_pset is None or preview_pset.is_saved
     context = {
