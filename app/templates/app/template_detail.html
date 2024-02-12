@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+
+{% block head %}
+<title>{% translate "Templates" context "view in the application" %}</title>
+{% endblock %}
+
+{% block content %}
+<main class="container-fluid">
+    <h1>{{ template.name }}</h1>
+    <figure>
+        <table>
+            <thead>
+                <tr>
+                    <td>{% translate "Problem" %}</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for problem_kind in template.problem_kinds %}
+                <tr>
+                    <td>{{ problem_kind.label }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </figure>
+</main>
+{% endblock %}

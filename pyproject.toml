@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "abiopetaja"
+version = "0.1.0"
+description = ""
+authors = ["Gregor Grigorjan <gregor@grigorjan.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sympy = "^1.12"
+pytest-django = "^4.7.0"
+django = "^5.0.1"
+django-allauth = "^0.60.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+django-types = "^0.19.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "abiopetaja.settings_dev"
+python_files = ["test_*.py", "*_test.py"]
+
+[tool.ruff.lint]
+extend-select = ["I"] # Enable import sorting. Ruff disables this by default to avoid modifying the AST.

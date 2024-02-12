@@ -1,0 +1,41 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block head %}
+<title>{% translate "Generation" context "view in the application" %}</title>
+{% endblock %}
+
+{% block content %}
+<main class="container-fluid">
+    <h1>{% translate "Generation" %}</h1>
+    <div class="grid">
+        <div>
+            <article>
+                <form action="{% url 'app:generate-pset' %}" method="post">
+                    {% csrf_token %}
+                    {% include 'app/includes/form.html' with form=generate_form %}
+                    <input type="submit" value="{% translate "Generate!" %}">
+                </form>
+            </article>
+
+            {% if preview_pset %}
+            <article>
+                <form action="{% url 'app:save-pset' preview_pset.id %}" novalidate method="post">
+                    {% csrf_token %}
+                    {% include 'app/includes/form.html' with form=save_form disabled=disable_save_form %}
+                    <input {% if disable_save_form %}disabled{% endif %} type="submit" class="btn-green"
+                        value="{% translate "Save Problem Set" %}">
+                </form>
+            </article>
+            {% endif %}
+        </div>
+        <div>
+            <iframe style="height: 80vh" width="100%" type="application/pdf" name="problem-set.pdf" {% if preview_pset %}
+                src="data:application/pdf;base64,{{ preview_pset.problems_pdf.as_base64  }}" {% else %}
+                src="{% static 'app/example.pdf' %}" {% endif %}>
+            </iframe>
+        </div>
+    </div>
+</main>
+{% endblock %}

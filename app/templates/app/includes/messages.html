@@ -1,0 +1,23 @@
+{% if messages %}
+<div class="container-fluid">
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <article class="{{ message.tags }} pico-background-slate-500">
+        {{ message }}
+    </article>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <article class="{{ message.tags }} pico-background-red-500">
+        {{ message }}
+    </article>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <article class="{{ message.tags }} pico-background-jade-500">
+        {{ message }}
+    </article>
+    {% else %}
+    <article class="{{ message.tags }}">
+        {{ message }}
+    </article>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}

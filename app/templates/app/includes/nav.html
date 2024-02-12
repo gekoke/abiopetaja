@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<nav class="container-fluid">
+    <ul>
+        <li><a href="{% url 'app:dashboard' %}" class="contrast"><strong>Abiõpetaja</strong></a></li>
+    </ul>
+    <ul>
+        <li>
+            <details class="dropdown">
+                <summary>🔧️</summary>
+                <ul dir="rtl">
+                    <li><a href="{% url 'account_logout' %}">🚪 {% translate "Sign Out" %}</a></li>
+                </ul>
+            </details>
+        </li>
+    </ul>
+</nav>

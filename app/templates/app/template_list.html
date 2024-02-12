@@ -1,0 +1,31 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+
+{% block head %}
+<title>{% translate "Templates" context "view in the application" %}</title>
+{% endblock %}
+
+{% block content %}
+<main class="container-fluid">
+    <h1>{% translate "Templates" %}</h1>
+    <figure>
+        <table>
+            <thead>
+                <tr>
+                    <th>{% translate "Name" %}</th>
+                    <th>{% translate "Number of Problems" context "number of problems in the template" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for template in templates %}
+                <tr>
+                    <td><a href="{% url 'app:template-detail' template.id %}">{{ template.name }}</a></td>
+                    <td>{{ template.problem_count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </figure>
+    <button>{% translate "Create Template" %}</button>
+</main>
+{% endblock %}

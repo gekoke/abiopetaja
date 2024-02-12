@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-09 22:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:12
+msgid "Choose a template to generate a document set from"
+msgstr "Vali mall, millest dokumente genereerida"
+
+#: forms.py:32 templates/app/template_list.html:15
+msgid "Name"
+msgstr "Nimi"
+
+#: forms.py:35
+#| msgctxt "math problems"
+#| msgid "My Documents 📄"
+msgid "My Documents"
+msgstr "Minu dokumendid"
+
+#: forms.py:42
+msgid "A document with this name already exists"
+msgstr "Sellise nimega dokument on juba olemas"
+
+#: models.py:28
+msgid "Linear inequality"
+msgstr "Lineaarvõrratus"
+
+#: models.py:29
+msgid "Quadratic inequality"
+msgstr "Ruutvõrratus"
+
+#: signals.py:17
+msgid "Inequalities"
+msgstr "Võrratused"
+
+#: signals.py:28
+#| msgid "Inequalities"
+msgid "Lots of inequalities"
+msgstr "Palju võrratusi"
+
+#: templates/app/blocks/nav.html:12
+msgid "Sign Out"
+msgstr "Logi välja"
+
+#: templates/app/dashboard.html:5
+msgctxt "view in the application"
+msgid "Dashboard"
+msgstr "Peamenüü"
+
+#: templates/app/dashboard.html:11
+#, python-format
+msgid "Welcome, %(name)s!"
+msgstr "Tere tulemast, %(name)s!"
+
+#: templates/app/dashboard.html:19
+msgid "New Document ✅️"
+msgstr "Uus dokument ✅"
+
+#: templates/app/dashboard.html:20
+msgid "Generate a new document"
+msgstr "Genereeri uus dokument"
+
+#: templates/app/dashboard.html:21 templates/app/document_generation.html:18
+msgid "Generate!"
+msgstr "Genereeri!"
+
+#: templates/app/dashboard.html:26
+msgid "My Templates 📐"
+msgstr "Minu mallid 📐"
+
+#: templates/app/dashboard.html:27
+msgid "Collections of problems that can be rendered into a document"
+msgstr "Ülesannete kogud, mida saab dokumentideks genereerida"
+
+#: templates/app/dashboard.html:28
+#, python-format
+msgid "View %(counter)s template"
+msgid_plural "View %(counter)s templates"
+msgstr[0] "Vaata %(counter)s malli"
+msgstr[1] "Vaata %(counter)s malli"
+
+#: templates/app/dashboard.html:31
+msgctxt "math problems"
+msgid "My Documents 📄"
+msgstr "Minu dokumendid 📄"
+
+#: templates/app/dashboard.html:32
+#| msgid "Browse all your documents"
+msgid "Browse all your document sets"
+msgstr "Sirvi kõiki sinu dokumente"
+
+#: templates/app/dashboard.html:33
+#, python-format
+#| msgid "View %(counter)s document"
+#| msgid_plural "View %(counter)s documents"
+msgid "View %(counter)s document"
+msgid_plural "View %(counter)s document sets"
+msgstr[0] "Vaata %(counter)s dokumenti"
+msgstr[1] "Vaata %(counter)s dokumenti"
+
+#: templates/app/dashboard.html:36
+msgctxt "math problems"
+msgid "All Problems 🧠"
+msgstr "Kõik ülesanded 🧠"
+
+#: templates/app/dashboard.html:37
+msgid "Browse all the available problems"
+msgstr "Sirvi kõiki olemasolevaid ülesandeid"
+
+#: templates/app/dashboard.html:38
+#, python-format
+msgid "View %(counter)s problem"
+msgid_plural "View %(counter)s problems"
+msgstr[0] "Vaata %(counter)s ülesannet"
+msgstr[1] "Vaata %(counter)s ülesannet"
+
+#: templates/app/document_generation.html:6
+#| msgid "Generate!"
+msgctxt "view in the application"
+msgid "Generation"
+msgstr "Genereerimine"
+
+#: templates/app/document_generation.html:11
+#| msgid "Generate!"
+msgid "Generation"
+msgstr "Genereerimine"
+
+#: templates/app/document_generation.html:36
+#| msgid "New Document ✅️"
+msgid "Save Documents"
+msgstr "Salvesta dokumendid"
+
+#: templates/app/documentset_list.html:5
+#| msgctxt "math problems"
+#| msgid "My Documents 📄"
+msgctxt "view in the application"
+msgid "Documents"
+msgstr "Dokumendid"
+
+#: templates/app/documentset_list.html:10
+#| msgctxt "math problems"
+#| msgid "My Documents 📄"
+msgid "Documents"
+msgstr "Dokumendid"
+
+#: templates/app/documentset_list.html:23
+msgid "You don't have any documents yet."
+msgstr "Teil pole veel ühtegi dokumenti."
+
+#: templates/app/problem_kind_list.html:6
+msgctxt "view in the application"
+msgid "Problems"
+msgstr "Ülesanded"
+
+#: templates/app/problem_kind_list.html:12
+msgctxt "math problems"
+msgid "Problems"
+msgstr "Ülesanded"
+
+#: templates/app/problem_kind_list.html:17
+msgctxt "of a math problem"
+msgid "Problem type"
+msgstr "Ülesande tüüp"
+
+#: templates/app/problem_kind_list.html:18
+msgid "Example"
+msgstr "Näide"
+
+#: templates/app/problem_kind_list.html:19
+msgctxt "for a math problem"
+msgid "Solution"
+msgstr "Lahend"
+
+#: templates/app/template_detail.html:5 templates/app/template_list.html:5
+msgctxt "view in the application"
+msgid "Templates"
+msgstr "Mall"
+
+#: templates/app/template_detail.html:15
+msgid "Problem"
+msgstr "Ülesanne"
+
+#: templates/app/template_list.html:10
+msgid "Templates"
+msgstr "Mallid"
+
+#: templates/app/template_list.html:16
+msgctxt "number of problems in the template"
+msgid "Number of Problems"
+msgstr "Ülesannete arv"
+
+#: templates/app/template_list.html:29
+msgid "Create Template"
+msgstr "Loo mall"
+
+#: views.py:91
+#| msgid "A document with this name already exists"
+msgid "These documents have already been saved"
+msgstr "Need dokumendid on juba salvestatud"
+
+#: views.py:97
+msgid "The documents were saved successfully"
+msgstr "Dokumendid salvestati edukalt"
