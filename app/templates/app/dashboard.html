@@ -6,14 +6,14 @@
 {% endblock %}
 
 {% block content %}
-<header class="container-fluid">
+<header class="container">
     <hgroup>
         <h1>{% blocktranslate with name=user.username %}Welcome, {{ name }}!{% endblocktranslate %} 👋</h1>
         <p></p>
     </hgroup>
 </header>
 
-<main class="container-fluid">
+<main class="container">
     <div class="grid">
         <article id="new-problem-set">
             <h2>{% translate "New Problem Set ✅️"%}</h2>
