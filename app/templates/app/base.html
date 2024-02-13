@@ -11,12 +11,16 @@
     {% block head %}
     {% endblock %}
 
-    {% include "app/includes/style.html" %}
+    {% include "common/includes/style.html" %}
 </head>
 
 <body>
-    {% include "app/includes/nav.html" %}
-    {% include "app/includes/messages.html" %}
+    <div class="container">
+        {% include "app/includes/nav.html" %}
+    </div>
+    <div class="container">
+        {% include "common/includes/messages.html" %}
+    </div>
 
     {% block content %}
     {% endblock %}
