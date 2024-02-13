@@ -52,6 +52,7 @@ LOGIN_REDIRECT_URL = "/app"
 LOGOUT_REDIRECT_URL = "/accounts/login"
 
 ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 ACCOUNT_FORMS = {
     "login": "authentication.forms.AbiopetajaLoginForm",
