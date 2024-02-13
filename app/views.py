@@ -21,7 +21,7 @@ from app.models import ProblemKind, Pset, RenderError, Template
 logger = logging.getLogger(__name__)
 
 
-class DashboardView(TemplateView, LoginRequiredMixin):
+class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "app/dashboard.html"
 
     def get_context_data(self, **kwargs):
@@ -90,7 +90,7 @@ def save_pset(request: HttpRequest, pset_id: UUID) -> HttpResponse:
         return pset_generation(request, pset_id)
 
 
-class ProblemKindListView(ListView, LoginRequiredMixin):
+class ProblemKindListView(LoginRequiredMixin, ListView):
     template_name = "app/problemkind_list.html"
 
     def get_queryset(self) -> list[ProblemKind]:
@@ -102,16 +102,16 @@ class ProblemKindListView(ListView, LoginRequiredMixin):
         return context
 
 
-class TemplateListView(ListView, LoginRequiredMixin):
+class TemplateListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Template.objects.filter(author=self.request.user)
 
 
-class TemplateDetailView(DetailView, LoginRequiredMixin):
+class TemplateDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Template.objects.filter(author=self.request.user)
 
 
-class PsetListView(ListView, LoginRequiredMixin):
+class PsetListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Pset.objects.filter(author=self.request.user, is_saved=True)
