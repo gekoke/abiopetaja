@@ -25,11 +25,11 @@
 
     {% if form.is_bound %}
     {% if field.errors %}
-    {% for error in field.errors %}
     <small>
-        {{ error }}
-    </small>
+    {% for error in field.errors %}
+       {{ error }}<br>
     {% endfor %}
+    </small>
     {% endif %}
     {% endif %}
 
