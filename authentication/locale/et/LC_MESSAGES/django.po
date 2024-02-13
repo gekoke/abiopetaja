@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-13 15:14+0000\n"
+"POT-Creation-Date: 2024-02-13 16:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:18 forms.py:38
+#: forms.py:18 forms.py:49
 msgid "Username"
 msgstr "Kasutajatunnus"
 
-#: forms.py:41
+#: forms.py:21
+#, fuzzy
+#| msgid "This account is inactive."
+msgid "This account is currently inactive."
+msgstr "See konto on mitteaktiivne."
+
+#: forms.py:23
+msgid "The email address and/or password you specified are not correct."
+msgstr "Sisestatud e-posti aadress ja/või salasõna ei olnud õiged."
+
+#: forms.py:26
+msgid "The username and/or password you specified are not correct."
+msgstr "Sisestatud kasutajatunnus ja/või salasõna ei olnud õiged."
+
+#: forms.py:52
 msgid "Email (optional)"
 msgstr "E-post (valikuline)"
 

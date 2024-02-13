@@ -17,6 +17,16 @@ class AbiopetajaLoginForm(LoginForm):
         username_field = self.fields["login"]
         username_field.label = _("Username")
 
+        self.error_messages = {
+            "account_inactive": _("This account is currently inactive."),
+            "email_password_mismatch": _(
+                "The email address and/or password you specified are not correct."
+            ),
+            "username_password_mismatch": _(
+                "The username and/or password you specified are not correct."
+            ),
+        }
+
     def remove_forgot_password_link(self):
         password_field = self.fields["password"]
         password_field.help_text = ""
