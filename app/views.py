@@ -115,3 +115,8 @@ class TemplateDetailView(LoginRequiredMixin, DetailView):
 class PsetListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Pset.objects.filter(author=self.request.user, is_saved=True)
+
+
+class PsetDetailView(LoginRequiredMixin, DetailView):
+    def get_queryset(self):
+        return Pset.objects.filter(author=self.request.user)

@@ -12,11 +12,13 @@
     {% if psets %}
     {% for pset in psets %}
     <article>
-        <h2>{{ pset.name }}</h2>
+        <a href="{{ pset.get_absolute_url }}">
+            <h2>{{ pset.name }}</h2>
+        </a>
         <footer>
-            📄 <i>{{ pset.problem_count }}</i>
+            ❓ <b>{{ pset.template.problem_count }}</b>
             <br>
-            📐 <i>{{ pset.template.name }}</i>
+            📐 <a href="{{ pset.template.get_absolute_url }}"><b>{{ pset.template.name }}</b></a>
         </footer>
     </article>
     {% endfor %}

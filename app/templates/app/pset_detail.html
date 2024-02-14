@@ -1,0 +1,31 @@
+{% extends "app/base.html" %}
+{% load i18n %}
+
+{% block head %}
+<title>{% translate "Problem Set" context "view in the application" %}</title>
+{% endblock %}
+
+{% block content %}
+{% with pset=object %}
+
+<main class="container">
+    <h1>📄 {{ pset.name }}</h1>
+
+    <ul>
+        <li>{% translate "Problem count" %}: {{ pset.problem_count }}</li>
+        <li>{% translate "Template" %}: <a href="{{ pset.template.get_absolute_url }}">{{ pset.template.name }}</a></li>
+    </ul>
+
+    <details>
+        <summary role="button">{% translate "Problem Set" %}</summary>
+        <iframe style="height: 80vh; width: 100%;" type="application/pdf" name="problem-set.pdf" src="data:application/pdf;base64,{{ pset.problems_pdf.as_base64  }}"></iframe>
+    </details>
+
+    <details>
+        <summary role="button" class="secondary">{% translate "Answer Key" %}</summary>
+        <iframe style="height: 80vh; width: 100%;" type="application/pdf" name="answer-key.pdf" src="data:application/pdf;base64,{{ pset.problems_pdf.as_base64  }}"></iframe> 
+    </details>
+</main>
+
+{% endwith %}
+{% endblock %}

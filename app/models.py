@@ -177,3 +177,6 @@ class Pset(Entity):
         Delete all unsaved tests.
         """
         Pset.objects.filter(is_saved=False, author=user).delete()
+
+    def get_absolute_url(self) -> str:
+        return reverse("app:pset-detail", kwargs={"pk": self.id})

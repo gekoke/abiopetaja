@@ -3,6 +3,7 @@ from django.urls import path
 from app.views import (
     DashboardView,
     ProblemKindListView,
+    PsetDetailView,
     PsetListView,
     TemplateDetailView,
     TemplateListView,
@@ -33,6 +34,7 @@ urlpatterns = [
         pset_generation,
         name="pset-generation",
     ),
+    path("problem-set/<uuid:pk>/", PsetDetailView.as_view(), name="pset-detail"),
     path("generate-problem-set/", generate_pset, name="generate-pset"),
     path("save-problem-set/<uuid:pset_id>", save_pset, name="save-pset"),
 ]
