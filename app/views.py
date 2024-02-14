@@ -99,7 +99,8 @@ def save_problem_set(request: HttpRequest, problem_set_id: UUID) -> HttpResponse
 class ProblemKindListView(LoginRequiredMixin, ListView):
     template_name = "app/problemkind_list.html"
 
-    def get_queryset(self) -> list[ProblemKind]:
+    def get_queryset(self) -> list[ProblemKind]:  # pyright: ignore
+        # get_queryset may return any iterable
         return list(ProblemKind)
 
     def get_context_data(self, **kwargs):
