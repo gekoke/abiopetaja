@@ -92,7 +92,7 @@ class Template(Entity):
             entry.problem_kind = kind
             entry.save()
 
-    def render(self) -> Pset | RenderError:
+    def render(self) -> ProblemSet | RenderError:
         problems = [ProblemKind(kind).generate() for kind in self.problem_kinds]
         latex = """
         \\documentclass{article}
@@ -116,19 +116,19 @@ class Template(Entity):
                 logger.error(f"pdflatex timed out for {self}")
                 return RenderError()
 
-            pset = Pset()
-            pset.id = uuid.uuid4()
-            pset.author = self.author
-            pset.template = self
-            pset.name = str(pset.id)
-            pset.problem_count = len(problems)
+            problem_set = ProblemSet()
+            problem_set.id = uuid.uuid4()
+            problem_set.author = self.author
+            problem_set.template = self
+            problem_set.name = str(problem_set.id)
+            problem_set.problem_count = len(problems)
             with open(pdf_file, "rb") as file:
                 pdf_file = File()
                 pdf_file.data = file.read()
                 pdf_file.save()
-                pset.problems_pdf = pdf_file
+                problem_set.problems_pdf = pdf_file
 
-        return pset
+        return problem_set
 
     def __str__(self) -> str:
         return self.name
@@ -152,7 +152,7 @@ class File(Entity):
         return base64.b64encode(self.data).decode("utf-8")
 
 
-class Pset(Entity):
+class ProblemSet(Entity):
     """
     A problem set composed of documents rendered from a `Template`.
     """
@@ -176,7 +176,7 @@ class Pset(Entity):
         """
         Delete all unsaved tests.
         """
-        Pset.objects.filter(is_saved=False, author=user).delete()
+        ProblemSet.objects.filter(is_saved=False, author=user).delete()
 
     def get_absolute_url(self) -> str:
-        return reverse("app:pset-detail", kwargs={"pk": self.id})
+        return reverse("app:problemset-detail", kwargs={"pk": self.id})

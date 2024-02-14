@@ -3,13 +3,13 @@ from django.urls import path
 from app.views import (
     DashboardView,
     ProblemKindListView,
-    PsetDetailView,
-    PsetListView,
+    ProblemSetDetailView,
+    ProblemSetListView,
     TemplateDetailView,
     TemplateListView,
-    generate_pset,
-    pset_generation,
-    save_pset,
+    generate_problem_set,
+    problem_set_generation,
+    save_problem_set,
 )
 
 app_name = "app"
@@ -23,18 +23,18 @@ urlpatterns = [
         name="template-detail",
     ),
     path("problem-kinds/", ProblemKindListView.as_view(), name="problemkind-list"),
-    path("problem-sets/", PsetListView.as_view(), name="pset-list"),
+    path("problem-sets/", ProblemSetListView.as_view(), name="problemset-list"),
     path(
-        "problem-set-generation/<uuid:preview_pset_id>",
-        pset_generation,
-        name="pset-generation",
+        "problem-set-generation/<uuid:preview_problem_set_id>",
+        problem_set_generation,
+        name="problemset-generation",
     ),
     path(
         "problem-set-generation/",
-        pset_generation,
-        name="pset-generation",
+        problem_set_generation,
+        name="problemset-generation",
     ),
-    path("problem-set/<uuid:pk>/", PsetDetailView.as_view(), name="pset-detail"),
-    path("generate-problem-set/", generate_pset, name="generate-pset"),
-    path("save-problem-set/<uuid:pset_id>", save_pset, name="save-pset"),
+    path("problem-set/<uuid:pk>/", ProblemSetDetailView.as_view(), name="problemset-detail"),
+    path("generate-problem-set/", generate_problem_set, name="generate-problemset"),
+    path("save-problem-set/<uuid:problem_set_id>", save_problem_set, name="save-problemset"),
 ]

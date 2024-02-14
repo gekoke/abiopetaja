@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from app.models import File, Pset, Template, TemplateProblem
+from app.models import File, ProblemSet, Template, TemplateProblem
 
 admin.site.register(Template)
 admin.site.register(TemplateProblem)
 admin.site.register(File)
-admin.site.register(Pset)
+admin.site.register(ProblemSet)

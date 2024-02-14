@@ -18,7 +18,7 @@
         <article id="new-problem-set">
             <h2>{% translate "New Problem Set ✅️"%}</h2>
             <p>{% translate "Generate a new problem set" %}</p>
-            <a href="{% url 'app:pset-generation' %}" role="button" style="width: 100%">{% translate "Generate!" %}</a>
+            <a href="{% url 'app:problemset-generation' %}" role="button" style="width: 100%">{% translate "Generate!" %}</a>
         </article>
     </div>
     <div class="grid">
@@ -30,7 +30,7 @@
         <article id="problems">
             <h2>{% translate "My Problem Sets 📄" context "math problems" %}</h2>
             <p>{% translate "Browse all your problem sets" %}</p>
-            <a href="{% url 'app:pset-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=pset_count %}View {{ counter }} problem set{% plural %}View {{ counter}} problem sets{% endblocktranslate %}</a>
+            <a href="{% url 'app:problemset-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=problem_set_count %}View {{ counter }} problem set{% plural %}View {{ counter}} problem sets{% endblocktranslate %}</a>
         </article>
         <article id="problems">
             <h2>{% translate "All Problems 🧠" context "math problems" %}</h2>

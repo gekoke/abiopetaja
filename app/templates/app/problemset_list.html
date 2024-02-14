@@ -6,19 +6,19 @@
 {% endblock %}
 
 {% block content %}
-{% with psets=object_list %}
+{% with problem_sets=object_list %}
 <main class="container">
     <h1>{% translate "Problem Sets" %}</h1>
-    {% if psets %}
-    {% for pset in psets %}
+    {% if problem_sets %}
+    {% for problem_set in problem_sets %}
     <article>
-        <a href="{{ pset.get_absolute_url }}">
-            <h2>{{ pset.name }}</h2>
+        <a href="{{ problem_set.get_absolute_url }}">
+            <h2>{{ problem_set.name }}</h2>
         </a>
         <footer>
-            ❓ <b>{{ pset.template.problem_count }}</b>
+            ❓ <b>{{ problem_set.template.problem_count }}</b>
             <br>
-            📐 <a href="{{ pset.template.get_absolute_url }}"><b>{{ pset.template.name }}</b></a>
+            📐 <a href="{{ problem_set.template.get_absolute_url }}"><b>{{ problem_set.template.name }}</b></a>
         </footer>
     </article>
     {% endfor %}

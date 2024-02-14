@@ -3,10 +3,10 @@ from django.forms import Form, ModelChoiceField, ModelForm, ValidationError
 from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
 
-from app.models import Pset, Template
+from app.models import ProblemSet, Template
 
 
-class GeneratePsetForm(Form):
+class GenerateProblemSetForm(Form):
     template = ModelChoiceField(
         queryset=None,
         label=_("Choose a template to generate a problem set from"),
@@ -19,14 +19,14 @@ class GeneratePsetForm(Form):
         self.fields["template"].queryset = Template.objects.filter(author=user)
 
 
-class SavePsetForm(ModelForm):
+class SaveProblemSetForm(ModelForm):
     def __init__(self, *args, user: AbstractBaseUser | AnonymousUser, **kwargs):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
         self.user = user
 
     class Meta:
-        model = Pset
+        model = ProblemSet
         fields = ["name"]
         hidden_fields = ["id"]
         labels = {
@@ -38,7 +38,7 @@ class SavePsetForm(ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data["name"]
-        if Pset.objects.filter(name=name, author=self.user).exists():
+        if ProblemSet.objects.filter(name=name, author=self.user).exists():
             raise ValidationError(
                 _("A problem set with this name already exists"), code="exists"
             )
