@@ -13,9 +13,7 @@ def make_plus_or_minus():
 
 
 def make_comparison_operator(allow_eq: bool = True):
-    """
-    allow_eq: Whether to allow generating the '=' operator
-    """
+    """allow_eq: Whether to allow generating the '=' operator."""
     return random.choice(["<", "<=", ">=", ">"] + (["="] if allow_eq else []))
 
 
@@ -30,8 +28,11 @@ def make_quadratic() -> Expr:
 
 def make_linear_inequality_problem() -> Problem:
     """
+    Make a linear inequality problem.
+
     Example:
-    `2(x - 3) - 1 > 3(x - 2) - 4(x + 1)`
+    -------
+    `2(x - 3) - 1 > 3(x - 2) - 4(x + 1)`.
     """
 
     def make_coefficient():
@@ -56,8 +57,11 @@ def make_linear_inequality_problem() -> Problem:
 
 def make_quadratic_inequality_problem() -> Problem:
     """
+    Make a quadratic inequality problem.
+
     Example:
-    `-5x**2 + 9x + 2 > 0`
+    -------
+    `-5x**2 + 9x + 2 > 0`.
     """
     quadratic = make_quadratic()
     comparison = make_comparison_operator(allow_eq=False)

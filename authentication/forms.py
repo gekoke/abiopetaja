@@ -11,9 +11,7 @@ class AbiopetajaLoginForm(LoginForm):
         self.provide_translations()
 
     def provide_translations(self):
-        """
-        These fields are not translated in the allauth package as of 2024-02-13.
-        """
+        # These fields are not translated in the allauth package as of 2024-02-13
         username_field = self.fields["login"]
         username_field.label = _("Username")
 
@@ -41,9 +39,7 @@ class AbiopetajaSignupForm(SignupForm):
         self.remove_password_help_text()
 
     def provide_translations(self):
-        """
-        These fields are not translated in the allauth package as of 2024-02-13.
-        """
+        # These fields are not translated in the allauth package as of 2024-02-13
         username_field = self.fields["username"]
         username_field.label = _("Username")
 

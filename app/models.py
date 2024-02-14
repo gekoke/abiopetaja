@@ -57,10 +57,7 @@ class RenderError:
 
 
 class Template(Entity):
-    """
-    A template is a collection of `ProblemKind` entities
-    that can be rendered into a `Test`.
-    """
+    """A template is a collection of `ProblemKind` entities that can be rendered into a `Test`."""
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=False)
@@ -135,10 +132,7 @@ class Template(Entity):
 
 
 class TemplateProblem(Entity):
-    """
-    A `ProblemKind` instance in the given `Template`.
-    A single `ProblemKind` can be inserted 0, 1, or many times.
-    """
+    """A `ProblemKind` instance in the given `Template`. A single `ProblemKind` can be inserted 0, 1, or many times."""
 
     template = ForeignKey(Template, on_delete=CASCADE)
     problem_kind = IntegerField(choices=ProblemKind.choices)
@@ -153,9 +147,7 @@ class File(Entity):
 
 
 class ProblemSet(Entity):
-    """
-    A problem set composed of documents rendered from a `Template`.
-    """
+    """A problem set composed of documents rendered from a `Template`."""
 
     author = ForeignKey(User, on_delete=CASCADE)
     template = ForeignKey(Template, on_delete=CASCADE)
@@ -173,9 +165,7 @@ class ProblemSet(Entity):
 
     @classmethod
     def delete_unsaved(cls, user: AbstractBaseUser | AnonymousUser):
-        """
-        Delete all unsaved tests.
-        """
+        """Delete all unsaved tests."""
         ProblemSet.objects.filter(is_saved=False, author=user).delete()
 
     def get_absolute_url(self) -> str:
