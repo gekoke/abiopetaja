@@ -13,21 +13,23 @@
     <ul>
         <li>
             <details class="dropdown">
-                <summary>🌍</summary>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                <summary>{{ LANGUAGE_CODE|lang_emoji }}</summary>
                 <ul dir="rtl">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
                     {% for language in languages %}
-                    <li>
-                        <form action="{% url 'set_language' %}" method="post">
-                            {% csrf_token %}
-                            <input name="next" type="hidden" value="{{ redirect_to }}">
-                            <input name="language" type="hidden" value="{{ language.code }}">
-                            <input type="submit" class="muted"
-                                value="{{ language.code|upper }} {{ language.code|lang_emoji }}">
-                        </form>
-                    </li>
+                    {% if language.code != LANGUAGE_CODE %}
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <input name="language" type="hidden" value="{{ language.code }}">
+                                <input type="submit"
+                                    value="{{ language.name_local }} {{ language.code|lang_emoji }}">
+                            </form>
+                        </li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </details>
