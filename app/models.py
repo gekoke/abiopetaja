@@ -57,7 +57,7 @@ class RenderError:
 
 
 class Template(Entity):
-    """A template is a collection of `ProblemKind` entities that can be rendered into a `Test`."""
+    """A template is a collection of `ProblemKind` entities that can be rendered into a `ProblemSet`."""
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=False)
