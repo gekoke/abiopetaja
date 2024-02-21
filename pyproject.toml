@@ -25,7 +25,7 @@ reportIncompatibleVariableOverride = "none"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "abiopetaja.settings_dev"
-python_files = ["test_*.py", "*_test.py"]
+python_files = ["tests.py", "test_*.py", "*_test.py"]
 
 [tool.ruff]
 line-length = 100
