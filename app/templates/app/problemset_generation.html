@@ -13,7 +13,7 @@
             <article>
                 <form action="{% url 'app:generate-problemset' %}" method="post">
                     {% csrf_token %}
-                    {% include 'app/includes/form.html' with form=generate_form %}
+                    {% include 'common/includes/form.html' with form=generate_form %}
                     <input type="submit" value="{% translate "Generate!" %}">
                 </form>
             </article>
@@ -22,7 +22,7 @@
             <article>
                 <form action="{% url 'app:save-problemset' preview_problem_set.id %}" novalidate method="post">
                     {% csrf_token %}
-                    {% include 'app/includes/form.html' with form=save_form disabled=disable_save_form %}
+                    {% include 'common/includes/form.html' with form=save_form disabled=disable_save_form %}
                     <input {% if disable_save_form %}disabled{% endif %} type="submit" class="btn-green"
                         value="{% translate "Save Problem Set" %}">
                 </form>

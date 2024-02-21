@@ -11,7 +11,7 @@
     {% element form form=form method="post" action=action_url tags="entrance,signup" %}
         {% slot body %}
             {% csrf_token %}
-            {% include "app/includes/form.html" with form=form %}
+            {% include "common/includes/form.html" with form=form %}
             {% if redirect_field_value %}
                 <input type="hidden"
                        name="{{ redirect_field_name }}"
