@@ -6,7 +6,7 @@
 
   perSystem = { pkgs, ... }: {
     pre-commit = {
-      check.enable = true;
+      check.enable = false;
 
       settings = {
         hooks = {
@@ -21,11 +21,18 @@
           };
           ruff = {
             enable = true;
+            pass_filenames = false;
           };
           ruff-formatting = {
             enable = true;
             name = "ruff-formatting";
             entry = "${pkgs.ruff}/bin/ruff format";
+            pass_filenames = false;
+          };
+          pytest = {
+            enable = true;
+            name = "pytest";
+            entry = "pytest";
             pass_filenames = false;
           };
         };
