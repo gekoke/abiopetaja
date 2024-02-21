@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 INSTALLED_APPS = [
     "app.apps.ApplicationConfig",
     "authentication.apps.AuthenticationConfig",
+    "common.apps.CommonConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -63,9 +64,6 @@ ACCOUNT_FORMS = {
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            BASE_DIR / "common" / "templates",
-        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
