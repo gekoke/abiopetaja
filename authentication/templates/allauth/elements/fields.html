@@ -1,1 +1,3 @@
-{{ attrs.form.as_p }}
+{% with form=attrs.form %}
+{% include "common/includes/fields.html" %}
+{% endwith %}

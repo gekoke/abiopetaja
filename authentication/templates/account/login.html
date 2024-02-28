@@ -12,7 +12,8 @@
     {% element form form=form method="post" action=login_url tags="entrance,login" %}
         {% slot body %}
             {% csrf_token %}
-            {% include "common/includes/form.html" with form=form %}
+            {% element fields form=form unlabeled=True %}
+            {% endelement %}
             {% if redirect_field_value %}
                 <input type="hidden"
                        name="{{ redirect_field_name }}"
