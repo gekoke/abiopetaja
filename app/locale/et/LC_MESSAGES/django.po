@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 11:52+0000\n"
+"POT-Creation-Date: 2024-02-28 12:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,172 +17,200 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/403.html:6
-msgid "You do not have permission to view that resource."
-msgstr ""
+#: forms.py:12
+msgid "Choose a template to generate a problem set from"
+msgstr "Vali mall, millest dokumente genereerida"
 
-#: templates/404.html:6
-msgid "Resource not found"
-msgstr ""
+#: forms.py:33 templates/app/template_list.html:16
+msgid "Name"
+msgstr "Nimi"
 
-#: templates/500.html:6
-msgid "Something went wrong on our end. Sorry!"
-msgstr ""
+#: forms.py:36
+msgid "My Problem Set"
+msgstr "Minu kontrolltöö"
 
-#: templates/common/includes/nav.html:43
-msgid "Sign Out"
-msgstr ""
+#: forms.py:42
+msgid "A problem set with this name already exists"
+msgstr "Sellise nimega dokument on juba olemas"
 
-#~ msgid "Choose a template to generate a problem set from"
-#~ msgstr "Vali mall, millest dokumente genereerida"
+#: models.py:35
+msgid "Linear inequality"
+msgstr "Lineaarvõrratus"
 
-#~ msgid "Name"
-#~ msgstr "Nimi"
+#: models.py:36
+msgid "Quadratic inequality"
+msgstr "Ruutvõrratus"
 
-#~ msgid "My Problem Set"
-#~ msgstr "Minu kontrolltöö"
+#: signals.py:17
+msgid "Inequalities"
+msgstr "Võrratused"
 
-#~ msgid "A problem set with this name already exists"
-#~ msgstr "Sellise nimega dokument on juba olemas"
+#: signals.py:28
+msgid "Lots of inequalities"
+msgstr "Palju võrratusi"
 
-#~ msgid "Linear inequality"
-#~ msgstr "Lineaarvõrratus"
+#: templates/app/dashboard.html:5
+msgctxt "view in the application"
+msgid "Dashboard"
+msgstr "Peamenüü"
 
-#~ msgid "Quadratic inequality"
-#~ msgstr "Ruutvõrratus"
-
-#~ msgid "Inequalities"
-#~ msgstr "Võrratused"
-
-#~ msgid "Lots of inequalities"
-#~ msgstr "Palju võrratusi"
-
-#~ msgctxt "view in the application"
-#~ msgid "Dashboard"
-#~ msgstr "Peamenüü"
-
+#: templates/app/dashboard.html:11
 #, python-format
-#~ msgid "Welcome, %(name)s!"
-#~ msgstr "Tere tulemast, %(name)s!"
+msgid "Welcome, %(name)s!"
+msgstr "Tere tulemast, %(name)s!"
 
-#~ msgid "New Problem Set ✅️"
-#~ msgstr "Uus töö ✅"
+#: templates/app/dashboard.html:19
+msgid "New Problem Set ✅️"
+msgstr "Uus töö ✅"
 
-#~ msgid "Generate a new problem set"
-#~ msgstr "Genereeri uus töö"
+#: templates/app/dashboard.html:20
+msgid "Generate a new problem set"
+msgstr "Genereeri uus töö"
 
-#~ msgid "Generate!"
-#~ msgstr "Genereeri!"
+#: templates/app/dashboard.html:21 templates/app/problemset_generation.html:17
+msgid "Generate!"
+msgstr "Genereeri!"
 
-#~ msgid "My Templates 📐"
-#~ msgstr "Minu mallid 📐"
+#: templates/app/dashboard.html:26
+msgid "My Templates 📐"
+msgstr "Minu mallid 📐"
 
-#~ msgid "Collections of problems that can be used to generate problem sets"
-#~ msgstr "Ülesannete kogud, mida saab töödeks genereerida"
+#: templates/app/dashboard.html:27
+msgid "Collections of problems that can be used to generate problem sets"
+msgstr "Ülesannete kogud, mida saab töödeks genereerida"
 
+#: templates/app/dashboard.html:28
 #, python-format
-#~ msgid "View %(counter)s template"
-#~ msgid_plural "View %(counter)s templates"
-#~ msgstr[0] "Vaata %(counter)s malli"
-#~ msgstr[1] "Vaata %(counter)s malli"
+msgid "View %(counter)s template"
+msgid_plural "View %(counter)s templates"
+msgstr[0] "Vaata %(counter)s malli"
+msgstr[1] "Vaata %(counter)s malli"
 
-#~ msgctxt "math problems"
-#~ msgid "My Problem Sets 📄"
-#~ msgstr "Minu tööd 📄"
+#: templates/app/dashboard.html:31
+msgctxt "math problems"
+msgid "My Problem Sets 📄"
+msgstr "Minu tööd 📄"
 
-#~ msgid "Browse all your problem sets"
-#~ msgstr "Sirvi kõiki sinu töid"
+#: templates/app/dashboard.html:32
+msgid "Browse all your problem sets"
+msgstr "Sirvi kõiki sinu töid"
 
+#: templates/app/dashboard.html:33
 #, python-format
-#~ msgid "View %(counter)s problem set"
-#~ msgid_plural "View %(counter)s problem sets"
-#~ msgstr[0] "Vaata %(counter)s tööd"
-#~ msgstr[1] "Vaata %(counter)s tööd"
+msgid "View %(counter)s problem set"
+msgid_plural "View %(counter)s problem sets"
+msgstr[0] "Vaata %(counter)s tööd"
+msgstr[1] "Vaata %(counter)s tööd"
 
-#~ msgctxt "math problems"
-#~ msgid "All Problems 🧠"
-#~ msgstr "Kõik ülesanded 🧠"
+#: templates/app/dashboard.html:36
+msgctxt "math problems"
+msgid "All Problems 🧠"
+msgstr "Kõik ülesanded 🧠"
 
-#~ msgid "Browse all the available problems"
-#~ msgstr "Sirvi kõiki olemasolevaid ülesandeid"
+#: templates/app/dashboard.html:37
+msgid "Browse all the available problems"
+msgstr "Sirvi kõiki olemasolevaid ülesandeid"
 
+#: templates/app/dashboard.html:38
 #, python-format
-#~ msgid "View %(counter)s problem"
-#~ msgid_plural "View %(counter)s problems"
-#~ msgstr[0] "Vaata %(counter)s ülesannet"
-#~ msgstr[1] "Vaata %(counter)s ülesannet"
+msgid "View %(counter)s problem"
+msgid_plural "View %(counter)s problems"
+msgstr[0] "Vaata %(counter)s ülesannet"
+msgstr[1] "Vaata %(counter)s ülesannet"
 
-#~ msgctxt "view in the application"
-#~ msgid "Problems"
-#~ msgstr "Ülesanded"
+#: templates/app/problemkind_list.html:6
+msgctxt "view in the application"
+msgid "Problems"
+msgstr "Ülesanded"
 
-#~ msgctxt "math problems"
-#~ msgid "Problems"
-#~ msgstr "Ülesanded"
+#: templates/app/problemkind_list.html:12
+msgctxt "math problems"
+msgid "Problems"
+msgstr "Ülesanded"
 
-#~ msgctxt "of a math problem"
-#~ msgid "Problem type"
-#~ msgstr "Ülesande tüüp"
+#: templates/app/problemkind_list.html:17
+msgctxt "of a math problem"
+msgid "Problem type"
+msgstr "Ülesande tüüp"
 
-#~ msgid "Example"
-#~ msgstr "Näide"
+#: templates/app/problemkind_list.html:18
+msgid "Example"
+msgstr "Näide"
 
-#~ msgctxt "for a math problem"
-#~ msgid "Solution"
-#~ msgstr "Lahend"
+#: templates/app/problemkind_list.html:19
+msgctxt "for a math problem"
+msgid "Solution"
+msgstr "Lahend"
 
-#~ msgctxt "view in the application"
-#~ msgid "Problem Set"
-#~ msgstr "Töö"
+#: templates/app/problemset_detail.html:5
+msgctxt "view in the application"
+msgid "Problem Set"
+msgstr "Töö"
 
-#~ msgid "Problem count"
-#~ msgstr "Ülesannete arv"
+#: templates/app/problemset_detail.html:15
+msgid "Problem count"
+msgstr "Ülesannete arv"
 
-#~ msgid "Template"
-#~ msgstr "Mall"
+#: templates/app/problemset_detail.html:16
+msgid "Template"
+msgstr "Mall"
 
-#~ msgid "Problem Set"
-#~ msgstr "Ülesande tüüp"
+#: templates/app/problemset_detail.html:20
+msgid "Problem Set"
+msgstr "Ülesande tüüp"
 
-#~ msgid "Answer Key"
-#~ msgstr "Vastuste leht"
+#: templates/app/problemset_detail.html:25
+msgid "Answer Key"
+msgstr "Vastuste leht"
 
-#~ msgctxt "view in the application"
-#~ msgid "Generation"
-#~ msgstr "Genereerimine"
+#: templates/app/problemset_generation.html:6
+msgctxt "view in the application"
+msgid "Generation"
+msgstr "Genereerimine"
 
-#~ msgid "Save Problem Set"
-#~ msgstr "Salvesta töö"
+#: templates/app/problemset_generation.html:27
+msgid "Save Problem Set"
+msgstr "Salvesta töö"
 
-#~ msgctxt "view in the application"
-#~ msgid "Problem Sets"
-#~ msgstr "Tööd"
+#: templates/app/problemset_list.html:5
+msgctxt "view in the application"
+msgid "Problem Sets"
+msgstr "Tööd"
 
-#~ msgid "Problem Sets"
-#~ msgstr "Tööd"
+#: templates/app/problemset_list.html:11
+msgid "Problem Sets"
+msgstr "Tööd"
 
-#~ msgid "You don't have any problem sets yet."
-#~ msgstr "Teil pole veel ühtegi tööd."
+#: templates/app/problemset_list.html:26
+msgid "You don't have any problem sets yet."
+msgstr "Teil pole veel ühtegi tööd."
 
-#~ msgctxt "view in the application"
-#~ msgid "Templates"
-#~ msgstr "Mall"
+#: templates/app/template_detail.html:5 templates/app/template_list.html:5
+msgctxt "view in the application"
+msgid "Templates"
+msgstr "Mall"
 
-#~ msgid "Problem"
-#~ msgstr "Ülesanne"
+#: templates/app/template_detail.html:16
+msgid "Problem"
+msgstr "Ülesanne"
 
-#~ msgid "Templates"
-#~ msgstr "Mallid"
+#: templates/app/template_list.html:11
+msgid "Templates"
+msgstr "Mallid"
 
-#~ msgctxt "number of problems in the template"
-#~ msgid "Number of Problems"
-#~ msgstr "Ülesannete arv"
+#: templates/app/template_list.html:17
+msgctxt "number of problems in the template"
+msgid "Number of Problems"
+msgstr "Ülesannete arv"
 
-#~ msgid "Create Template"
-#~ msgstr "Loo mall"
+#: templates/app/template_list.html:30
+msgid "Create Template"
+msgstr "Loo mall"
 
-#~ msgid "This problem set has already been saved"
-#~ msgstr "Need dokumendid on juba salvestatud"
+#: views.py:88
+msgid "This problem set has already been saved"
+msgstr "Need dokumendid on juba salvestatud"
 
-#~ msgid "The problem set was saved successfully"
-#~ msgstr "Dokumendid salvestati edukalt"
+#: views.py:93
+msgid "The problem set was saved successfully"
+msgstr "Dokumendid salvestati edukalt"
