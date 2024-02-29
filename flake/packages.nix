@@ -4,6 +4,7 @@ _:
     packages = {
       default = pkgs.poetry2nix.mkPoetryApplication {
         projectDir = ../.;
+        python = pkgs.python312;
       };
     };
   };

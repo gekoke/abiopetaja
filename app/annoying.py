@@ -1,7 +1,7 @@
 from django.shortcuts import _get_queryset  # pyright: ignore
 
 
-def get_object_or_None(klass, *args, **kwargs):
+def get_object_or_None[T](klass: T, *args, **kwargs) -> T | None:
     """
     Use get() to return an object or None if the object does not exist.
 

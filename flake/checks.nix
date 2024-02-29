@@ -4,7 +4,7 @@
     inputs.pre-commit-hooks.flakeModule
   ];
 
-  perSystem = { pkgs, ... }: {
+  perSystem = { pkgs, lib, ... }: {
     pre-commit = {
       check.enable = false;
 
@@ -18,6 +18,8 @@
           };
           pyright = {
             enable = true;
+            entry = lib.mkForce "pyright --pythonversion 3.12";
+            pass_filenames = false;
           };
           ruff = {
             enable = true;

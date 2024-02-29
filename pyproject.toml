@@ -6,7 +6,7 @@ authors = ["Gregor Grigorjan <gregor@grigorjan.net>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 sympy = "^1.12"
 pytest-django = "^4.7.0"
 django = "^5.0.1"
