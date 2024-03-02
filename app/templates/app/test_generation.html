@@ -11,27 +11,27 @@
     <div class="grid">
         <div>
             <article>
-                <form action="{% url 'app:generate-problemset' %}" method="post">
+                <form action="{% url 'app:generate-test' %}" method="post">
                     {% csrf_token %}
                     {% include 'common/includes/fields.html' with form=generate_form %}
                     <input type="submit" value="{% translate "Generate!" %}">
                 </form>
             </article>
 
-            {% if preview_problem_set %}
+            {% if show_save_form %}
             <article>
-                <form action="{% url 'app:save-problemset' preview_problem_set.id %}" novalidate method="post">
+                <form action="{% url 'app:save-test' preview_test.id %}" novalidate method="post">
                     {% csrf_token %}
                     {% include 'common/includes/fields.html' with form=save_form disabled=disable_save_form %}
                     <input {% if disable_save_form %}disabled{% endif %} type="submit" class="btn-green"
-                        value="{% translate "Save Problem Set" %}">
+                        value="{% translate "Save Current Test" %}">
                 </form>
             </article>
             {% endif %}
         </div>
         <div>
-            <iframe style="height: 80vh" width="100%" type="application/pdf" name="problem-set.pdf" {% if preview_problem_set %}
-                src="data:application/pdf;base64,{{ preview_problem_set.problems_pdf.as_base64  }}" {% else %}
+            <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "test.pdf" context "PDF file name to save" %}" {% if preview_pdf_b64_data %}
+                src="data:application/pdf;base64,{{ preview_pdf_b64_data }}" {% else %}
                 src="{% static 'app/example.pdf' %}" {% endif %}>
             </iframe>
         </div>

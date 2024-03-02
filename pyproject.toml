@@ -11,6 +11,7 @@ sympy = "^1.12"
 pytest-django = "^4.7.0"
 django = "^5.0.1"
 django-allauth = "^0.60.1"
+pydantic = "^2.6.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"

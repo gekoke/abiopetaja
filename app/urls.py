@@ -3,13 +3,13 @@ from django.urls import path
 from app.views import (
     DashboardView,
     ProblemKindListView,
-    ProblemSetDetailView,
-    ProblemSetListView,
     TemplateDetailView,
     TemplateListView,
-    generate_problem_set,
-    problem_set_generation,
-    save_problem_set,
+    TestDetailView,
+    TestListView,
+    generate_test,
+    save_test,
+    test_generation,
 )
 
 app_name = "app"
@@ -23,18 +23,18 @@ urlpatterns = [
         name="template-detail",
     ),
     path("problem-kinds/", ProblemKindListView.as_view(), name="problemkind-list"),
-    path("problem-sets/", ProblemSetListView.as_view(), name="problemset-list"),
+    path("tests/", TestListView.as_view(), name="test-list"),
     path(
-        "problem-set-generation/<uuid:preview_problem_set_id>",
-        problem_set_generation,
-        name="problemset-generation",
+        "test-generation/<uuid:preview_test_id>",
+        test_generation,
+        name="test-generation",
     ),
     path(
-        "problem-set-generation/",
-        problem_set_generation,
-        name="problemset-generation",
+        "test-generation/",
+        test_generation,
+        name="test-generation",
     ),
-    path("problem-set/<uuid:pk>/", ProblemSetDetailView.as_view(), name="problemset-detail"),
-    path("generate-problem-set/", generate_problem_set, name="generate-problemset"),
-    path("save-problem-set/<uuid:problem_set_id>", save_problem_set, name="save-problemset"),
+    path("test/<uuid:pk>/", TestDetailView.as_view(), name="test-detail"),
+    path("generate-problem-set/", generate_test, name="generate-test"),
+    path("save-test/<uuid:test_id>", save_test, name="save-test"),
 ]

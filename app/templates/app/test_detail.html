@@ -1,0 +1,22 @@
+{% extends "common/base.html" %}
+{% load i18n %}
+
+{% block head %}
+<title>{% translate "Test" context "view in the application" %}</title>
+{% endblock %}
+
+{% block content %}
+{% with test=object %}
+
+<main class="container">
+    <h1>📄 {{ test.name }}</h1>
+
+    {% for test_version in test.versions %}
+        <article>
+            <a href="{{ test_version.get_absolute_url }}">{% blocktranslate with test_version_number=test_version.version_number %}Version {{ test_version_number }}{% endblocktranslate %}</h1>
+        </article>
+    {% endfor %}
+</main>
+
+{% endwith %}
+{% endblock %}

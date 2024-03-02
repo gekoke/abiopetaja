@@ -1,0 +1,37 @@
+{% extends "common/base.html" %}
+{% load i18n %}
+
+{% block head %}
+<title>{% translate "Tests" context "view in the application" %}</title>
+
+{% include "common/includes/tippy.html" %}
+
+{% endblock %}
+
+{% block content %}
+{% with tests=object_list %}
+<main class="container">
+    <h1>{% translate "Tests" %}</h1>
+    {% if tests %}
+    {% for test in tests %}
+    <article>
+        <a href="{{ test.get_absolute_url }}">
+            <h2>{{ test.name }}</h2>
+        </a>
+        <footer>
+            <span id="version-count">🎲 <b>{{ test.version_count }}</b></span>
+        </footer>
+    </article>
+    {% endfor %}
+    {% else %}
+    <p>{% translate "You don't have any tests yet." %}</p>
+    {% endif %}
+</main>
+
+<script>
+    tippy("#version-count", {
+        content: "{% translate 'The number of versions this test has' %}",
+    });
+</script>
+{% endwith %}
+{% endblock %}
