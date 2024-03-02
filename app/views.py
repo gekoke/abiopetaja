@@ -61,7 +61,7 @@ def test_generation(request: HttpRequest, preview_test_id: UUID | None = None) -
 
 
 @login_required
-def generate_test(request: HttpRequest) -> HttpResponse:
+def test_generate(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = GenerateTestForm(request.POST, user=request.user)
         if form.is_valid():
@@ -75,7 +75,7 @@ def generate_test(request: HttpRequest) -> HttpResponse:
 
 
 @login_required
-def save_test(request: HttpRequest, test_id: UUID) -> HttpResponse:
+def test_save(request: HttpRequest, test_id: UUID) -> HttpResponse:
     problem_set = get_object_or_404(Test, id=test_id, author=request.user)
 
     form = SaveTestForm(request.POST, user=request.user)

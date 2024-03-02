@@ -7,9 +7,9 @@ from app.views import (
     TemplateListView,
     TestDetailView,
     TestListView,
-    generate_test,
-    save_test,
+    test_generate,
     test_generation,
+    test_save,
 )
 
 app_name = "app"
@@ -34,7 +34,7 @@ urlpatterns = [
         test_generation,
         name="test-generation",
     ),
-    path("test/<uuid:pk>/", TestDetailView.as_view(), name="test-detail"),
-    path("generate-problem-set/", generate_test, name="generate-test"),
-    path("save-test/<uuid:test_id>", save_test, name="save-test"),
+    path("tests/<uuid:pk>/", TestDetailView.as_view(), name="test-detail"),
+    path("test-generate/", test_generate, name="test-generate"),
+    path("tests/<uuid:test_id>/save", test_save, name="test-save"),
 ]
