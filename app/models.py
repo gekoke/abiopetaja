@@ -22,6 +22,7 @@ from django.db.models import (
     TextField,
 )
 from django.urls import reverse
+from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
@@ -251,3 +252,6 @@ class Test(Entity):
 
     def add_version(self, test_version: TestVersion) -> None:
         self.testversion_set.add(test_version)
+
+    def __str__(self):
+        return self.name if self.name is not None else gettext("[Unnamed Test]")

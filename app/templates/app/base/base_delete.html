@@ -1,0 +1,15 @@
+{% extends "allauth/layouts/base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% translate "Confirm Deletion" %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {% block confirmation %}
+    {% endblock %}
+    {% include "common/includes/fields.html" with form=form %}
+    <input type="submit" class="red" value="{% translate "Delete Permanently" %}">
+    <a href="{{request.META.HTTP_REFERER|escape}}" role="button" class="secondary" style="width: 100%;">{% translate "Cancel" %}</a>
+</form>
+{% endblock %}

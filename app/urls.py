@@ -5,6 +5,7 @@ from app.views import (
     ProblemKindListView,
     TemplateDetailView,
     TemplateListView,
+    TestDeleteView,
     TestDetailView,
     TestListView,
     test_generate,
@@ -23,7 +24,6 @@ urlpatterns = [
         name="template-detail",
     ),
     path("problem-kinds/", ProblemKindListView.as_view(), name="problemkind-list"),
-    path("tests/", TestListView.as_view(), name="test-list"),
     path(
         "test-generation/<uuid:preview_test_id>",
         test_generation,
@@ -34,7 +34,9 @@ urlpatterns = [
         test_generation,
         name="test-generation",
     ),
+    path("tests/", TestListView.as_view(), name="test-list"),
     path("tests/<uuid:pk>/", TestDetailView.as_view(), name="test-detail"),
     path("test-generate/", test_generate, name="test-generate"),
     path("tests/<uuid:test_id>/save", test_save, name="test-save"),
+    path("tests/<uuid:pk>/delete", TestDeleteView.as_view(), name="test-delete"),
 ]

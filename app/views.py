@@ -5,14 +5,17 @@ from uuid import UUID
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import (
     HttpRequest,
     HttpResponse,
 )
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import DeleteView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
@@ -137,3 +140,11 @@ class TestDetailView(LoginRequiredMixin, DetailView):
             context["pdf_b64_data"] = render_result.as_base64()
 
         return context
+
+
+class TestDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    success_url = reverse_lazy("app:test-list")
+    success_message = _("The test was deleted successfully.")
+
+    def get_queryset(self):
+        return Test.objects.filter(author=self.request.user)
