@@ -20,25 +20,29 @@
     }
 
     button.green,
-    input.green {
+    input.green,
+    a[role="button"].green {
         background-color: var(--pico-color-jade-500);
         border-color: var(--pico-color-jade-500);
     }
 
     button.green:is(:hover, :focus, :selection),
-    input.green:is(:hover, :focus, :selection) {
+    input.green:is(:hover, :focus, :selection),
+    a[role="button"].green:is(:hover, :focus, :selection) {
         background-color: var(--pico-color-jade-400);
         border-color: var(--pico-color-jade-400);
     }
 
     button.red,
-    input.red {
+    input.red,
+    a[role="button"].red {
         background-color: var(--pico-color-red-500);
         border-color: var(--pico-color-red-500);
     }
 
     button.red:is(:hover, :focus, :selection),
-    input.red:is(:hover, :focus, :selection) {
+    input.red:is(:hover, :focus, :selection),
+    a[role="button"].red:is(:hover, :focus, :selection) {
         background-color: var(--pico-color-red-400);
         border-color: var(--pico-color-red-400);
     }
