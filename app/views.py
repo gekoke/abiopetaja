@@ -40,8 +40,8 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
 
 @login_required
-def test_generation(request: HttpRequest, preview_test_id: UUID | None = None) -> HttpResponse:
-    preview_test = get_object_or_None(Test, id=preview_test_id, author=request.user)
+def test_generation(request: HttpRequest, preview_test_pk: UUID | None = None) -> HttpResponse:
+    preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
     test_version = preview_test.testversion_set.first() if preview_test is not None else None
     render_result = None if test_version is None else test_version.render()
     preview_pdf_b64_data = None
@@ -73,27 +73,27 @@ def test_generate(request: HttpRequest) -> HttpResponse:
             test_generation_parameters = form.get_test_generation_parameters()
 
             test = template.generate_test(test_generation_parameters)
-            return redirect("app:test-generation", preview_test_id=test.id)
+            return redirect("app:test-generation", preview_test_pk=test.pk)
 
     return test_generation(request)
 
 
 @login_required
-def test_save(request: HttpRequest, test_id: UUID) -> HttpResponse:
-    problem_set = get_object_or_404(Test, id=test_id, author=request.user)
+def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
+    problem_set = get_object_or_404(Test, pk=pk, author=request.user)
 
     form = SaveTestForm(request.POST, user=request.user)
     if form.is_valid():
         if problem_set.is_saved:
-            messages.info(request, _("This problem set has already been saved"))
+            messages.info(request, _("This problem set has already been saved."))
         else:
             problem_set.name = form.cleaned_data["name"]
             problem_set.is_saved = True
             problem_set.save()
-            messages.success(request, _("The test was saved successfully"))
-        return redirect("app:test-generation", preview_test_id=test_id)
+            messages.success(request, _("The test was saved successfully."))
+        return redirect("app:test-generation", preview_test_pk=pk)
     else:
-        return test_generation(request, test_id)
+        return test_generation(request, pk)
 
 
 class ProblemKindListView(LoginRequiredMixin, ListView):

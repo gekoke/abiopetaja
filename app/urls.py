@@ -25,7 +25,7 @@ urlpatterns = [
     ),
     path("problem-kinds/", ProblemKindListView.as_view(), name="problemkind-list"),
     path(
-        "test-generation/<uuid:preview_test_id>",
+        "test-generation/<uuid:preview_test_pk>",
         test_generation,
         name="test-generation",
     ),
@@ -37,6 +37,6 @@ urlpatterns = [
     path("tests/", TestListView.as_view(), name="test-list"),
     path("tests/<uuid:pk>/", TestDetailView.as_view(), name="test-detail"),
     path("test-generate/", test_generate, name="test-generate"),
-    path("tests/<uuid:test_id>/save", test_save, name="test-save"),
+    path("tests/<uuid:pk>/save", test_save, name="test-save"),
     path("tests/<uuid:pk>/delete", TestDeleteView.as_view(), name="test-delete"),
 ]

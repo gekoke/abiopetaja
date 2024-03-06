@@ -77,7 +77,7 @@ class Template(Entity):
         unique_together = ["author", "name"]
 
     def get_absolute_url(self) -> str:
-        return reverse("app:template-detail", kwargs={"pk": self.id})
+        return reverse("app:template-detail", kwargs={"pk": self.pk})
 
     @property
     def problem_count(self) -> int:
@@ -248,7 +248,7 @@ class Test(Entity):
         return self.testversion_set.all()
 
     def get_absolute_url(self) -> str:
-        return reverse("app:test-detail", kwargs={"pk": self.id})
+        return reverse("app:test-detail", kwargs={"pk": self.pk})
 
     def add_version(self, test_version: TestVersion) -> None:
         self.testversion_set.add(test_version)
