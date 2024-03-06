@@ -1,4 +1,3 @@
-
 {% extends "common/base.html" %}
 {% load i18n %}
 
@@ -13,10 +12,14 @@
     <h1>{{ template.name }}</h1>
     {% for entry in template.entries %}
     <article>
-        <h2>{{ entry.problem_kind_label }} <i>(x{{ entry.count }})</i></h2>
+        <hgroup>
+            <h2>{{ entry.problem_kind_label }}</h2>
+            <p>{% blocktranslate count counter=entry.count %}This problem will appear {{ counter }} time in tests{% plural %}This problem will appear {{ counter }} times in tests{% endblocktranslate %}</p>
+        </hgroup>
         <footer>
-            <button class="secondary">Edit</button>
+            <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button" class="secondary">Edit</a>
             <button class="red">Delete</button>
+            <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
         </footer>
     </article>
     {% endfor %}

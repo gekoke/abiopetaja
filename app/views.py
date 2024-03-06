@@ -15,12 +15,12 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
-from app.forms import GenerateTestForm, SaveTestForm
-from app.models import File, ProblemKind, RenderError, Template, Test
+from app.forms import GenerateTestForm, SaveTestForm, TemplateProblemUpdateForm
+from app.models import File, ProblemKind, RenderError, Template, TemplateProblem, Test
 
 logger = logging.getLogger(__name__)
 
@@ -140,6 +140,18 @@ class TestDetailView(LoginRequiredMixin, DetailView):
             context["pdf_b64_data"] = render_result.as_base64()
 
         return context
+
+
+class TemplateProblemUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    form_class = TemplateProblemUpdateForm
+
+    success_message = _("The problem entry was updated successfully.")
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().template.pk})  # type: ignore
+
+    def get_queryset(self):
+        return TemplateProblem.objects.filter(template__author=self.request.user)
 
 
 class TestDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):

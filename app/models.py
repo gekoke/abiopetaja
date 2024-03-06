@@ -9,7 +9,7 @@ from tempfile import TemporaryDirectory
 from typing import Iterable
 
 from django.contrib.auth.models import User
-from django.core.validators import MinLengthValidator
+from django.core.validators import MaxValueValidator, MinLengthValidator, MinValueValidator
 from django.db import models, transaction
 from django.db.models import (
     CASCADE,
@@ -24,7 +24,6 @@ from django.db.models import (
 )
 from django.urls import reverse
 from django.utils.translation import gettext
-from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
 
@@ -39,8 +38,8 @@ class Entity(Model):
 
 
 class ProblemKind(IntegerChoices):
-    LINEAR_INEQUALITY = 1, _("Linear inequality")
-    QUADRATIC_INEQUALITY = 2, _("Quadratic inequality")
+    LINEAR_INEQUALITY = 1, gettext("Linear inequality")
+    QUADRATIC_INEQUALITY = 2, gettext("Quadratic inequality")
 
     def generate(self) -> Problem:
         import app.maths as maths
@@ -118,7 +117,7 @@ class Template(Entity):
             test_version.save()
 
             for entry in self.templateproblem_set.all():
-                for __ in range(entry.count):
+                for _ in range(entry.count):
                     problem_kind = ProblemKind(entry.problem_kind)
                     problem = problem_kind.generate()
                     problem.test_version = test_version
@@ -142,11 +141,16 @@ class Template(Entity):
 
 
 class TemplateProblem(Entity):
-    """A `ProblemKind` instance in the given `Template`. A `ProblemKind` can be inserted 0, 1, or many times."""
+    """A `ProblemKind` instance in the given `Template`."""
 
     template = ForeignKey(Template, on_delete=CASCADE)
     problem_kind = IntegerField(choices=ProblemKind.choices)
-    count = PositiveIntegerField()
+    count = PositiveIntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(20),
+        ]
+    )
     """
     The number of times the problem should appear in the test
     """
@@ -156,6 +160,9 @@ class TemplateProblem(Entity):
 
     @property
     def problem_kind_label(self):
+        return ProblemKind(self.problem_kind).label
+
+    def __str__(self):
         return ProblemKind(self.problem_kind).label
 
 

@@ -3,7 +3,7 @@ from django.forms import Form, IntegerField, ModelChoiceField, ModelForm, Valida
 from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
 
-from app.models import Template, Test, TestGenerationParameters
+from app.models import Template, TemplateProblem, Test, TestGenerationParameters
 
 
 class GenerateTestForm(Form):
@@ -54,3 +54,20 @@ class SaveTestForm(ModelForm):
             raise ValidationError(_("A problem set with this name already exists"), code="exists")
 
         return name
+
+
+class TemplateProblemUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+    count = IntegerField(
+        min_value=1,
+        max_value=20,
+        initial=1,
+        label=_("Number of occurences"),
+    )
+
+    class Meta:
+        model = TemplateProblem
+        fields = ["count"]
