@@ -3,31 +3,36 @@
 
 {% block extra_head %}
 <title>{% translate "Templates" context "view in the application" %}</title>
+
+{% include "common/includes/tippy.html" %}
+
 {% endblock %}
 
 {% block content %}
 {% with templates=object_list %}
 <main class="container">
     <h1>{% translate "Templates" %}</h1>
-    <figure>
-        <table>
-            <thead>
-                <tr>
-                    <th>{% translate "Name" %}</th>
-                    <th>{% translate "Number of Problems" context "number of problems in the template" %}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for template in templates %}
-                <tr>
-                    <td><a href="{% url 'app:template-detail' template.id %}">{{ template.name }}</a></td>
-                    <td>{{ template.problem_count }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </figure>
-    <button>{% translate "Create Template" %}</button>
+    {% if templates %}
+    {% for template in templates %}
+    <article>
+        <a href="{{ template.get_absolute_url }}">
+            <h2>{{ template.name }}</h2>
+        </a>
+        <footer>
+            <span id="template-count">❓<b>{{ template.problem_count }}</b></span>
+        </footer>
+    </article>
+    {% endfor %}
+    {% else %}
+    <p>{% translate "You don't have any templates yet." %}</p>
+    {% endif %}
 </main>
+
+<script>
+    tippy("#template-count", {
+        content: "{% translate 'The number of problems this template has' %}",
+        theme: "pico",
+    });
+</script>
 {% endwith %}
 {% endblock %}
