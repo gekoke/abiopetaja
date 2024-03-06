@@ -18,6 +18,7 @@ from django.db.models import (
     IntegerChoices,
     IntegerField,
     Model,
+    PositiveIntegerField,
     Q,
     TextField,
 )
@@ -70,6 +71,11 @@ class TestGenerationParameters(BaseModel):
 class Template(Entity):
     """A template is a collection of `ProblemKind` entities that can be rendered into a `Test`."""
 
+    if TYPE_CHECKING:  # Add missing type hints.
+        from django.db.models.manager import RelatedManager
+
+        templateproblem_set = RelatedManager["TemplateProblem"]()
+
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=False)
 
@@ -85,9 +91,7 @@ class Template(Entity):
 
     @property
     def problem_kinds(self) -> Iterable[ProblemKind]:
-        entries = TemplateProblem.objects.filter(template=self)
-        problem_kinds = [ProblemKind(entry.problem_kind) for entry in entries]
-        return problem_kinds
+        return [ProblemKind(entry.problem_kind) for entry in self.templateproblem_set.all()]
 
     @property
     def problem_kind_labels(self) -> Iterable[str]:
@@ -95,11 +99,11 @@ class Template(Entity):
 
     @transaction.atomic
     def add_problem(self, kind: ProblemKind, count: int = 1):
-        for __ in range(count):
-            entry = TemplateProblem()
-            entry.template = self
-            entry.problem_kind = kind
-            entry.save()
+        entry = TemplateProblem()
+        entry.template = self
+        entry.problem_kind = kind
+        entry.count = count
+        entry.save()
 
     @transaction.atomic
     def generate_test(self, test_generation_parameters: TestGenerationParameters) -> Test:
@@ -113,10 +117,12 @@ class Template(Entity):
             test_version.version_number = i + 1
             test_version.save()
 
-            for kind in self.problem_kinds:
-                problem = kind.generate()
-                problem.test_version = test_version
-                problem.save()
+            for entry in self.templateproblem_set.all():
+                for __ in range(entry.count):
+                    problem_kind = ProblemKind(entry.problem_kind)
+                    problem = problem_kind.generate()
+                    problem.test_version = test_version
+                    problem.save()
 
             test.add_version(test_version)
 
@@ -127,6 +133,10 @@ class Template(Entity):
         logger.debug(test.is_saved)
         return test
 
+    @property
+    def entries(self):
+        return self.templateproblem_set.all()
+
     def __str__(self) -> str:
         return self.name
 
@@ -136,6 +146,17 @@ class TemplateProblem(Entity):
 
     template = ForeignKey(Template, on_delete=CASCADE)
     problem_kind = IntegerField(choices=ProblemKind.choices)
+    count = PositiveIntegerField()
+    """
+    The number of times the problem should appear in the test
+    """
+
+    class Meta:
+        unique_together = ["template", "problem_kind"]
+
+    @property
+    def problem_kind_label(self):
+        return ProblemKind(self.problem_kind).label
 
 
 class TestVersion(Entity):

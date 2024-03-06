@@ -1,30 +1,25 @@
+
 {% extends "common/base.html" %}
 {% load i18n %}
 
 {% block extra_head %}
 <title>{% translate "Templates" context "view in the application" %}</title>
+
 {% endblock %}
 
 {% block content %}
 {% with template=object %}
 <main class="container">
     <h1>{{ template.name }}</h1>
-    <figure>
-        <table>
-            <thead>
-                <tr>
-                    <td>{% translate "Problem" %}</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for problem_kind in template.problem_kinds %}
-                <tr>
-                    <td>{{ problem_kind.label }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </figure>
+    {% for entry in template.entries %}
+    <article>
+        <h2>{{ entry.problem_kind_label }} <i>(x{{ entry.count }})</i></h2>
+        <footer>
+            <button class="secondary">Edit</button>
+            <button class="red">Delete</button>
+        </footer>
+    </article>
+    {% endfor %}
 </main>
 {% endwith %}
 {% endblock %}
