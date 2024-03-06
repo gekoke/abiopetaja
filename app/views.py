@@ -1,4 +1,5 @@
 import logging
+from typing import Iterable
 from uuid import UUID
 
 from django.contrib import messages
@@ -95,9 +96,10 @@ def test_save(request: HttpRequest, test_id: UUID) -> HttpResponse:
 class ProblemKindListView(LoginRequiredMixin, ListView):
     template_name = "app/problemkind_list.html"
 
-    def get_queryset(self) -> list[ProblemKind]:  # pyright: ignore
-        # get_queryset may return any iterable
-        return list(ProblemKind)
+    def get_queryset(self) -> Iterable[ProblemKind]:  # pyright: ignore
+        # get_queryset may return any iterable according to Django docs,
+        # despite the type hint of the superclass implementation
+        return list(ProblemKind)  # type: ignore
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
