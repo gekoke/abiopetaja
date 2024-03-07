@@ -5,6 +5,7 @@ from app.views import (
     ProblemKindListView,
     TemplateDetailView,
     TemplateListView,
+    TemplateProblemDeleteView,
     TemplateProblemUpdateView,
     TestDeleteView,
     TestDetailView,
@@ -28,6 +29,11 @@ urlpatterns = [
         "template-problems/<uuid:pk>/update",
         TemplateProblemUpdateView.as_view(),
         name="templateproblem-update",
+    ),
+    path(
+        "template-problems/<uuid:pk>/delete",
+        TemplateProblemDeleteView.as_view(),
+        name="templateproblem-delete",
     ),
     path("problem-kinds/", ProblemKindListView.as_view(), name="problemkind-list"),
     path(

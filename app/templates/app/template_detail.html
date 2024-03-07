@@ -16,13 +16,12 @@
     {% for entry in template.entries %}
     <article>
         <hgroup>
-            <h2>{{ entry.problem_kind_label }}</h2>
-            <p>{% blocktranslate count counter=entry.count %}This problem will appear {{ counter }} time in tests{% plural %}This problem will appear {{ counter }} times in tests{% endblocktranslate %}</p>
+            <h2>{{ entry }}</h2>
+            <p>{% blocktranslate count counter=entry.count %}This problem will appear {{ counter }} time{% plural %}This problem will appear {{ counter }} times{% endblocktranslate %}</p>
         </hgroup>
         <footer>
-            <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button" class="secondary">Edit</a>
-            <button class="red">Delete</button>
             <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
+            <a href="{% url 'app:templateproblem-delete' pk=entry.pk %}" role="button" class="red">{% translate "Remove" %}</a>
         </footer>
     </article>
     {% endfor %}

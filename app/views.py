@@ -154,6 +154,16 @@ class TemplateProblemUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateV
         return TemplateProblem.objects.filter(template__author=self.request.user)
 
 
+class TemplateProblemDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    success_message = _("The problem entry was deleted successfully.")
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().template.pk})  # type: ignore
+
+    def get_queryset(self):
+        return TemplateProblem.objects.filter(template__author=self.request.user)
+
+
 class TestDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("app:test-list")
     success_message = _("The test was deleted successfully.")
