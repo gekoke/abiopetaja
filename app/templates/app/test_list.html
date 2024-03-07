@@ -24,8 +24,9 @@
     </article>
     {% endfor %}
     {% else %}
-    <p>{% translate "You don't have any tests yet." %}</p>
+    <p> {% translate "You don't have any tests yet." %} </p>
     {% endif %}
+    <a href="{% url 'app:test-generation' %}" role="button">{% translate "Create Test" %}</a>
 </main>
 
 <script>
