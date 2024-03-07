@@ -20,11 +20,12 @@
             <p>{% blocktranslate count counter=entry.count %}This problem will appear {{ counter }} time{% plural %}This problem will appear {{ counter }} times{% endblocktranslate %}</p>
         </hgroup>
         <footer>
-            <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
-            <a href="{% url 'app:templateproblem-delete' pk=entry.pk %}" role="button" class="red">{% translate "Remove" %}</a>
+            <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button">{% translate "Edit" %}</a>
+            <a href="{% url 'app:templateproblem-delete' pk=entry.pk %}" role="button" class="secondary outline">{% translate "Remove" %}</a>
         </footer>
     </article>
     {% endfor %}
+    <a href="{% url 'app:template-delete' pk=template.pk %}" role="button" class="secondary">{% translate "Delete Template" %}</a>
 </main>
 {% endwith %}
 {% endblock %}

@@ -3,6 +3,7 @@ from django.urls import path
 from app.views import (
     DashboardView,
     ProblemKindListView,
+    TemplateDeleteView,
     TemplateDetailView,
     TemplateListView,
     TemplateProblemDeleteView,
@@ -24,6 +25,11 @@ urlpatterns = [
         "templates/<uuid:pk>/",
         TemplateDetailView.as_view(),
         name="template-detail",
+    ),
+    path(
+        "templates/<uuid:pk>/delete",
+        TemplateDeleteView.as_view(),
+        name="template-delete",
     ),
     path(
         "template-problems/<uuid:pk>/update",

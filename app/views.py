@@ -131,6 +131,14 @@ class TemplateDetailView(LoginRequiredMixin, DetailView):
         return Template.objects.filter(author=self.request.user)
 
 
+class TemplateDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    success_url = reverse_lazy("app:template-list")
+    success_message = _("The template was deleted successfully.")
+
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
+
+
 class TestListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Test.objects.filter(author=self.request.user, is_saved=True)

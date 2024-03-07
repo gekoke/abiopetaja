@@ -20,7 +20,7 @@
         </article>
     {% endfor %}
 
-    <a href="{% url 'app:test-delete' pk=test.id %}" role="button" class="red">{% translate "Delete Test" %}</a>
+    <a href="{% url 'app:test-delete' pk=test.id %}" role="button" class="secondary">{% translate "Delete Test" %}</a>
 </main>
 
 {% endwith %}
