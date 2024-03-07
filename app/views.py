@@ -20,7 +20,16 @@ from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
 from app.forms import GenerateTestForm, SaveTestForm, TemplateProblemUpdateForm
-from app.models import File, ProblemKind, RenderError, Template, TemplateProblem, Test
+from app.models import (
+    FailedUnexpectedly,
+    File,
+    ProblemKind,
+    RenderError,
+    Template,
+    TemplateProblem,
+    Test,
+    Timeout,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -50,8 +59,10 @@ def test_generation(request: HttpRequest, preview_test_pk: UUID | None = None) -
         match render_result:
             case File() as file:
                 preview_pdf_b64_data = file.as_base64()
-            case RenderError():
+            case RenderError(reason=FailedUnexpectedly()):
                 messages.error(request, _("Something went wrong on our end. Sorry!"))
+            case RenderError(reason=Timeout()):
+                messages.error(request, _("Rendering the test took too long. Sorry!"))
 
     context = {
         "templates": Template.objects.filter(author=request.user),

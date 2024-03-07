@@ -4,6 +4,7 @@ import base64
 import logging
 import os
 import uuid
+from dataclasses import dataclass
 from subprocess import CalledProcessError, TimeoutExpired, run
 from tempfile import TemporaryDirectory
 from typing import Iterable
@@ -50,10 +51,6 @@ class ProblemKind(IntegerChoices):
         }
 
         return problem_generator[self]()
-
-
-class RenderError:
-    pass
 
 
 class File(Entity):
@@ -162,6 +159,19 @@ class TemplateProblem(Entity):
         return ProblemKind(self.problem_kind).label
 
 
+class Timeout:
+    pass
+
+
+class FailedUnexpectedly:
+    pass
+
+
+@dataclass
+class RenderError:
+    reason: Timeout | FailedUnexpectedly
+
+
 class TestVersion(Entity):
     """A version of a `Test`."""
 
@@ -208,10 +218,10 @@ class TestVersion(Entity):
                 run(["pdflatex", tex_file], cwd=tmp_dir, timeout=3, check=True)
             except TimeoutExpired:
                 logger.error(f"pdflatex timed out for {self}")
-                return RenderError()
+                return RenderError(reason=Timeout())
             except CalledProcessError as e:
                 logger.error(f"pdflatex failed for {self}, {e}")
-                return RenderError()
+                return RenderError(reason=FailedUnexpectedly())
 
             try:
                 with open(pdf_file, "rb") as file:
@@ -219,7 +229,7 @@ class TestVersion(Entity):
                     pdf_file.data = file.read()
             except FileNotFoundError:
                 logger.error(f"pdflatex did not produce a PDF for {self}")
-                return RenderError()
+                return RenderError(reason=FailedUnexpectedly())
 
         return pdf_file
 
