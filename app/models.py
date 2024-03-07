@@ -213,7 +213,6 @@ class TestVersion(Entity):
             with open(tex_file, "w") as file:
                 file.write(latex_source)
 
-            logger.info(latex_source)
             try:
                 run(["pdflatex", tex_file], cwd=tmp_dir, timeout=3, check=True)
             except TimeoutExpired:
