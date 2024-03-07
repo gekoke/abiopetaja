@@ -9,7 +9,10 @@
 {% block content %}
 {% with template=object %}
 <main class="container">
+    <hgroup>
     <h1>{{ template.name }}</h1>
+    <p>{% translate "Template" %}</p>
+    </hgroup>
     {% for entry in template.entries %}
     <article>
         <hgroup>
