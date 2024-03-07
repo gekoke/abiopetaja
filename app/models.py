@@ -125,11 +125,7 @@ class Template(Entity):
 
             test.add_version(test_version)
 
-        logger.debug(f"Generated test {test} from template {self}")
-        logger.debug(test.is_saved)
-
         test.save()
-        logger.debug(test.is_saved)
         return test
 
     @property
