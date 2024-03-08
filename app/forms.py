@@ -40,7 +40,6 @@ class SaveTestForm(ModelForm):
     class Meta:
         model = Test
         fields = ["name"]
-        hidden_fields = ["id"]
         labels = {
             "name": _("Name"),
         }
