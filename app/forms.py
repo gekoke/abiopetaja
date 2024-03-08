@@ -50,7 +50,7 @@ class SaveTestForm(ModelForm):
     def clean_name(self):
         name = self.cleaned_data["name"]
         if Test.objects.filter(name=name, author=self.user).exists():
-            raise ValidationError(_("A problem set with this name already exists"), code="exists")
+            raise ValidationError(_("A test with this name already exists"), code="exists")
 
         return name
 
