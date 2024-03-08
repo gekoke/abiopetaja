@@ -137,7 +137,8 @@ class TemplateProblem(Entity):
     """A `ProblemKind` instance in the given `Template`."""
 
     template = ForeignKey(Template, on_delete=CASCADE)
-    problem_kind = IntegerField(choices=ProblemKind.choices)
+    # We add a default value so forms render nicer (don't have a empty placeholder '-----')
+    problem_kind = IntegerField(choices=ProblemKind.choices, default=1)
     count = PositiveIntegerField(
         validators=[
             MinValueValidator(1),

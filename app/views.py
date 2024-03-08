@@ -1,5 +1,5 @@
 import logging
-from typing import Iterable
+from typing import Any, Iterable
 from uuid import UUID
 
 from django.contrib import messages
@@ -15,11 +15,16 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
-from app.forms import GenerateTestForm, SaveTestForm, TemplateProblemUpdateForm
+from app.forms import (
+    GenerateTestForm,
+    SaveTestForm,
+    TemplateProblemCreateFrom,
+    TemplateProblemUpdateForm,
+)
 from app.models import (
     FailedUnexpectedly,
     File,
@@ -163,7 +168,34 @@ class TestDetailView(LoginRequiredMixin, DetailView):
         return context
 
 
+class TemplateProblemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    template_name_suffix = "_create_form"
+    form_class = TemplateProblemCreateFrom
+
+    model = TemplateProblem
+
+    def get_template(self) -> Template:
+        return get_object_or_404(Template, pk=self.kwargs["template_pk"])
+
+    def get_form_kwargs(self) -> dict[str, Any]:
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        kwargs["template"] = self.get_template()
+        return kwargs
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_template().pk})
+
+    def form_valid(self, form):
+        form.instance.template = self.get_template()  # type: ignore
+        return super().form_valid(form)
+
+    def get_queryset(self):
+        return TemplateProblem.objects.filter(template__author=self.request.user)
+
+
 class TemplateProblemUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    template_name_suffix = "_update_form"
     form_class = TemplateProblemUpdateForm
 
     success_message = _("The problem entry was updated successfully.")

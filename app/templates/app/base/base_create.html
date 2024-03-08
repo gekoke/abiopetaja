@@ -1,0 +1,12 @@
+{% extends "allauth/layouts/base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {% include "common/includes/fields.html" with form=form %}
+    <input type="submit" class="green" value="{% translate "Save" %}">
+    <a href="{{request.META.HTTP_REFERER|escape}}" role="button" class="secondary" style="width: 100%;">{% translate "Cancel" %}</a>
+</form>
+{% endblock %}

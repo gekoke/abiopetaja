@@ -1,9 +1,19 @@
-from django.contrib.auth.models import AbstractBaseUser, AnonymousUser
-from django.forms import Form, IntegerField, ModelChoiceField, ModelForm, ValidationError
+import logging
+
+from django.contrib.auth.models import AbstractBaseUser, AnonymousUser, User
+from django.forms import (
+    Form,
+    IntegerField,
+    ModelChoiceField,
+    ModelForm,
+    ValidationError,
+)
 from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
 
-from app.models import Template, TemplateProblem, Test, TestGenerationParameters
+from app.models import ProblemKind, Template, TemplateProblem, Test, TestGenerationParameters
+
+logger = logging.getLogger(__name__)
 
 
 class GenerateTestForm(Form):
@@ -55,17 +65,41 @@ class SaveTestForm(ModelForm):
         return name
 
 
-class TemplateProblemUpdateForm(ModelForm):
+TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(
+    min_value=1,
+    max_value=20,
+    initial=1,
+    label=_("Number of occurences"),
+)
+
+
+class TemplateProblemCreateFrom(ModelForm):
+    count = TEMPLATE_PROBLEM_COUNT_FIELD
+
     def __init__(self, *args, **kwargs) -> None:
+        self.user: User = kwargs.pop("user")
+        self.template: Template = kwargs.pop("template")
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
 
-    count = IntegerField(
-        min_value=1,
-        max_value=20,
-        initial=1,
-        label=_("Number of occurences"),
-    )
+    class Meta:
+        model = TemplateProblem
+        fields = ["problem_kind", "count"]
+
+    def clean_problem_kind(self):
+        problem_kind: ProblemKind = self.cleaned_data["problem_kind"]
+        template_already_has_problem_kind = problem_kind in self.template.problem_kinds
+        if template_already_has_problem_kind:
+            raise ValidationError(_("This template already contains this problem kind"))
+        return problem_kind
+
+
+class TemplateProblemUpdateForm(ModelForm):
+    count = TEMPLATE_PROBLEM_COUNT_FIELD
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
 
     class Meta:
         model = TemplateProblem
