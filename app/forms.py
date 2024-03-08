@@ -9,7 +9,7 @@ from app.models import Template, TemplateProblem, Test, TestGenerationParameters
 class GenerateTestForm(Form):
     template = ModelChoiceField(
         queryset=None,
-        label=_("Choose a template to generate a problem set from"),
+        label=_("Template to generate test from"),
         empty_label=None,
     )
 
