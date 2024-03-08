@@ -49,7 +49,9 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
 
 @login_required
-def test_generation(request: HttpRequest, preview_test_pk: UUID | None = None) -> HttpResponse:
+def test_generation(
+    request: HttpRequest, preview_test_pk: UUID | None = None, save_form: SaveTestForm | None = None
+) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
     test_version = preview_test.testversion_set.first() if preview_test is not None else None
     render_result = None if test_version is None else test_version.render()
@@ -67,7 +69,7 @@ def test_generation(request: HttpRequest, preview_test_pk: UUID | None = None) -
     context = {
         "templates": Template.objects.filter(author=request.user),
         "generate_form": GenerateTestForm(user=request.user),
-        "save_form": SaveTestForm(user=request.user),
+        "save_form": save_form if save_form is not None else SaveTestForm(user=request.user),
         "preview_test": preview_test,
         "show_save_form": preview_test is not None and not preview_test.is_saved,
         "preview_pdf_b64_data": preview_pdf_b64_data,
@@ -104,7 +106,7 @@ def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
             messages.success(request, _("The test was saved successfully."))
         return redirect("app:test-generation", preview_test_pk=pk)
     else:
-        return test_generation(request, pk)
+        return test_generation(request, pk, form)
 
 
 class ProblemKindListView(LoginRequiredMixin, ListView):
