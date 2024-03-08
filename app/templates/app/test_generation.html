@@ -24,7 +24,7 @@
                     {% csrf_token %}
                     {% include 'common/includes/fields.html' with form=save_form disabled=disable_save_form %}
                     <input {% if disable_save_form %}disabled{% endif %} type="submit" class="green"
-                        value="{% translate "Save Current Test" %}">
+                        value="{% translate "Save Test" %}">
                 </form>
             </article>
             {% endif %}
