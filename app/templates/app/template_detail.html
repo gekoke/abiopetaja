@@ -25,7 +25,9 @@
         </footer>
     </article>
     {% endfor %}
-    <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green">{% translate "Add Problem" %}</a>
+    <div role="group">
+        <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green" >{% translate "Add Problem" %}</a>
+    </div>
     <a href="{% url 'app:template-delete' pk=template.pk %}" role="button" class="secondary outline">{% translate "Delete Template" %}</a>
 </main>
 {% endwith %}

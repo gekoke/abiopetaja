@@ -26,7 +26,9 @@
     {% else %}
     <p> {% translate "You don't have any tests yet." %} </p>
     {% endif %}
-    <a href="{% url 'app:test-generation' %}" role="button">{% translate "Generate Test" %}</a>
+    <div role="group">
+        <a href="{% url 'app:test-generation' %}" role="button">{% translate "Generate Test" %}</a>
+    </div>
 </main>
 
 <script>
