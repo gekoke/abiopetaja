@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 {
   imports = [
     inputs.pre-commit-hooks.flakeModule
@@ -40,5 +40,9 @@
         };
       };
     };
+  };
+
+  flake = {
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
   };
 }

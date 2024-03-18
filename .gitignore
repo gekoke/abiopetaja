@@ -173,3 +173,7 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
 .direnv/
 /.pre-commit-config.yaml
+/infra/.terraform/
+/infra/terraform.tfstate
+/infra/terraform.tfstate.backup
+/infra/plan

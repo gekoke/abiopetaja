@@ -6,9 +6,11 @@
         inputsFrom = [ self.packages.${system}.default ];
 
         packages = [
+          pkgs.deploy-rs
+          pkgs.opentofu
           pkgs.poetry
-          pkgs.ruff
           pkgs.pyright
+          pkgs.ruff
           pkgs.texliveBasic
         ];
 
