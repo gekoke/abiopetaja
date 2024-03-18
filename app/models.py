@@ -195,7 +195,7 @@ class TestVersion(Entity):
 
     def _as_latex(self) -> str:
         latex = """
-        \\documentclass{article}
+        \\documentclass[20pt]{article}
         \\usepackage{amsfonts}
         \\begin{document}
         """
@@ -242,8 +242,8 @@ class Problem(Entity):
 
     def render(self) -> str:
         return f"""
-        Definition: $${self.definition}$$
-        Solution: $${self.solution}$$
+        \\textbf{{Definition}}: ${self.definition}$\n
+        \\textbf{{Solution}}: ${self.solution}$\n
         """
 
 
