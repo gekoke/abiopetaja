@@ -33,6 +33,7 @@ from app.models import (
     Template,
     TemplateProblem,
     Test,
+    TestVersion,
     Timeout,
 )
 
@@ -112,6 +113,22 @@ def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
         return redirect("app:test-generation", preview_test_pk=pk)
     else:
         return test_generation(request, pk, form)
+
+
+@login_required
+def testversion_download(request: HttpRequest, pk: UUID):
+    if request.method == "GET":
+        test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
+        render_result = test_version.render()
+        match render_result:
+            case File() as file:
+                return HttpResponse(bytes(file.data), content_type="application/pdf")
+            case RenderError(reason=FailedUnexpectedly()):
+                messages.error(request, _("Something went wrong on our end. Sorry!"))
+            case RenderError(reason=Timeout()):
+                messages.error(request, _("Rendering the test took too long. Sorry!"))
+
+    return redirect("app:test-detail", kwargs={"pk": pk})
 
 
 class ProblemKindListView(LoginRequiredMixin, ListView):

@@ -15,6 +15,7 @@ from app.views import (
     test_generate,
     test_generation,
     test_save,
+    testversion_download,
 )
 
 app_name = "app"
@@ -63,4 +64,5 @@ urlpatterns = [
     path("test-generate/", test_generate, name="test-generate"),
     path("tests/<uuid:pk>/delete", TestDeleteView.as_view(), name="test-delete"),
     path("tests/<uuid:pk>/save", test_save, name="test-save"),
+    path("test-versions/<uuid:pk>/download", testversion_download, name="testversion-download"),
 ]
