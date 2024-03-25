@@ -57,7 +57,7 @@ in
               in
               [ pkgs.texliveBasic ];
             serviceConfig = {
-              ExecStart = "${self.packages.${system}.dependencyEnv}/bin/gunicorn abiopetaja.wsgi:application";
+              ExecStart = "${self.packages.${system}.default.dependencyEnv}/bin/gunicorn abiopetaja.wsgi:application";
             };
           };
 
