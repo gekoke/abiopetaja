@@ -21,7 +21,7 @@ in
         };
         service = {
           sshUser = "root";
-          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.main;
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.ec2;
         };
       };
     };
