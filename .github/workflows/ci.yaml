@@ -16,6 +16,11 @@ jobs:
         uses: cachix/install-nix-action@v26
         with:
           extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
+      - name: Set up binary cache
+        uses: cachix/cachix-action@v14
+        with:
+          name: abiopetaja
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: Run checks
         run: nix flake check --system x86_64-linux
 

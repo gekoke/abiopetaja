@@ -13,6 +13,11 @@ jobs:
       uses: actions/checkout@v4
     - name: Install Nix
       uses: cachix/install-nix-action@v26
+    - name: Set up binary cache
+      uses: cachix/cachix-action@v14
+      with:
+        name: abiopetaja
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - uses: webfactory/ssh-agent@v0.9.0
       with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
