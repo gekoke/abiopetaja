@@ -9,6 +9,7 @@ flake-parts.lib.mkFlake { inherit inputs; } {
     ./deploys.nix
     ./dev-shells.nix
     ./nixos-configurations
+    ./nixos-modules
     ./overlays.nix
     ./packages.nix
   ];

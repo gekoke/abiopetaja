@@ -2,18 +2,18 @@ from abiopetaja.settings_common import *  # noqa: F403
 
 DEBUG = False
 
-with open("/etc/DJANGO_SECRET_KEY.txt") as f:
+with open("/home/abiopetaja/DJANGO_SECRET_KEY.txt") as f:
     SECRET_KEY = f.read().strip()
 
 ALLOWED_HOSTS = ["*"]
 
-STATIC_ROOT = "/static"
-STATIC_URL = "/"
-MEDIA_URL = "/media/"
+STATIC_ROOT = "/var/www/abiopetaja/static"
+STATIC_URL = "/static/"
+MEDIA_URL = "/var/www/abiopetaja/media/"
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "/db.sqlite3",
+        "NAME": "/home/abiopetaja/db.sqlite3",
     }
 }

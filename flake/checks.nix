@@ -5,6 +5,8 @@
   ];
 
   perSystem = { pkgs, lib, system, ... }: {
+    checks = import ./tests { inherit self pkgs; };
+
     pre-commit =
       let
         pythonEnv = self.packages.${system}.default.dependencyEnv;

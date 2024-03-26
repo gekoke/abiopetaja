@@ -1,19 +1,31 @@
 { self, inputs, ... }:
-let
-  system = "x86_64-linux";
-  pkgs = import inputs.nixpkgs { inherit system; };
-  mkSystem = inputs.nixpkgs.lib.nixosSystem;
-in
 {
   flake = {
-    nixosConfigurations = {
-      ec2 = mkSystem {
-        inherit system;
-        modules = [
-          "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
-          (import ./base-config.nix { inherit self pkgs; })
-        ];
+    nixosConfigurations =
+      let
+        system = "x86_64-linux";
+        mkSystem = inputs.nixpkgs.lib.nixosSystem;
+      in
+      {
+        ec2 = mkSystem {
+          inherit system;
+          specialArgs = { inherit (self.packages.${system}) abiopetaja; };
+          modules = [
+            "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
+            self.nixosModules.abiopetaja
+            {
+              system.stateVersion = "24.05";
+
+              services.abiopetaja = {
+                enable = true;
+                domains = [
+                  "xn--abipetaja-s7a.ee"
+                  "www.xn--abipetaja-s7a.ee"
+                ];
+              };
+            }
+          ];
+        };
       };
-    };
   };
 }
