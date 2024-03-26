@@ -6,6 +6,7 @@ resource "aws_key_pair" "main" {
   key_name   = "main"
   public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFufX1+gB8lYceIB5K5gAsqz8N2UmUmunSXSe17YDq1E geko@carbon"
 
+
   tags = {
     Name = "Main SSH public key for provisioned instances"
   }
