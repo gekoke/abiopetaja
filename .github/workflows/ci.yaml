@@ -1,7 +1,6 @@
 name: ci
 
 on:
-  push:
   pull_request:
 
 jobs:
@@ -19,3 +18,4 @@ jobs:
           extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
       - name: Run checks
         run: nix flake check --system x86_64-linux
+
