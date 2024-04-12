@@ -26,6 +26,9 @@
     {% else %}
     <p>{% translate "You don't have any templates yet." %}</p>
     {% endif %}
+    <div role="group">
+        <a href="{% url 'app:template-create' %}" class="green" role="button">{% translate "Create Template" %}</a>
+    </div>
 </main>
 
 <script>

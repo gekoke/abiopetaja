@@ -65,6 +65,22 @@ class SaveTestForm(ModelForm):
         return name
 
 
+class TemplateCreateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+    class Meta:
+        model = Template
+        exclude = ["author"]
+        labels = {
+            "name": _("Name"),
+        }
+        widgets = {
+            "name": TextInput(attrs={"placeholder": _("My Template")}),
+        }
+
+
 TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(
     min_value=1,
     max_value=20,

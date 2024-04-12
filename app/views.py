@@ -15,13 +15,18 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext as _
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import (
+    CreateView,
+    DeleteView,
+    UpdateView,
+)
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
 from app.forms import (
     GenerateTestForm,
     SaveTestForm,
+    TemplateCreateForm,
     TemplateProblemCreateFrom,
     TemplateProblemUpdateForm,
 )
@@ -153,6 +158,19 @@ class TemplateListView(LoginRequiredMixin, ListView):
 class TemplateDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Template.objects.filter(author=self.request.user)
+
+
+class TemplateCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    success_message = _("The template was created successfully.")
+    success_url = reverse_lazy("app:template-list")
+
+    model = Template
+    form_class = TemplateCreateForm
+    template_name_suffix = "_create_form"
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user  # pyright: ignore
+        return super().form_valid(form)
 
 
 class TemplateDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
