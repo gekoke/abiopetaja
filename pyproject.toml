@@ -20,11 +20,9 @@ django = "^5.0.1"
 django-allauth = "^0.60.1"
 pydantic = "^2.6.3"
 gunicorn = "^21.2.0"
-# Must be a build dependency for pyright to pick up type hints in `nix flake check`
-# since poetry2nix does not add development dependencies to the Python environment
-django-types = "^0.19.1" 
 
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.group.tests.dependencies]
+django-types = "^0.19.1" 
 pytest = "^7.4.4"
 pyright = "^1.1.355"
 
