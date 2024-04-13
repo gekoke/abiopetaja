@@ -4,15 +4,11 @@ on:
   push:
     branches-ignore:
       - main
-  workflow_call:
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Install Nix
         uses: cachix/install-nix-action@v26
         with:
@@ -22,7 +18,10 @@ jobs:
         uses: cachix/cachix-action@v14
         with:
           name: abiopetaja
-          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Run checks
         run: nix flake check --system x86_64-linux
