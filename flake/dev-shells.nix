@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  perSystem = { config, pkgs, system, ... }: {
+  perSystem = { config, pkgs, system, inputs', ... }: {
     devShells = {
       default = pkgs.mkShellNoCC {
         inputsFrom = [ self.packages.${system}.default ];
@@ -19,6 +19,10 @@
           export PYTHONDONTWRITEBYTECODE=1
           export DJANGO_SETTINGS_MODULE="abiopetaja.settings_dev"
         '';
+      };
+
+      cd = pkgs.mkShellNoCC {
+        packages = [ pkgs.deploy-rs ];
       };
     };
   };
