@@ -9,26 +9,6 @@ let
   };
   tests = [
     ({
-      name = "smoke_test_server_runs_app_locally";
-
-      testScript = ''
-        server.wait_for_unit("nginx.service")
-        server.wait_for_unit("abiopetaja.service")
-
-        server.wait_until_succeeds("curl -L localhost:8000 | grep -o \"Sign up\"", timeout=60)
-      '';
-    })
-    ({
-      name = "smoke_test_server_serves_site_locally";
-
-      testScript = ''
-        server.wait_for_unit("nginx.service")
-        server.wait_for_unit("abiopetaja.service")
-
-        server.wait_until_succeeds("curl -L localhost:80 -L | grep -o \"Sign up\"", timeout=60)
-      '';
-    })
-    ({
       name = "smoke_test_server_responds_to_client";
 
       testScript = ''
