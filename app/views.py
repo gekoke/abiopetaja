@@ -190,18 +190,6 @@ class TestDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Test.objects.filter(author=self.request.user)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        test: Test = self.get_object()  # type: ignore
-        test_version = test.testversion_set.first()
-        assert test_version is not None
-
-        render_result = test_version.render()
-        if type(render_result) is File:
-            context["pdf_b64_data"] = render_result.as_base64()
-
-        return context
-
 
 class TemplateProblemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name_suffix = "_create_form"
