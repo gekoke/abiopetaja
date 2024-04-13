@@ -27,10 +27,11 @@ class GenerateTestForm(Form):
         min_value=1, max_value=6, initial=1, label=_("Number of test versions")
     )
 
-    def __init__(self, *args, user: AbstractBaseUser | AnonymousUser, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
-        self.fields["template"].queryset = Template.objects.filter(author=user)
+        self.fields["template"].queryset = Template.objects.filter(author=self.user)
 
     def get_template(self) -> Template:
         assert self.is_valid()
@@ -42,10 +43,10 @@ class GenerateTestForm(Form):
 
 
 class SaveTestForm(ModelForm):
-    def __init__(self, *args, user: AbstractBaseUser | AnonymousUser, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
-        self.user = user
 
     class Meta:
         model = Test
