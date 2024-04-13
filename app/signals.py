@@ -23,7 +23,10 @@ def add_default_templates(user: User, **kwargs):
 
     if not settings.DEBUG:
         return
+    add_test_templates(user)
 
+
+def add_test_templates(user: User, **kwargs):
     template = Template()
     template.name = _("Lots of inequalities")
     template.author = user
