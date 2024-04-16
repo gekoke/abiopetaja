@@ -13,6 +13,13 @@
     <h1>{{ template.name }}</h1>
     <p>{% translate "📐 Template" %}</p>
     </hgroup>
+    <article>
+        <h6>{% translate "Header" %}</h6>
+        <p>{{ template.header }}</h1>
+        <footer>
+            <a href="{% url 'app:template-update' pk=template.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
+        </footer>
+    </article>
     {% for entry in template.entries %}
     <article>
         <hgroup>
