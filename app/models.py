@@ -154,10 +154,10 @@ class TemplateProblem(Entity):
 
     @property
     def problem_kind_label(self):
-        return ProblemKind(self.problem_kind).label
+        return gettext(ProblemKind(self.problem_kind).label)
 
     def __str__(self):
-        return ProblemKind(self.problem_kind).label
+        return gettext(ProblemKind(self.problem_kind).label)
 
 
 class Timeout:
