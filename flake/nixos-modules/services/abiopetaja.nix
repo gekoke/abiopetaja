@@ -106,9 +106,9 @@ in
                     echo "File $SECRET_KEY_FILE already exists."
                 fi
 
-                ${env}/bin/python -m manage makemigrations
-                ${env}/bin/python -m manage migrate
                 ${env}/bin/python -m manage collectstatic --no-input --clear
+                ${env}/bin/python -m manage makemigrations --check
+                ${env}/bin/python -m manage migrate
                 ${env}/bin/gunicorn abiopetaja.wsgi:application
               '';
             in
