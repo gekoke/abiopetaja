@@ -1,19 +1,25 @@
 { self, ... }:
 {
   perSystem = { pkgs, system, ... }: {
-    packages = {
-      abiopetaja = pkgs.poetry2nix.mkPoetryApplication {
-        projectDir = ../.;
-        python = pkgs.python312;
-      };
+    packages =
+      let
+        appDefinition = {
+          projectDir = ../.;
+          python = pkgs.python312;
+          postPatch = ''
+            substituteInPlace app/models.py \
+              --replace-fail 'pdflatex' '${pkgs.texliveBasic}/bin/pdflatex'
+          '';
+        };
 
-      abiopetaja-tests = pkgs.poetry2nix.mkPoetryApplication {
-        projectDir = ../.;
-        python = pkgs.python312;
-        groups = ["tests"];
-      };
+        build = appDefinition: pkgs.poetry2nix.mkPoetryApplication appDefinition;
+      in
+      {
+        abiopetaja = build appDefinition;
 
-      default = self.packages.${system}.abiopetaja;
-    };
+        abiopetaja-tests = build (appDefinition // { groups = [ "tests" ]; });
+
+        default = self.packages.${system}.abiopetaja;
+      };
   };
 }

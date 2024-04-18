@@ -53,7 +53,6 @@ in
         lib.genAttrs cfg.domains (_: config);
     };
 
-    environment.systemPackages = [ pkgs.gettext ];
     users = {
       groups = {
         www-data = { };
@@ -84,10 +83,6 @@ in
 
       services.abiopetaja = {
         wantedBy = [ "multi-user.target" ];
-        path = [
-          pkgs.texliveBasic
-          pkgs.gettext
-        ];
         serviceConfig = {
           User = "abiopetaja";
           ExecStart =
