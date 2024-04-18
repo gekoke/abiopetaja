@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 11:54+0000\n"
+"POT-Creation-Date: 2024-04-18 20:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/403.html:6
+#: common/templates/403.html:6
 msgid "You do not have permission to view that resource."
 msgstr "Teil pole õigusi seda ressurssi vaadata."
 
-#: templates/404.html:6
-#| msgid "Resource not found"
+#: common/templates/404.html:6
 msgid "The resource was not found."
 msgstr "Ressurssi ei leitud."
 
-#: templates/500.html:6
+#: common/templates/500.html:6
 msgid "Something went wrong on our end. Sorry!"
 msgstr "Miski läks meie süsteemis valesti. Palume vabandust!"
 
-#: templates/common/includes/nav.html:43
+#: common/templates/common/includes/nav.html:43
 msgid "Sign Out"
 msgstr "Logi välja"

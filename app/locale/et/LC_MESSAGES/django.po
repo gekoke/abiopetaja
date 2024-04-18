@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-28 12:10+0000\n"
+"POT-Creation-Date: 2024-04-18 20:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,200 +17,389 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:12
-msgid "Choose a template to generate a problem set from"
+#: abiopetaja/settings_common.py:109
+msgid "Estonian"
+msgstr "Eesti"
+
+#: abiopetaja/settings_common.py:110
+msgid "English"
+msgstr "Inglise"
+
+#: app/forms.py:22
+msgid "Template to generate test from"
 msgstr "Vali mall, millest dokumente genereerida"
 
-#: forms.py:33 templates/app/template_list.html:16
+#: app/forms.py:27
+msgid "Number of test versions"
+msgstr "Variantide arv"
+
+#: app/forms.py:55 app/forms.py:78
 msgid "Name"
 msgstr "Nimi"
 
-#: forms.py:36
-msgid "My Problem Set"
-msgstr "Minu kontrolltöö"
+#: app/forms.py:58
+msgid "My Test"
+msgstr "Minu töö"
 
-#: forms.py:42
-msgid "A problem set with this name already exists"
-msgstr "Sellise nimega dokument on juba olemas"
+#: app/forms.py:64
+msgid "A test with this name already exists"
+msgstr "Sellise nimega töö on juba olemas"
 
-#: models.py:35
+#: app/forms.py:81
+msgid "My Template"
+msgstr "Minu mall"
+
+#: app/forms.py:89
+msgid "Number of occurences"
+msgstr "Ülesannete arv"
+
+#: app/forms.py:110
+msgid "This template already contains this problem kind"
+msgstr "See mall juba sisaldab seda ülesandetüüpi"
+
+#: app/models.py:42
 msgid "Linear inequality"
 msgstr "Lineaarvõrratus"
 
-#: models.py:36
+#: app/models.py:43
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: signals.py:17
+#: app/models.py:291
+msgid "[Unnamed Test]"
+msgstr "[Nimeta töö]"
+
+#: app/signals.py:23
 msgid "Inequalities"
 msgstr "Võrratused"
 
-#: signals.py:28
+#: app/signals.py:38
 msgid "Lots of inequalities"
 msgstr "Palju võrratusi"
 
-#: templates/app/dashboard.html:5
+#: app/templates/app/base/base_create.html:9
+msgid "Save"
+msgstr "Salvesta"
+
+#: app/templates/app/base/base_create.html:10
+#: app/templates/app/base/base_delete.html:13
+#: app/templates/app/base/base_update.html:10
+msgid "Cancel"
+msgstr "Tühista"
+
+#: app/templates/app/base/base_delete.html:6
+msgid "Confirm Deletion"
+msgstr "Kinnita kustutamine"
+
+#: app/templates/app/base/base_delete.html:12
+msgid "Delete Permanently"
+msgstr "Kustuta jäädavalt"
+
+#: app/templates/app/base/base_update.html:9
+msgid "Update"
+msgstr "Uuenda"
+
+#: app/templates/app/dashboard.html:5
 msgctxt "view in the application"
 msgid "Dashboard"
 msgstr "Peamenüü"
 
-#: templates/app/dashboard.html:11
+#: app/templates/app/dashboard.html:11
 #, python-format
 msgid "Welcome, %(name)s!"
 msgstr "Tere tulemast, %(name)s!"
 
-#: templates/app/dashboard.html:19
-msgid "New Problem Set ✅️"
+#: app/templates/app/dashboard.html:19
+msgid "New Test ✅️"
 msgstr "Uus töö ✅"
 
-#: templates/app/dashboard.html:20
-msgid "Generate a new problem set"
+#: app/templates/app/dashboard.html:20
+msgid "Generate a new test"
 msgstr "Genereeri uus töö"
 
-#: templates/app/dashboard.html:21 templates/app/problemset_generation.html:17
+#: app/templates/app/dashboard.html:21
+#: app/templates/app/test_generation.html:17
 msgid "Generate!"
 msgstr "Genereeri!"
 
-#: templates/app/dashboard.html:26
+#: app/templates/app/dashboard.html:26
 msgid "My Templates 📐"
 msgstr "Minu mallid 📐"
 
-#: templates/app/dashboard.html:27
-msgid "Collections of problems that can be used to generate problem sets"
+#: app/templates/app/dashboard.html:27
+msgid "Collections of problems that can be used to generate tests"
 msgstr "Ülesannete kogud, mida saab töödeks genereerida"
 
-#: templates/app/dashboard.html:28
+#: app/templates/app/dashboard.html:28
 #, python-format
 msgid "View %(counter)s template"
 msgid_plural "View %(counter)s templates"
 msgstr[0] "Vaata %(counter)s malli"
 msgstr[1] "Vaata %(counter)s malli"
 
-#: templates/app/dashboard.html:31
-msgctxt "math problems"
-msgid "My Problem Sets 📄"
+#: app/templates/app/dashboard.html:31
+msgctxt "math tests"
+msgid "My Tests 📄"
 msgstr "Minu tööd 📄"
 
-#: templates/app/dashboard.html:32
-msgid "Browse all your problem sets"
+#: app/templates/app/dashboard.html:32
+msgid "Browse all your tests"
 msgstr "Sirvi kõiki sinu töid"
 
-#: templates/app/dashboard.html:33
+#: app/templates/app/dashboard.html:33
 #, python-format
-msgid "View %(counter)s problem set"
-msgid_plural "View %(counter)s problem sets"
+msgid "View %(counter)s test"
+msgid_plural "View %(counter)s tests"
 msgstr[0] "Vaata %(counter)s tööd"
 msgstr[1] "Vaata %(counter)s tööd"
 
-#: templates/app/dashboard.html:36
+#: app/templates/app/dashboard.html:36
 msgctxt "math problems"
 msgid "All Problems 🧠"
 msgstr "Kõik ülesanded 🧠"
 
-#: templates/app/dashboard.html:37
+#: app/templates/app/dashboard.html:37
 msgid "Browse all the available problems"
 msgstr "Sirvi kõiki olemasolevaid ülesandeid"
 
-#: templates/app/dashboard.html:38
+#: app/templates/app/dashboard.html:38
 #, python-format
 msgid "View %(counter)s problem"
 msgid_plural "View %(counter)s problems"
 msgstr[0] "Vaata %(counter)s ülesannet"
 msgstr[1] "Vaata %(counter)s ülesannet"
 
-#: templates/app/problemkind_list.html:6
+#: app/templates/app/problemkind_list.html:6
 msgctxt "view in the application"
 msgid "Problems"
 msgstr "Ülesanded"
 
-#: templates/app/problemkind_list.html:12
+#: app/templates/app/problemkind_list.html:12
 msgctxt "math problems"
 msgid "Problems"
 msgstr "Ülesanded"
 
-#: templates/app/problemkind_list.html:17
+#: app/templates/app/problemkind_list.html:17
 msgctxt "of a math problem"
 msgid "Problem type"
 msgstr "Ülesande tüüp"
 
-#: templates/app/problemkind_list.html:18
+#: app/templates/app/problemkind_list.html:18
 msgid "Example"
 msgstr "Näide"
 
-#: templates/app/problemkind_list.html:19
+#: app/templates/app/problemkind_list.html:19
 msgctxt "for a math problem"
 msgid "Solution"
 msgstr "Lahend"
 
-#: templates/app/problemset_detail.html:5
+#: app/templates/app/problemset_detail.html:5
 msgctxt "view in the application"
 msgid "Problem Set"
 msgstr "Töö"
 
-#: templates/app/problemset_detail.html:15
+#: app/templates/app/problemset_detail.html:15
 msgid "Problem count"
 msgstr "Ülesannete arv"
 
-#: templates/app/problemset_detail.html:16
+#: app/templates/app/problemset_detail.html:16
 msgid "Template"
 msgstr "Mall"
 
-#: templates/app/problemset_detail.html:20
+#: app/templates/app/problemset_detail.html:20
 msgid "Problem Set"
 msgstr "Ülesande tüüp"
 
-#: templates/app/problemset_detail.html:25
+#: app/templates/app/problemset_detail.html:25
 msgid "Answer Key"
 msgstr "Vastuste leht"
 
-#: templates/app/problemset_generation.html:6
+#: app/templates/app/problemset_list.html:5
+msgctxt "view in the application"
+msgid "Problem Sets"
+msgstr "Tööd"
+
+#: app/templates/app/problemset_list.html:11
+msgid "Problem Sets"
+msgstr "Tööd"
+
+#: app/templates/app/problemset_list.html:26
+msgid "You don't have any problem sets yet."
+msgstr "Teil pole veel ühtegi tööd."
+
+#: app/templates/app/template_confirm_delete.html:5
+#, python-format
+msgid ""
+"<p>Are you sure you want to delete the template <b>%(template_problem)s</b>?"
+"</p>"
+msgstr ""
+"<p>Olete kindel, et soovite kustutada malli <b>%(template_problem)s</b>?</p>"
+
+#: app/templates/app/template_detail.html:5
+#: app/templates/app/template_list.html:5
+msgctxt "view in the application"
+msgid "Templates"
+msgstr "Mall"
+
+#: app/templates/app/template_detail.html:14
+msgid "📐 Template"
+msgstr "📐 Mall"
+
+#: app/templates/app/template_detail.html:20
+#, python-format
+msgid "This problem will appear %(counter)s time"
+msgid_plural "This problem will appear %(counter)s times"
+msgstr[0] "See ülesanne ilmub %(counter)s kord"
+msgstr[1] "See ülesanne ilmub %(counter)s korda"
+
+#: app/templates/app/template_detail.html:23
+msgid "Edit"
+msgstr "Muuda"
+
+#: app/templates/app/template_detail.html:24
+msgid "Remove"
+msgstr "Eemalda"
+
+#: app/templates/app/template_detail.html:29
+msgid "Add Problem"
+msgstr "Lisa ülesanne"
+
+#: app/templates/app/template_detail.html:31
+msgid "Delete Template"
+msgstr "Kustuta mall"
+
+#: app/templates/app/template_list.html:14
+msgid "Templates"
+msgstr "Mallid"
+
+#: app/templates/app/template_list.html:27
+msgid "You don't have any templates yet."
+msgstr "Teil pole veel ühtegi malli."
+
+#: app/templates/app/template_list.html:30
+msgid "Create Template"
+msgstr "Loo mall"
+
+#: app/templates/app/template_list.html:36
+msgid "The number of problems this template has"
+msgstr "Mitu ülesannet see mall sisaldab"
+
+#: app/templates/app/templateproblem_confirm_delete.html:5
+#, python-format
+msgid ""
+"<p>Are you sure you want to remove the problem <b>%(template_problem)s</b> "
+"from the test?</p>"
+msgstr ""
+"<p>Olete kindel, et soovite <b>%(template_problem)s</b> eemaldada tööst?</p>"
+
+#: app/templates/app/test_confirm_delete.html:5
+#, python-format
+msgid "<p>Are you sure you want to delete the test <b>%(test_name)s</b>?</p>"
+msgstr "<p>Olete kindel, et soovite kustutada töö <b>%(test_name)s</b>?</p>"
+
+#: app/templates/app/test_detail.html:5
+msgctxt "view in the application"
+msgid "Test"
+msgstr "Töö"
+
+#: app/templates/app/test_detail.html:14
+msgid "📄 Test"
+msgstr "📄 Töö"
+
+#: app/templates/app/test_detail.html:19
+#, python-format
+msgid "Version %(test_version_number)s"
+msgstr "Variant %(test_version_number)s"
+
+#: app/templates/app/test_detail.html:23
+msgid "Delete Test"
+msgstr "Kustuta töö"
+
+#: app/templates/app/test_generation.html:6
 msgctxt "view in the application"
 msgid "Generation"
 msgstr "Genereerimine"
 
-#: templates/app/problemset_generation.html:27
-msgid "Save Problem Set"
+#: app/templates/app/test_generation.html:27
+msgid "Save Test"
 msgstr "Salvesta töö"
 
-#: templates/app/problemset_list.html:5
+#: app/templates/app/test_generation.html:33
+msgctxt "PDF file name to save"
+msgid "test.pdf"
+msgstr "töö.pdf"
+
+#: app/templates/app/test_list.html:5
 msgctxt "view in the application"
-msgid "Problem Sets"
+msgid "Tests"
 msgstr "Tööd"
 
-#: templates/app/problemset_list.html:11
-msgid "Problem Sets"
+#: app/templates/app/test_list.html:14
+msgid "Tests"
 msgstr "Tööd"
 
-#: templates/app/problemset_list.html:26
-msgid "You don't have any problem sets yet."
+#: app/templates/app/test_list.html:27
+msgid "You don't have any tests yet."
 msgstr "Teil pole veel ühtegi tööd."
 
-#: templates/app/template_detail.html:5 templates/app/template_list.html:5
-msgctxt "view in the application"
-msgid "Templates"
-msgstr "Mall"
+#: app/templates/app/test_list.html:30
+msgid "Generate Test"
+msgstr "Genereeri töö"
 
-#: templates/app/template_detail.html:16
-msgid "Problem"
-msgstr "Ülesanne"
+#: app/templates/app/test_list.html:36
+msgid "The number of versions this test has"
+msgstr "Mitu varianti sellel tööl on"
 
-#: templates/app/template_list.html:11
-msgid "Templates"
-msgstr "Mallid"
+#: app/views.py:76 app/views.py:132
+msgid "Something went wrong on our end. Sorry!"
+msgstr "Midagi läks meie süsteemis untsu. Palume vabandust!"
 
-#: templates/app/template_list.html:17
-msgctxt "number of problems in the template"
-msgid "Number of Problems"
-msgstr "Ülesannete arv"
+#: app/views.py:78 app/views.py:134
+msgid "Rendering the test took too long. Sorry!"
+msgstr ""
+"Töö loomine võttis ülearu kaua - pidime protsessi katkestama. Palume "
+"vabandust!"
 
-#: templates/app/template_list.html:30
-msgid "Create Template"
-msgstr "Loo mall"
+#: app/views.py:112
+msgid "This test has already been saved."
+msgstr "See töö on juba salvestatud"
 
-#: views.py:88
-msgid "This problem set has already been saved"
-msgstr "Need dokumendid on juba salvestatud"
+#: app/views.py:117
+msgid "The test was saved successfully."
+msgstr "Töö salvestati edukalt"
 
-#: views.py:93
-msgid "The problem set was saved successfully"
-msgstr "Dokumendid salvestati edukalt"
+#: app/views.py:164
+msgid "The template was created successfully."
+msgstr "Mall salvestati edukalt"
+
+#: app/views.py:178
+msgid "The template was deleted successfully."
+msgstr "Mall kustutati edukalt"
+
+#: app/views.py:224
+msgid "The problem entry was updated successfully."
+msgstr "Ülesanne salvestati edukalt"
+
+#: app/views.py:234
+msgid "The problem entry was deleted successfully."
+msgstr "Ülesanne kustutati edukalt"
+
+#: app/views.py:245
+msgid "The test was deleted successfully."
+msgstr "Töö kustutati edukalt"
+
+#~ msgid "My Problem Set"
+#~ msgstr "Minu kontrolltöö"
+
+#~ msgctxt "math problems"
+#~ msgid "My Tests 📄"
+#~ msgstr "Minu tööd 📄"
+
+#, python-format
+#~ msgid "View %(counter)s problem set"
+#~ msgid_plural "View %(counter)s problem sets"
+#~ msgstr[0] "Vaata %(counter)s tööd"
+#~ msgstr[1] "Vaata %(counter)s tööd"
+
+#~ msgid "Save Problem Set"
+#~ msgstr "Salvesta töö"

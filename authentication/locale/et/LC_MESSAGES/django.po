@@ -23,8 +23,6 @@ msgid "Username"
 msgstr "Kasutajatunnus"
 
 #: forms.py:21
-#, fuzzy
-#| msgid "This account is inactive."
 msgid "This account is currently inactive."
 msgstr "See konto on mitteaktiivne."
 
