@@ -79,7 +79,7 @@ class TemplateCreateForm(ModelForm):
         }
         widgets = {
             "name": TextInput(attrs={"placeholder": _("My Template")}),
-            "header": Textarea(),
+            "title": Textarea(),
         }
 
 
@@ -92,10 +92,10 @@ class TemplateUpdateForm(ModelForm):
         model = Template
         exclude = ["author", "name"]
         labels = {
-            "header": _("Header"),
+            "title": _("Title"),
         }
         widgets = {
-            "header": Textarea(),
+            "title": Textarea(),
         }
 
 
