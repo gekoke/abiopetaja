@@ -29,6 +29,7 @@ from app.forms import (
     TemplateCreateForm,
     TemplateProblemCreateFrom,
     TemplateProblemUpdateForm,
+    TemplateUpdateForm,
 )
 from app.models import (
     FailedUnexpectedly,
@@ -171,6 +172,19 @@ class TemplateCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user  # pyright: ignore
         return super().form_valid(form)
+
+
+class TemplateUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    template_name_suffix = "_update_form"
+    form_class = TemplateUpdateForm
+
+    success_message = _("The template was updated successfully.")
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().pk})  # type: ignore
+
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
 
 
 class TemplateDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):

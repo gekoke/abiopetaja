@@ -74,6 +74,7 @@ class Template(Entity):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=False)
+    title = models.CharField(max_length=1000, blank=True)
 
     class Meta:
         unique_together = ["author", "name"]
@@ -106,6 +107,7 @@ class Template(Entity):
         test = Test()
         test.author = self.author
         test.is_saved = False
+        test.title = self.title
 
         for i in range(test_generation_parameters.test_version_count):
             test_version = TestVersion()
@@ -200,6 +202,13 @@ class TestVersion(Entity):
         \\begin{document}
         """
 
+        if self.test.title != "":
+            latex += (
+                self.test.title
+                + """\\newline
+            """
+            )
+
         for problem in self.problem_set.all():
             latex += problem.render()
 
@@ -262,6 +271,7 @@ class Test(Entity):
     Whether the test should be persisted.
     Any test that is not marked as saved is due for deletion.
     """
+    title = models.CharField(max_length=1000, blank=True)
 
     class Meta:
         unique_together = [["author", "name"]]

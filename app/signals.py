@@ -22,6 +22,7 @@ def add_default_templates(sender, instance: User, created: bool, **kwargs):
     template = Template()
     template.name = _("Inequalities")
     template.author = user
+    template.title = _("Inequalities")
     template.save()
 
     template.add_problem(ProblemKind.LINEAR_INEQUALITY, count=3)
@@ -37,6 +38,7 @@ def add_test_templates(user: User, **kwargs):
     template = Template()
     template.name = _("Lots of inequalities")
     template.author = user
+    template.title = _("Lots of inequalities")
     template.save()
 
     template.add_problem(ProblemKind.LINEAR_INEQUALITY, count=6)
