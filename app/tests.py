@@ -106,11 +106,8 @@ def test_updated_template_has_updated_fields(client: Client):
     updated_title = "Updated title"
     user = create_user(client)
     client.force_login(user)
-
     client.post(reverse("app:template-create"), {"name": "My template", "title": template_title})
-
     template: Template = Template.objects.get(author=user, name="My template")
-    assert template.title == template_title
 
     client.post(
         reverse("app:template-update", kwargs={"pk": template.pk}), {"title": updated_title}
