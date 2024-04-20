@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.utils.translation import activate
 from pytest_django.asserts import assertRedirects
 
+from app.annoying import get_object_or_None
 from app.models import Template, Test, User
 
 
@@ -157,3 +158,23 @@ def test_user_can_generate_a_test(client: Client):
     )
 
     Test.objects.get(author=user)
+
+
+@pytest.mark.django_db
+def test_user_can_not_generate_a_empty_test(client: Client):
+    user = create_user(client)
+    client.force_login(user)
+    client.post(reverse("app:template-create"), {"name": "empty template"})
+    template: Template = Template.objects.get(author=user, name="empty template")
+    assert template is not None
+
+    client.post(
+        reverse("app:test-generate"),
+        {
+            "template": template.pk,
+            "test_version_count": 1,
+        },
+    )
+
+    test = get_object_or_None(Test, author=user)
+    assert test is None
