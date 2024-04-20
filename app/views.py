@@ -35,12 +35,12 @@ from app.models import (
     EmptyTemplate,
     FailedUnexpectedly,
     File,
-    GenerationError,
     ProblemKind,
     RenderError,
     Template,
     TemplateProblem,
     Test,
+    TestGenerationError,
     TestVersion,
     Timeout,
 )
@@ -105,8 +105,11 @@ def test_generate(request: HttpRequest) -> HttpResponse:
                 match test:
                     case Test():
                         return redirect("app:test-generation", preview_test_pk=test.pk)
-                    case GenerationError(reason=EmptyTemplate()):
-                        messages.error(request, _("The template must not be empty."))
+                    case TestGenerationError(reason=EmptyTemplate()):
+                        messages.error(
+                            request,
+                            _("This template has no problems and would result in an empty test."),
+                        )
                         return redirect(request.path)
 
     return test_generation(request)

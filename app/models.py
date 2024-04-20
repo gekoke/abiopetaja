@@ -69,7 +69,7 @@ class EmptyTemplate:
 
 
 @dataclass
-class GenerationError:
+class TestGenerationError:
     reason: EmptyTemplate
 
 
@@ -114,14 +114,14 @@ class Template(Entity):
     @transaction.atomic
     def generate_test(
         self, test_generation_parameters: TestGenerationParameters
-    ) -> Test | GenerationError:
+    ) -> Test | TestGenerationError:
         test = Test()
         test.author = self.author
         test.is_saved = False
         test.title = self.title
 
-        if self.problem_count <= 0:
-            return GenerationError(reason=EmptyTemplate())
+        if not self.problem_count:
+            return TestGenerationError(reason=EmptyTemplate())
 
         for i in range(test_generation_parameters.test_version_count):
             test_version = TestVersion()
