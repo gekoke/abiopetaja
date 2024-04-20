@@ -64,6 +64,15 @@ class TestGenerationParameters(BaseModel):
     test_version_count: int = Field(default=1, ge=1, le=6)
 
 
+class EmptyTemplate:
+    pass
+
+
+@dataclass
+class GenerationError:
+    reason: EmptyTemplate
+
+
 class Template(Entity):
     """A template is a collection of `ProblemKind` entities that can be rendered into a `Test`."""
 
@@ -103,11 +112,16 @@ class Template(Entity):
         entry.save()
 
     @transaction.atomic
-    def generate_test(self, test_generation_parameters: TestGenerationParameters) -> Test:
+    def generate_test(
+        self, test_generation_parameters: TestGenerationParameters
+    ) -> Test | GenerationError:
         test = Test()
         test.author = self.author
         test.is_saved = False
         test.title = self.title
+
+        if self.problem_count <= 0:
+            return GenerationError(reason=EmptyTemplate())
 
         for i in range(test_generation_parameters.test_version_count):
             test_version = TestVersion()

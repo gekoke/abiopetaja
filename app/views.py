@@ -32,8 +32,10 @@ from app.forms import (
     TemplateUpdateForm,
 )
 from app.models import (
+    EmptyTemplate,
     FailedUnexpectedly,
     File,
+    GenerationError,
     ProblemKind,
     RenderError,
     Template,
@@ -98,7 +100,14 @@ def test_generate(request: HttpRequest) -> HttpResponse:
             test_generation_parameters = form.get_test_generation_parameters()
 
             test = template.generate_test(test_generation_parameters)
-            return redirect("app:test-generation", preview_test_pk=test.pk)
+
+            if test is not None:
+                match test:
+                    case Test():
+                        return redirect("app:test-generation", preview_test_pk=test.pk)
+                    case GenerationError(reason=EmptyTemplate()):
+                        messages.error(request, _("The template must not be empty."))
+                        return redirect(request.path)
 
     return test_generation(request)
 
