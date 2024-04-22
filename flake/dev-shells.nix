@@ -3,7 +3,7 @@
   perSystem = { config, pkgs, system, inputs', ... }: {
     devShells = {
       default = pkgs.mkShellNoCC {
-        inputsFrom = [ self.packages.${system}.default ];
+        inputsFrom = [ self.packages.${system}.abiopetaja-dev ];
 
         packages = [
           pkgs.deploy-rs

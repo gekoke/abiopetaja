@@ -9,7 +9,7 @@
 
     pre-commit =
       let
-        pythonEnv = self.packages.${system}.abiopetaja-tests.dependencyEnv;
+        pythonEnv = self.packages.${system}.abiopetaja-dev.dependencyEnv;
       in
       {
         settings = {

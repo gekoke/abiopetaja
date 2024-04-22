@@ -17,7 +17,7 @@
       {
         abiopetaja = build appDefinition;
 
-        abiopetaja-tests = build (appDefinition // { groups = [ "tests" ]; });
+        abiopetaja-dev = build (appDefinition // { groups = [ "dev" ]; });
 
         default = self.packages.${system}.abiopetaja;
       };

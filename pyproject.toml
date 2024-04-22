@@ -21,7 +21,7 @@ django-allauth = "^0.60.1"
 pydantic = "^2.6.3"
 gunicorn = "^21.2.0"
 
-[tool.poetry.group.tests.dependencies]
+[tool.poetry.group.dev.dependencies]
 django-types = "^0.19.1" 
 pytest = "^7.4.4"
 pyright = "^1.1.355"
