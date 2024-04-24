@@ -20,7 +20,7 @@ let
       '';
     })
     ({
-      name = "smoke_test_server_serves_static_resources";
+      name = "test_server_serves_static_resources";
 
       testScript = ''
         server.wait_for_unit("nginx.service")
