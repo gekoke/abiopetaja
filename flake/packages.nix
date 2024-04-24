@@ -10,6 +10,9 @@
             substituteInPlace app/models.py \
               --replace-fail 'pdflatex' '${pkgs.texliveBasic}/bin/pdflatex'
           '';
+          configurePhase = ''
+            python -m django compilemessages
+          '';
           overrides = pkgs.poetry2nix.overrides.withDefaults (_: prev: {
             # FIXME: remove when https://github.com/NixOS/nixpkgs/pull/306553 is merged
             django-allauth = prev.django-allauth.overridePythonAttrs (_: {
