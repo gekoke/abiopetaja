@@ -17,7 +17,7 @@ python = "^3.12"
 sympy = "^1.12"
 pytest-django = "^4.7.0"
 django = "^5.0.1"
-django-allauth = "^0.60.1"
+django-allauth = "^0.62.0"
 pydantic = "^2.6.3"
 gunicorn = "^21.2.0"
 

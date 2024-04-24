@@ -4,7 +4,9 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # FIXME: delete when https://github.com/nix-community/poetry2nix/pull/1515 is merged
+    # FIXME: delete when all are merged:
+    # - https://github.com/nix-community/poetry2nix/pull/1515
+    # - https://github.com/nix-community/poetry2nix/pull/1602
     poetry2nix.url = "github:gekoke/poetry2nix";
     poetry2nix.inputs.nixpkgs.follows = "nixpkgs";
 
