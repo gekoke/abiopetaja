@@ -26,7 +26,7 @@ msgstr "Logi sisse"
 #: authentication/templates/account/login.html:30
 #, python-format
 msgid "Don't have an account? <a href=\"%(signup_url)s\">Sign up</a>"
-msgstr "Konto juba olemas? <a href=\"%(login_url)s\">Logi sisse</a>"
+msgstr "Konto puudub? <a href=\"%(signup_url)s\">Loo konto</a>"
 
 #: authentication/templates/account/logout.html:4
 #: authentication/templates/account/logout.html:8
