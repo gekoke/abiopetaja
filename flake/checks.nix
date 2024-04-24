@@ -54,6 +54,12 @@
                 entry = lib.getExe makeMessages;
                 pass_filenames = false;
               };
+            makemigrations = {
+              enable = true;
+              name = "makemigrations";
+              entry = "${pythonEnv}/bin/python -m django makemigrations --check --settings='abiopetaja.settings_dev'";
+              pass_filenames = false;
+            };
           };
         };
       };
