@@ -41,6 +41,19 @@
               entry = "${pythonEnv}/bin/pytest";
               pass_filenames = false;
             };
+            makemessages =
+              let
+                makeMessages = pkgs.writeShellScriptBin "makemessages" ''
+                  PATH=${pkgs.gettext}/bin:$PATH
+                  ${pythonEnv}/bin/python -m django makemessages --all --no-obsolete --settings="abiopetaja.settings_dev"
+                '';
+              in
+              {
+                enable = true;
+                name = "makemessages";
+                entry = lib.getExe makeMessages;
+                pass_filenames = false;
+              };
           };
         };
       };
