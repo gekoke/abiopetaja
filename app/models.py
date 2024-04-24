@@ -24,7 +24,7 @@ from django.db.models import (
     TextField,
 )
 from django.urls import reverse
-from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
 
@@ -39,8 +39,8 @@ class Entity(Model):
 
 
 class ProblemKind(IntegerChoices):
-    LINEAR_INEQUALITY = 1, gettext("Linear inequality")
-    QUADRATIC_INEQUALITY = 2, gettext("Quadratic inequality")
+    LINEAR_INEQUALITY = 1, _("Linear inequality")
+    QUADRATIC_INEQUALITY = 2, _("Quadratic inequality")
 
     def generate(self) -> Problem:
         import app.maths as maths
@@ -130,7 +130,7 @@ class Template(Entity):
             test_version.save()
 
             for entry in self.templateproblem_set.all():
-                for _ in range(entry.count):
+                for __ in range(entry.count):
                     problem_kind = ProblemKind(entry.problem_kind)
                     problem = problem_kind.generate()
                     problem.test_version = test_version
@@ -170,10 +170,10 @@ class TemplateProblem(Entity):
 
     @property
     def problem_kind_label(self):
-        return gettext(ProblemKind(self.problem_kind).label)
+        return _(ProblemKind(self.problem_kind).label)
 
     def __str__(self):
-        return gettext(ProblemKind(self.problem_kind).label)
+        return _(ProblemKind(self.problem_kind).label)
 
 
 class Timeout:
@@ -312,4 +312,4 @@ class Test(Entity):
         self.testversion_set.add(test_version)
 
     def __str__(self):
-        return self.name if self.name is not None else gettext("[Unnamed Test]")
+        return self.name if self.name is not None else _("[Unnamed Test]")
