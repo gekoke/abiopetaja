@@ -24,7 +24,6 @@ gunicorn = "^21.2.0"
 [tool.poetry.group.dev.dependencies]
 django-types = "^0.19.1" 
 pytest = "^7.4.4"
-pyright = "^1.1.355"
 
 [build-system]
 requires = ["poetry-core"]
