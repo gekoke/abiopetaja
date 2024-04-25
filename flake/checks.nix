@@ -35,12 +35,6 @@
               entry = "${pkgs.ruff}/bin/ruff format";
               pass_filenames = false;
             };
-            pytest = {
-              enable = true;
-              name = "pytest";
-              entry = "${pythonEnv}/bin/pytest";
-              pass_filenames = false;
-            };
             makemessages =
               let
                 makeMessages = pkgs.writeShellScriptBin "makemessages" ''
