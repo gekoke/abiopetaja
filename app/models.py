@@ -213,11 +213,7 @@ class TestVersion(Entity):
         """
 
         if self.test.title != "":
-            latex += (
-                self.test.title
-                + """\\newline
-            """
-            )
+            latex += self.test.title + "\\newline"
 
         for problem in self.problem_set.all():
             latex += problem.render()
