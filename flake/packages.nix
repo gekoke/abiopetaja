@@ -16,7 +16,10 @@
             python -m django compilemessages
           '';
 
-          checkPhase = "pytest";
+          checkPhase = ''
+            pytest
+            ${pkgs.pyright}/bin/pyright
+          '';
             
           overrides = pkgs.poetry2nix.overrides.withDefaults (_: prev: {
             # FIXME: remove when https://github.com/NixOS/nixpkgs/pull/306553 is merged

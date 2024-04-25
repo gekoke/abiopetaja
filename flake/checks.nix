@@ -4,25 +4,20 @@
     inputs.pre-commit-hooks.flakeModule
   ];
 
-  perSystem = { pkgs, lib, system, ... }: {
-    checks = import ./tests { inherit self pkgs; };
+  perSystem = { pkgs, lib, system, ... }:
+    let
+      pythonEnv = self.packages.${system}.abiopetaja-dev.dependencyEnv;
+    in
+    {
+      checks = import ./tests { inherit self pkgs; };
 
-    pre-commit =
-      let
-        pythonEnv = self.packages.${system}.abiopetaja-dev.dependencyEnv;
-      in
-      {
+      pre-commit = {
         settings = {
           hooks = {
             gitleaks = {
               enable = true;
               name = "gitleaks";
               entry = "${pkgs.gitleaks}/bin/gitleaks protect --verbose --redact --staged";
-              pass_filenames = false;
-            };
-            pyright = {
-              enable = true;
-              entry = lib.mkForce "${pkgs.pyright}/bin/pyright --pythonpath ${pythonEnv}/bin/python";
               pass_filenames = false;
             };
             ruff = {
@@ -57,7 +52,7 @@
           };
         };
       };
-  };
+    };
 
   flake = {
     checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
