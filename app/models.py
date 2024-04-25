@@ -168,10 +168,6 @@ class TemplateProblem(Entity):
     class Meta:
         unique_together = ["template", "problem_kind"]
 
-    @property
-    def problem_kind_label(self):
-        return gettext(ProblemKind(self.problem_kind).label)
-
     def __str__(self):
         return gettext(ProblemKind(self.problem_kind).label)
 
