@@ -32,7 +32,7 @@ msgstr "Konto puudub? <a href=\"%(signup_url)s\">Loo konto</a>"
 #: authentication/templates/account/logout.html:8
 #: authentication/templates/account/logout.html:23
 msgid "Sign Out"
-msgstr "Registreerumine"
+msgstr "Logi välja"
 
 #: authentication/templates/account/logout.html:10
 msgid "Are you sure you want to sign out?"
