@@ -71,14 +71,13 @@ def test_generation(
     render_result = None if test_version is None else test_version.render()
     preview_pdf_b64_data = None
 
-    if render_result is not None:
-        match render_result:
-            case File() as file:
-                preview_pdf_b64_data = file.as_base64()
-            case RenderError(reason=FailedUnexpectedly()):
-                messages.error(request, _("Something went wrong on our end. Sorry!"))
-            case RenderError(reason=Timeout()):
-                messages.error(request, _("Rendering the test took too long. Sorry!"))
+    match render_result:
+        case File() as file:
+            preview_pdf_b64_data = file.as_base64()
+        case RenderError(reason=FailedUnexpectedly()):
+            messages.error(request, _("Something went wrong on our end. Sorry!"))
+        case RenderError(reason=Timeout()):
+            messages.error(request, _("Rendering the test took too long. Sorry!"))
 
     context = {
         "templates": Template.objects.filter(author=request.user),
