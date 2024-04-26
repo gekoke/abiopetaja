@@ -17,6 +17,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 
 """
+
+from allauth.account.views import login, logout, signup
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
@@ -24,7 +26,9 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = i18n_patterns(
     path("", RedirectView.as_view(pattern_name="app:dashboard", permanent=False)),
-    path("accounts/", include("allauth.urls")),
+    path("accounts/signup/", signup, name="account_signup"),
+    path("accounts/login/", login, name="account_login"),
+    path("accounts/logout/", logout, name="account_logout"),
     path("admin/", admin.site.urls),
     path("app/", include("app.urls")),
 )

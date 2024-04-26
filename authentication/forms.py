@@ -18,7 +18,20 @@ class AbiopetajaSignupForm(SignupForm):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
 
+        self.hide_email_fields()
         self.remove_password_help_text()
+
+    def hide_email_fields(self):
+        """
+        Hide email fields, as we don't use them for anything.
+
+        Note that we don't *remove* them, as that would
+        result in `NOT NULL constraint failed: auth_user.email`.
+        """
+        if "email" in self.fields:
+            self.fields["email"].widget = self.fields["email"].hidden_widget()
+        if "email2" in self.fields:
+            self.fields["email2"].widget = self.fields["email2"].hidden_widget()
 
     def remove_password_help_text(self):
         password_field = self.fields["password1"]
