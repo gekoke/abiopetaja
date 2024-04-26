@@ -18,7 +18,13 @@ Including another URLconf
 
 """
 
-from allauth.account.views import login, logout, signup
+from allauth.account.views import (
+    login,
+    logout,
+    password_change,
+    password_set,
+    signup,
+)
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
@@ -29,6 +35,8 @@ urlpatterns = i18n_patterns(
     path("accounts/signup/", signup, name="account_signup"),
     path("accounts/login/", login, name="account_login"),
     path("accounts/logout/", logout, name="account_logout"),
+    path("accounts/password/set/", password_set, name="account_set_password"),
+    path("accounts/password/change/", password_change, name="account_change_password"),
     path("admin/", admin.site.urls),
     path("app/", include("app.urls")),
 )

@@ -59,6 +59,7 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_FORMS = {
     "login": "authentication.forms.AbiopetajaLoginForm",
     "signup": "authentication.forms.AbiopetajaSignupForm",
+    "change_password": "authentication.forms.AbiopetajaChangePasswordForm",
 }
 
 
