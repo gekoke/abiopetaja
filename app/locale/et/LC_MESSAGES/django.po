@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-25 13:15+0000\n"
+"POT-Creation-Date: 2024-04-28 12:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,9 +69,13 @@ msgstr "Lineaarvõrratus"
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: app/models.py:308
+#: app/models.py:261
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
+
+#: app/models.py:276 app/models.py:289
+msgid "Version"
+msgstr "Variant"
 
 #: app/signals.py:23 app/signals.py:25
 msgid "Inequalities"
@@ -311,12 +315,20 @@ msgstr "Töö"
 msgid "📄 Test"
 msgstr "📄 Töö"
 
-#: app/templates/app/test_detail.html:19
+#: app/templates/app/test_detail.html:15
+msgid "All answer keys"
+msgstr "Kõik vastused"
+
+#: app/templates/app/test_detail.html:20
 #, python-format
 msgid "Version %(test_version_number)s"
 msgstr "Variant %(test_version_number)s"
 
-#: app/templates/app/test_detail.html:23
+#: app/templates/app/test_detail.html:21
+msgid "Answer key"
+msgstr "Vastuste leht"
+
+#: app/templates/app/test_detail.html:25
 msgid "Delete Test"
 msgstr "Kustuta töö"
 
@@ -355,11 +367,11 @@ msgstr "Genereeri töö"
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
 
-#: app/views.py:79 app/views.py:145
+#: app/views.py:79 app/views.py:147 app/views.py:163
 msgid "Something went wrong on our end. Sorry!"
 msgstr "Midagi läks meie süsteemis untsu. Palume vabandust!"
 
-#: app/views.py:81 app/views.py:147
+#: app/views.py:81 app/views.py:149 app/views.py:165
 msgid "Rendering the test took too long. Sorry!"
 msgstr ""
 "Töö loomine võttis ülearu kaua - pidime protsessi katkestama. Palume "
@@ -377,26 +389,26 @@ msgstr "See töö on juba salvestatud"
 msgid "The test was saved successfully."
 msgstr "Töö salvestati edukalt"
 
-#: app/views.py:177
+#: app/views.py:195
 msgid "The template was created successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:193
+#: app/views.py:211
 msgid "The template was updated successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:204
+#: app/views.py:222
 msgid "The template was deleted successfully."
 msgstr "Mall kustutati edukalt"
 
-#: app/views.py:250
+#: app/views.py:268
 msgid "The problem entry was updated successfully."
 msgstr "Ülesanne salvestati edukalt"
 
-#: app/views.py:260
+#: app/views.py:278
 msgid "The problem entry was deleted successfully."
 msgstr "Ülesanne kustutati edukalt"
 
-#: app/views.py:271
+#: app/views.py:289
 msgid "The test was deleted successfully."
 msgstr "Töö kustutati edukalt"

@@ -203,52 +203,6 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.problem_set.count()
 
-    def render(self) -> RenderError | File:
-        return self._render_to_pdf(self._as_latex())
-
-    def _as_latex(self) -> str:
-        latex = """
-        \\documentclass[20pt]{article}
-        \\usepackage{amsfonts}
-        \\begin{document}
-        """
-
-        if self.test.title != "":
-            latex += self.test.title + "\\newline"
-
-        for problem in self.problem_set.all():
-            latex += problem.render()
-
-        latex += "\\end{document}"
-
-        return latex
-
-    def _render_to_pdf(self, latex_source: str) -> RenderError | File:
-        with TemporaryDirectory() as tmp_dir:
-            tex_file = os.path.join(tmp_dir, "template.tex")
-            pdf_file = os.path.join(tmp_dir, "template.pdf")
-            with open(tex_file, "w") as file:
-                file.write(latex_source)
-
-            try:
-                run(["pdflatex", tex_file], cwd=tmp_dir, timeout=3, check=True)
-            except TimeoutExpired:
-                logger.error(f"pdflatex timed out for {self}")
-                return RenderError(reason=Timeout())
-            except CalledProcessError as e:
-                logger.error(f"pdflatex failed for {self}, {e}")
-                return RenderError(reason=FailedUnexpectedly())
-
-            try:
-                with open(pdf_file, "rb") as file:
-                    pdf_file = File()
-                    pdf_file.data = file.read()
-            except FileNotFoundError:
-                logger.error(f"pdflatex did not produce a PDF for {self}")
-                return RenderError(reason=FailedUnexpectedly())
-
-        return pdf_file
-
 
 class Problem(Entity):
     kind = IntegerField(choices=ProblemKind.choices)
@@ -256,11 +210,11 @@ class Problem(Entity):
     solution = TextField()
     test_version = ForeignKey(TestVersion, on_delete=CASCADE)
 
-    def render(self) -> str:
-        return f"""
-        \\textbf{{Definition}}: ${self.definition}$\n
-        \\textbf{{Solution}}: ${self.solution}$\n
-        """
+    def render(self, include_answers: bool) -> str:
+        latex = f"\n\\textbf{{Definition}}: ${self.definition}$\n"
+        if include_answers:
+            latex += f"\n\\textbf{{Solution}}: ${self.solution}$\n"
+        return latex
 
 
 class Test(Entity):
@@ -306,3 +260,67 @@ class Test(Entity):
 
     def __str__(self):
         return self.name if self.name is not None else gettext("[Unnamed Test]")
+
+    def render(self, versions: list, show_answers: bool) -> RenderError | File:
+        if not versions:
+            versions = list(self.versions)
+        return self._render_to_pdf(self._as_latex(versions, show_answers))
+
+    def _as_latex(self, versions: list, show_answers: bool) -> str:
+        latex = """
+        \\documentclass[20pt]{article}
+        \\usepackage{amsfonts}
+        \\begin{document}
+        """
+
+        if len(versions) == 1:
+            version_label = _("Version") + f" {versions[0].version_number}"
+            latex += f"""
+            \\begin{{center}}
+            \\bfseries{{{version_label}}}
+            \\end{{center}}
+            """
+
+        if self.title != "":
+            latex += f"""{self.title}
+            """
+
+        for version in versions:
+            if len(versions) != 1:
+                version_label = _("Version") + f" {version.version_number}"
+                latex += f"""
+                    \\subsection*{{{version_label}}}
+                    \\noindent
+                    """
+            for problem in version.problem_set.all():
+                latex += problem.render(show_answers)
+
+        latex += "\\end{document}"
+
+        return latex
+
+    def _render_to_pdf(self, latex_source: str) -> RenderError | File:
+        with TemporaryDirectory() as tmp_dir:
+            tex_file = os.path.join(tmp_dir, "template.tex")
+            pdf_file = os.path.join(tmp_dir, "template.pdf")
+            with open(tex_file, "w") as file:
+                file.write(latex_source)
+
+            try:
+                run(["pdflatex", tex_file], cwd=tmp_dir, timeout=5, check=True)
+            except TimeoutExpired:
+                logger.error(f"pdflatex timed out for {self}")
+                return RenderError(reason=Timeout())
+            except CalledProcessError as e:
+                logger.error(f"pdflatex failed for {self}, {e}")
+                return RenderError(reason=FailedUnexpectedly())
+
+            try:
+                with open(pdf_file, "rb") as file:
+                    pdf_file = File()
+                    pdf_file.data = file.read()
+            except FileNotFoundError:
+                logger.error(f"pdflatex did not produce a PDF for {self}")
+                return RenderError(reason=FailedUnexpectedly())
+
+        return pdf_file

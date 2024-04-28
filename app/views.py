@@ -68,7 +68,7 @@ def test_generation(
 ) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
     test_version = preview_test.testversion_set.first() if preview_test is not None else None
-    render_result = None if test_version is None else test_version.render()
+    render_result = None if test_version is None else preview_test.render([], False)  # type:ignore
     preview_pdf_b64_data = None
 
     if render_result is not None:
@@ -134,10 +134,28 @@ def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
 
 
 @login_required
-def testversion_download(request: HttpRequest, pk: UUID):
+def testversion_download(request: HttpRequest, pk: UUID, answer=None):
     if request.method == "GET":
         test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
-        render_result = test_version.render()
+        test = test_version.test
+        answer_sheet = answer == "true"
+        render_result = test.render([test_version], answer_sheet)
+        match render_result:
+            case File() as file:
+                return HttpResponse(bytes(file.data), content_type="application/pdf")
+            case RenderError(reason=FailedUnexpectedly()):
+                messages.error(request, _("Something went wrong on our end. Sorry!"))
+            case RenderError(reason=Timeout()):
+                messages.error(request, _("Rendering the test took too long. Sorry!"))
+
+    return redirect("app:test-detail", kwargs={"pk": pk})
+
+
+@login_required
+def test_download(request: HttpRequest, pk: UUID):
+    if request.method == "GET":
+        test = get_object_or_404(Test, pk=pk)
+        render_result = test.render([], True)
         match render_result:
             case File() as file:
                 return HttpResponse(bytes(file.data), content_type="application/pdf")
