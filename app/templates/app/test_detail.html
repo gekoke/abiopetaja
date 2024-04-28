@@ -12,11 +12,13 @@
     <hgroup>
     <h1>{{ test.name }}</h1>
     <p>{% translate "📄 Test" %}</p>
+    <a href="{% url 'app:test-download' pk=test.pk %}" role="button" class="secondary" target="_blank" rel="noopener noreferrer">{% translate "All answer keys" %}</a>
     </hgroup>
 
     {% for test_version in test.versions %}
-        <article>
-            <a href="{% url 'app:testversion-download' pk=test_version.pk %}">{% blocktranslate with test_version_number=test_version.version_number %}Version {{ test_version_number }}{% endblocktranslate %}</h1>
+        <article style="display:flex; flex-direction: row; gap:20px;">
+            <a href="{% url 'app:testversion-download' pk=test_version.pk answer='false' %}" target="_blank" rel="noopener noreferrer">{% blocktranslate with test_version_number=test_version.version_number %}Version {{ test_version_number }}{% endblocktranslate %}</a>
+            <a href="{% url 'app:testversion-download' pk=test_version.pk answer='true' %}" target="_blank" rel="noopener noreferrer">{% translate "Answer key" %}</a>
         </article>
     {% endfor %}
 
