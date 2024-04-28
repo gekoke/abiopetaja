@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-26 16:33+0000\n"
+"POT-Creation-Date: 2024-04-28 12:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,9 +69,13 @@ msgstr "Lineaarvõrratus"
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: app/models.py:308
+#: app/models.py:261
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
+
+#: app/models.py:276 app/models.py:289
+msgid "Version"
+msgstr "Variant"
 
 #: app/signals.py:23 app/signals.py:25
 msgid "Inequalities"
@@ -311,12 +315,20 @@ msgstr "Töö"
 msgid "📄 Test"
 msgstr "📄 Töö"
 
-#: app/templates/app/test_detail.html:19
+#: app/templates/app/test_detail.html:15
+msgid "All answer keys"
+msgstr "Kõik vastused"
+
+#: app/templates/app/test_detail.html:20
 #, python-format
 msgid "Version %(test_version_number)s"
 msgstr "Variant %(test_version_number)s"
 
-#: app/templates/app/test_detail.html:23
+#: app/templates/app/test_detail.html:21
+msgid "Answer key"
+msgstr "Vastuste leht"
+
+#: app/templates/app/test_detail.html:25
 msgid "Delete Test"
 msgstr "Kustuta töö"
 
@@ -355,11 +367,11 @@ msgstr "Genereeri töö"
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
 
-#: app/views.py:78 app/views.py:144
+#: app/views.py:79 app/views.py:147 app/views.py:163
 msgid "Something went wrong on our end. Sorry!"
 msgstr "Midagi läks meie süsteemis untsu. Palume vabandust!"
 
-#: app/views.py:80 app/views.py:146
+#: app/views.py:81 app/views.py:149 app/views.py:165
 msgid "Rendering the test took too long. Sorry!"
 msgstr ""
 "Töö loomine võttis ülearu kaua - pidime protsessi katkestama. Palume "
