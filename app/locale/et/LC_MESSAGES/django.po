@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-30 17:22+0000\n"
+"POT-Creation-Date: 2024-05-01 15:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,11 +69,11 @@ msgstr "Lineaarvõrratus"
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: app/models.py:262
+#: app/models.py:264
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
-#: app/models.py:277 app/models.py:290
+#: app/models.py:292 app/models.py:302
 msgid "Version"
 msgstr "Variant"
 
@@ -315,18 +315,18 @@ msgstr "Töö"
 msgid "📄 Test"
 msgstr "📄 Töö"
 
-#: app/templates/app/test_detail.html:15
-msgid "All answer keys"
-msgstr "Kõik vastused"
-
-#: app/templates/app/test_detail.html:20
+#: app/templates/app/test_detail.html:19
 #, python-format
 msgid "Version %(test_version_number)s"
 msgstr "Variant %(test_version_number)s"
 
-#: app/templates/app/test_detail.html:21
+#: app/templates/app/test_detail.html:20
 msgid "Answer key"
 msgstr "Vastuste leht"
+
+#: app/templates/app/test_detail.html:24
+msgid "All answer keys"
+msgstr "Kõik vastused"
 
 #: app/templates/app/test_detail.html:25
 msgid "Delete Test"

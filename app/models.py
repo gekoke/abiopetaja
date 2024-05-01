@@ -24,7 +24,7 @@ from django.db.models import (
     TextField,
 )
 from django.urls import reverse
-from django.utils.translation import gettext
+from django.utils.translation import gettext, pgettext
 from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
@@ -211,9 +211,11 @@ class Problem(Entity):
     test_version = ForeignKey(TestVersion, on_delete=CASCADE)
 
     def render(self, include_answers: bool) -> str:
-        latex = f"\n\\textbf{{Definition}}: ${self.definition}$\n"
+        latex = f"\n${self.definition}$\n"
         if include_answers:
-            latex += f"\n\\textbf{{Solution}}: ${self.solution}$\n"
+            latex += (
+                f"\n\\textbf{{{pgettext("for a math problem", "Solution")}}}: ${self.solution}$\n"
+            )
         return latex
 
 
@@ -270,20 +272,30 @@ class Test(Entity):
         latex = """
         \\documentclass[20pt]{article}
         \\usepackage{amsfonts}
+        \\usepackage{geometry}
+        \\geometry{
+            left=20mm,
+            right=20mm,
+            top=20mm,
+        }
+        \\linespread{1.5}
         \\begin{document}
         """
 
+        header = """
+        \\begin{center}"""
+        if self.title != "":
+            header += f"""
+            {{\\Large \\textbf{{{self.title}}}}}
+            """
         if len(versions) == 1:
             version_label = _("Version") + f" {versions[0].version_number}"
-            latex += f"""
-            \\begin{{center}}
-            \\bfseries{{{version_label}}}
-            \\end{{center}}
+            header += f"""
+            {version_label}
             """
-
-        if self.title != "":
-            latex += f"""{self.title}
-            """
+        header += """\\end{center}
+        """
+        latex += header
 
         for version in versions:
             if len(versions) != 1:
@@ -296,7 +308,6 @@ class Test(Entity):
                 latex += problem.render(show_answers)
 
         latex += "\\end{document}"
-
         return latex
 
     def _render_to_pdf(self, latex_source: str) -> RenderError | File:
