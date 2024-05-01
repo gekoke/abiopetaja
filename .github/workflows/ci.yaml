@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Nix
-        uses: cachix/install-nix-action@v26
-        with:
-          extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
+        uses: DeterminateSystems/nix-installer-action@v10
 
       - name: Set up binary cache
         uses: cachix/cachix-action@v14
