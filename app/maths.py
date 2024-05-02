@@ -51,7 +51,7 @@ def make_linear_inequality_problem() -> Problem:
     problem = Problem()
     problem.definition = latex(problem_definition)
     problem.solution = latex(problem_solution)
-    problem.kind = ProblemKind.QUADRATIC_INEQUALITY
+    problem.kind = ProblemKind.LINEAR_INEQUALITY
     return problem
 
 
