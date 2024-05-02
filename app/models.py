@@ -53,6 +53,13 @@ class ProblemKind(IntegerChoices):
 
         return problem_generator[self]()
 
+    def get_problem_text(value: int) -> str:
+        PROBLEM_TEXT = {
+            1: _("Solve linear inequalities"),
+            2: _("Solve quadratic inequalities"),
+        }
+        return PROBLEM_TEXT.get(value, "")
+
 
 class File(Entity):
     data = models.BinaryField()
@@ -304,7 +311,17 @@ class Test(Entity):
                     \\subsection*{{{version_label}}}
                     \\noindent
                     """
-            for problem in version.problem_set.all():
+
+            problems = list(version.problem_set.all())
+            problems.sort(key=lambda x: x.kind)
+            kinds_set = set()
+
+            for problem in problems:
+                if problem.kind not in kinds_set:
+                    latex += f"""
+                    {ProblemKind.get_problem_text(problem.kind)}
+                    """
+                    kinds_set.add(problem.kind)
                 latex += problem.render(show_answers)
 
         latex += "\\end{document}"
