@@ -68,7 +68,9 @@ def test_generation(
 ) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
     test_version = preview_test.testversion_set.first() if preview_test is not None else None
-    render_result = None if test_version is None else preview_test.render([], False)  # type:ignore
+    render_result = (
+        None if test_version is None or preview_test is None else preview_test.render([], False)
+    )
     preview_pdf_b64_data = None
 
     match render_result:
