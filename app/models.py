@@ -2,11 +2,8 @@ from __future__ import annotations
 
 import base64
 import logging
-import os
 import uuid
 from dataclasses import dataclass
-from subprocess import CalledProcessError, TimeoutExpired, run
-from tempfile import TemporaryDirectory
 from typing import Iterable
 
 from django.contrib.auth.models import User
@@ -24,7 +21,7 @@ from django.db.models import (
     TextField,
 )
 from django.urls import reverse
-from django.utils.translation import gettext, pgettext
+from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
@@ -53,12 +50,13 @@ class ProblemKind(IntegerChoices):
 
         return problem_generator[self]()
 
-    def get_problem_text(value: int) -> str:
+    @staticmethod
+    def get_problem_text(problem_kind: ProblemKind) -> str:
         PROBLEM_TEXT = {
-            1: _("Solve linear inequalities"),
-            2: _("Solve quadratic inequalities"),
+            ProblemKind.LINEAR_INEQUALITY: _("Solve the following linear inequalities:"),
+            ProblemKind.QUADRATIC_INEQUALITY: _("Solve the following quadratic inequalities:"),
         }
-        return PROBLEM_TEXT.get(value, "")
+        return PROBLEM_TEXT[problem_kind]
 
 
 class File(Entity):
@@ -210,20 +208,17 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.problem_set.count()
 
+    def render(self) -> RenderError | File:
+        from app.render import render
+
+        return render(self)
+
 
 class Problem(Entity):
     kind = IntegerField(choices=ProblemKind.choices)
     definition = TextField()
     solution = TextField()
     test_version = ForeignKey(TestVersion, on_delete=CASCADE)
-
-    def render(self, include_answers: bool) -> str:
-        latex = f"\n${self.definition}$\n"
-        if include_answers:
-            latex += (
-                f"\n\\textbf{{{pgettext("for a math problem", "Solution")}}}: ${self.solution}$\n"
-            )
-        return latex
 
 
 class Test(Entity):
@@ -270,85 +265,7 @@ class Test(Entity):
     def __str__(self):
         return self.name if self.name is not None else gettext("[Unnamed Test]")
 
-    def render(self, versions: list, show_answers: bool) -> RenderError | File:
-        if not versions:
-            versions = list(self.versions)
-        return self._render_to_pdf(self._as_latex(versions, show_answers))
+    def render_answer_key(self) -> RenderError | File:
+        from app.render import render_answer_key
 
-    def _as_latex(self, versions: list, show_answers: bool) -> str:
-        latex = """
-        \\documentclass[20pt]{article}
-        \\usepackage{amsfonts}
-        \\usepackage{geometry}
-        \\geometry{
-            left=20mm,
-            right=20mm,
-            top=20mm,
-        }
-        \\linespread{1.5}
-        \\begin{document}
-        """
-
-        header = """
-        \\begin{center}"""
-        if self.title != "":
-            header += f"""
-            {{\\Large \\textbf{{{self.title}}}}}
-            """
-        if len(versions) == 1:
-            version_label = _("Version") + f" {versions[0].version_number}"
-            header += f"""
-            {version_label}
-            """
-        header += """\\end{center}
-        """
-        latex += header
-
-        for version in versions:
-            if len(versions) != 1:
-                version_label = _("Version") + f" {version.version_number}"
-                latex += f"""
-                    \\subsection*{{{version_label}}}
-                    \\noindent
-                    """
-
-            problems = list(version.problem_set.all())
-            problems.sort(key=lambda x: x.kind)
-            kinds_set = set()
-
-            for problem in problems:
-                if problem.kind not in kinds_set:
-                    latex += f"""
-                    {ProblemKind.get_problem_text(problem.kind)}
-                    """
-                    kinds_set.add(problem.kind)
-                latex += problem.render(show_answers)
-
-        latex += "\\end{document}"
-        return latex
-
-    def _render_to_pdf(self, latex_source: str) -> RenderError | File:
-        with TemporaryDirectory() as tmp_dir:
-            tex_file = os.path.join(tmp_dir, "template.tex")
-            pdf_file = os.path.join(tmp_dir, "template.pdf")
-            with open(tex_file, "w") as file:
-                file.write(latex_source)
-
-            try:
-                run(["pdflatex", tex_file], cwd=tmp_dir, timeout=5, check=True)
-            except TimeoutExpired:
-                logger.error(f"pdflatex timed out for {self}")
-                return RenderError(reason=Timeout())
-            except CalledProcessError as e:
-                logger.error(f"pdflatex failed for {self}, {e}")
-                return RenderError(reason=FailedUnexpectedly())
-
-            try:
-                with open(pdf_file, "rb") as file:
-                    pdf_file = File()
-                    pdf_file.data = file.read()
-            except FileNotFoundError:
-                logger.error(f"pdflatex did not produce a PDF for {self}")
-                return RenderError(reason=FailedUnexpectedly())
-
-        return pdf_file
+        return render_answer_key(list(self.versions))

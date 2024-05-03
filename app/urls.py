@@ -79,7 +79,7 @@ urlpatterns = [
     path("tests/<uuid:pk>/download", test_download, name="test-download"),
     path("tests/<uuid:pk>/save", test_save, name="test-save"),
     path(
-        "test-versions/<uuid:pk>/download/<str:answer>",
+        "test-versions/<uuid:pk>/download",
         testversion_download,
         name="testversion-download",
     ),
