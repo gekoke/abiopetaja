@@ -8,7 +8,7 @@
           python = pkgs.python312;
 
           postPatch = ''
-            substituteInPlace app/models.py \
+            substituteInPlace app/pdf.py \
               --replace-fail 'pdflatex' '${pkgs.texliveBasic}/bin/pdflatex'
           '';
 
