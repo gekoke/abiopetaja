@@ -208,10 +208,10 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.problem_set.count()
 
-    def render(self) -> RenderError | File:
-        from app.render import render
+    def get_pdf(self) -> RenderError | File:
+        from app.pdf import compile_test_version_pdf
 
-        return render(self)
+        return compile_test_version_pdf(self)
 
 
 class Problem(Entity):
@@ -219,6 +219,10 @@ class Problem(Entity):
     definition = TextField()
     solution = TextField()
     test_version = ForeignKey(TestVersion, on_delete=CASCADE)
+
+    @property
+    def problem_text(self) -> str:
+        return ProblemKind.get_problem_text(ProblemKind(self.kind))
 
 
 class Test(Entity):
@@ -265,7 +269,7 @@ class Test(Entity):
     def __str__(self):
         return self.name if self.name is not None else gettext("[Unnamed Test]")
 
-    def render_answer_key(self) -> RenderError | File:
-        from app.render import render_answer_key
+    def get_answer_key_pdf(self) -> RenderError | File:
+        from app.pdf import compile_answer_key_pdf
 
-        return render_answer_key(list(self.versions))
+        return compile_answer_key_pdf(self)
