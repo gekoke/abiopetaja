@@ -68,7 +68,7 @@ def test_generation(
 ) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
     test_version = preview_test.testversion_set.first() if preview_test is not None else None
-    render_result = None if test_version is None else test_version.render()
+    render_result = None if test_version is None else test_version.get_pdf()
     preview_pdf_b64_data = None
 
     match render_result:
@@ -136,7 +136,7 @@ def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
 def testversion_download(request: HttpRequest, pk: UUID):
     if request.method == "GET":
         test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
-        render_result = test_version.render()
+        render_result = test_version.get_pdf()
         match render_result:
             case File() as file:
                 return HttpResponse(bytes(file.data), content_type="application/pdf")
