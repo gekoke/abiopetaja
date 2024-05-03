@@ -2,11 +2,8 @@ from __future__ import annotations
 
 import base64
 import logging
-import os
 import uuid
 from dataclasses import dataclass
-from subprocess import CalledProcessError, TimeoutExpired, run
-from tempfile import TemporaryDirectory
 from typing import Iterable
 
 from django.contrib.auth.models import User
@@ -52,6 +49,14 @@ class ProblemKind(IntegerChoices):
         }
 
         return problem_generator[self]()
+
+    @staticmethod
+    def get_problem_text(problem_kind: ProblemKind) -> str:
+        PROBLEM_TEXT = {
+            ProblemKind.LINEAR_INEQUALITY: _("Solve the following linear inequalities:"),
+            ProblemKind.QUADRATIC_INEQUALITY: _("Solve the following quadratic inequalities:"),
+        }
+        return PROBLEM_TEXT[problem_kind]
 
 
 class File(Entity):
@@ -182,7 +187,7 @@ class FailedUnexpectedly:
 
 
 @dataclass
-class RenderError:
+class PDFCompilationError:
     reason: Timeout | FailedUnexpectedly
 
 
@@ -203,51 +208,10 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.problem_set.count()
 
-    def render(self) -> RenderError | File:
-        return self._render_to_pdf(self._as_latex())
+    def compile_pdf(self) -> PDFCompilationError | File:
+        from app.pdf import compile_test_version_pdf
 
-    def _as_latex(self) -> str:
-        latex = """
-        \\documentclass[20pt]{article}
-        \\usepackage{amsfonts}
-        \\begin{document}
-        """
-
-        if self.test.title != "":
-            latex += self.test.title + "\\newline"
-
-        for problem in self.problem_set.all():
-            latex += problem.render()
-
-        latex += "\\end{document}"
-
-        return latex
-
-    def _render_to_pdf(self, latex_source: str) -> RenderError | File:
-        with TemporaryDirectory() as tmp_dir:
-            tex_file = os.path.join(tmp_dir, "template.tex")
-            pdf_file = os.path.join(tmp_dir, "template.pdf")
-            with open(tex_file, "w") as file:
-                file.write(latex_source)
-
-            try:
-                run(["pdflatex", tex_file], cwd=tmp_dir, timeout=3, check=True)
-            except TimeoutExpired:
-                logger.error(f"pdflatex timed out for {self}")
-                return RenderError(reason=Timeout())
-            except CalledProcessError as e:
-                logger.error(f"pdflatex failed for {self}, {e}")
-                return RenderError(reason=FailedUnexpectedly())
-
-            try:
-                with open(pdf_file, "rb") as file:
-                    pdf_file = File()
-                    pdf_file.data = file.read()
-            except FileNotFoundError:
-                logger.error(f"pdflatex did not produce a PDF for {self}")
-                return RenderError(reason=FailedUnexpectedly())
-
-        return pdf_file
+        return compile_test_version_pdf(self)
 
 
 class Problem(Entity):
@@ -256,11 +220,9 @@ class Problem(Entity):
     solution = TextField()
     test_version = ForeignKey(TestVersion, on_delete=CASCADE)
 
-    def render(self) -> str:
-        return f"""
-        \\textbf{{Definition}}: ${self.definition}$\n
-        \\textbf{{Solution}}: ${self.solution}$\n
-        """
+    @property
+    def problem_text(self) -> str:
+        return ProblemKind.get_problem_text(ProblemKind(self.kind))
 
 
 class Test(Entity):
@@ -306,3 +268,8 @@ class Test(Entity):
 
     def __str__(self):
         return self.name if self.name is not None else gettext("[Unnamed Test]")
+
+    def compile_answer_key_pdf(self) -> PDFCompilationError | File:
+        from app.pdf import compile_answer_key_pdf
+
+        return compile_answer_key_pdf(self)

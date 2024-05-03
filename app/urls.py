@@ -14,6 +14,7 @@ from app.views import (
     TestDeleteView,
     TestDetailView,
     TestListView,
+    test_download,
     test_generate,
     test_generation,
     test_save,
@@ -75,6 +76,11 @@ urlpatterns = [
     path("tests/<uuid:pk>/", TestDetailView.as_view(), name="test-detail"),
     path("test-generate/", test_generate, name="test-generate"),
     path("tests/<uuid:pk>/delete", TestDeleteView.as_view(), name="test-delete"),
+    path("tests/<uuid:pk>/download", test_download, name="test-download"),
     path("tests/<uuid:pk>/save", test_save, name="test-save"),
-    path("test-versions/<uuid:pk>/download", testversion_download, name="testversion-download"),
+    path(
+        "test-versions/<uuid:pk>/download",
+        testversion_download,
+        name="testversion-download",
+    ),
 ]
