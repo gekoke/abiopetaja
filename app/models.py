@@ -187,7 +187,7 @@ class FailedUnexpectedly:
 
 
 @dataclass
-class RenderError:
+class PDFCompilationError:
     reason: Timeout | FailedUnexpectedly
 
 
@@ -208,7 +208,7 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.problem_set.count()
 
-    def get_pdf(self) -> RenderError | File:
+    def compile_pdf(self) -> PDFCompilationError | File:
         from app.pdf import compile_test_version_pdf
 
         return compile_test_version_pdf(self)
@@ -269,7 +269,7 @@ class Test(Entity):
     def __str__(self):
         return self.name if self.name is not None else gettext("[Unnamed Test]")
 
-    def get_answer_key_pdf(self) -> RenderError | File:
+    def compile_answer_key_pdf(self) -> PDFCompilationError | File:
         from app.pdf import compile_answer_key_pdf
 
         return compile_answer_key_pdf(self)
