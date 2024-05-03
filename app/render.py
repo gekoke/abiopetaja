@@ -42,20 +42,20 @@ def _render_problem_kind(problems: list[Problem]) -> str:
     problem_text = problems[0].problem_text
 
     return f"""
+    \\noindent
     {problem_text}\\newline
     {"\\newline".join(f"${problem.definition}$" for problem in problems)}
     """
 
 
 def _render_header(title: str, version: int | None) -> str:
-    header = "\n\\begin{center}\n"
-    if title != "":
-        header += f"{{\\Large \\textbf{{{title}}}}}\n"
-    if version is not None:
-        version_label = _("Version") + f" {version}"
-        header += f"\n{version_label}\n"
-    header += "\\end{center}\n"
-    return header
+    return f"""
+    \\begin{{center}}
+    {"" if title == "" else f"{{\\Large \\textbf{{{title}}}}}"}
+
+    {"" if version is None else f"{_("Version")} {version}"}
+    \\end{{center}}
+    """
 
 
 def render_test_version(version: TestVersion) -> str:
@@ -76,19 +76,20 @@ def _render_answer(problem: Problem) -> str:
     return f"\n\\textbf{{{pgettext("for a math problem", "Solution")}}}: ${problem.solution}$\n"
 
 
+def _render_test_version_answers(version: TestVersion) -> str:
+    version_label = _("Version") + f" {version.version_number}"
+    return f"""
+    \\subsection*{{{version_label}}}
+    {"\\newline".join(_render_answer(problem) for problem in version.problem_set.all())}
+    """
+
+
 def render_answer_key(test: Test) -> str:
-    versions = test.versions
+    latex = _make_document(
+        f"""
+        {_render_header(test.title, version=None)}
+        {"\n".join(_render_test_version_answers(version) for version in test.versions)}
+        """
+    )
 
-    latex = _render_header(test.title, version=None)
-
-    for version in versions:
-        version_label = _("Version") + f" {version.version_number}"
-        latex += f"""
-            \\subsection*{{{version_label}}}
-            \\noindent
-            """
-        for problem in version.problem_set.all():
-            latex += _render_answer(problem)
-
-    latex = _make_document(latex)
     return latex
