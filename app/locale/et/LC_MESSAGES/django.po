@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-03 19:10+0000\n"
+"POT-Creation-Date: 2024-05-04 19:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,15 +69,23 @@ msgstr "Lineaarvõrratus"
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: app/models.py:56
+#: app/models.py:42
+msgid "Fractional inequality"
+msgstr "Murdvõrratus"
+
+#: app/models.py:58
 msgid "Solve the following linear inequalities:"
 msgstr "Lahenda järgnevad lineaarvõrratused:"
 
-#: app/models.py:57
+#: app/models.py:59
 msgid "Solve the following quadratic inequalities:"
 msgstr "Lahenda järgnevad ruutvõrratused:"
 
-#: app/models.py:270
+#: app/models.py:60
+msgid "Solve the following fractional inequalities:"
+msgstr "Lahenda järgnevad murdvõrratused:"
+
+#: app/models.py:273
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 

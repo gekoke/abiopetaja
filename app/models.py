@@ -39,6 +39,7 @@ class Entity(Model):
 class ProblemKind(IntegerChoices):
     LINEAR_INEQUALITY = 1, _("Linear inequality")
     QUADRATIC_INEQUALITY = 2, _("Quadratic inequality")
+    FRACTIONAL_INEQUALITY = 3, _("Fractional inequality")
 
     def generate(self) -> Problem:
         import app.maths as maths
@@ -46,6 +47,7 @@ class ProblemKind(IntegerChoices):
         problem_generator = {
             ProblemKind.LINEAR_INEQUALITY: maths.make_linear_inequality_problem,
             ProblemKind.QUADRATIC_INEQUALITY: maths.make_quadratic_inequality_problem,
+            ProblemKind.FRACTIONAL_INEQUALITY: maths.make_fractional_inequality_problem,
         }
 
         return problem_generator[self]()
@@ -55,6 +57,7 @@ class ProblemKind(IntegerChoices):
         PROBLEM_TEXT = {
             ProblemKind.LINEAR_INEQUALITY: _("Solve the following linear inequalities:"),
             ProblemKind.QUADRATIC_INEQUALITY: _("Solve the following quadratic inequalities:"),
+            ProblemKind.FRACTIONAL_INEQUALITY: _("Solve the following fractional inequalities:"),
         }
         return PROBLEM_TEXT[problem_kind]
 
