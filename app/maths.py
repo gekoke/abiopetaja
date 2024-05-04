@@ -27,11 +27,20 @@ def make_quadratic() -> Expr:
 
 
 def make_fraction() -> Expr:
+    """
+    Make a fraction.
+
+    Example:
+    -------
+    4*(x - 2) / (x + 3)
+    """
+
     def make_coeffiecient():
         return random.randint(1, 8)
 
-    c1, c2, c3 = (make_coeffiecient() for _ in range(6))
+    c1, c2, c3 = (make_coeffiecient() for _ in range(3))
     op1, op2 = make_plus_or_minus(), make_plus_or_minus()
+    # Use empty string if c1==1 to avoid multiplying by 1.
     c1 = "" if c1 == 1 else f"{c1}*"
     return sympify(f"{c1}(x {op1} {c2}) / (x {op2} {c3})", evaluate=False)
 
@@ -94,12 +103,10 @@ def make_fractional_inequality_problem() -> Problem:
     -------
     `2*(x - 2) / (x + 2) > 4`.
     """
-    fraction1 = make_fraction()
+    fraction = make_fraction()
     comparsion = make_comparison_operator(allow_eq=False)
 
-    problem_definition = sympify(
-        f"{fraction1} {comparsion} {random.randint(-9, 9)}", evaluate=False
-    )
+    problem_definition = sympify(f"{fraction} {comparsion} {random.randint(-9, 9)}", evaluate=False)
     problem_solution = solveset(problem_definition, "x", S.Reals)
 
     problem = Problem()
