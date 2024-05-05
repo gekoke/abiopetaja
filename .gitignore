@@ -177,3 +177,4 @@ pyrightconfig.json
 /infra/terraform.tfstate
 /infra/terraform.tfstate.backup
 /infra/plan
+/media

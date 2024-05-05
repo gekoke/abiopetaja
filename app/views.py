@@ -1,3 +1,4 @@
+import base64
 import logging
 from typing import Any, Iterable
 from uuid import UUID
@@ -6,9 +7,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.files import File
 from django.http import (
     HttpRequest,
     HttpResponse,
+    HttpResponseBadRequest,
 )
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
@@ -23,6 +26,10 @@ from django.views.generic.edit import (
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
+from app.errors import (
+    EmptyTemplate,
+    TestGenerationError,
+)
 from app.forms import (
     GenerateTestForm,
     SaveTestForm,
@@ -32,22 +39,22 @@ from app.forms import (
     TemplateUpdateForm,
 )
 from app.models import (
-    EmptyTemplate,
-    File,
     ProblemKind,
     Template,
     TemplateProblem,
     Test,
-    TestGenerationError,
     TestVersion,
-)
-from app.pdf import (
-    FailedUnexpectedly,
-    PDFCompilationError,
-    Timeout,
 )
 
 logger = logging.getLogger(__name__)
+
+
+def as_base64(file: File) -> str:
+    return base64.b64encode(file.read()).decode("utf-8")
+
+
+def get_bytes(file: File) -> bytes:
+    return file.read()
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -70,16 +77,8 @@ def test_generation(
 ) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
     test_version = preview_test.testversion_set.first() if preview_test is not None else None
-    pdf_compilation_result = None if test_version is None else test_version.compile_pdf()
-    preview_pdf_b64_data = None
-
-    match pdf_compilation_result:
-        case File() as file:
-            preview_pdf_b64_data = file.as_base64()
-        case PDFCompilationError(reason=FailedUnexpectedly()):
-            messages.error(request, _("Something went wrong on our end. Sorry!"))
-        case PDFCompilationError(reason=Timeout()):
-            messages.error(request, _("Rendering the test took too long. Sorry!"))
+    pdf = None if test_version is None else test_version.pdf
+    preview_pdf_b64_data = None if pdf is None else as_base64(pdf)
 
     context = {
         "templates": Template.objects.filter(author=request.user),
@@ -136,32 +135,19 @@ def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
 
 @login_required
 def testversion_download(request: HttpRequest, pk: UUID):
-    if request.method == "GET":
-        test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
-        pdf_compilation_result = test_version.compile_pdf()
-        match pdf_compilation_result:
-            case File() as file:
-                return HttpResponse(bytes(file.data), content_type="application/pdf")
-            case PDFCompilationError(reason=FailedUnexpectedly()):
-                messages.error(request, _("Something went wrong on our end. Sorry!"))
-            case PDFCompilationError(reason=Timeout()):
-                messages.error(request, _("Rendering the test took too long. Sorry!"))
+    if request.method != "GET":
+        return HttpResponseBadRequest()
 
-    return redirect("app:test-detail", kwargs={"pk": pk})
+    test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
+    return HttpResponse(get_bytes(test_version.pdf), content_type="application/pdf")
 
 
 @login_required
 def test_download(request: HttpRequest, pk: UUID):
     if request.method == "GET":
         test = get_object_or_404(Test, pk=pk)
-        compilation_result = test.compile_answer_key_pdf()
-        match compilation_result:
-            case File() as file:
-                return HttpResponse(bytes(file.data), content_type="application/pdf")
-            case PDFCompilationError(reason=FailedUnexpectedly()):
-                messages.error(request, _("Something went wrong on our end. Sorry!"))
-            case PDFCompilationError(reason=Timeout()):
-                messages.error(request, _("Rendering the test took too long. Sorry!"))
+        answer_key = test.answer_key_pdf
+        return HttpResponse(get_bytes(answer_key), content_type="application/pdf")
 
     return redirect("app:test-detail", kwargs={"pk": pk})
 
