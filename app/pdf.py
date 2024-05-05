@@ -1,19 +1,30 @@
 import logging
 import os
+from dataclasses import dataclass
 from subprocess import CalledProcessError, TimeoutExpired, run
 from tempfile import TemporaryDirectory
 
 from app.models import (
-    FailedUnexpectedly,
     File,
-    PDFCompilationError,
     Test,
     TestVersion,
-    Timeout,
 )
 from app.render import render_answer_key, render_test_version
 
 logger = logging.getLogger(__name__)
+
+
+class Timeout:
+    pass
+
+
+class FailedUnexpectedly:
+    pass
+
+
+@dataclass
+class PDFCompilationError:
+    reason: Timeout | FailedUnexpectedly
 
 
 def compile_test_version_pdf(version: TestVersion) -> PDFCompilationError | File:

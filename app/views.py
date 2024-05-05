@@ -33,15 +33,17 @@ from app.forms import (
 )
 from app.models import (
     EmptyTemplate,
-    FailedUnexpectedly,
     File,
-    PDFCompilationError,
     ProblemKind,
     Template,
     TemplateProblem,
     Test,
     TestGenerationError,
     TestVersion,
+)
+from app.pdf import (
+    FailedUnexpectedly,
+    PDFCompilationError,
     Timeout,
 )
 

@@ -181,24 +181,13 @@ class TemplateProblem(Entity):
         return gettext(ProblemKind(self.problem_kind).label)
 
 
-class Timeout:
-    pass
-
-
-class FailedUnexpectedly:
-    pass
-
-
-@dataclass
-class PDFCompilationError:
-    reason: Timeout | FailedUnexpectedly
-
-
 class TestVersion(Entity):
     """A version of a `Test`."""
 
     if TYPE_CHECKING:  # Add missing type hints.
         from django.db.models.manager import RelatedManager
+
+        from app.pdf import PDFCompilationError
 
         problem_set = RelatedManager["Problem"]()
 
@@ -233,6 +222,8 @@ class Test(Entity):
 
     if TYPE_CHECKING:  # Add missing type hints.
         from django.db.models.manager import RelatedManager
+
+        from app.pdf import PDFCompilationError
 
         testversion_set = RelatedManager[TestVersion]()
 
