@@ -1,11 +1,16 @@
 import logging
 import os
-from dataclasses import dataclass
 from subprocess import CalledProcessError, TimeoutExpired, run
 from tempfile import TemporaryDirectory
 
+from django.conf import settings
+
+from app.errors import (
+    FailedUnexpectedly,
+    PDFCompilationError,
+    Timeout,
+)
 from app.models import (
-    File,
     Test,
     TestVersion,
 )
@@ -14,30 +19,17 @@ from app.render import render_answer_key, render_test_version
 logger = logging.getLogger(__name__)
 
 
-class Timeout:
-    pass
-
-
-class FailedUnexpectedly:
-    pass
-
-
-@dataclass
-class PDFCompilationError:
-    reason: Timeout | FailedUnexpectedly
-
-
-def compile_test_version_pdf(version: TestVersion) -> PDFCompilationError | File:
+def compile_test_version_pdf(version: TestVersion) -> PDFCompilationError | bytes:
     return _compile_pdf(render_test_version(version), version)
 
 
-def compile_answer_key_pdf(test: Test) -> PDFCompilationError | File:
+def compile_answer_key_pdf(test: Test) -> PDFCompilationError | bytes:
     return _compile_pdf(render_answer_key(test), test)
 
 
 def _compile_pdf(
     latex_source: str, object_reference: Test | TestVersion
-) -> PDFCompilationError | File:
+) -> PDFCompilationError | bytes:
     """
     Compile a PDF file from Latex source.
 
@@ -59,11 +51,9 @@ def _compile_pdf(
             return PDFCompilationError(reason=FailedUnexpectedly())
 
         try:
+            os.makedirs(os.path.dirname(f"{settings.MEDIA_ROOT}/media"), exist_ok=True)
             with open(pdf_file, "rb") as file:
-                pdf_file = File()
-                pdf_file.data = file.read()
+                return file.read()
         except FileNotFoundError:
             logger.error(f"pdflatex did not produce a PDF for {object_reference}")
             return PDFCompilationError(reason=FailedUnexpectedly())
-
-    return pdf_file

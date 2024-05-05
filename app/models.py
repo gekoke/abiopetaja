@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-import base64
 import logging
 import uuid
-from dataclasses import dataclass
 from typing import Iterable
 
 from django.contrib.auth.models import User
+from django.core.files.base import ContentFile
 from django.core.validators import MaxValueValidator, MinLengthValidator, MinValueValidator
 from django.db import models, transaction
 from django.db.models import (
@@ -25,6 +24,12 @@ from django.utils.translation import gettext
 from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
+
+from app.errors import (
+    EmptyTemplate,
+    PDFCompilationError,
+    TestGenerationError,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -62,24 +67,8 @@ class ProblemKind(IntegerChoices):
         return PROBLEM_TEXT[problem_kind]
 
 
-class File(Entity):
-    data = models.BinaryField()
-
-    def as_base64(self) -> str:
-        return base64.b64encode(self.data).decode("utf-8")
-
-
 class TestGenerationParameters(BaseModel):
     test_version_count: int = Field(default=1, ge=1, le=6)
-
-
-class EmptyTemplate:
-    pass
-
-
-@dataclass
-class TestGenerationError:
-    reason: EmptyTemplate
 
 
 class Template(Entity):
@@ -136,7 +125,6 @@ class Template(Entity):
             test_version = TestVersion()
             test_version.test = test
             test_version.version_number = i + 1
-            test_version.save()
 
             for entry in self.templateproblem_set.all():
                 for __ in range(entry.count):
@@ -145,7 +133,20 @@ class Template(Entity):
                     problem.test_version = test_version
                     problem.save()
 
+            match test_version.compile_pdf():
+                case bytes() as pdf_bytes:
+                    test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(pdf_bytes))
+                case PDFCompilationError() as error:
+                    return TestGenerationError(reason=error)
+
+            test_version.save()
             test.add_version(test_version)
+
+        match test.compile_answer_key_pdf():
+            case bytes() as pdf_bytes:
+                test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(pdf_bytes))
+            case PDFCompilationError() as error:
+                return TestGenerationError(reason=error)
 
         test.save()
         return test
@@ -193,6 +194,7 @@ class TestVersion(Entity):
 
     test = ForeignKey("Test", on_delete=CASCADE)
     version_number = models.IntegerField(default=1)
+    pdf = models.FileField()
 
     class Meta:
         unique_together = ["test", "version_number"]
@@ -200,7 +202,7 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.problem_set.count()
 
-    def compile_pdf(self) -> PDFCompilationError | File:
+    def compile_pdf(self) -> PDFCompilationError | bytes:
         from app.pdf import compile_test_version_pdf
 
         return compile_test_version_pdf(self)
@@ -235,6 +237,7 @@ class Test(Entity):
     Any test that is not marked as saved is due for deletion.
     """
     title = models.CharField(max_length=1000, blank=True)
+    answer_key_pdf = models.FileField()
 
     class Meta:
         unique_together = [["author", "name"]]
@@ -263,7 +266,7 @@ class Test(Entity):
     def __str__(self):
         return self.name if self.name is not None else gettext("[Unnamed Test]")
 
-    def compile_answer_key_pdf(self) -> PDFCompilationError | File:
+    def compile_answer_key_pdf(self) -> PDFCompilationError | bytes:
         from app.pdf import compile_answer_key_pdf
 
         return compile_answer_key_pdf(self)
