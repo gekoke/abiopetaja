@@ -27,6 +27,7 @@ def add_default_templates(sender, instance: User, created: bool, **kwargs):
 
     template.add_problem(ProblemKind.LINEAR_INEQUALITY, count=3)
     template.add_problem(ProblemKind.QUADRATIC_INEQUALITY, count=3)
+    template.add_problem(ProblemKind.FRACTIONAL_INEQUALITY, count=3)
 
     if not settings.DEBUG:
         return
@@ -43,3 +44,4 @@ def add_test_templates(user: User, **kwargs):
 
     template.add_problem(ProblemKind.LINEAR_INEQUALITY, count=6)
     template.add_problem(ProblemKind.QUADRATIC_INEQUALITY, count=6)
+    template.add_problem(ProblemKind.FRACTIONAL_INEQUALITY, count=6)

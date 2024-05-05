@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-04 19:35+0000\n"
+"POT-Creation-Date: 2024-05-05 08:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,7 +97,7 @@ msgstr "Variant"
 msgid "Inequalities"
 msgstr "Võrratused"
 
-#: app/signals.py:39 app/signals.py:41
+#: app/signals.py:40 app/signals.py:42
 msgid "Lots of inequalities"
 msgstr "Palju võrratusi"
 
