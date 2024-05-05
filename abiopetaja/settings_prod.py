@@ -9,7 +9,8 @@ ALLOWED_HOSTS = ["*"]
 
 STATIC_ROOT = "/var/www/abiopetaja/static"
 STATIC_URL = "/static/"
-MEDIA_URL = "/var/www/abiopetaja/media/"
+
+MEDIA_ROOT = "/var/www/abiopetaja/media"
 
 DATABASES = {
     "default": {
