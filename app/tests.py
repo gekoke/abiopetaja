@@ -161,7 +161,7 @@ def test_user_can_generate_a_test(client: Client):
 
 
 @pytest.mark.django_db
-def test_user_can_not_generate_a_empty_test(client: Client):
+def test_user_can_not_generate_an_empty_test(client: Client):
     user = create_user(client)
     client.force_login(user)
     client.post(reverse("app:template-create"), {"name": "empty template"})
