@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-05 22:58+0000\n"
+"POT-Creation-Date: 2024-05-06 13:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,6 +235,7 @@ msgid "Problem Set"
 msgstr "Ülesande tüüp"
 
 #: app/templates/app/problemset_detail.html:25
+#: app/templates/app/test_detail.html:23
 msgid "Answer Key"
 msgstr "Vastuste leht"
 
@@ -335,10 +336,6 @@ msgstr "📄 Töö"
 #, python-format
 msgid "Version %(test_version_number)s"
 msgstr "Variant %(test_version_number)s"
-
-#: app/templates/app/test_detail.html:23
-msgid "All answer keys"
-msgstr "Kõik vastused"
 
 #: app/templates/app/test_detail.html:24
 msgid "Delete Test"

@@ -20,7 +20,7 @@
         </article>
     {% endfor %}
 
-    <a href="{% url 'app:test-download' pk=test.pk %}" role="button" class="secondary" target="_blank" rel="noopener noreferrer">{% translate "All answer keys" %}</a>
+    <a href="{% url 'app:test-download' pk=test.pk %}" role="button" class="secondary" target="_blank" rel="noopener noreferrer">{% translate "Answer Key" %}</a>
     <a href="{% url 'app:test-delete' pk=test.id %}" role="button" class="secondary outline">{% translate "Delete Test" %}</a>
 </main>
 
