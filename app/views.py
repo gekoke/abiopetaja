@@ -77,7 +77,6 @@ def test_generation(
     preview_pdf_b64_data = None if pdf is None else as_base64(pdf)
 
     context = {
-        "templates": Template.objects.filter(author=request.user),
         "generate_form": GenerateTestForm(user=request.user),
         "save_form": save_form if save_form is not None else SaveTestForm(user=request.user),
         "preview_test": preview_test,
