@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-07 14:35+0000\n"
+"POT-Creation-Date: 2024-05-07 14:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,31 +61,31 @@ msgstr "Ülesannete arv"
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 
-#: app/models.py:45
+#: app/models.py:46
 msgid "Linear inequality"
 msgstr "Lineaarvõrratus"
 
-#: app/models.py:46
+#: app/models.py:47
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: app/models.py:47
+#: app/models.py:48
 msgid "Fractional inequality"
 msgstr "Murdvõrratus"
 
-#: app/models.py:63
+#: app/models.py:64
 msgid "Solve the following linear inequalities:"
 msgstr "Lahenda järgnevad lineaarvõrratused:"
 
-#: app/models.py:64
+#: app/models.py:65
 msgid "Solve the following quadratic inequalities:"
 msgstr "Lahenda järgnevad ruutvõrratused:"
 
-#: app/models.py:65
+#: app/models.py:66
 msgid "Solve the following fractional inequalities:"
 msgstr "Lahenda järgnevad murdvõrratused:"
 
-#: app/models.py:267
+#: app/models.py:271
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
@@ -350,7 +350,13 @@ msgstr "Genereerimine"
 msgid "Save Test"
 msgstr "Salvesta töö"
 
-#: app/templates/app/test_generation.html:32
+#: app/templates/app/test_generation.html:36
+#, python-format
+msgid "Version %(version_number)s"
+msgstr "Variant %(version_number)s"
+
+#: app/templates/app/test_generation.html:38
+#: app/templates/app/test_generation.html:44
 msgctxt "PDF file name to save"
 msgid "test.pdf"
 msgstr "töö.pdf"
@@ -376,38 +382,38 @@ msgstr "Genereeri töö"
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
 
-#: app/views.py:106
+#: app/views.py:102
 msgid "This template has no problems and would result in an empty test."
 msgstr "Sellel mallil puuduvad ülesanded, mille tõttu genereeriks tühi töö."
 
-#: app/views.py:120
+#: app/views.py:116
 msgid "This test has already been saved."
 msgstr "See töö on juba salvestatud"
 
-#: app/views.py:125
+#: app/views.py:121
 msgid "The test was saved successfully."
 msgstr "Töö salvestati edukalt"
 
-#: app/views.py:175
+#: app/views.py:171
 msgid "The template was created successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:191
+#: app/views.py:187
 msgid "The template was updated successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:202
+#: app/views.py:198
 msgid "The template was deleted successfully."
 msgstr "Mall kustutati edukalt"
 
-#: app/views.py:248
+#: app/views.py:244
 msgid "The problem entry was updated successfully."
 msgstr "Ülesanne salvestati edukalt"
 
-#: app/views.py:258
+#: app/views.py:254
 msgid "The problem entry was deleted successfully."
 msgstr "Ülesanne kustutati edukalt"
 
-#: app/views.py:269
+#: app/views.py:265
 msgid "The test was deleted successfully."
 msgstr "Töö kustutati edukalt"

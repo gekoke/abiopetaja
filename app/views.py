@@ -72,16 +72,12 @@ def test_generation(
     request: HttpRequest, preview_test_pk: UUID | None = None, save_form: SaveTestForm | None = None
 ) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
-    test_version = preview_test.testversion_set.first() if preview_test is not None else None
-    pdf = None if test_version is None else test_version.pdf
-    preview_pdf_b64_data = None if pdf is None else as_base64(pdf)
 
     context = {
         "generate_form": GenerateTestForm(user=request.user),
         "show_save_form": preview_test is not None and not preview_test.is_saved,
         "save_form": save_form if save_form is not None else SaveTestForm(user=request.user),
         "preview_test": preview_test,
-        "preview_pdf_b64_data": preview_pdf_b64_data,
     }
     return render(request, "app/test_generation.html", context)
 
