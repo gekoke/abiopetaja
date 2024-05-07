@@ -53,10 +53,6 @@ def as_base64(file: File) -> str:
     return base64.b64encode(file.read()).decode("utf-8")
 
 
-def get_bytes(file: File) -> bytes:
-    return file.read()
-
-
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "app/dashboard.html"
 
@@ -139,7 +135,7 @@ def testversion_download(request: HttpRequest, pk: UUID):
         return HttpResponseBadRequest()
 
     test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
-    return HttpResponse(get_bytes(test_version.pdf), content_type="application/pdf")
+    return HttpResponse(test_version.pdf.read(), content_type="application/pdf")
 
 
 @login_required
@@ -147,7 +143,7 @@ def test_download(request: HttpRequest, pk: UUID):
     if request.method == "GET":
         test = get_object_or_404(Test, pk=pk)
         answer_key = test.answer_key_pdf
-        return HttpResponse(get_bytes(answer_key), content_type="application/pdf")
+        return HttpResponse(answer_key.read(), content_type="application/pdf")
 
     return redirect("app:test-detail", kwargs={"pk": pk})
 
