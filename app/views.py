@@ -78,9 +78,9 @@ def test_generation(
 
     context = {
         "generate_form": GenerateTestForm(user=request.user),
+        "show_save_form": preview_test is not None and not preview_test.is_saved,
         "save_form": save_form if save_form is not None else SaveTestForm(user=request.user),
         "preview_test": preview_test,
-        "show_save_form": preview_test is not None and not preview_test.is_saved,
         "preview_pdf_b64_data": preview_pdf_b64_data,
     }
     return render(request, "app/test_generation.html", context)
