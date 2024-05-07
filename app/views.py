@@ -89,19 +89,17 @@ def test_generate(request: HttpRequest) -> HttpResponse:
         if form.is_valid():
             template = form.get_template()
             test_generation_parameters = form.get_test_generation_parameters()
-
             test = template.generate_test(test_generation_parameters)
 
-            if test is not None:
-                match test:
-                    case Test():
-                        return redirect("app:test-generation", preview_test_pk=test.pk)
-                    case TestGenerationError(reason=EmptyTemplate()):
-                        messages.error(
-                            request,
-                            _("This template has no problems and would result in an empty test."),
-                        )
-                        return redirect(request.path)
+            match test:
+                case Test():
+                    return redirect("app:test-generation", preview_test_pk=test.pk)
+                case TestGenerationError(reason=EmptyTemplate()):
+                    messages.error(
+                        request,
+                        _("This template has no problems and would result in an empty test."),
+                    )
+                    return redirect(request.path)
 
     return test_generation(request)
 
