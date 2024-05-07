@@ -53,10 +53,6 @@ def as_base64(file: File) -> str:
     return base64.b64encode(file.read()).decode("utf-8")
 
 
-def get_bytes(file: File) -> bytes:
-    return file.read()
-
-
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "app/dashboard.html"
 
@@ -76,17 +72,12 @@ def test_generation(
     request: HttpRequest, preview_test_pk: UUID | None = None, save_form: SaveTestForm | None = None
 ) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
-    test_version = preview_test.testversion_set.first() if preview_test is not None else None
-    pdf = None if test_version is None else test_version.pdf
-    preview_pdf_b64_data = None if pdf is None else as_base64(pdf)
 
     context = {
-        "templates": Template.objects.filter(author=request.user),
         "generate_form": GenerateTestForm(user=request.user),
+        "show_save_form": preview_test is not None and not preview_test.is_saved,
         "save_form": save_form if save_form is not None else SaveTestForm(user=request.user),
         "preview_test": preview_test,
-        "show_save_form": preview_test is not None and not preview_test.is_saved,
-        "preview_pdf_b64_data": preview_pdf_b64_data,
     }
     return render(request, "app/test_generation.html", context)
 
@@ -139,7 +130,7 @@ def testversion_download(request: HttpRequest, pk: UUID):
         return HttpResponseBadRequest()
 
     test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
-    return HttpResponse(get_bytes(test_version.pdf), content_type="application/pdf")
+    return HttpResponse(test_version.pdf.read(), content_type="application/pdf")
 
 
 @login_required
@@ -147,7 +138,7 @@ def test_download(request: HttpRequest, pk: UUID):
     if request.method == "GET":
         test = get_object_or_404(Test, pk=pk)
         answer_key = test.answer_key_pdf
-        return HttpResponse(get_bytes(answer_key), content_type="application/pdf")
+        return HttpResponse(answer_key.read(), content_type="application/pdf")
 
     return redirect("app:test-detail", kwargs={"pk": pk})
 

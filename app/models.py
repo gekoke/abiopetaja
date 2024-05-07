@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import logging
 import uuid
+from base64 import b64encode
 from typing import Iterable
 
 from django.contrib.auth.models import User
@@ -206,6 +207,9 @@ class TestVersion(Entity):
         from app.pdf import compile_test_version_pdf
 
         return compile_test_version_pdf(self)
+
+    def pdf_b64_str(self) -> str:
+        return b64encode(self.pdf.read()).decode("utf-8")
 
 
 class Problem(Entity):
