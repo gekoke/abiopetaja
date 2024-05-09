@@ -2,6 +2,7 @@ import logging
 from typing import Any, Iterable
 from uuid import UUID
 
+import django.views.generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,13 +16,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import DeleteView
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import (
-    CreateView,
-    DeleteView,
-    UpdateView,
-)
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
@@ -47,6 +44,14 @@ from app.models import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+class UpdateView(django.views.generic.UpdateView):
+    template_name_suffix = "_update_form"
+
+
+class CreateView(django.views.generic.CreateView):
+    template_name_suffix = "_create_form"
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -166,7 +171,6 @@ class TemplateCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     model = Template
     form_class = TemplateCreateForm
-    template_name_suffix = "_create_form"
 
     def form_valid(self, form):
         form.instance.author = self.request.user  # pyright: ignore
@@ -174,7 +178,6 @@ class TemplateCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 class TemplateUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    template_name_suffix = "_update_form"
     form_class = TemplateUpdateForm
 
     success_message = _("The template was updated successfully.")
@@ -205,7 +208,6 @@ class TestDetailView(LoginRequiredMixin, DetailView):
 
 
 class TemplateProblemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    template_name_suffix = "_create_form"
     form_class = TemplateProblemCreateFrom
 
     model = TemplateProblem
@@ -231,7 +233,6 @@ class TemplateProblemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateV
 
 
 class TemplateProblemUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    template_name_suffix = "_update_form"
     form_class = TemplateProblemUpdateForm
 
     success_message = _("The problem entry was updated successfully.")
