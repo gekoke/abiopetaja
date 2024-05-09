@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 12:45+0000\n"
+"POT-Creation-Date: 2024-05-09 13:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -382,17 +382,18 @@ msgstr "Genereeri töö"
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
 
-#: app/views.py:100
+#: app/views.py:101
 msgid "This template has no problems and would result in an empty test."
 msgstr "Sellel mallil puuduvad ülesanded, mille tõttu genereeriks tühi töö."
 
-#: app/views.py:114
-msgid "This test has already been saved."
-msgstr "See töö on juba salvestatud"
-
-#: app/views.py:119
-msgid "The test was saved successfully."
-msgstr "Töö salvestati edukalt"
+#: app/views.py:118
+#, python-format
+msgid ""
+"<div>The test was saved successfully. <a href=\"%(url)s\">Click here</a> to "
+"view the test.</div>"
+msgstr ""
+"<div>Töö salvestati edukalt. <a href=\"%(url)s\">Klõpsa siia</a>, et tööd "
+"vaadata."
 
 #: app/views.py:169
 msgid "The template was created successfully."
