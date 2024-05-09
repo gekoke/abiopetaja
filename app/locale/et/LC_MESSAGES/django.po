@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 16:38+0000\n"
+"POT-Creation-Date: 2024-05-09 16:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,11 +85,11 @@ msgstr "Lahenda järgnevad ruutvõrratused:"
 msgid "Solve the following fractional inequalities:"
 msgstr "Lahenda järgnevad murdvõrratused:"
 
-#: app/models.py:273
+#: app/models.py:281
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
-#: app/models.py:283
+#: app/models.py:286
 msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"
@@ -241,8 +241,9 @@ msgstr "Ülesande tüüp"
 
 #: app/templates/app/problemset_detail.html:25
 #: app/templates/app/test_detail.html:23
+#: app/templates/app/test_generation.html:35
 msgid "Answer Key"
-msgstr "Vastuste leht"
+msgstr "Vastuseleht"
 
 #: app/templates/app/problemset_list.html:5
 msgctxt "view in the application"
@@ -355,13 +356,18 @@ msgstr "Genereerimine"
 msgid "Save Test"
 msgstr "Salvesta töö"
 
-#: app/templates/app/test_generation.html:36
+#: app/templates/app/test_generation.html:37
+msgctxt "PDF file name to save"
+msgid "answers.pdf"
+msgstr "vastuseleht.pdf"
+
+#: app/templates/app/test_generation.html:44
 #, python-format
 msgid "Version %(version_number)s"
 msgstr "Variant %(version_number)s"
 
-#: app/templates/app/test_generation.html:38
-#: app/templates/app/test_generation.html:44
+#: app/templates/app/test_generation.html:46
+#: app/templates/app/test_generation.html:52
 msgctxt "PDF file name to save"
 msgid "test.pdf"
 msgstr "töö.pdf"
