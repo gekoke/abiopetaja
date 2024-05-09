@@ -107,19 +107,15 @@ def test_generate(request: HttpRequest) -> HttpResponse:
 @login_required
 def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
     test = get_object_or_404(Test, pk=pk, author=request.user)
-
     form = SaveTestForm(request.POST, user=request.user)
+
     if form.is_valid():
-        if test.is_saved:
-            messages.info(request, _("This test has already been saved."))
-        else:
-            test.name = form.cleaned_data["name"]
-            test.is_saved = True
-            test.save()
-            messages.success(request, _("The test was saved successfully."))
+        test.name = form.cleaned_data["name"]
+        test.is_saved = True
+        test.save()
+        messages.success(request, _("The test was saved successfully."))
         return redirect("app:test-generation", preview_test_pk=pk)
-    else:
-        return test_generation(request, pk, form)
+    return test_generation(request, pk, form)
 
 
 @login_required
