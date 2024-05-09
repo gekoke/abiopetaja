@@ -400,6 +400,14 @@ msgstr ""
 "<div>Töö salvestati edukalt. <a href=\"%(url)s\">Klõpsa siia</a>, et tööd "
 "vaadata."
 
+#: app/views.py:115
+msgid "This test has already been saved."
+msgstr "See töö on juba salvestatud"
+
+#: app/views.py:120
+msgid "The test was saved successfully."
+msgstr "Töö salvestati edukalt"
+
 #: app/views.py:170
 msgid "The template was created successfully."
 msgstr "Mall salvestati edukalt"
