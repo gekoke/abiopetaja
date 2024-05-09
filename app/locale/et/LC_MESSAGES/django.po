@@ -85,11 +85,11 @@ msgstr "Lahenda järgnevad ruutvõrratused:"
 msgid "Solve the following fractional inequalities:"
 msgstr "Lahenda järgnevad murdvõrratused:"
 
-#: app/models.py:276
+#: app/models.py:281
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
-#: app/models.py:283
+#: app/models.py:286
 msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"
@@ -241,6 +241,7 @@ msgstr "Ülesande tüüp"
 
 #: app/templates/app/problemset_detail.html:25
 #: app/templates/app/test_detail.html:23
+#: app/templates/app/test_generation.html:35
 msgid "Answer Key"
 msgstr "Vastuste leht"
 
@@ -355,13 +356,18 @@ msgstr "Genereerimine"
 msgid "Save Test"
 msgstr "Salvesta töö"
 
-#: app/templates/app/test_generation.html:36
+#: app/templates/app/test_generation.html:37
+msgctxt "PDF file name to save"
+msgid "answers.pdf"
+msgstr "vastuseleht.pdf"
+
+#: app/templates/app/test_generation.html:44
 #, python-format
 msgid "Version %(version_number)s"
 msgstr "Variant %(version_number)s"
 
-#: app/templates/app/test_generation.html:38
-#: app/templates/app/test_generation.html:44
+#: app/templates/app/test_generation.html:46
+#: app/templates/app/test_generation.html:52
 msgctxt "PDF file name to save"
 msgid "test.pdf"
 msgstr "töö.pdf"
@@ -407,7 +413,6 @@ msgstr "See töö on juba salvestatud"
 #: app/views.py:120
 msgid "The test was saved successfully."
 msgstr "Töö salvestati edukalt"
-
 #: app/views.py:170
 msgid "The template was created successfully."
 msgstr "Mall salvestati edukalt"

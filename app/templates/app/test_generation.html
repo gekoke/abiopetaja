@@ -30,6 +30,14 @@
         </div>
         <div>
             {% if preview_test %}
+                <details>
+                    <summary role="button" class="secondary outline">
+                       {% translate "Answer Key" %}
+                    </summary>
+                    <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "answers.pdf" context "PDF file name to save" %}"
+                            src="data:application/pdf;base64,{{ preview_test.answer_key_pdf_b64_str }}">
+                    </iframe>
+                </details>
                 {% for test_version in preview_test.versions %}
                 <details {% if test_version.version_number == 1 %} open {% endif %}>
                     <summary role="button" class="secondary">

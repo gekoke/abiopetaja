@@ -269,6 +269,9 @@ class Test(Entity):
     def add_version(self, test_version: TestVersion) -> None:
         self.testversion_set.add(test_version)
 
+    def answer_key_pdf_b64_str(self) -> str:
+        return b64encode(self.answer_key_pdf.read()).decode("utf-8")
+
     def compile_answer_key_pdf(self) -> PDFCompilationError | bytes:
         from app.pdf import compile_answer_key_pdf
 
