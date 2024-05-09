@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 17:16+0000\n"
+"POT-Creation-Date: 2024-05-09 23:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,13 +117,17 @@ msgstr "Võrratused"
 msgid "Lots of inequalities"
 msgstr "Palju võrratusi"
 
-#: app/templates/app/base/base_create.html:9
+#: app/templates/app/base/base_create.html:6
+msgid "Confirm Creation"
+msgstr "Kinnita loomine"
+
+#: app/templates/app/base/base_create.html:10
 msgid "Save"
 msgstr "Salvesta"
 
-#: app/templates/app/base/base_create.html:10
+#: app/templates/app/base/base_create.html:11
 #: app/templates/app/base/base_delete.html:13
-#: app/templates/app/base/base_update.html:10
+#: app/templates/app/base/base_update.html:11
 msgid "Cancel"
 msgstr "Tühista"
 
@@ -135,7 +139,11 @@ msgstr "Kinnita kustutamine"
 msgid "Delete Permanently"
 msgstr "Kustuta jäädavalt"
 
-#: app/templates/app/base/base_update.html:9
+#: app/templates/app/base/base_update.html:6
+msgid "Confirm Update"
+msgstr "Kinnita uuendamine"
+
+#: app/templates/app/base/base_update.html:10
 msgid "Update"
 msgstr "Uuenda"
 
