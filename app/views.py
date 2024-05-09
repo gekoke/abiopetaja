@@ -15,6 +15,7 @@ from django.http import (
 )
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
@@ -113,7 +114,10 @@ def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
         test.name = form.cleaned_data["name"]
         test.is_saved = True
         test.save()
-        messages.success(request, _("The test was saved successfully."))
+        message = _(
+            '<div>The test was saved successfully. <a href="%(url)s">Click here</a> to view the test.</div>'
+        ) % {"url": test.get_absolute_url()}
+        messages.success(request, mark_safe(message))
         return redirect("app:test-generation", preview_test_pk=pk)
     return test_generation(request, pk, form)
 
