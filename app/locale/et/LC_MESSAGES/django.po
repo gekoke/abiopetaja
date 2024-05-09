@@ -432,4 +432,4 @@ msgstr "Töö kustutati edukalt"
 
 #: app/views.py:275
 msgid "Your feedback was submitted. Thanks!"
-msgstr ""
+msgstr "Saime su tagasiside kätte. Tänud!"
