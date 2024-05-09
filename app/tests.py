@@ -10,7 +10,7 @@ from django.utils.translation import activate
 from pytest_django.asserts import assertRedirects
 
 from app.annoying import get_object_or_None
-from app.models import Template, Test, User
+from app.models import Template, Test, User, UserFeedback
 
 
 @pytest.fixture(autouse=True)
@@ -178,3 +178,25 @@ def test_user_can_not_generate_an_empty_test(client: Client):
 
     test = get_object_or_None(Test, author=user)
     assert test is None
+
+
+@pytest.mark.django_db
+def test_user_can_leave_feedback(client: Client):
+    user = create_user(client)
+    client.force_login(user)
+
+    client.post(reverse("app:userfeedback-create"), {"content": "I love this app!"})
+
+    feedback = UserFeedback.objects.filter(author=user).first()
+    assert feedback is not None
+
+
+@pytest.mark.django_db
+def test_user_can_not_leave_blank_feedback(client: Client):
+    user = create_user(client)
+    client.force_login(user)
+
+    client.post(reverse("app:userfeedback-create"), {"content": "   "})
+
+    feedback = UserFeedback.objects.filter(author=user).first()
+    assert feedback is None

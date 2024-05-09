@@ -21,7 +21,7 @@ from django.db.models import (
     TextField,
 )
 from django.urls import reverse
-from django.utils.translation import gettext
+from django.utils.translation import gettext, pgettext_lazy
 from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
@@ -37,6 +37,8 @@ logger = logging.getLogger(__name__)
 
 class Entity(Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
@@ -274,3 +276,8 @@ class Test(Entity):
         from app.pdf import compile_answer_key_pdf
 
         return compile_answer_key_pdf(self)
+
+
+class UserFeedback(Entity):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = TextField(pgettext_lazy("of a user feedback", "Content"), blank=False)
