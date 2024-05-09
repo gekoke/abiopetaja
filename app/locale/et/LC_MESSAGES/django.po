@@ -243,7 +243,7 @@ msgstr "Ülesande tüüp"
 #: app/templates/app/test_detail.html:23
 #: app/templates/app/test_generation.html:35
 msgid "Answer Key"
-msgstr "Vastuste leht"
+msgstr "Vastuseleht"
 
 #: app/templates/app/problemset_list.html:5
 msgctxt "view in the application"
