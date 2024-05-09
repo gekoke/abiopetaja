@@ -20,7 +20,7 @@
 {% if form.visible_fields %}
 <fieldset {% if disabled %}disabled{% endif %}>
     {% for field in form.visible_fields %}
-    <label for="{{ field.id }}">{{ field.label_tag }}</label>
+    <label for="{{ field.id }}">{{ field.label }}</label>
     {{ field }}
 
     {% if form.is_bound %}

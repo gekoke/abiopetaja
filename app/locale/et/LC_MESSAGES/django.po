@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 16:44+0000\n"
+"POT-Creation-Date: 2024-05-09 17:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,31 +33,27 @@ msgstr "Vali mall, millest dokumente genereerida"
 msgid "Number of test versions"
 msgstr "Variantide arv"
 
-#: app/forms.py:55 app/forms.py:78
+#: app/forms.py:53 app/models.py:87 app/models.py:249
 msgid "Name"
 msgstr "Nimi"
 
-#: app/forms.py:58
+#: app/forms.py:56
 msgid "My Test"
 msgstr "Minu töö"
 
-#: app/forms.py:64
+#: app/forms.py:62
 msgid "A test with this name already exists"
 msgstr "Sellise nimega töö on juba olemas"
 
-#: app/forms.py:81
-msgid "My Template"
-msgstr "Minu mall"
+#: app/forms.py:72
+msgid "Inequalities Test, Spring 2024"
+msgstr "Kontrolltöö, võrratused - kevad 2024"
 
-#: app/forms.py:95 app/templates/app/template_detail.html:17
-msgid "Title"
-msgstr "Pealkiri"
-
-#: app/forms.py:106
+#: app/forms.py:90
 msgid "Number of occurences"
 msgstr "Ülesannete arv"
 
-#: app/forms.py:127
+#: app/forms.py:110
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 
@@ -85,11 +81,26 @@ msgstr "Lahenda järgnevad ruutvõrratused:"
 msgid "Solve the following fractional inequalities:"
 msgstr "Lahenda järgnevad murdvõrratused:"
 
-#: app/models.py:281
+#: app/models.py:87
+msgid "Only you can see this name"
+msgstr "Ainult sina näed seda nime"
+
+#: app/models.py:92
+msgctxt "of a template"
+msgid "Title"
+msgstr "Pealkiri"
+
+#: app/models.py:94
+msgid ""
+"Anything you add to this field will be rendered at the top of the test "
+"document"
+msgstr "Kõik, mis siia lahtrisse lisad, kuvatakse töölehe ülalosas"
+
+#: app/models.py:295
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
-#: app/models.py:286
+#: app/models.py:300
 msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"
@@ -276,6 +287,10 @@ msgstr "Mall"
 msgid "📐 Template"
 msgstr "📐 Mall"
 
+#: app/templates/app/template_detail.html:17
+msgid "Title"
+msgstr "Pealkiri"
+
 #: app/templates/app/template_detail.html:20
 #: app/templates/app/template_detail.html:30
 msgid "Edit"
@@ -393,11 +408,11 @@ msgstr "Genereeri töö"
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
 
-#: app/views.py:102
+#: app/views.py:101
 msgid "This template has no problems and would result in an empty test."
 msgstr "Sellel mallil puuduvad ülesanded, mille tõttu genereeriks tühi töö."
 
-#: app/views.py:119
+#: app/views.py:118
 #, python-format
 msgid ""
 "<div>The test was saved successfully. <a href=\"%(url)s\">Click here</a> to "
@@ -406,30 +421,30 @@ msgstr ""
 "<div>Töö salvestati edukalt. <a href=\"%(url)s\">Klõpsa siia</a>, et tööd "
 "vaadata."
 
-#: app/views.py:170
+#: app/views.py:169
 msgid "The template was created successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:186
+#: app/views.py:183
 msgid "The template was updated successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:197
+#: app/views.py:194
 msgid "The template was deleted successfully."
 msgstr "Mall kustutati edukalt"
 
-#: app/views.py:243
+#: app/views.py:238
 msgid "The problem entry was updated successfully."
 msgstr "Ülesanne salvestati edukalt"
 
-#: app/views.py:253
+#: app/views.py:248
 msgid "The problem entry was deleted successfully."
 msgstr "Ülesanne kustutati edukalt"
 
-#: app/views.py:264
+#: app/views.py:259
 msgid "The test was deleted successfully."
 msgstr "Töö kustutati edukalt"
 
-#: app/views.py:275
+#: app/views.py:270
 msgid "Your feedback was submitted. Thanks!"
 msgstr "Saime su tagasiside kätte. Tänud!"

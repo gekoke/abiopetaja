@@ -8,7 +8,7 @@ from django.forms import (
     ModelForm,
     ValidationError,
 )
-from django.forms.widgets import Textarea, TextInput
+from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
 
 from app.models import ProblemKind, Template, TemplateProblem, Test, TestGenerationParameters
@@ -30,7 +30,6 @@ class GenerateTestForm(Form):
     def __init__(self, *args, **kwargs):
         self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
         super().__init__(*args, **kwargs)
-        self.label_suffix = ""
         self.fields["template"].queryset = Template.objects.filter(author=self.user)
 
     def get_template(self) -> Template:
@@ -46,7 +45,6 @@ class SaveTestForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
         super().__init__(*args, **kwargs)
-        self.label_suffix = ""
 
     class Meta:
         model = Test
@@ -67,19 +65,11 @@ class SaveTestForm(ModelForm):
 
 
 class TemplateCreateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.label_suffix = ""
-
     class Meta:
         model = Template
         exclude = ["author"]
-        labels = {
-            "name": _("Name"),
-        }
         widgets = {
-            "name": TextInput(attrs={"placeholder": _("My Template")}),
-            "title": Textarea(),
+            "title": TextInput(attrs={"placeholder": _("Inequalities Test, Spring 2024")}),
         }
 
 
@@ -91,12 +81,6 @@ class TemplateUpdateForm(ModelForm):
     class Meta:
         model = Template
         exclude = ["author", "name"]
-        labels = {
-            "title": _("Title"),
-        }
-        widgets = {
-            "title": Textarea(),
-        }
 
 
 TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(
@@ -114,7 +98,6 @@ class TemplateProblemCreateFrom(ModelForm):
         self.user: User = kwargs.pop("user")
         self.template: Template = kwargs.pop("template")
         super().__init__(*args, **kwargs)
-        self.label_suffix = ""
 
     class Meta:
         model = TemplateProblem
@@ -130,10 +113,6 @@ class TemplateProblemCreateFrom(ModelForm):
 
 class TemplateProblemUpdateForm(ModelForm):
     count = TEMPLATE_PROBLEM_COUNT_FIELD
-
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self.label_suffix = ""
 
     class Meta:
         model = TemplateProblem
