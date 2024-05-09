@@ -118,12 +118,16 @@ msgstr "Variant %(version)s"
 msgid "Lots of inequalities"
 msgstr "Palju võrratusi"
 
-#: app/templates/app/base/base_create.html:9
+#: app/templates/app/base/base_create.html:6
+msgid "Confirm Creation"
+msgstr "Kinnita loomine"
+
+#: app/templates/app/base/base_create.html:10
 msgid "Save"
 msgstr "Salvesta"
 
 #: app/templates/app/base/base_create.html:11
-#: app/templates/app/base/base_delete.html:14
+#: app/templates/app/base/base_delete.html:13
 #: app/templates/app/base/base_update.html:11
 msgid "Cancel"
 msgstr "Tühista"
@@ -136,7 +140,11 @@ msgstr "Kinnita kustutamine"
 msgid "Delete Permanently"
 msgstr "Kustuta jäädavalt"
 
-#: app/templates/app/base/base_update.html:9
+#: app/templates/app/base/base_update.html:6
+msgid "Confirm Update"
+msgstr "Kinnita uuendamine"
+
+#: app/templates/app/base/base_update.html:10
 msgid "Update"
 msgstr "Uuenda"
 
