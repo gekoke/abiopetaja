@@ -40,8 +40,9 @@
             <details class="dropdown">
                 <summary>🔧️</summary>
                 <ul dir="rtl">
-                    <li><a href="{% url 'account_logout' %}">🚪 {% translate "Sign Out" %}</a></li>
+                    <li><a href="{% url 'app:userfeedback-create' %}">📨 {% translate "Leave Feedback" %}</a></li>
                     <li><a href="{% url 'account_change_password' %}">🔑 {% translate "Change Password" %}</a></li>
+                    <li><a href="{% url 'account_logout' %}">🚪 {% translate "Sign Out" %}</a></li>
                 </ul>
             </details>
         </li>

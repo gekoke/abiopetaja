@@ -14,6 +14,7 @@ from app.views import (
     TestDeleteView,
     TestDetailView,
     TestListView,
+    UserFeedbackCreateView,
     test_download,
     test_generate,
     test_generation,
@@ -25,6 +26,7 @@ app_name = "app"
 
 urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
+    path("user-feedback/create", UserFeedbackCreateView.as_view(), name="userfeedback-create"),
     path("templates/", TemplateListView.as_view(), name="template-list"),
     path(
         "templates/<uuid:pk>/",

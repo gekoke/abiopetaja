@@ -45,6 +45,7 @@ from app.models import (
     TemplateProblem,
     Test,
     TestVersion,
+    UserFeedback,
 )
 
 logger = logging.getLogger(__name__)
@@ -264,3 +265,15 @@ class TestDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 
     def get_queryset(self):
         return Test.objects.filter(author=self.request.user)
+
+
+class UserFeedbackCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = UserFeedback
+    fields = ["content"]
+
+    success_url = reverse_lazy("app:dashboard")
+    success_message = _("Your feedback was submitted. Thanks!")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user  # pyright: ignore
+        return super().form_valid(form)
