@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 16:38+0000\n"
+"POT-Creation-Date: 2024-05-09 16:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,13 +406,6 @@ msgstr ""
 "<div>Töö salvestati edukalt. <a href=\"%(url)s\">Klõpsa siia</a>, et tööd "
 "vaadata."
 
-#: app/views.py:115
-msgid "This test has already been saved."
-msgstr "See töö on juba salvestatud"
-
-#: app/views.py:120
-msgid "The test was saved successfully."
-msgstr "Töö salvestati edukalt"
 #: app/views.py:170
 msgid "The template was created successfully."
 msgstr "Mall salvestati edukalt"
