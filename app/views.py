@@ -11,7 +11,7 @@ from django.core.files import File
 from django.http import (
     HttpRequest,
     HttpResponse,
-    HttpResponseBadRequest,
+    HttpResponseNotAllowed,
 )
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
@@ -125,7 +125,7 @@ def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
 @login_required
 def testversion_download(request: HttpRequest, pk: UUID):
     if request.method != "GET":
-        return HttpResponseBadRequest()
+        return HttpResponseNotAllowed(permitted_methods=["POST"])
 
     test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
     return HttpResponse(test_version.pdf.read(), content_type="application/pdf")
