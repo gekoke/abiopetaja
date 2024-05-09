@@ -8,7 +8,7 @@ from django.forms import (
     ModelForm,
     ValidationError,
 )
-from django.forms.widgets import Textarea, TextInput
+from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
 
 from app.models import ProblemKind, Template, TemplateProblem, Test, TestGenerationParameters
@@ -68,12 +68,8 @@ class TemplateCreateForm(ModelForm):
     class Meta:
         model = Template
         exclude = ["author"]
-        labels = {
-            "name": _("Name"),
-        }
         widgets = {
-            "name": TextInput(attrs={"placeholder": _("My Template")}),
-            "title": Textarea(),
+            "title": TextInput(attrs={"placeholder": _("Inequalities Test, Spring 2024")}),
         }
 
 
@@ -85,12 +81,6 @@ class TemplateUpdateForm(ModelForm):
     class Meta:
         model = Template
         exclude = ["author", "name"]
-        labels = {
-            "title": _("Title"),
-        }
-        widgets = {
-            "title": Textarea(),
-        }
 
 
 TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(

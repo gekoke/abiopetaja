@@ -83,8 +83,17 @@ class Template(Entity):
         templateproblem_set = RelatedManager["TemplateProblem"]()
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255, blank=False)
-    title = models.CharField(max_length=1000, blank=True)
+    name = models.CharField(
+        _("Name"), max_length=255, blank=False, help_text=_("Only you can see this name")
+    )
+    title = models.CharField(
+        max_length=1000,
+        blank=True,
+        verbose_name=pgettext_lazy("of a template", "Title"),
+        help_text=_(
+            "Anything you add to this field will be rendered at the top of the test document"
+        ),
+    )
 
     class Meta:
         unique_together = ["author", "name"]
@@ -236,7 +245,12 @@ class Test(Entity):
         testversion_set = RelatedManager[TestVersion]()
 
     author = ForeignKey(User, on_delete=CASCADE)
-    name = models.CharField(max_length=255, validators=[MinLengthValidator(1)], null=True)
+    name = models.CharField(
+        _("Name"),
+        max_length=255,
+        validators=[MinLengthValidator(1)],
+        null=True,
+    )
     is_saved = models.BooleanField(default=False)
     """
     Whether the test should be persisted.
