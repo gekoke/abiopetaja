@@ -33,31 +33,31 @@ msgstr "Vali mall, millest dokumente genereerida"
 msgid "Number of test versions"
 msgstr "Variantide arv"
 
-#: app/forms.py:55 app/forms.py:78
+#: app/forms.py:53 app/forms.py:72
 msgid "Name"
 msgstr "Nimi"
 
-#: app/forms.py:58
+#: app/forms.py:56
 msgid "My Test"
 msgstr "Minu töö"
 
-#: app/forms.py:64
+#: app/forms.py:62
 msgid "A test with this name already exists"
 msgstr "Sellise nimega töö on juba olemas"
 
-#: app/forms.py:81
+#: app/forms.py:75
 msgid "My Template"
 msgstr "Minu mall"
 
-#: app/forms.py:95 app/templates/app/template_detail.html:17
+#: app/forms.py:89 app/templates/app/template_detail.html:17
 msgid "Title"
 msgstr "Pealkiri"
 
-#: app/forms.py:106
+#: app/forms.py:100
 msgid "Number of occurences"
 msgstr "Ülesannete arv"
 
-#: app/forms.py:127
+#: app/forms.py:120
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 

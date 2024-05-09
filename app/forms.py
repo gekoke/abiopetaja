@@ -30,7 +30,6 @@ class GenerateTestForm(Form):
     def __init__(self, *args, **kwargs):
         self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
         super().__init__(*args, **kwargs)
-        self.label_suffix = ""
         self.fields["template"].queryset = Template.objects.filter(author=self.user)
 
     def get_template(self) -> Template:
@@ -46,7 +45,6 @@ class SaveTestForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
         super().__init__(*args, **kwargs)
-        self.label_suffix = ""
 
     class Meta:
         model = Test
@@ -67,10 +65,6 @@ class SaveTestForm(ModelForm):
 
 
 class TemplateCreateForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.label_suffix = ""
-
     class Meta:
         model = Template
         exclude = ["author"]
@@ -114,7 +108,6 @@ class TemplateProblemCreateFrom(ModelForm):
         self.user: User = kwargs.pop("user")
         self.template: Template = kwargs.pop("template")
         super().__init__(*args, **kwargs)
-        self.label_suffix = ""
 
     class Meta:
         model = TemplateProblem
@@ -130,10 +123,6 @@ class TemplateProblemCreateFrom(ModelForm):
 
 class TemplateProblemUpdateForm(ModelForm):
     count = TEMPLATE_PROBLEM_COUNT_FIELD
-
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self.label_suffix = ""
 
     class Meta:
         model = TemplateProblem
