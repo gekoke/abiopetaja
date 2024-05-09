@@ -85,7 +85,7 @@ msgstr "Lahenda järgnevad ruutvõrratused:"
 msgid "Solve the following fractional inequalities:"
 msgstr "Lahenda järgnevad murdvõrratused:"
 
-#: app/models.py:271
+#: app/models.py:276
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
