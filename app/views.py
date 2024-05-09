@@ -1,4 +1,3 @@
-import base64
 import logging
 from typing import Any, Iterable
 from uuid import UUID
@@ -7,7 +6,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.files import File
 from django.http import (
     HttpRequest,
     HttpResponse,
@@ -49,10 +47,6 @@ from app.models import (
 )
 
 logger = logging.getLogger(__name__)
-
-
-def as_base64(file: File) -> str:
-    return base64.b64encode(file.read()).decode("utf-8")
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
