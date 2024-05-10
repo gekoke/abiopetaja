@@ -1,4 +1,4 @@
-import string
+from string import ascii_lowercase
 
 from django.utils.translation import gettext_lazy as _
 
@@ -7,18 +7,6 @@ from app.models import (
     Test,
     TestVersion,
 )
-
-
-def _char_from_int(index: int) -> str:
-    """
-    Convert number to corresponding letter.
-
-    Exmaple:
-    0 -> a
-    1 -> b
-    ...
-    """
-    return string.ascii_lowercase[index]
 
 
 def _get_problems_by_kind(problems: list[Problem]) -> dict[int, list[Problem]]:
@@ -62,8 +50,9 @@ def _render_problem_kind(problems: list[Problem], subproblem_index: int) -> str:
 
     return f"""
     \\noindent
+
     {subproblem_index + 1}) {problem_text}\\newline \\indent
-    {"\\newline \\indent".join(f" {_char_from_int(i)}) ${problems[i].definition}$"
+    {"\\newline \\indent".join(f" {ascii_lowercase[i]}) ${problems[i].definition}$"
         for i in range(len(problems)))}
     """
 
@@ -99,7 +88,7 @@ def _render_problem_kind_answer(problems: list[Problem], subproblem_index: int) 
     return f"""
     \\noindent
     {subproblem_index + 1}) {problem_text}\\newline \\indent
-    {"\\newline \\indent".join(f" {_char_from_int(i)}) ${problems[i].solution}$"
+    {"\\newline \\indent".join(f" {ascii_lowercase[i]}) ${problems[i].solution}$"
         for i in range(len(problems)))}
     """
 
