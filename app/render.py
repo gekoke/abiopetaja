@@ -61,9 +61,11 @@ def _render_problem(problem: Problem, problem_index: int) -> str:
 
 
 def _render_header(title: str, subtitle: str) -> str:
+    title = "" if title == "" else f"{{\\Large \\textbf{{{title}}}}}"
+
     return f"""
     \\begin{{center}}
-    {"" if title == "" else f"{{\\Large \\textbf{{{title}}}}}"}
+    {title}
 
     {subtitle}
     \\end{{center}}

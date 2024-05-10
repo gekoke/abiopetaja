@@ -109,7 +109,7 @@ msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"
 
-#: app/render.py:107
+#: app/render.py:103
 #, python-format
 msgid "Version %(version)s"
 msgstr "Variant %(version)s"
