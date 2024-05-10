@@ -36,12 +36,11 @@ def _make_document(source: str) -> str:
 
 def _render_problems(problems: list[Problem]) -> str:
     problems_by_kind = _get_problems_by_kind(problems)
-    problem_kind_list = list(problems_by_kind.keys())
 
-    return f"""
-    {"\n".join(_render_problem_kind(problems_by_kind[problem_kind_list[i]], i)
-        for i in range(len(problem_kind_list)))}
-    """
+    return "\n".join(
+        _render_problem_kind(problems_by_kind[problem_kind], idx)
+        for (idx, problem_kind) in enumerate(problems_by_kind)
+    )
 
 
 def _render_problem_kind(problems: list[Problem], subproblem_index: int) -> str:
