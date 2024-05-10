@@ -1,7 +1,6 @@
 import string
 
 from django.utils.translation import gettext_lazy as _
-from django.utils.translation import pgettext
 
 from app.models import (
     Problem,
@@ -10,7 +9,7 @@ from app.models import (
 )
 
 
-def char_from_int(index: int) -> str:
+def _char_from_int(index: int) -> str:
     """
     Convert number to corresponding letter.
 
@@ -20,6 +19,14 @@ def char_from_int(index: int) -> str:
     ...
     """
     return string.ascii_lowercase[index]
+
+
+def _get_problems_by_kind(problems: list[Problem]) -> dict[int, list[Problem]]:
+    problem_kind_set = {problem.kind for problem in problems}
+    return {
+        problem_kind: [problem for problem in problems if problem.kind == problem_kind]
+        for problem_kind in problem_kind_set
+    }
 
 
 def _make_document(source: str) -> str:
@@ -40,11 +47,7 @@ def _make_document(source: str) -> str:
 
 
 def _render_problems(problems: list[Problem]) -> str:
-    problem_kind_set = {problem.kind for problem in problems}
-    problems_by_kind = {
-        problem_kind: [problem for problem in problems if problem.kind == problem_kind]
-        for problem_kind in problem_kind_set
-    }
+    problems_by_kind = _get_problems_by_kind(problems)
     problem_kind_list = list(problems_by_kind.keys())
 
     return f"""
@@ -60,7 +63,7 @@ def _render_problem_kind(problems: list[Problem], kind_index: int) -> str:
     return f"""
     \\noindent
     {kind_index}) {problem_text}\\newline \\indent
-    {"\\newline \\indent".join(f" {char_from_int(i)}) ${problems[i].definition}$"
+    {"\\newline \\indent".join(f" {_char_from_int(i)}) ${problems[i].definition}$"
         for i in range(len(problems)))}
     """
 
@@ -89,15 +92,27 @@ def render_test_version(version: TestVersion) -> str:
     return latex
 
 
-def _render_answer(problem: Problem) -> str:
-    return f"\n\\textbf{{{pgettext("for a math problem", "Solution")}}}: ${problem.solution}$\n"
+def _render_problem_kind_answer(problems: list[Problem], kind_index: int) -> str:
+    assert len(set(problem.kind for problem in problems)) == 1
+    problem_text = problems[0].problem_text
+
+    return f"""
+    \\noindent
+    {kind_index}) {problem_text}\\newline \\indent
+    {"\\newline \\indent".join(f" {_char_from_int(i)}) ${problems[i].solution}$"
+        for i in range(len(problems)))}
+    """
 
 
 def _render_test_version_answers(version: TestVersion) -> str:
     version_label = _("Version") + f" {version.version_number}"
+    problems_by_kind = _get_problems_by_kind(list(version.problem_set.all()))
+    problem_kind_list = list(problems_by_kind.keys())
+
     return f"""
     \\subsection*{{{version_label}}}
-    {"\\newline".join(_render_answer(problem) for problem in version.problem_set.all())}
+    {"\n".join(_render_problem_kind_answer(problems_by_kind[problem_kind_list[i]], i + 1)
+        for i in range(len(problem_kind_list)))}
     """
 
 
