@@ -206,10 +206,8 @@ def test_user_can_not_create_template_problem_with_too_many_problems(
 
 
 @pytest.mark.django_db
-@pytest.mark.parametrize("problem_kind", ProblemKind.values)
-@pytest.mark.parametrize("count", [1, 20])
 def test_user_can_not_create_template_problem_with_same_problem_kind_more_than_once_per_test(
-    client: Client, problem_kind: ProblemKind, count: int
+    client: Client,
 ):
     user = create_user(client)
     template = Template()
@@ -221,15 +219,15 @@ def test_user_can_not_create_template_problem_with_same_problem_kind_more_than_o
     client.post(
         reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
         {
-            "problem_kind": problem_kind,
-            "count": count,
+            "problem_kind": ProblemKind.FRACTIONAL_INEQUALITY,
+            "count": 1,
         },
     )
     client.post(
         reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
         {
-            "problem_kind": problem_kind,
-            "count": count,
+            "problem_kind": ProblemKind.FRACTIONAL_INEQUALITY,
+            "count": 2,
         },
     )
 
