@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-10 01:11+0000\n"
+"POT-Creation-Date: 2024-05-10 09:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,8 +106,9 @@ msgid "Content"
 msgstr "Sisu"
 
 #: app/render.py:108
-msgid "Version"
-msgstr "Variant"
+#, python-format
+msgid "Version %(version)s"
+msgstr "Variant %(version)s"
 
 #: app/signals.py:23 app/signals.py:25
 msgid "Inequalities"

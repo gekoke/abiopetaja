@@ -14,8 +14,8 @@ def _char_from_int(index: int) -> str:
     Convert number to corresponding letter.
 
     Exmaple:
-    1 -> a
-    2 -> b
+    0 -> a
+    1 -> b
     ...
     """
     return string.ascii_lowercase[index]
@@ -51,29 +51,29 @@ def _render_problems(problems: list[Problem]) -> str:
     problem_kind_list = list(problems_by_kind.keys())
 
     return f"""
-    {"\n".join(_render_problem_kind(problems_by_kind[problem_kind_list[i]], i + 1)
+    {"\n".join(_render_problem_kind(problems_by_kind[problem_kind_list[i]], i)
         for i in range(len(problem_kind_list)))}
     """
 
 
-def _render_problem_kind(problems: list[Problem], kind_index: int) -> str:
+def _render_problem_kind(problems: list[Problem], subproblem_index: int) -> str:
     assert len(set(problem.kind for problem in problems)) == 1
     problem_text = problems[0].problem_text
 
     return f"""
     \\noindent
-    {kind_index}) {problem_text}\\newline \\indent
+    {subproblem_index + 1}) {problem_text}\\newline \\indent
     {"\\newline \\indent".join(f" {_char_from_int(i)}) ${problems[i].definition}$"
         for i in range(len(problems)))}
     """
 
 
-def _render_header(title: str, smalltext: str) -> str:
+def _render_header(title: str, subtitle: str) -> str:
     return f"""
     \\begin{{center}}
     {"" if title == "" else f"{{\\Large \\textbf{{{title}}}}}"}
 
-    {smalltext}
+    {subtitle}
     \\end{{center}}
     """
 
@@ -84,7 +84,7 @@ def render_test_version(version: TestVersion) -> str:
 
     latex = _make_document(
         f"""
-        {_render_header(test.title, f"{_("Version")} {version.version_number}")}
+        {_render_header(test.title, _("Version %(version)s") % {"version": version.version_number})}
         {_render_problems(problems)}
         """
     )
@@ -92,26 +92,26 @@ def render_test_version(version: TestVersion) -> str:
     return latex
 
 
-def _render_problem_kind_answer(problems: list[Problem], kind_index: int) -> str:
+def _render_problem_kind_answer(problems: list[Problem], subproblem_index: int) -> str:
     assert len(set(problem.kind for problem in problems)) == 1
     problem_text = problems[0].problem_text
 
     return f"""
     \\noindent
-    {kind_index}) {problem_text}\\newline \\indent
+    {subproblem_index + 1}) {problem_text}\\newline \\indent
     {"\\newline \\indent".join(f" {_char_from_int(i)}) ${problems[i].solution}$"
         for i in range(len(problems)))}
     """
 
 
 def _render_test_version_answers(version: TestVersion) -> str:
-    version_label = _("Version") + f" {version.version_number}"
+    version_label = _("Version %(version)s") % {"version": version.version_number}
     problems_by_kind = _get_problems_by_kind(list(version.problem_set.all()))
     problem_kind_list = list(problems_by_kind.keys())
 
     return f"""
     \\subsection*{{{version_label}}}
-    {"\n".join(_render_problem_kind_answer(problems_by_kind[problem_kind_list[i]], i + 1)
+    {"\n".join(_render_problem_kind_answer(problems_by_kind[problem_kind_list[i]], i)
         for i in range(len(problem_kind_list)))}
     """
 
