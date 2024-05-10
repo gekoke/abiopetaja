@@ -146,7 +146,7 @@ def testversion_download(request: HttpRequest, pk: UUID):
 @login_required
 def test_download(request: HttpRequest, pk: UUID):
     if request.method == "GET":
-        test = get_object_or_404(Test, pk=pk)
+        test = get_object_or_404(Test, pk=pk, author=request.user)
         answer_key = test.answer_key_pdf
         return HttpResponse(answer_key.read(), content_type="application/pdf")
 
