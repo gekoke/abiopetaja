@@ -69,6 +69,7 @@ class TemplateCreateForm(ModelForm):
         model = Template
         exclude = ["author"]
         widgets = {
+            "name": TextInput(attrs={"placeholder": _("Inequalities")}),
             "title": TextInput(attrs={"placeholder": _("Inequalities Test, Spring 2024")}),
         }
 

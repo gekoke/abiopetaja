@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-10 09:33+0000\n"
+"POT-Creation-Date: 2024-05-10 16:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,15 +45,19 @@ msgstr "Minu töö"
 msgid "A test with this name already exists"
 msgstr "Sellise nimega töö on juba olemas"
 
-#: app/forms.py:72
+#: app/forms.py:72 app/signals.py:23 app/signals.py:25
+msgid "Inequalities"
+msgstr "Võrratused"
+
+#: app/forms.py:73
 msgid "Inequalities Test, Spring 2024"
 msgstr "Kontrolltöö, võrratused - kevad 2024"
 
-#: app/forms.py:90
+#: app/forms.py:91
 msgid "Number of occurences"
 msgstr "Ülesannete arv"
 
-#: app/forms.py:110
+#: app/forms.py:111
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 
@@ -109,10 +113,6 @@ msgstr "Sisu"
 #, python-format
 msgid "Version %(version)s"
 msgstr "Variant %(version)s"
-
-#: app/signals.py:23 app/signals.py:25
-msgid "Inequalities"
-msgstr "Võrratused"
 
 #: app/signals.py:40 app/signals.py:42
 msgid "Lots of inequalities"
