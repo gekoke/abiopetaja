@@ -43,17 +43,21 @@ def _render_problems(problems: list[Problem]) -> str:
     )
 
 
-def _render_problem_kind(problems: list[Problem], subproblem_index: int) -> str:
+def _render_problem_kind(problems: list[Problem], problem_index: int) -> str:
     assert len(set(problem.kind for problem in problems)) == 1
+
     problem_text = problems[0].problem_text
+    newline = "\\newline \\indent"
 
     return f"""
     \\noindent
-
-    {subproblem_index + 1}) {problem_text}\\newline \\indent
-    {"\\newline \\indent".join(f" {ascii_lowercase[i]}) ${problems[i].definition}$"
-        for i in range(len(problems)))}
+    {problem_index + 1}) {problem_text}{newline}
+    {newline.join(_render_problem(problem, problem_index=idx) for (idx, problem) in enumerate(problems))}
     """
+
+
+def _render_problem(problem: Problem, problem_index: int) -> str:
+    return f" {ascii_lowercase[problem_index + 1]}) ${problem.definition}$"
 
 
 def _render_header(title: str, subtitle: str) -> str:
