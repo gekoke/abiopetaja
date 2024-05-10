@@ -1,3 +1,5 @@
+import string
+
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import pgettext
 
@@ -6,6 +8,18 @@ from app.models import (
     Test,
     TestVersion,
 )
+
+
+def char_from_int(index: int) -> str:
+    """
+    Convert number to corresponding letter.
+
+    Exmaple:
+    1 -> a
+    2 -> b
+    ...
+    """
+    return string.ascii_lowercase[index]
 
 
 def _make_document(source: str) -> str:
@@ -31,29 +45,32 @@ def _render_problems(problems: list[Problem]) -> str:
         problem_kind: [problem for problem in problems if problem.kind == problem_kind]
         for problem_kind in problem_kind_set
     }
+    problem_kind_list = list(problems_by_kind.keys())
 
     return f"""
-    {"\n".join(_render_problem_kind(problems_by_kind[kind]) for kind in problems_by_kind)}
+    {"\n".join(_render_problem_kind(problems_by_kind[problem_kind_list[i]], i + 1)
+        for i in range(len(problem_kind_list)))}
     """
 
 
-def _render_problem_kind(problems: list[Problem]) -> str:
+def _render_problem_kind(problems: list[Problem], kind_index: int) -> str:
     assert len(set(problem.kind for problem in problems)) == 1
     problem_text = problems[0].problem_text
 
     return f"""
     \\noindent
-    {problem_text}\\newline
-    {"\\newline".join(f"${problem.definition}$" for problem in problems)}
+    {kind_index}) {problem_text}\\newline \\indent
+    {"\\newline \\indent".join(f" {char_from_int(i)}) ${problems[i].definition}$"
+        for i in range(len(problems)))}
     """
 
 
-def _render_header(title: str, version: int | None) -> str:
+def _render_header(title: str, smalltext: str) -> str:
     return f"""
     \\begin{{center}}
     {"" if title == "" else f"{{\\Large \\textbf{{{title}}}}}"}
 
-    {"" if version is None else f"{_("Version")} {version}"}
+    {smalltext}
     \\end{{center}}
     """
 
@@ -64,7 +81,7 @@ def render_test_version(version: TestVersion) -> str:
 
     latex = _make_document(
         f"""
-        {_render_header(test.title, version.version_number)}
+        {_render_header(test.title, f"{_("Version")} {version.version_number}")}
         {_render_problems(problems)}
         """
     )
@@ -87,7 +104,7 @@ def _render_test_version_answers(version: TestVersion) -> str:
 def render_answer_key(test: Test) -> str:
     latex = _make_document(
         f"""
-        {_render_header(test.title, version=None)}
+        {_render_header(test.title, _("Answer Key"))}
         {"\n".join(_render_test_version_answers(version) for version in test.versions)}
         """
     )
