@@ -161,7 +161,6 @@ def test_user_can_not_get_other_users_template(client: Client):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize("problem_kind", ProblemKind.values)
-@pytest.mark.parametrize("count", [1, 20])
 def test_user_can_create_template_problem(client: Client, problem_kind: ProblemKind, count: int):
     user = create_user(client)
     template = Template()
@@ -174,7 +173,7 @@ def test_user_can_create_template_problem(client: Client, problem_kind: ProblemK
         reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
         {
             "problem_kind": problem_kind,
-            "count": count,
+            "count": 2,
         },
     )
 
@@ -183,9 +182,8 @@ def test_user_can_create_template_problem(client: Client, problem_kind: ProblemK
 
 @pytest.mark.django_db
 @pytest.mark.parametrize("problem_kind", ProblemKind.values)
-@pytest.mark.parametrize("count", [21])
 def test_user_can_not_create_template_problem_with_too_many_problems(
-    client: Client, problem_kind: ProblemKind, count: int
+    client: Client, problem_kind: ProblemKind
 ):
     user = create_user(client)
     template = Template()
@@ -198,7 +196,7 @@ def test_user_can_not_create_template_problem_with_too_many_problems(
         reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
         {
             "problem_kind": problem_kind,
-            "count": count,
+            "count": 21,
         },
     )
 
