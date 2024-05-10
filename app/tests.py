@@ -161,7 +161,7 @@ def test_user_can_not_get_other_users_template(client: Client):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize("problem_kind", ProblemKind.values)
-def test_user_can_create_template_problem(client: Client, problem_kind: ProblemKind, count: int):
+def test_user_can_create_template_problem(client: Client, problem_kind: ProblemKind):
     user = create_user(client)
     template = Template()
     template.author = user
