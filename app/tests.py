@@ -11,7 +11,16 @@ from django.utils.translation import activate
 from pytest_django.asserts import assertRedirects
 
 from app.annoying import get_object_or_None
-from app.models import Template, Test, User, UserFeedback
+from app.models import (
+    ProblemKind,
+    Template,
+    TemplateProblem,
+    Test,
+    TestGenerationParameters,
+    TestVersion,
+    User,
+    UserFeedback,
+)
 
 
 @pytest.fixture(autouse=True)
@@ -46,19 +55,20 @@ def test_unauthenticated_user_can_get_signup_page(client: Client):
     assert res.status_code == HTTPStatus.OK
 
 
-@pytest.mark.parametrize(
-    "view_name",
-    [
-        # only views that don't take an argument in their path
-        "app:dashboard",
-        "app:template-list",
-        "app:template-create",
-        "app:problemkind-list",
-        "app:test-generation",
-        "app:test-list",
-        "app:test-generate",
-    ],
-)
+views = [
+    # only views that don't take an argument in their path
+    "app:dashboard",
+    "app:template-list",
+    "app:template-create",
+    "app:problemkind-list",
+    "app:test-generation",
+    "app:test-list",
+    "app:test-generate",
+    "app:userfeedback-create",
+]
+
+
+@pytest.mark.parametrize("view_name", views)
 def test_unauthenticated_user_is_redirected_to_login_page_when_requesting_view(
     view_name: str, client: Client
 ):
@@ -66,6 +76,12 @@ def test_unauthenticated_user_is_redirected_to_login_page_when_requesting_view(
         response=client.get(reverse(view_name), follow=True),
         expected_url=reverse("account_login") + "?next=" + quote(reverse(view_name)),
     )
+
+
+@pytest.mark.parametrize("view_name", views)
+def test_authenticated_user_can_get_view(view_name: str, client: Client):
+    response = client.get(reverse(view_name), follow=True)
+    assert response.status_code == HTTPStatus.OK
 
 
 @pytest.mark.django_db
@@ -144,6 +160,79 @@ def test_user_can_not_get_other_users_template(client: Client):
 
 
 @pytest.mark.django_db
+@pytest.mark.parametrize("problem_kind", ProblemKind.values)
+def test_user_can_create_template_problem(client: Client, problem_kind: ProblemKind, count: int):
+    user = create_user(client)
+    template = Template()
+    template.author = user
+    template.name = "My template"
+    template.save()
+
+    client.force_login(user)
+    client.post(
+        reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
+        {
+            "problem_kind": problem_kind,
+            "count": 2,
+        },
+    )
+
+    assert TemplateProblem.objects.filter(template__pk=template.pk).exists()
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize("problem_kind", ProblemKind.values)
+def test_user_can_not_create_template_problem_with_too_many_problems(
+    client: Client, problem_kind: ProblemKind
+):
+    user = create_user(client)
+    template = Template()
+    template.author = user
+    template.name = "My template"
+    template.save()
+
+    client.force_login(user)
+    client.post(
+        reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
+        {
+            "problem_kind": problem_kind,
+            "count": 21,
+        },
+    )
+
+    assert not TemplateProblem.objects.filter(template__pk=template.pk).exists()
+
+
+@pytest.mark.django_db
+def test_user_can_not_create_template_problem_with_same_problem_kind_more_than_once_per_test(
+    client: Client,
+):
+    user = create_user(client)
+    template = Template()
+    template.author = user
+    template.name = "My template"
+    template.save()
+
+    client.force_login(user)
+    client.post(
+        reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
+        {
+            "problem_kind": ProblemKind.FRACTIONAL_INEQUALITY,
+            "count": 1,
+        },
+    )
+    client.post(
+        reverse("app:templateproblem-create", kwargs={"template_pk": template.pk}),
+        {
+            "problem_kind": ProblemKind.FRACTIONAL_INEQUALITY,
+            "count": 2,
+        },
+    )
+
+    assert TemplateProblem.objects.filter(template__pk=template.pk).count() == 1
+
+
+@pytest.mark.django_db
 def test_user_can_generate_a_test(client: Client):
     user = create_user(client)
     client.force_login(user)
@@ -179,6 +268,21 @@ def test_user_can_not_generate_an_empty_test(client: Client):
 
     test = get_object_or_None(Test, author=user)
     assert test is None
+
+
+@pytest.mark.django_db
+def test_user_can_delete_test(client: Client):
+    user = create_user(client)
+    test = Test()
+    test.author = user
+    test.name = "Test"
+    test.answer_key_pdf.save("answers.pdf", ContentFile(""))
+    test.is_saved = True
+
+    client.force_login(user)
+    client.post(reverse("app:test-delete", kwargs={"pk": test.pk}))
+
+    assert not Test.objects.contains(test)
 
 
 @pytest.mark.django_db
@@ -289,3 +393,73 @@ def test_user_can_not_save_test_with_nonunique_name(client: Client):
 
     test = Test.objects.get(pk=new_test.pk)
     assert not test.is_saved
+
+
+@pytest.mark.django_db
+def test_user_can_download_test_version(client: Client):
+    user = create_user(client)
+    template = Template()
+    template.author = user
+    template.add_problem(ProblemKind.FRACTIONAL_INEQUALITY, count=2)
+    template.save()
+    template.generate_test(TestGenerationParameters(test_version_count=2))
+    test_version = TestVersion.objects.filter(test__author=user).first()
+    assert test_version is not None
+    expected_data = test_version.pdf.read()
+
+    client.force_login(user)
+    response = client.get(reverse("app:testversion-download", kwargs={"pk": test_version.pk}))
+
+    assert response.content == expected_data
+
+
+@pytest.mark.django_db
+def test_user_can_not_download_other_users_test_version(client: Client):
+    alice = create_user(client)
+    eve = create_user(client)
+    template = Template()
+    template.author = alice
+    template.add_problem(ProblemKind.FRACTIONAL_INEQUALITY, count=2)
+    template.save()
+    template.generate_test(TestGenerationParameters(test_version_count=2))
+    test_version = TestVersion.objects.filter(test__author=alice).first()
+    assert test_version is not None
+
+    client.force_login(eve)
+    response = client.get(reverse("app:testversion-download", kwargs={"pk": test_version.pk}))
+
+    assert response.status_code == HTTPStatus.NOT_FOUND
+
+
+@pytest.mark.django_db
+def test_user_can_download_test_answer_key(client: Client):
+    user = create_user(client)
+    answer_key_data = b"foobar"
+    test = Test()
+    test.author = user
+    test.name = "Test"
+    test.answer_key_pdf.save("answers.pdf", ContentFile(answer_key_data))
+    test.is_saved = True
+    test.save()
+
+    client.force_login(user)
+    response = client.get(reverse("app:test-download", kwargs={"pk": test.pk}))
+
+    assert response.content == answer_key_data
+
+
+@pytest.mark.django_db
+def test_user_can_not_download_other_users_test_answer_key(client: Client):
+    alice = create_user(client)
+    eve = create_user(client)
+    test = Test()
+    test.author = alice
+    test.name = "Test"
+    test.answer_key_pdf.save("answers.pdf", ContentFile("foobar"))
+    test.is_saved = True
+    test.save()
+
+    client.force_login(eve)
+    response = client.get(reverse("app:test-download", kwargs={"pk": test.pk}))
+
+    assert response.status_code == HTTPStatus.NOT_FOUND
