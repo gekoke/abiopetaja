@@ -7,6 +7,10 @@
     {% csrf_token %}
     {% include "common/includes/fields.html" with form=form %}
     <input type="submit" class="green" value="{% translate "Save" %}">
-    <a href="{{request.META.HTTP_REFERER|escape}}" role="button" class="secondary" style="width: 100%;">{% translate "Cancel" %}</a>
+    {% if cancellation_url %}
+        <a href="{{ cancellation_url }}" role="button" class="secondary" style="width: 100%;">{% translate "Cancel" %}</a>
+    {% endif %}
 </form>
+
 {% endblock %}
+

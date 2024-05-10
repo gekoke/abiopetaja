@@ -16,9 +16,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DeleteView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import ContextMixin, TemplateView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import DeleteView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
@@ -46,12 +46,24 @@ from app.models import (
 logger = logging.getLogger(__name__)
 
 
-class UpdateView(django.views.generic.UpdateView):
-    template_name_suffix = "_update_form"
+class CancellationMixin(ContextMixin):
+    cancellation_url = ""
+
+    def get_cancellation_url(self):
+        return self.cancellation_url
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["cancellation_url"] = self.get_cancellation_url()
+        return context
 
 
 class CreateView(django.views.generic.CreateView):
     template_name_suffix = "_create_form"
+
+
+class UpdateView(django.views.generic.UpdateView):
+    template_name_suffix = "_update_form"
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -165,9 +177,10 @@ class TemplateDetailView(LoginRequiredMixin, DetailView):
         return Template.objects.filter(author=self.request.user)
 
 
-class TemplateCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TemplateCreateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, CreateView):
     success_message = _("The template was created successfully.")
     success_url = reverse_lazy("app:template-list")
+    cancellation_url = success_url
 
     model = Template
     form_class = TemplateCreateForm
@@ -177,7 +190,7 @@ class TemplateCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TemplateUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TemplateUpdateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, UpdateView):
     form_class = TemplateUpdateForm
 
     success_message = _("The template was updated successfully.")
@@ -185,13 +198,20 @@ class TemplateUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_success_url(self) -> str:
         return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().pk})  # type: ignore
 
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
     def get_queryset(self):
         return Template.objects.filter(author=self.request.user)
 
 
-class TemplateDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TemplateDeleteView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("app:template-list")
     success_message = _("The template was deleted successfully.")
+    cancellation_url = success_url
+
+    def get_cancellation_url(self):
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().pk})
 
     def get_queryset(self):
         return Template.objects.filter(author=self.request.user)
@@ -207,7 +227,9 @@ class TestDetailView(LoginRequiredMixin, DetailView):
         return Test.objects.filter(author=self.request.user)
 
 
-class TemplateProblemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TemplateProblemCreateView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, CreateView
+):
     form_class = TemplateProblemCreateFrom
 
     model = TemplateProblem
@@ -224,6 +246,9 @@ class TemplateProblemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateV
     def get_success_url(self) -> str:
         return reverse_lazy("app:template-detail", kwargs={"pk": self.get_template().pk})
 
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
     def form_valid(self, form):
         form.instance.template = self.get_template()  # type: ignore
         return super().form_valid(form)
@@ -232,7 +257,9 @@ class TemplateProblemCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateV
         return TemplateProblem.objects.filter(template__author=self.request.user)
 
 
-class TemplateProblemUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TemplateProblemUpdateView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, UpdateView
+):
     form_class = TemplateProblemUpdateForm
 
     success_message = _("The problem entry was updated successfully.")
@@ -240,34 +267,47 @@ class TemplateProblemUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateV
     def get_success_url(self) -> str:
         return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().template.pk})  # type: ignore
 
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
     def get_queryset(self):
         return TemplateProblem.objects.filter(template__author=self.request.user)
 
 
-class TemplateProblemDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TemplateProblemDeleteView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView
+):
     success_message = _("The problem entry was deleted successfully.")
 
     def get_success_url(self) -> str:
         return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().template.pk})  # type: ignore
 
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
     def get_queryset(self):
         return TemplateProblem.objects.filter(template__author=self.request.user)
 
 
-class TestDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TestDeleteView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("app:test-list")
     success_message = _("The test was deleted successfully.")
+    cancellation_url = success_url
 
     def get_queryset(self):
         return Test.objects.filter(author=self.request.user)
 
 
-class UserFeedbackCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class UserFeedbackCreateView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, CreateView
+):
     model = UserFeedback
     fields = ["content"]
 
     success_url = reverse_lazy("app:dashboard")
     success_message = _("Your feedback was submitted. Thanks!")
+
+    cancellation_url = success_url
 
     def form_valid(self, form):
         form.instance.author = self.request.user  # pyright: ignore
