@@ -46,19 +46,19 @@ def test_unauthenticated_user_can_get_signup_page(client: Client):
     assert res.status_code == HTTPStatus.OK
 
 
-login_required_views = [
-    # only views that don't take an argument in their path
-    "app:dashboard",
-    "app:template-list",
-    "app:template-create",
-    "app:problemkind-list",
-    "app:test-generation",
-    "app:test-list",
-    "app:test-generate",
-]
-
-
-@pytest.mark.parametrize("view_name", login_required_views)
+@pytest.mark.parametrize(
+    "view_name",
+    [
+        # only views that don't take an argument in their path
+        "app:dashboard",
+        "app:template-list",
+        "app:template-create",
+        "app:problemkind-list",
+        "app:test-generation",
+        "app:test-list",
+        "app:test-generate",
+    ],
+)
 def test_unauthenticated_user_is_redirected_to_login_page_when_requesting_view(
     view_name: str, client: Client
 ):
