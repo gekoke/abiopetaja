@@ -114,11 +114,9 @@ def _render_test_version_answers(version: TestVersion) -> str:
 
 
 def render_answer_key(test: Test) -> str:
-    latex = _make_document(
+    return _make_document(
         f"""
         {_render_header(test.title, _("Answer Key"))}
         {"\n".join(_render_test_version_answers(version) for version in test.versions)}
         """
     )
-
-    return latex
