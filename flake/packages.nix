@@ -17,7 +17,7 @@
           '';
 
           checkPhase = ''
-            pytest
+            pytest -n auto
             ${pkgs.pyright}/bin/pyright
           '';
             
