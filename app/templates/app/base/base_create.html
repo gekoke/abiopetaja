@@ -2,8 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-
-<h1>{% translate "Confirm Creation" %}</h1>
 <form method="post">
     {% csrf_token %}
     {% include "common/includes/fields.html" with form=form %}

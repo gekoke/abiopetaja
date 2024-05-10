@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 23:17+0000\n"
+"POT-Creation-Date: 2024-05-10 12:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,33 +117,25 @@ msgstr "Võrratused"
 msgid "Lots of inequalities"
 msgstr "Palju võrratusi"
 
-#: app/templates/app/base/base_create.html:6
-msgid "Confirm Creation"
-msgstr "Kinnita loomine"
-
-#: app/templates/app/base/base_create.html:10
+#: app/templates/app/base/base_create.html:8
 msgid "Save"
 msgstr "Salvesta"
 
-#: app/templates/app/base/base_create.html:11
-#: app/templates/app/base/base_delete.html:13
-#: app/templates/app/base/base_update.html:11
+#: app/templates/app/base/base_create.html:9
+#: app/templates/app/base/base_delete.html:15
+#: app/templates/app/base/base_update.html:9
 msgid "Cancel"
 msgstr "Tühista"
 
-#: app/templates/app/base/base_delete.html:6
+#: app/templates/app/base/base_delete.html:5
 msgid "Confirm Deletion"
 msgstr "Kinnita kustutamine"
 
-#: app/templates/app/base/base_delete.html:12
+#: app/templates/app/base/base_delete.html:14
 msgid "Delete Permanently"
 msgstr "Kustuta jäädavalt"
 
-#: app/templates/app/base/base_update.html:6
-msgid "Confirm Update"
-msgstr "Kinnita uuendamine"
-
-#: app/templates/app/base/base_update.html:10
+#: app/templates/app/base/base_update.html:8
 msgid "Update"
 msgstr "Uuenda"
 
@@ -285,6 +277,11 @@ msgid ""
 msgstr ""
 "<p>Olete kindel, et soovite kustutada malli <b>%(template_problem)s</b>?</p>"
 
+#: app/templates/app/template_create_form.html:5
+#: app/templates/app/template_list.html:30
+msgid "Create Template"
+msgstr "Loo mall"
+
 #: app/templates/app/template_detail.html:5
 #: app/templates/app/template_list.html:5
 msgctxt "view in the application"
@@ -316,6 +313,7 @@ msgid "Remove"
 msgstr "Eemalda"
 
 #: app/templates/app/template_detail.html:36
+#: app/templates/app/templateproblem_create_form.html:5
 msgid "Add Problem"
 msgstr "Lisa ülesanne"
 
@@ -331,13 +329,13 @@ msgstr "Mallid"
 msgid "You don't have any templates yet."
 msgstr "Teil pole veel ühtegi malli."
 
-#: app/templates/app/template_list.html:30
-msgid "Create Template"
-msgstr "Loo mall"
-
 #: app/templates/app/template_list.html:36
 msgid "The number of problems this template has"
 msgstr "Mitu ülesannet see mall sisaldab"
+
+#: app/templates/app/template_update_form.html:5
+msgid "Update Template"
+msgstr "Uuenda malli"
 
 #: app/templates/app/templateproblem_confirm_delete.html:5
 #, python-format
@@ -346,6 +344,10 @@ msgid ""
 "from the test?</p>"
 msgstr ""
 "<p>Olete kindel, et soovite <b>%(template_problem)s</b> eemaldada tööst?</p>"
+
+#: app/templates/app/templateproblem_update_form.html:5
+msgid "Update Problem"
+msgstr "Uuenda ülesannet"
 
 #: app/templates/app/test_confirm_delete.html:5
 #, python-format
@@ -415,6 +417,10 @@ msgstr "Genereeri töö"
 #: app/templates/app/test_list.html:36
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
+
+#: app/templates/app/userfeedback_create_form.html:5
+msgid "Leave Feedback"
+msgstr "Jäta tagasisidet"
 
 #: app/views.py:101
 msgid "This template has no problems and would result in an empty test."

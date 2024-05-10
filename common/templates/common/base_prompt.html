@@ -23,6 +23,8 @@
         {% include "common/includes/messages.html" %}
     </div>
     <main class="container" style="max-width: 800px">
+        {% block body_header %}
+        {% endblock body_header %}
         <article>
             {% block body %}
             {% block content %}
