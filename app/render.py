@@ -52,7 +52,7 @@ def _render_problem_kind(problems: list[Problem], problem_index: int) -> str:
     return f"""
     \\noindent
     {problem_index + 1}) {problem_text}{newline}
-    {newline.join(_render_problem(problem, problem_index=idx) for (idx, problem) in enumerate(problems))}
+    {newline.join(_render_problem(problem, idx) for (idx, problem) in enumerate(problems))}
     """
 
 
@@ -86,27 +86,30 @@ def render_test_version(version: TestVersion) -> str:
     return latex
 
 
-def _render_problem_kind_answer(problems: list[Problem], subproblem_index: int) -> str:
+def _render_problem_kind_answer(problems: list[Problem], problem_index: int) -> str:
     assert len(set(problem.kind for problem in problems)) == 1
+
     problem_text = problems[0].problem_text
+    newline = "\\newline \\indent"
 
     return f"""
     \\noindent
-    {subproblem_index + 1}) {problem_text}\\newline \\indent
-    {"\\newline \\indent".join(f" {ascii_lowercase[i]}) ${problems[i].solution}$"
-        for i in range(len(problems)))}
+    {problem_index + 1}) {problem_text}{newline}
+    {newline.join(_render_problem_answer(problem, idx) for (idx, problem) in enumerate(problems))}
     """
 
 
+def _render_problem_answer(problem: Problem, problem_index: int) -> str:
+    return f" {ascii_lowercase[problem_index + 1]}) ${problem.solution}$"
+
+
 def _render_test_version_answers(version: TestVersion) -> str:
-    version_label = _("Version %(version)s") % {"version": version.version_number}
+    subsection_title = _("Version %(version)s") % {"version": version.version_number}
     problems_by_kind = _get_problems_by_kind(list(version.problem_set.all()))
-    problem_kind_list = list(problems_by_kind.keys())
 
     return f"""
-    \\subsection*{{{version_label}}}
-    {"\n".join(_render_problem_kind_answer(problems_by_kind[problem_kind_list[i]], i)
-        for i in range(len(problem_kind_list)))}
+    \\subsection*{{{subsection_title}}}
+    {"\n".join(_render_problem_kind_answer(problems_by_kind[problem_kind], idx) for (idx, problem_kind) in enumerate(problems_by_kind))}
     """
 
 
