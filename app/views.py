@@ -294,7 +294,9 @@ class TemplateProblemDeleteView(
 class TestDeleteView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("app:test-list")
     success_message = _("The test was deleted successfully.")
-    cancellation_url = success_url
+
+    def get_cancellation_url(self):
+        return reverse_lazy("app:test-detail", kwargs={"pk": self.get_object().pk})
 
     def get_queryset(self):
         return Test.objects.filter(author=self.request.user)
