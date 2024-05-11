@@ -1,6 +1,9 @@
+import os
 import random
 import string
+import subprocess
 from http import HTTPStatus
+from tempfile import TemporaryDirectory
 from urllib.parse import quote
 
 import pytest
@@ -463,3 +466,42 @@ def test_user_can_not_download_other_users_test_answer_key(client: Client):
     response = client.get(reverse("app:test-download", kwargs={"pk": test.pk}))
 
     assert response.status_code == HTTPStatus.NOT_FOUND
+
+
+@pytest.mark.django_db
+def test_test_version_renders_as_expected(client: Client):
+    user = create_user(client)
+    template = Template()
+    template.author = user
+    template.add_problem(ProblemKind.LINEAR_INEQUALITY, count=3)
+    template.add_problem(ProblemKind.QUADRATIC_INEQUALITY, count=2)
+    template.save()
+    random.seed(69)
+    template.generate_test(TestGenerationParameters(test_version_count=1))
+    test_version = TestVersion.objects.filter(test__author=user, version_number=1).first()
+    assert test_version is not None
+    expected_text = """Version 1
+1) Solve the following linear inequalities:
+a) 2 (x − 2) − 3 ≤ 2 (x − 4) − 4 (x − 5)
+b) 5 (x + 5) − 2 < 3 (x + 3) + 5 (x + 4)
+c) 5 (x + 2) + 4 ≥ 2 (x + 2) + 4 (x + 2)
+2) Solve the following quadratic inequalities:
+a) −8x2 + 3x − 8 ≥ 0
+b) 5x2 + 4x − 1 < 0"""
+
+    response = client.get(reverse("app:testversion-download", kwargs={"pk": test_version.pk}))
+    pdf_data = response.content
+
+    with TemporaryDirectory() as tmp_dir:
+        pdf_file = os.path.join(tmp_dir, "testversion.pdf")
+        txt_file = os.path.join(tmp_dir, "text.txt")
+        with open(pdf_file, "wb") as f:
+            f.write(pdf_data)
+        subprocess.run(["pdftotext", pdf_file, txt_file])
+        with open(txt_file) as f:
+            pdf_text = f.read()
+
+    print(expected_text)
+    print(pdf_text)
+
+    assert expected_text in pdf_text

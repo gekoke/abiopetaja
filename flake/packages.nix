@@ -16,6 +16,8 @@
             python -m django compilemessages
           '';
 
+          nativeCheckInputs = [ pkgs.poppler_utils ];
+
           checkPhase = ''
             pytest -n auto
             ${pkgs.pyright}/bin/pyright
