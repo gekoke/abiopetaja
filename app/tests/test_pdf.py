@@ -28,7 +28,7 @@ def _extract_pdf_text(pdf_data: bytes) -> str:
 
 
 @pytest.mark.django_db
-def test_test_version_renders_as_expected(client: Client):
+def test_test_version_compiles_as_expected(client: Client):
     random.seed(69)
 
     user = create_user(client)
@@ -58,7 +58,7 @@ b) 12x − 7 > 0"""
 
 
 @pytest.mark.django_db
-def test_test_answer_key_renders_as_expected(client: Client):
+def test_test_answer_key_compiles_as_expected(client: Client):
     random.seed(420)
 
     user = create_user(client)
