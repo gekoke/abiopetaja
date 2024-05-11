@@ -7,7 +7,7 @@ import pytest
 from django.test import Client
 from django.urls import reverse
 
-from app.models import ProblemKind, Template, TestGenerationParameters, TestVersion
+from app.models import ProblemKind, Template, Test, TestGenerationParameters, TestVersion
 from app.tests.lib import create_user
 
 
@@ -54,4 +54,26 @@ b) 12x − 7 > 0"""
     pdf_text = _extract_pdf_text(response.content)
     print(expected_text)
     print(pdf_text)
+    assert expected_text in pdf_text
+
+
+@pytest.mark.django_db
+def test_test_answer_key_renders_as_expected(client: Client):
+    random.seed(420)
+
+    user = create_user(client)
+    template = Template()
+    template.author = user
+    template.add_problem(ProblemKind.QUADRATIC_INEQUALITY, count=1)
+    template.save()
+    template.generate_test(TestGenerationParameters(test_version_count=1))
+    test = Test.objects.filter(author=user).first()
+    assert test is not None
+    expected_text = """Version 1
+1) Solve the following quadratic inequalities:
+a) (−∞, ∞)"""
+
+    response = client.get(reverse("app:test-download", kwargs={"pk": test.pk}))
+
+    pdf_text = _extract_pdf_text(response.content)
     assert expected_text in pdf_text
