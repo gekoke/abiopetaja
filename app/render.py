@@ -57,7 +57,7 @@ def _render_problem_kind(problems: list[Problem], problem_index: int) -> str:
 
 
 def _render_problem(problem: Problem, problem_index: int) -> str:
-    return f" {ascii_lowercase[problem_index + 1]}) ${problem.definition}$"
+    return f" {ascii_lowercase[problem_index]}) ${problem.definition}$"
 
 
 def _render_header(title: str, subtitle: str) -> str:
@@ -100,7 +100,7 @@ def _render_problem_kind_answer(problems: list[Problem], problem_index: int) -> 
 
 
 def _render_problem_answer(problem: Problem, problem_index: int) -> str:
-    return f" {ascii_lowercase[problem_index + 1]}) ${problem.solution}$"
+    return f" {ascii_lowercase[problem_index]}) ${problem.solution}$"
 
 
 def _render_test_version_answers(version: TestVersion) -> str:
