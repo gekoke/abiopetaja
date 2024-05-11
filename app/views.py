@@ -196,7 +196,7 @@ class TemplateUpdateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMi
     success_message = _("The template was updated successfully.")
 
     def get_success_url(self) -> str:
-        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().pk})  # type: ignore
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().pk})
 
     def get_cancellation_url(self):
         return self.get_success_url()
