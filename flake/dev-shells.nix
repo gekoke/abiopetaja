@@ -12,6 +12,7 @@
           pkgs.pyright
           pkgs.ruff
           pkgs.texliveBasic
+          pkgs.poppler_utils
         ];
 
         shellHook = ''
