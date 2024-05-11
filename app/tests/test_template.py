@@ -11,8 +11,8 @@ from app.tests.lib import create_user
 @pytest.mark.django_db
 def test_user_can_create_a_template(client: Client):
     user = create_user(client)
-    client.force_login(user)
 
+    client.force_login(user)
     client.post(reverse("app:template-create"), {"name": "My template"})
 
     Template.objects.get(author=user, name="My template")
@@ -22,8 +22,8 @@ def test_user_can_create_a_template(client: Client):
 def test_created_template_has_input_name(client: Client):
     template_name = "My template"
     user = create_user(client)
-    client.force_login(user)
 
+    client.force_login(user)
     client.post(reverse("app:template-create"), {"name": template_name})
 
     template: Template = Template.objects.get(author=user, name=template_name)
@@ -34,8 +34,8 @@ def test_created_template_has_input_name(client: Client):
 def test_created_template_has_input_fields(client: Client):
     template_title = "My title"
     user = create_user(client)
-    client.force_login(user)
 
+    client.force_login(user)
     client.post(reverse("app:template-create"), {"name": "My template", "title": template_title})
 
     template: Template = Template.objects.get(author=user, name="My template")
@@ -51,6 +51,7 @@ def test_updated_template_has_updated_fields(client: Client):
     client.post(reverse("app:template-create"), {"name": "My template", "title": template_title})
     template: Template = Template.objects.get(author=user, name="My template")
 
+    client.force_login(user)
     client.post(
         reverse("app:template-update", kwargs={"pk": template.pk}), {"title": updated_title}
     )
@@ -62,8 +63,8 @@ def test_updated_template_has_updated_fields(client: Client):
 @pytest.mark.django_db
 def test_user_can_get_created_template(client: Client):
     user = create_user(client)
-    client.force_login(user)
 
+    client.force_login(user)
     client.post(reverse("app:template-create"), {"name": "My template"})
     template: Template = Template.objects.get(author=user, name="My template")
     response = client.get(reverse("app:template-detail", kwargs={"pk": template.pk}))

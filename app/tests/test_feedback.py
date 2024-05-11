@@ -9,8 +9,8 @@ from app.tests.lib import create_user
 @pytest.mark.django_db
 def test_user_can_leave_feedback(client: Client):
     user = create_user(client)
-    client.force_login(user)
 
+    client.force_login(user)
     client.post(reverse("app:userfeedback-create"), {"content": "I love this app!"})
 
     feedback = UserFeedback.objects.filter(author=user).first()
@@ -20,8 +20,8 @@ def test_user_can_leave_feedback(client: Client):
 @pytest.mark.django_db
 def test_user_can_not_leave_blank_feedback(client: Client):
     user = create_user(client)
-    client.force_login(user)
 
+    client.force_login(user)
     client.post(reverse("app:userfeedback-create"), {"content": "   "})
 
     feedback = UserFeedback.objects.filter(author=user).first()
