@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-10 17:12+0000\n"
+"POT-Creation-Date: 2024-05-11 08:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,9 +122,9 @@ msgstr "Palju võrratusi"
 msgid "Save"
 msgstr "Salvesta"
 
-#: app/templates/app/base/base_create.html:9
-#: app/templates/app/base/base_delete.html:15
-#: app/templates/app/base/base_update.html:9
+#: app/templates/app/base/base_create.html:10
+#: app/templates/app/base/base_delete.html:16
+#: app/templates/app/base/base_update.html:10
 msgid "Cancel"
 msgstr "Tühista"
 
@@ -418,6 +418,10 @@ msgstr "Genereeri töö"
 #: app/templates/app/test_list.html:36
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
+
+#: app/templates/app/userfeedback_create_form.html:5
+msgid "Leave Feedback"
+msgstr ""
 
 #: app/views.py:113
 msgid "This template has no problems and would result in an empty test."
