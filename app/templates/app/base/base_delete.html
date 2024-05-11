@@ -1,9 +1,11 @@
 {% extends "common/base_prompt.html" %}
 {% load i18n %}
 
-{% block content %}
+{% block body_header %}
+    <h1>{% translate "Confirm Deletion" %}</h1>
+{% endblock body_header %}
 
-<h1>{% translate "Confirm Deletion" %}</h1>
+{% block content %}
 <form method="post">
     {% csrf_token %}
     {% block confirmation %}

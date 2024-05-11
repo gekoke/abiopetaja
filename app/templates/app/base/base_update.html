@@ -2,7 +2,6 @@
 {% load i18n %}
 
 {% block content %}
-
 <form method="post">
     {% csrf_token %}
     {% include "common/includes/fields.html" with form=form %}
