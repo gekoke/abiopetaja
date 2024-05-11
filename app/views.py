@@ -265,7 +265,8 @@ class TemplateProblemUpdateView(
     success_message = _("The problem entry was updated successfully.")
 
     def get_success_url(self) -> str:
-        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().template.pk})  # type: ignore
+        template_problem: TemplateProblem = self.get_object()  # type: ignore
+        return reverse_lazy("app:template-detail", kwargs={"pk": template_problem.template.pk})
 
     def get_cancellation_url(self):
         return self.get_success_url()
@@ -280,7 +281,8 @@ class TemplateProblemDeleteView(
     success_message = _("The problem entry was deleted successfully.")
 
     def get_success_url(self) -> str:
-        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().template.pk})  # type: ignore
+        template_problem: TemplateProblem = self.get_object()  # type: ignore
+        return reverse_lazy("app:template-detail", kwargs={"pk": template_problem.template.pk})
 
     def get_cancellation_url(self):
         return self.get_success_url()

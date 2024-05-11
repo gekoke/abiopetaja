@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-11 08:58+0000\n"
+"POT-Creation-Date: 2024-05-11 14:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -452,14 +452,14 @@ msgstr "Mall kustutati edukalt"
 msgid "The problem entry was updated successfully."
 msgstr "Ülesanne salvestati edukalt"
 
-#: app/views.py:280
+#: app/views.py:281
 msgid "The problem entry was deleted successfully."
 msgstr "Ülesanne kustutati edukalt"
 
-#: app/views.py:294
+#: app/views.py:296
 msgid "The test was deleted successfully."
 msgstr "Töö kustutati edukalt"
 
-#: app/views.py:308
+#: app/views.py:310
 msgid "Your feedback was submitted. Thanks!"
 msgstr "Saime su tagasiside kätte. Tänud!"
