@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 14:52+0000\n"
+"POT-Creation-Date: 2024-05-12 21:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,14 +29,18 @@ msgstr "Ressurssi ei leitud."
 msgid "Something went wrong on our end. Sorry!"
 msgstr "Miski läks meie süsteemis valesti. Palume vabandust!"
 
-#: common/templates/common/includes/nav.html:43
+#: common/templates/common/includes/nav.html:44
+msgid "Admin"
+msgstr ""
+
+#: common/templates/common/includes/nav.html:46
 msgid "Leave Feedback"
 msgstr "Jäta tagasisidet"
 
-#: common/templates/common/includes/nav.html:44
+#: common/templates/common/includes/nav.html:47
 msgid "Change Password"
 msgstr "Muuda salasõna"
 
-#: common/templates/common/includes/nav.html:45
+#: common/templates/common/includes/nav.html:48
 msgid "Sign Out"
 msgstr "Logi välja"

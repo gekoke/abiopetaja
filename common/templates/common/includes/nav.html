@@ -40,6 +40,9 @@
             <details class="dropdown">
                 <summary>🔧️</summary>
                 <ul dir="rtl">
+                    {% if user.is_staff %}
+                    <li><a href="{% url 'admin:index' %}">😎 {% translate "Admin" %}</a></li>
+                    {% endif %}
                     <li><a href="{% url 'app:userfeedback-create' %}">📨 {% translate "Leave Feedback" %}</a></li>
                     <li><a href="{% url 'account_change_password' %}">🔑 {% translate "Change Password" %}</a></li>
                     <li><a href="{% url 'account_logout' %}">🚪 {% translate "Sign Out" %}</a></li>
