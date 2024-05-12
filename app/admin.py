@@ -4,7 +4,7 @@ from app.models import Template, TemplateProblem, Test, UserFeedback
 
 
 class EntityAdmin(admin.ModelAdmin):
-    readonly_fields = ("created_at", "updated_at")
+    readonly_fields = ("id", "created_at", "updated_at")
 
 
 def register_entity(entity):
