@@ -97,9 +97,13 @@ def test_generation(
 
 @login_required
 def test_generate(request: HttpRequest) -> HttpResponse:
+    def delete_unsaved_tests():
+        Test.objects.filter(author=request.user, is_saved=False).delete()
+
     if request.method == "POST":
         form = GenerateTestForm(request.POST, user=request.user)
         if form.is_valid():
+            delete_unsaved_tests()
             template = form.get_template()
             test_generation_parameters = form.get_test_generation_parameters()
             test = template.generate_test(test_generation_parameters)
