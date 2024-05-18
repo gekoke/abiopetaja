@@ -9,6 +9,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# Otherwise we get rate limited in CI
+ACCOUNT_RATE_LIMITS = False
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
