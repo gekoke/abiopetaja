@@ -22,15 +22,6 @@
             pytest -n auto
             ${pkgs.pyright}/bin/pyright
           '';
-            
-          overrides = pkgs.poetry2nix.overrides.withDefaults (_: prev: {
-            # FIXME: remove when https://github.com/NixOS/nixpkgs/pull/306553 is merged
-            django-allauth = prev.django-allauth.overridePythonAttrs (_: {
-              postBuild = ''
-                ${prev.django-allauth.passthru.pythonModule.pythonOnBuildForHost.interpreter} -m django compilemessages
-              '';
-            });
-          });
         };
 
         build = appDefinition: pkgs.poetry2nix.mkPoetryApplication appDefinition;
