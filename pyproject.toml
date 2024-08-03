@@ -43,7 +43,7 @@ filterwarnings = ["ignore:.*is deprecated.*:DeprecationWarning"]
 
 [tool.ruff]
 line-length = 100
-extend-exclude = ["app/migrations/*.py"]
+extend-exclude = ["app/migrations/*.py", "manage.py"]
 
 [tool.ruff.lint]
 extend-select = ["I", "B", "Q", "W", "D"]
