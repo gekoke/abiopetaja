@@ -29,6 +29,15 @@ def add_default_templates(sender, instance: User, created: bool, **kwargs):
     template.add_problem(ProblemKind.QUADRATIC_INEQUALITY, count=3)
     template.add_problem(ProblemKind.FRACTIONAL_INEQUALITY, count=3)
 
+    template = Template()
+    template.name = _("Exponents")
+    template.author = user
+    template.title = _("Exponents")
+    template.save()
+
+    template.add_problem(ProblemKind.EXPONENT_REDUCTION_PROBLEM, count=5)
+    template.add_problem(ProblemKind.EXPONENT_OPERATION_PROBLEM, count=10)
+
     if not settings.DEBUG:
         return
 
