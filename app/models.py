@@ -49,6 +49,8 @@ class ProblemKind(IntegerChoices):
     LINEAR_INEQUALITY = 1, _("Linear inequality")
     QUADRATIC_INEQUALITY = 2, _("Quadratic inequality")
     FRACTIONAL_INEQUALITY = 3, _("Fractional inequality")
+    EXPONENT_REDUCTION_PROBLEM = 4, _("Exponent reduction problem")
+    EXPONENT_OPERATION_PROBLEM = 5, _("Exponent operation problem")
 
     def generate(self) -> Problem:
         import app.maths as maths
@@ -57,6 +59,8 @@ class ProblemKind(IntegerChoices):
             ProblemKind.LINEAR_INEQUALITY: maths.make_linear_inequality_problem,
             ProblemKind.QUADRATIC_INEQUALITY: maths.make_quadratic_inequality_problem,
             ProblemKind.FRACTIONAL_INEQUALITY: maths.make_fractional_inequality_problem,
+            ProblemKind.EXPONENT_REDUCTION_PROBLEM: maths.make_exponent_reduction_problem,
+            ProblemKind.EXPONENT_OPERATION_PROBLEM: maths.make_exponent_operation_problem,
         }
 
         return problem_generator[self]()
@@ -67,6 +71,8 @@ class ProblemKind(IntegerChoices):
             ProblemKind.LINEAR_INEQUALITY: _("Solve the following linear inequalities:"),
             ProblemKind.QUADRATIC_INEQUALITY: _("Solve the following quadratic inequalities:"),
             ProblemKind.FRACTIONAL_INEQUALITY: _("Solve the following fractional inequalities:"),
+            ProblemKind.EXPONENT_REDUCTION_PROBLEM: _("Reduce the following expressions:"),
+            ProblemKind.EXPONENT_OPERATION_PROBLEM: _("Perform the following operations:"),
         }
         return PROBLEM_TEXT[problem_kind]
 

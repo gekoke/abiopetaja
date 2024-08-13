@@ -2,10 +2,15 @@ from __future__ import annotations
 
 import random
 
-from sympy import Expr, S, solveset, sympify
+from sympy import Expr, S, simplify, solveset, sympify
+from sympy.core import UnevaluatedExpr, symbols
 from sympy.printing.latex import latex
 
 from app.models import Problem, ProblemKind
+
+
+def _latex(expr):
+    return latex(expr, decimal_separator="comma")
 
 
 def make_plus_or_minus():
@@ -68,8 +73,8 @@ def make_linear_inequality_problem() -> Problem:
     problem_solution = solveset(problem_definition, "x", S.Reals)
 
     problem = Problem()
-    problem.definition = latex(problem_definition)
-    problem.solution = latex(problem_solution)
+    problem.definition = _latex(problem_definition)
+    problem.solution = _latex(problem_solution)
     problem.kind = ProblemKind.LINEAR_INEQUALITY
     return problem
 
@@ -89,8 +94,8 @@ def make_quadratic_inequality_problem() -> Problem:
     problem_solution = solveset(problem_definition, "x", S.Reals)
 
     problem = Problem()
-    problem.definition = latex(problem_definition)
-    problem.solution = latex(problem_solution)
+    problem.definition = _latex(problem_definition)
+    problem.solution = _latex(problem_solution)
     problem.kind = ProblemKind.QUADRATIC_INEQUALITY
     return problem
 
@@ -110,7 +115,135 @@ def make_fractional_inequality_problem() -> Problem:
     problem_solution = solveset(problem_definition, "x", S.Reals)
 
     problem = Problem()
-    problem.definition = latex(problem_definition)
-    problem.solution = latex(problem_solution)
+    problem.definition = _latex(problem_definition)
+    problem.solution = _latex(problem_solution)
     problem.kind = ProblemKind.FRACTIONAL_INEQUALITY
     return problem
+
+
+def make_exponent_reduction_problem() -> Problem:
+    m, n, w, x, y = symbols("m n w x y")
+
+    def variant_1() -> Problem:
+        coef_1 = random.randint(10, 50)
+        coef_2 = random.randint(10, 50)
+        exp_1 = random.randint(2, 9)
+        exp_2 = random.randint(2, 9)
+        exp_3 = random.randint(2, 9)
+        exp_4 = random.randint(2, 9)
+        exp_5 = random.randint(2, 9)
+        exp_6 = random.randint(2, 9)
+
+        numerator = UnevaluatedExpr(coef_1 * w**exp_1 * x**exp_2 * y**exp_3)
+        denominator = coef_2 * w**exp_4 * x**exp_5 * y**exp_6
+
+        problem_definition = numerator / denominator
+        problem_solution = simplify(problem_definition)
+
+        problem = Problem()
+        problem.definition = _latex(problem_definition)
+        problem.solution = _latex(problem_solution)
+        problem.kind = ProblemKind.EXPONENT_REDUCTION_PROBLEM
+        return problem
+
+    def variant_2() -> Problem:
+        coef_1 = random.randint(10, 50)
+        coef_2 = random.randint(10, 50)
+        exp_1 = random.randint(2, 9)
+        exp_2 = random.randint(2, 9)
+        exp_4 = random.randint(2, 9)
+        exp_5 = random.randint(2, 9)
+
+        numerator = UnevaluatedExpr(coef_1 * m**exp_1 * n**exp_2)
+        denominator = coef_2 * m**exp_4 * n**exp_5
+
+        problem_definition = numerator / denominator
+        problem_solution = simplify(problem_definition)
+
+        problem = Problem()
+        problem.definition = _latex(problem_definition)
+        problem.solution = _latex(problem_solution)
+        problem.kind = ProblemKind.EXPONENT_REDUCTION_PROBLEM
+        return problem
+
+    variants = [
+        variant_1,
+        variant_2,
+    ]
+    return random.choice(variants)()
+
+
+def make_exponent_operation_problem() -> Problem:
+    u, v, x, y, z = symbols("u v x y z")
+
+    def variant_1() -> Problem:
+        coef_1 = random.choice(list(range(-9, 0)) + list(range(1, 9)))
+        coef_2 = random.randint(1, 9)
+        exp = random.randint(2, 3)
+        numerator = UnevaluatedExpr(coef_1 * x * z)
+        denominator = coef_2 * y
+
+        problem_definition = UnevaluatedExpr(numerator / denominator) ** exp
+        problem_solution = simplify(problem_definition)
+
+        problem = Problem()
+        problem.definition = _latex(problem_definition)
+        problem.solution = _latex(problem_solution)
+        problem.kind = ProblemKind.EXPONENT_OPERATION_PROBLEM
+        return problem
+
+    def variant_2() -> Problem:
+        coef_1 = random.choice(list(i / 10 for i in range(1, 10)))
+        coef_2 = random.randint(2, 9)
+        exp_1 = random.randint(2, 3)
+        exp_2 = random.randint(2, 3)
+        exp_3 = random.randint(2, 3)
+
+        fact_1 = UnevaluatedExpr(coef_1 * x**exp_1 * y**exp_2)
+        fact_2 = coef_2 * x * y**exp_3
+
+        problem_definition = fact_1 * fact_2
+        problem_solution = simplify(problem_definition)
+
+        problem = Problem()
+        problem.definition = _latex(problem_definition)
+        problem.solution = _latex(problem_solution)
+        problem.kind = ProblemKind.EXPONENT_OPERATION_PROBLEM
+        return problem
+
+    def variant_3() -> Problem:
+        coef_1 = random.randint(-4, -2)
+        coef_2 = random.randint(2, 6)
+        exp_1 = random.randint(2, 4)
+        exp_2 = random.randint(2, 4)
+
+        problem_definition = UnevaluatedExpr(coef_1 * u * v**exp_1) / (coef_2 * u * v**exp_2)
+        problem_solution = simplify(problem_definition)
+
+        problem = Problem()
+        problem.definition = _latex(problem_definition)
+        problem.solution = _latex(problem_solution)
+        problem.kind = ProblemKind.EXPONENT_OPERATION_PROBLEM
+        return problem
+
+    def variant_4() -> Problem:
+        exp_1 = random.randint(1, 3)
+        exp_2 = random.randint(2, 3)
+        exp_3 = random.randint(2, 3)
+
+        problem_definition = (UnevaluatedExpr(x**exp_1 * y**exp_2) ** exp_3) * (-x * y)
+        problem_solution = simplify(problem_definition)
+
+        problem = Problem()
+        problem.definition = _latex(problem_definition)
+        problem.solution = _latex(problem_solution)
+        problem.kind = ProblemKind.EXPONENT_OPERATION_PROBLEM
+        return problem
+
+    variants = [
+        variant_1,
+        variant_2,
+        variant_3,
+        variant_4,
+    ]
+    return random.choice(variants)()
