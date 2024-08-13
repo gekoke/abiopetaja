@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-18 14:19+0000\n"
+"POT-Creation-Date: 2024-08-13 11:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr "Vali mall, millest dokumente genereerida"
 msgid "Number of test versions"
 msgstr "Variantide arv"
 
-#: app/forms.py:53 app/models.py:87 app/models.py:249
+#: app/forms.py:53 app/models.py:88 app/models.py:262
 msgid "Name"
 msgstr "Nimi"
 
@@ -61,50 +61,50 @@ msgstr "Ülesannete arv"
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 
-#: app/models.py:48
+#: app/models.py:49
 msgid "Linear inequality"
 msgstr "Lineaarvõrratus"
 
-#: app/models.py:49
+#: app/models.py:50
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: app/models.py:50
+#: app/models.py:51
 msgid "Fractional inequality"
 msgstr "Murdvõrratus"
 
-#: app/models.py:66
+#: app/models.py:67
 msgid "Solve the following linear inequalities:"
 msgstr "Lahenda järgnevad lineaarvõrratused:"
 
-#: app/models.py:67
+#: app/models.py:68
 msgid "Solve the following quadratic inequalities:"
 msgstr "Lahenda järgnevad ruutvõrratused:"
 
-#: app/models.py:68
+#: app/models.py:69
 msgid "Solve the following fractional inequalities:"
 msgstr "Lahenda järgnevad murdvõrratused:"
 
-#: app/models.py:87
+#: app/models.py:88
 msgid "Only you can see this name"
 msgstr "Ainult sina näed seda nime"
 
-#: app/models.py:92
+#: app/models.py:93
 msgctxt "of a template"
 msgid "Title"
 msgstr "Pealkiri"
 
-#: app/models.py:94
+#: app/models.py:95
 msgid ""
 "Anything you add to this field will be rendered at the top of the test "
 "document"
 msgstr "Kõik, mis siia lahtrisse lisad, kuvatakse töölehe ülalosas"
 
-#: app/models.py:295
+#: app/models.py:307
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
-#: app/models.py:300
+#: app/models.py:312
 msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"

@@ -20,6 +20,7 @@ from django.db.models import (
     Q,
     TextField,
 )
+from django.db.models.constraints import UniqueConstraint
 from django.urls import reverse
 from django.utils.translation import gettext, pgettext_lazy
 from django.utils.translation import gettext_lazy as _
@@ -96,7 +97,9 @@ class Template(Entity):
     )
 
     class Meta:
-        unique_together = ["author", "name"]
+        constraints = [
+            UniqueConstraint(fields=["author", "name"], name="template_name_is_unique_per_author")
+        ]
 
     def get_absolute_url(self) -> str:
         return reverse("app:template-detail", kwargs={"pk": self.pk})
@@ -188,7 +191,12 @@ class TemplateProblem(Entity):
     """
 
     class Meta:
-        unique_together = ["template", "problem_kind"]
+        constraints = [
+            UniqueConstraint(
+                fields=["template", "problem_kind"],
+                name="problemkind_only_appears_once_per_template",
+            )
+        ]
 
     def __str__(self):
         return gettext(ProblemKind(self.problem_kind).label)
@@ -209,7 +217,12 @@ class TestVersion(Entity):
     pdf = models.FileField()
 
     class Meta:
-        unique_together = ["test", "version_number"]
+        constraints = [
+            UniqueConstraint(
+                fields=["test", "version_number"],
+                name="test_does_not_have_any_testversion_number_more_than_once",
+            )
+        ]
 
     def problem_count(self) -> int:
         return self.problem_set.count()
@@ -260,9 +273,8 @@ class Test(Entity):
     answer_key_pdf = models.FileField()
 
     class Meta:
-        unique_together = [["author", "name"]]
-
         constraints = [
+            UniqueConstraint(fields=["author", "name"], name="test_name_is_unique_per_author"),
             CheckConstraint(
                 check=Q(is_saved=False) | Q(name__isnull=False),
                 name="saved_test_has_name",
