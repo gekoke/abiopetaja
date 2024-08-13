@@ -82,15 +82,23 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
 @login_required
 def test_generation(
-    request: HttpRequest, preview_test_pk: UUID | None = None, save_form: SaveTestForm | None = None
+    request: HttpRequest,
+    preview_test_pk: UUID | None = None,
+    save_test_form: SaveTestForm | None = None,
 ) -> HttpResponse:
     preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
+    generate_test_form = GenerateTestForm(user=request.user)
+    show_save_form = preview_test is not None and not preview_test.is_saved
+    save_test_form = (
+        (save_test_form if save_test_form is not None else SaveTestForm(user=request.user))
+        if show_save_form
+        else None
+    )
 
     context = {
-        "generate_form": GenerateTestForm(user=request.user),
-        "show_save_form": preview_test is not None and not preview_test.is_saved,
-        "save_form": save_form if save_form is not None else SaveTestForm(user=request.user),
         "preview_test": preview_test,
+        "generate_test_form": generate_test_form,
+        "save_test_form": save_test_form,
     }
     return render(request, "app/test_generation.html", context)
 

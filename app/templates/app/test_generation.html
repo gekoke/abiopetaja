@@ -13,16 +13,16 @@
             <article>
                 <form action="{% url 'app:test-generate' %}" method="post">
                     {% csrf_token %}
-                    {% include 'common/includes/fields.html' with form=generate_form %}
+                    {% include 'common/includes/fields.html' with form=generate_test_form %}
                     <input type="submit" value="{% translate "Generate!" %}">
                 </form>
             </article>
 
-            {% if show_save_form %}
+            {% if save_test_form %}
             <article>
                 <form action="{% url 'app:test-save' preview_test.id %}" novalidate method="post">
                     {% csrf_token %}
-                    {% include 'common/includes/fields.html' with form=save_form disabled=disable_save_form %}
+                    {% include 'common/includes/fields.html' with form=save_test_form %}
                     <input type="submit" class="green" value="{% translate "Save Test" %}">
                 </form>
             </article>
