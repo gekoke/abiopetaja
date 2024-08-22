@@ -81,7 +81,7 @@ class TemplateUpdateForm(ModelForm):
 
     class Meta:
         model = Template
-        exclude = ["author", "name"]
+        exclude = ["author"]
 
 
 TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(

@@ -43,21 +43,37 @@ def test_created_template_has_input_fields(client: Client):
 
 
 @pytest.mark.django_db
-def test_updated_template_has_updated_fields(client: Client):
-    template_title = "My title"
-    updated_title = "Updated title"
+def test_can_update_template_name(client: Client):
+    template_data = {"name": "Initial name", "title": "Template title"}
+    expected_name = "New name!"
     user = create_user(client)
     client.force_login(user)
-    client.post(reverse("app:template-create"), {"name": "My template", "title": template_title})
-    template: Template = Template.objects.get(author=user, name="My template")
+    client.post(reverse("app:template-create"), template_data)
+    template: Template = Template.objects.get(author=user, name=template_data["name"])
 
+    template_data.update(name=expected_name)
     client.force_login(user)
-    client.post(
-        reverse("app:template-update", kwargs={"pk": template.pk}), {"title": updated_title}
-    )
+    client.post(reverse("app:template-update", kwargs={"pk": template.pk}), template_data)
 
-    template: Template = Template.objects.get(author=user, name="My template")
-    assert template.title == updated_title
+    template: Template = Template.objects.get(pk=template.pk)
+    assert template.name == expected_name
+
+
+@pytest.mark.django_db
+def test_can_update_template_title(client: Client):
+    template_data = {"name": "Template name", "title": "Initial title"}
+    expected_title = "New title!"
+    user = create_user(client)
+    client.force_login(user)
+    client.post(reverse("app:template-create"), template_data)
+    template: Template = Template.objects.get(author=user, name=template_data["name"])
+
+    template_data.update(title=expected_title)
+    client.force_login(user)
+    client.post(reverse("app:template-update", kwargs={"pk": template.pk}), template_data)
+
+    template: Template = Template.objects.get(pk=template.pk)
+    assert template.title == expected_title
 
 
 @pytest.mark.django_db
