@@ -14,6 +14,7 @@
           pkgs.texliveBasic
           pkgs.poppler_utils
           pkgs.djhtml
+          pkgs.djlint
         ];
 
         shellHook = ''

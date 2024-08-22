@@ -36,6 +36,12 @@
               entry = "${pkgs.djhtml}/bin/djhtml abiopetaja app authentication common";
               pass_filenames = false;
             };
+            djlint = {
+              enable = true;
+              name = "djlint";
+              entry = "${pkgs.djlint}/bin/djlint --ignore 'H021,H030,H031' .";
+              pass_filenames = false;
+            };
             makemessages =
               let
                 makeMessages = pkgs.writeShellScriptBin "makemessages" ''
