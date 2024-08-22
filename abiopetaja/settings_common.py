@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "allauth",
     "allauth.account",
+    # This must come last! See https://github.com/un1t/django-cleanup?tab=readme-ov-file#configuration
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 MIDDLEWARE = [
