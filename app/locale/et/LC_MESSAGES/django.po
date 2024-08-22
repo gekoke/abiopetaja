@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-13 15:51+0000\n"
+"POT-Creation-Date: 2024-08-22 12:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,60 +170,60 @@ msgstr "Peamenüü"
 msgid "Welcome, %(name)s!"
 msgstr "Tere tulemast, %(name)s!"
 
-#: app/templates/app/dashboard.html:19
+#: app/templates/app/dashboard.html:18
 msgid "New Test ✅️"
 msgstr "Uus töö ✅"
 
-#: app/templates/app/dashboard.html:20
+#: app/templates/app/dashboard.html:19
 msgid "Generate a new test"
 msgstr "Genereeri uus töö"
 
-#: app/templates/app/dashboard.html:21
+#: app/templates/app/dashboard.html:20
 #: app/templates/app/test_generation.html:17
 msgid "Generate!"
 msgstr "Genereeri!"
 
-#: app/templates/app/dashboard.html:26
+#: app/templates/app/dashboard.html:25
 msgid "My Templates 📐"
 msgstr "Minu mallid 📐"
 
-#: app/templates/app/dashboard.html:27
+#: app/templates/app/dashboard.html:26
 msgid "Collections of problems that can be used to generate tests"
 msgstr "Ülesannete kogud, mida saab töödeks genereerida"
 
-#: app/templates/app/dashboard.html:28
+#: app/templates/app/dashboard.html:27
 #, python-format
 msgid "View %(counter)s template"
 msgid_plural "View %(counter)s templates"
 msgstr[0] "Vaata %(counter)s malli"
 msgstr[1] "Vaata %(counter)s malli"
 
-#: app/templates/app/dashboard.html:31
+#: app/templates/app/dashboard.html:30
 msgctxt "math tests"
 msgid "My Tests 📄"
 msgstr "Minu tööd 📄"
 
-#: app/templates/app/dashboard.html:32
+#: app/templates/app/dashboard.html:31
 msgid "Browse all your tests"
 msgstr "Sirvi kõiki sinu töid"
 
-#: app/templates/app/dashboard.html:33
+#: app/templates/app/dashboard.html:32
 #, python-format
 msgid "View %(counter)s test"
 msgid_plural "View %(counter)s tests"
 msgstr[0] "Vaata %(counter)s tööd"
 msgstr[1] "Vaata %(counter)s tööd"
 
-#: app/templates/app/dashboard.html:36
+#: app/templates/app/dashboard.html:35
 msgctxt "math problems"
 msgid "All Problems 🧠"
 msgstr "Kõik ülesanded 🧠"
 
-#: app/templates/app/dashboard.html:37
+#: app/templates/app/dashboard.html:36
 msgid "Browse all the available problems"
 msgstr "Sirvi kõiki olemasolevaid ülesandeid"
 
-#: app/templates/app/dashboard.html:38
+#: app/templates/app/dashboard.html:37
 #, python-format
 msgid "View %(counter)s problem"
 msgid_plural "View %(counter)s problems"
