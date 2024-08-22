@@ -2,29 +2,29 @@
 {% load i18n %}
 
 {% block extra_head %}
-<title>{% translate "Problem Sets" context "view in the application" %}</title>
+    <title>{% translate "Problem Sets" context "view in the application" %}</title>
 {% endblock %}
 
 {% block content %}
-{% with problem_sets=object_list %}
-<main class="container">
-    <h1>{% translate "Problem Sets" %}</h1>
-    {% if problem_sets %}
-    {% for problem_set in problem_sets %}
-    <article>
-        <a href="{{ problem_set.get_absolute_url }}">
-            <h2>{{ problem_set.name }}</h2>
-        </a>
-        <footer>
-            ❓ <b>{{ problem_set.template.problem_count }}</b>
-            <br>
-            📐 <a href="{{ problem_set.template.get_absolute_url }}"><b>{{ problem_set.template.name }}</b></a>
-        </footer>
-    </article>
-    {% endfor %}
-    {% else %}
-    <p>{% translate "You don't have any problem sets yet." %}</p>
-    {% endif %}
-</main>
-{% endwith %}
+    {% with problem_sets=object_list %}
+        <main class="container">
+            <h1>{% translate "Problem Sets" %}</h1>
+            {% if problem_sets %}
+                {% for problem_set in problem_sets %}
+                    <article>
+                        <a href="{{ problem_set.get_absolute_url }}">
+                            <h2>{{ problem_set.name }}</h2>
+                        </a>
+                        <footer>
+                            ❓ <b>{{ problem_set.template.problem_count }}</b>
+                            <br>
+                            📐 <a href="{{ problem_set.template.get_absolute_url }}"><b>{{ problem_set.template.name }}</b></a>
+                        </footer>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>{% translate "You don't have any problem sets yet." %}</p>
+            {% endif %}
+        </main>
+    {% endwith %}
 {% endblock %}

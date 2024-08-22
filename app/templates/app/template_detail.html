@@ -2,40 +2,40 @@
 {% load i18n %}
 
 {% block extra_head %}
-<title>{% translate "Templates" context "view in the application" %}</title>
+    <title>{% translate "Templates" context "view in the application" %}</title>
 
 {% endblock %}
 
 {% block content %}
-{% with template=object %}
-<main class="container">
-    <hgroup>
-    <h1>{{ template.name }}</h1>
-    <p>{% translate "📐 Template" %}</p>
-    </hgroup>
-    <article>
-        <h6>{% translate "Title" %}</h6>
-        <p>{{ template.title }}</h1>
-        <footer>
-            <a href="{% url 'app:template-update' pk=template.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
-        </footer>
-    </article>
-    {% for entry in template.entries %}
-    <article>
-        <hgroup>
-            <h2>{{ entry }}</h2>
-            <p>{% blocktranslate count counter=entry.count %}This problem will appear {{ counter }} time{% plural %}This problem will appear {{ counter }} times{% endblocktranslate %}</p>
-        </hgroup>
-        <footer>
-            <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
-            <a href="{% url 'app:templateproblem-delete' pk=entry.pk %}" role="button" class="secondary outline">{% translate "Remove" %}</a>
-        </footer>
-    </article>
-    {% endfor %}
-    <div role="group">
-        <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green" >{% translate "Add Problem" %}</a>
-    </div>
-    <a href="{% url 'app:template-delete' pk=template.pk %}" role="button" class="secondary outline">{% translate "Delete Template" %}</a>
-</main>
-{% endwith %}
+    {% with template=object %}
+        <main class="container">
+            <hgroup>
+                <h1>{{ template.name }}</h1>
+                <p>{% translate "📐 Template" %}</p>
+            </hgroup>
+            <article>
+                <h6>{% translate "Title" %}</h6>
+                <p>{{ template.title }}</h1>
+                <footer>
+                    <a href="{% url 'app:template-update' pk=template.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
+                </footer>
+            </article>
+            {% for entry in template.entries %}
+                <article>
+                    <hgroup>
+                        <h2>{{ entry }}</h2>
+                        <p>{% blocktranslate count counter=entry.count %}This problem will appear {{ counter }} time{% plural %}This problem will appear {{ counter }} times{% endblocktranslate %}</p>
+                    </hgroup>
+                    <footer>
+                        <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" role="button" class="secondary">{% translate "Edit" %}</a>
+                        <a href="{% url 'app:templateproblem-delete' pk=entry.pk %}" role="button" class="secondary outline">{% translate "Remove" %}</a>
+                    </footer>
+                </article>
+            {% endfor %}
+            <div role="group">
+                <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green" >{% translate "Add Problem" %}</a>
+            </div>
+            <a href="{% url 'app:template-delete' pk=template.pk %}" role="button" class="secondary outline">{% translate "Delete Template" %}</a>
+        </main>
+    {% endwith %}
 {% endblock %}

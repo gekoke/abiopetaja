@@ -2,30 +2,30 @@
 {% load i18n %}
 
 {% block extra_head %}
-<title>{% translate "Problem Set" context "view in the application" %}</title>
+    <title>{% translate "Problem Set" context "view in the application" %}</title>
 {% endblock %}
 
 {% block content %}
-{% with problem_set=object %}
+    {% with problem_set=object %}
 
-<main class="container">
-    <h1>📄 {{ problem_set.name }}</h1>
+        <main class="container">
+            <h1>📄 {{ problem_set.name }}</h1>
 
-    <ul>
-        <li>{% translate "Problem count" %}: {{ problem_set.problem_count }}</li>
-        <li>{% translate "Template" %}: <a href="{{ problem_set.template.get_absolute_url }}">{{ problem_set.template.name }}</a></li>
-    </ul>
+            <ul>
+                <li>{% translate "Problem count" %}: {{ problem_set.problem_count }}</li>
+                <li>{% translate "Template" %}: <a href="{{ problem_set.template.get_absolute_url }}">{{ problem_set.template.name }}</a></li>
+            </ul>
 
-    <details>
-        <summary role="button">{% translate "Problem Set" %}</summary>
-        <iframe style="height: 80vh; width: 100%;" type="application/pdf" name="problem-set.pdf" src="data:application/pdf;base64,{{ problem_set.problems_pdf.as_base64  }}"></iframe>
-    </details>
+            <details>
+                <summary role="button">{% translate "Problem Set" %}</summary>
+                <iframe style="height: 80vh; width: 100%;" type="application/pdf" name="problem-set.pdf" src="data:application/pdf;base64,{{ problem_set.problems_pdf.as_base64  }}"></iframe>
+            </details>
 
-    <details>
-        <summary role="button" class="secondary">{% translate "Answer Key" %}</summary>
-        <iframe style="height: 80vh; width: 100%;" type="application/pdf" name="answer-key.pdf" src="data:application/pdf;base64,{{ problem_set.problems_pdf.as_base64  }}"></iframe> 
-    </details>
-</main>
+            <details>
+                <summary role="button" class="secondary">{% translate "Answer Key" %}</summary>
+                <iframe style="height: 80vh; width: 100%;" type="application/pdf" name="answer-key.pdf" src="data:application/pdf;base64,{{ problem_set.problems_pdf.as_base64  }}"></iframe>
+            </details>
+        </main>
 
-{% endwith %}
+    {% endwith %}
 {% endblock %}

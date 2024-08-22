@@ -2,41 +2,41 @@
 {% load i18n %}
 
 {% block extra_head %}
-<title>{% translate "Dashboard" context "view in the application" %}</title>
+    <title>{% translate "Dashboard" context "view in the application" %}</title>
 {% endblock %}
 
 {% block content %}
-<header class="container">
-    <hgroup>
-        <h1>{% blocktranslate with name=user.username %}Welcome, {{ name }}!{% endblocktranslate %} 👋</h1>
-        <p></p>
-    </hgroup>
-</header>
+    <header class="container">
+        <hgroup>
+            <h1>{% blocktranslate with name=user.username %}Welcome, {{ name }}!{% endblocktranslate %} 👋</h1>
+            <p></p>
+        </hgroup>
+    </header>
 
-<main class="container">
-    <div class="grid">
-        <article id="new-problem-set">
-            <h2>{% translate "New Test ✅️"%}</h2>
-            <p>{% translate "Generate a new test" %}</p>
-            <a href="{% url 'app:test-generation' %}" role="button" style="width: 100%">{% translate "Generate!" %}</a>
-        </article>
-    </div>
-    <div class="grid">
-        <article id="templates">
-            <h2>{% translate "My Templates 📐" %}</h2>
-            <p>{% translate "Collections of problems that can be used to generate tests" %}</p>
-            <a href="{% url 'app:template-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=template_count %}View {{ counter }} template{% plural %}View {{ counter }} templates{% endblocktranslate %}</a>
-        </article>
-        <article id="problems">
-            <h2>{% translate "My Tests 📄" context "math tests" %}</h2>
-            <p>{% translate "Browse all your tests" %}</p>
-            <a href="{% url 'app:test-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=test_count %}View {{ counter }} test{% plural %}View {{ counter}} tests{% endblocktranslate %}</a>
-        </article>
-        <article id="problems">
-            <h2>{% translate "All Problems 🧠" context "math problems" %}</h2>
-            <p>{% translate "Browse all the available problems" %}</p>
-            <a href="{% url 'app:problemkind-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=problemkind_count %}View {{ counter }} problem{% plural %}View {{ counter}} problems{% endblocktranslate %}</a>
-        </article>
-    </div>
-</main>
+    <main class="container">
+        <div class="grid">
+            <article id="new-problem-set">
+                <h2>{% translate "New Test ✅️"%}</h2>
+                <p>{% translate "Generate a new test" %}</p>
+                <a href="{% url 'app:test-generation' %}" role="button" style="width: 100%">{% translate "Generate!" %}</a>
+            </article>
+        </div>
+        <div class="grid">
+            <article id="templates">
+                <h2>{% translate "My Templates 📐" %}</h2>
+                <p>{% translate "Collections of problems that can be used to generate tests" %}</p>
+                <a href="{% url 'app:template-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=template_count %}View {{ counter }} template{% plural %}View {{ counter }} templates{% endblocktranslate %}</a>
+            </article>
+            <article id="problems">
+                <h2>{% translate "My Tests 📄" context "math tests" %}</h2>
+                <p>{% translate "Browse all your tests" %}</p>
+                <a href="{% url 'app:test-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=test_count %}View {{ counter }} test{% plural %}View {{ counter}} tests{% endblocktranslate %}</a>
+            </article>
+            <article id="problems">
+                <h2>{% translate "All Problems 🧠" context "math problems" %}</h2>
+                <p>{% translate "Browse all the available problems" %}</p>
+                <a href="{% url 'app:problemkind-list' %}" role="button" class="secondary" style="width: 100%">{% blocktranslate count counter=problemkind_count %}View {{ counter }} problem{% plural %}View {{ counter}} problems{% endblocktranslate %}</a>
+            </article>
+        </div>
+    </main>
 {% endblock %}

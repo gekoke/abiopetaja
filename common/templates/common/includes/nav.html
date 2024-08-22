@@ -19,36 +19,36 @@
                 <summary>{{ LANGUAGE_CODE|lang_emoji }}</summary>
                 <ul dir="rtl">
                     {% for language in languages %}
-                    {% if language.code != LANGUAGE_CODE %}
-                        <li>
-                            <form action="{% url 'set_language' %}" method="post">
-                                {% csrf_token %}
-                                <input name="next" type="hidden" value="{{ redirect_to }}">
-                                <input name="language" type="hidden" value="{{ language.code }}">
-                                <input type="submit"
-                                    value="{{ language.name_local }} {{ language.code|lang_emoji }}">
-                            </form>
-                        </li>
-                    {% endif %}
+                        {% if language.code != LANGUAGE_CODE %}
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                                    <input name="language" type="hidden" value="{{ language.code }}">
+                                    <input type="submit"
+                                           value="{{ language.name_local }} {{ language.code|lang_emoji }}">
+                                </form>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </details>
         </li>
 
         {% if user.is_authenticated %}
-        <li>
-            <details class="dropdown">
-                <summary>⚙️️</summary>
-                <ul dir="rtl">
-                    {% if user.is_staff %}
-                    <li><a href="{% url 'admin:index' %}">😎 {% translate "Admin" %}</a></li>
-                    {% endif %}
-                    <li><a href="{% url 'app:userfeedback-create' %}">📨 {% translate "Leave Feedback" %}</a></li>
-                    <li><a href="{% url 'account_change_password' %}">🔑 {% translate "Change Password" %}</a></li>
-                    <li><a href="{% url 'account_logout' %}">🚪 {% translate "Sign Out" %}</a></li>
-                </ul>
-            </details>
-        </li>
+            <li>
+                <details class="dropdown">
+                    <summary>⚙️️</summary>
+                    <ul dir="rtl">
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'admin:index' %}">😎 {% translate "Admin" %}</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'app:userfeedback-create' %}">📨 {% translate "Leave Feedback" %}</a></li>
+                        <li><a href="{% url 'account_change_password' %}">🔑 {% translate "Change Password" %}</a></li>
+                        <li><a href="{% url 'account_logout' %}">🚪 {% translate "Sign Out" %}</a></li>
+                    </ul>
+                </details>
+            </li>
         {% endif %}
     </ul>
 </nav>

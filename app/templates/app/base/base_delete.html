@@ -6,14 +6,14 @@
 {% endblock body_header %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {% block confirmation %}
-    {% endblock %}
-    {% include "common/includes/fields.html" with form=form %}
-    <input type="submit" class="red" value="{% translate "Delete Permanently" %}">
-    {% if cancellation_url %}
-        <a href="{{ cancellation_url }}" role="button" class="secondary" style="width: 100%;">{% translate "Cancel" %}</a>
-    {% endif %}
-</form>
+    <form method="post">
+        {% csrf_token %}
+        {% block confirmation %}
+        {% endblock %}
+        {% include "common/includes/fields.html" with form=form %}
+        <input type="submit" class="red" value="{% translate "Delete Permanently" %}">
+        {% if cancellation_url %}
+            <a href="{{ cancellation_url }}" role="button" class="secondary" style="width: 100%;">{% translate "Cancel" %}</a>
+        {% endif %}
+    </form>
 {% endblock %}

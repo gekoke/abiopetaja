@@ -3,33 +3,33 @@
 {% load functional %}
 
 {% block extra_head %}
-<title>{% translate "Problems" context "view in the application" %}</title>
-{% include "app/includes/maths.html" %}
+    <title>{% translate "Problems" context "view in the application" %}</title>
+    {% include "app/includes/maths.html" %}
 {% endblock %}
 
 {% block content %}
-<main class="container">
-    <h2>{% translate "Problems" context "math problems" %}</h2>
-    <div class="overflow-auto">
-        <table>
-            <thead>
-                <tr>
-                    <th>{% translate "Problem type" context "of a math problem" %}</th>
-                    <th>{% translate "Example" %}</th>
-                    <th>{% translate "Solution" context "for a math problem" %}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for problem_kind, example in object_list|zip:examples %}
-                <tr>
-                    <td>{{ problem_kind.label }}</td>
-                    <td>$$ {{ example.definition }} $$</td>
-                    <td>$$ {{ example.solution }} $$</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</main>
-</body>
+    <main class="container">
+        <h2>{% translate "Problems" context "math problems" %}</h2>
+        <div class="overflow-auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>{% translate "Problem type" context "of a math problem" %}</th>
+                        <th>{% translate "Example" %}</th>
+                        <th>{% translate "Solution" context "for a math problem" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for problem_kind, example in object_list|zip:examples %}
+                        <tr>
+                            <td>{{ problem_kind.label }}</td>
+                            <td>$$ {{ example.definition }} $$</td>
+                            <td>$$ {{ example.solution }} $$</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    </body>
 {% endblock %}

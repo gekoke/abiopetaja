@@ -4,36 +4,36 @@
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        {% block head_title %}
-        {% endblock head_title %}
-    </title>
-    {% include "common/includes/style.html" %}
-    {% block extra_head %}
-    {% endblock extra_head %}
-</head>
+        <title>
+            {% block head_title %}
+            {% endblock head_title %}
+        </title>
+        {% include "common/includes/style.html" %}
+        {% block extra_head %}
+        {% endblock extra_head %}
+    </head>
 
-<body>
-    <div class="container" style="max-width: 800px">
-        {% include "common/includes/nav.html" %}
-        {% include "common/includes/messages.html" %}
-    </div>
-    <main class="container" style="max-width: 800px">
-        {% block body_header %}
-        {% endblock body_header %}
-        <article>
-            {% block body %}
-            {% block content %}
-            {% endblock content %}
-            {% endblock body %}
-        </article>
-        {% block extra_body %}
-        {% endblock extra_body %}
-    </main>
-</body>
+    <body>
+        <div class="container" style="max-width: 800px">
+            {% include "common/includes/nav.html" %}
+            {% include "common/includes/messages.html" %}
+        </div>
+        <main class="container" style="max-width: 800px">
+            {% block body_header %}
+            {% endblock body_header %}
+            <article>
+                {% block body %}
+                    {% block content %}
+                    {% endblock content %}
+                {% endblock body %}
+            </article>
+            {% block extra_body %}
+            {% endblock extra_body %}
+        </main>
+    </body>
 
 </html>

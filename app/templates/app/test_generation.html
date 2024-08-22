@@ -3,57 +3,57 @@
 {% load static %}
 
 {% block extra_head %}
-<title>{% translate "Generation" context "view in the application" %}</title>
+    <title>{% translate "Generation" context "view in the application" %}</title>
 {% endblock %}
 
 {% block content %}
-<main class="container">
-    <div class="grid">
-        <div>
-            <article>
-                <form action="{% url 'app:test-generate' %}" method="post">
-                    {% csrf_token %}
-                    {% include 'common/includes/fields.html' with form=generate_test_form %}
-                    <input type="submit" value="{% translate "Generate!" %}">
-                </form>
-            </article>
+    <main class="container">
+        <div class="grid">
+            <div>
+                <article>
+                    <form action="{% url 'app:test-generate' %}" method="post">
+                        {% csrf_token %}
+                        {% include 'common/includes/fields.html' with form=generate_test_form %}
+                        <input type="submit" value="{% translate "Generate!" %}">
+                    </form>
+                </article>
 
-            {% if save_test_form %}
-            <article>
-                <form action="{% url 'app:test-save' preview_test.id %}" novalidate method="post">
-                    {% csrf_token %}
-                    {% include 'common/includes/fields.html' with form=save_test_form %}
-                    <input type="submit" class="green" value="{% translate "Save Test" %}">
-                </form>
-            </article>
-            {% endif %}
-        </div>
-        <div>
-            {% if preview_test %}
-                <details>
-                    <summary role="button" class="secondary outline">
-                       {% translate "Answer Key" %}
-                    </summary>
-                    <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "answers.pdf" context "PDF file name to save" %}"
-                            src="data:application/pdf;base64,{{ preview_test.answer_key_pdf_b64_str }}">
-                    </iframe>
-                </details>
-                {% for test_version in preview_test.versions %}
-                <details {% if test_version.version_number == 1 %} open {% endif %}>
-                    <summary role="button" class="secondary">
-                        {% blocktrans with version_number=test_version.version_number %}Version {{ version_number }}{% endblocktrans %}
-                    </summary>
+                {% if save_test_form %}
+                    <article>
+                        <form action="{% url 'app:test-save' preview_test.id %}" novalidate method="post">
+                            {% csrf_token %}
+                            {% include 'common/includes/fields.html' with form=save_test_form %}
+                            <input type="submit" class="green" value="{% translate "Save Test" %}">
+                        </form>
+                    </article>
+                {% endif %}
+            </div>
+            <div>
+                {% if preview_test %}
+                    <details>
+                        <summary role="button" class="secondary outline">
+                            {% translate "Answer Key" %}
+                        </summary>
+                        <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "answers.pdf" context "PDF file name to save" %}"
+                                src="data:application/pdf;base64,{{ preview_test.answer_key_pdf_b64_str }}">
+                        </iframe>
+                    </details>
+                    {% for test_version in preview_test.versions %}
+                        <details {% if test_version.version_number == 1 %} open {% endif %}>
+                            <summary role="button" class="secondary">
+                                {% blocktrans with version_number=test_version.version_number %}Version {{ version_number }}{% endblocktrans %}
+                            </summary>
+                            <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "test.pdf" context "PDF file name to save" %}"
+                                    src="data:application/pdf;base64,{{ test_version.pdf_b64_str }}">
+                            </iframe>
+                        </details>
+                    {% endfor %}
+                {% else %}
                     <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "test.pdf" context "PDF file name to save" %}"
-                            src="data:application/pdf;base64,{{ test_version.pdf_b64_str }}">
-                    </iframe>
-                </details>
-                {% endfor %}
-            {% else %}
-            <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "test.pdf" context "PDF file name to save" %}"
-                    src="{% static 'app/example.pdf' %}"
-            </iframe>
-            {% endif %}
+                            src="{% static 'app/example.pdf' %}"
+                            </iframe>
+                {% endif %}
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 {% endblock %}
