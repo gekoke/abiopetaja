@@ -30,6 +30,12 @@
               entry = "${pkgs.ruff}/bin/ruff format";
               pass_filenames = false;
             };
+            djhtml = {
+              enable = true;
+              name = "djhtml";
+              entry = "${pkgs.djhtml}/bin/djhtml abiopetaja app authentication common";
+              pass_filenames = false;
+            };
             makemessages =
               let
                 makeMessages = pkgs.writeShellScriptBin "makemessages" ''

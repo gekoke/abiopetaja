@@ -13,6 +13,7 @@
           pkgs.ruff
           pkgs.texliveBasic
           pkgs.poppler_utils
+          pkgs.djhtml
         ];
 
         shellHook = ''
