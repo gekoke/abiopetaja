@@ -22,31 +22,27 @@
                 <a title="{% translate "Edit" %}" href="{% url 'app:template-update' pk=template.pk %}" class="secondary"><i class="fa-regular fa-pen-to-square"></i></a>
                 <a title="{% translate "Delete Template" %}" href="{% url 'app:template-delete' pk=template.pk %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
             </hgroup>
-            {% if template.entries %}
-                <table>
-                    <thead>
-                        <th>{% translate "Problem" %}</th>
-                        <th>{% translate "Count" %}</th>
-                        <th></th>
-                    </thead>
-                    <tbody>
-                        {% for entry in template.entries %}
-                            <tr>
-                                <td>{{ entry }}</td>
-                                <td>{{ entry.count }}</td>
-                                <td>
-                                    <div style="display: flex; justify-content: flex-end; gap: 1em;">
-                                        <a title="{% translate "Edit" %}" href="{% url 'app:templateproblem-update' pk=entry.pk %}" class="secondary"><i class="fa-regular fa-pen-to-square"></i></a>
-                                        <a title="{% translate "Remove" %}" href="{% url 'app:templateproblem-delete' pk=entry.pk %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>{% translate "This template doesn't have any problems yet." %}</p>
-            {% endif %}
+            <table>
+                <thead>
+                    <th>{% translate "Problem" %}</th>
+                    <th>{% translate "Count" %}</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {% for entry in template.entries %}
+                        <tr>
+                            <td>{{ entry }}</td>
+                            <td>{{ entry.count }}</td>
+                            <td>
+                                <div style="display: flex; justify-content: flex-end; gap: 1em;">
+                                    <a title="{% translate "Edit" %}" href="{% url 'app:templateproblem-update' pk=entry.pk %}" class="secondary"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a title="{% translate "Remove" %}" href="{% url 'app:templateproblem-delete' pk=entry.pk %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             <div role="group">
                 <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green" >{% translate "Add Problem" %}</a>
             </div>
