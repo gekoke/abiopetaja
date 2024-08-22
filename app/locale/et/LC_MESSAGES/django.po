@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 18:30+0000\n"
+"POT-Creation-Date: 2024-08-22 18:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,7 @@ msgid "Number of test versions"
 msgstr "Variantide arv"
 
 #: app/forms.py:53 app/models.py:94 app/models.py:268
+#: app/templates/app/template_list.html:25 app/templates/app/test_list.html:25
 msgid "Name"
 msgstr "Nimi"
 
@@ -237,17 +238,17 @@ msgstr "Ülesanded"
 
 #: app/templates/app/problemkind_list.html:14
 #: app/templates/app/template_detail.html:14
-#: app/templates/app/template_list.html:16
+#: app/templates/app/template_list.html:17
 #: app/templates/app/test_detail.html:15
 #: app/templates/app/test_generation.html:13
-#: app/templates/app/test_list.html:16
+#: app/templates/app/test_list.html:17
 msgid "Dashboard"
 msgstr "Peamenüü"
 
 #: app/templates/app/problemkind_list.html:18
 msgctxt "math problems"
 msgid "Problems"
-msgstr "Ülesanded"
+msgstr "Ülesandeid"
 
 #: app/templates/app/problemkind_list.html:23
 msgctxt "of a math problem"
@@ -272,35 +273,22 @@ msgstr ""
 "<p>Olete kindel, et soovite kustutada malli <b>%(template_problem)s</b>?</p>"
 
 #: app/templates/app/template_create_form.html:5
-#: app/templates/app/template_list.html:36
+#: app/templates/app/template_list.html:47
 msgid "Create Template"
 msgstr "Loo mall"
 
 #: app/templates/app/template_detail.html:15
-#: app/templates/app/template_list.html:20
+#: app/templates/app/template_list.html:21
 msgid "Templates"
 msgstr "Mallid"
 
-#: app/templates/app/template_detail.html:21
-#: app/templates/app/template_detail.html:37
-msgid "Edit"
-msgstr "Muuda"
-
-#: app/templates/app/template_detail.html:22
-msgid "Delete Template"
-msgstr "Kustuta mall"
-
 #: app/templates/app/template_detail.html:26
 msgid "Problem"
-msgstr "Ülesanded"
+msgstr "Ülesanne"
 
 #: app/templates/app/template_detail.html:27
 msgid "Count"
 msgstr "Arv"
-
-#: app/templates/app/template_detail.html:38
-msgid "Remove"
-msgstr "Eemalda"
 
 #: app/templates/app/template_detail.html:46
 #: app/templates/app/templateproblem_create_form.html:5
@@ -310,15 +298,16 @@ msgstr "Lisa ülesanne"
 #: app/templates/app/template_list.html:5
 msgctxt "view in the application"
 msgid "Templates"
-msgstr "Mall"
+msgstr "Mallid"
 
-#: app/templates/app/template_list.html:33
-msgid "You don't have any templates yet."
-msgstr "Teil pole veel ühtegi malli."
+#: app/templates/app/template_list.html:26
+msgctxt "referring to the count of problems"
+msgid "Problems"
+msgstr "Ülesandeid"
 
-#: app/templates/app/template_list.html:42
-msgid "The number of problems this template has"
-msgstr "Mitu ülesannet see mall sisaldab"
+#: app/templates/app/template_list.html:27 app/templates/app/test_list.html:27
+msgid "Created At"
+msgstr "Loodud"
 
 #: app/templates/app/template_update_form.html:5
 msgid "Update Template"
@@ -341,7 +330,7 @@ msgstr "Uuenda ülesannet"
 msgid "<p>Are you sure you want to delete the test <b>%(test_name)s</b>?</p>"
 msgstr "<p>Olete kindel, et soovite kustutada töö <b>%(test_name)s</b>?</p>"
 
-#: app/templates/app/test_detail.html:16 app/templates/app/test_list.html:20
+#: app/templates/app/test_detail.html:16 app/templates/app/test_list.html:21
 msgid "Tests"
 msgstr "Tööd"
 
@@ -389,17 +378,14 @@ msgctxt "view in the application"
 msgid "Tests"
 msgstr "Tööd"
 
-#: app/templates/app/test_list.html:33
-msgid "You don't have any tests yet."
-msgstr "Teil pole veel ühtegi tööd."
+#: app/templates/app/test_list.html:26
+msgctxt "referring to the count of test versions"
+msgid "Versions"
+msgstr "Variante"
 
-#: app/templates/app/test_list.html:36
+#: app/templates/app/test_list.html:47
 msgid "Generate Test"
 msgstr "Genereeri töö"
-
-#: app/templates/app/test_list.html:42
-msgid "The number of versions this test has"
-msgstr "Mitu varianti sellel tööl on"
 
 #: app/templates/app/userfeedback_create_form.html:5
 msgid "Leave Feedback"

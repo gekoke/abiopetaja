@@ -1,11 +1,12 @@
 {% extends "common/base.html" %}
 {% load i18n %}
 
+{% block head_title %}
+    {% translate "Tests" context "view in the application" %}
+{% endblock %}
+
 {% block extra_head %}
-    <title>{% translate "Tests" context "view in the application" %}</title>
-
     {% include "common/includes/tippy.html" %}
-
 {% endblock %}
 
 {% block content %}
@@ -18,30 +19,33 @@
                 </ul>
             </nav>
             <h1>{% translate "Tests" %}</h1>
-            {% if tests %}
-                {% for test in tests %}
-                    <article>
-                        <a href="{{ test.get_absolute_url }}">
-                            <h2>{{ test.name }}</h2>
-                        </a>
-                        <footer>
-                            <span id="version-count">🎲 <b>{{ test.version_count }}</b></span>
-                        </footer>
-                    </article>
-                {% endfor %}
-            {% else %}
-                <p> {% translate "You don't have any tests yet." %} </p>
-            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <td>{% translate "Name" %}</td>
+                        <td>{% translate "Versions" context "referring to the count of test versions" %}</td>
+                        <td>{% translate "Created At" %}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for test in tests %}
+                        <tr>
+                            <td><a href="{{ test.get_absolute_url }}">{{ test.name }}</a></td>
+                            <td><i class="fa-solid fa-paperclip"></i> {{ test.version_count }}</td>
+                            <td><span id="created-at-{{ forloop.counter }}"><i class="fa-solid fa-calendar-days"></i> {{ test.created_at|date:"M d, Y" }}</span></td>
+                        </tr>
+                        <script>
+                            tippy("#created-at-{{ forloop.counter }}", {
+                                content: "{{ test.created_at|date:'Y-m-d H:m T'}}",
+                                theme: "pico",
+                            });
+                        </script>
+                    {% endfor %}
+                </tbody>
+            </table>
             <div role="group">
                 <a href="{% url 'app:test-generation' %}" role="button">{% translate "Generate Test" %}</a>
             </div>
         </main>
-
-        <script>
-            tippy("#version-count", {
-                content: "{% translate 'The number of versions this test has' %}",
-                theme: "pico",
-            });
-        </script>
     {% endwith %}
 {% endblock %}

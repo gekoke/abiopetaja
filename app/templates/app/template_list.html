@@ -1,11 +1,12 @@
 {% extends "common/base.html" %}
 {% load i18n %}
 
+{% block head_title %}
+    {% translate "Templates" context "view in the application" %}
+{% endblock %}
+
 {% block extra_head %}
-    <title>{% translate "Templates" context "view in the application" %}</title>
-
     {% include "common/includes/tippy.html" %}
-
 {% endblock %}
 
 {% block content %}
@@ -18,30 +19,33 @@
                 </ul>
             </nav>
             <h1>{% translate "Templates" %}</h1>
-            {% if templates %}
-                {% for template in templates %}
-                    <article>
-                        <a href="{{ template.get_absolute_url }}">
-                            <h2>{{ template.name }}</h2>
-                        </a>
-                        <footer>
-                            <span id="template-count">❓<b>{{ template.problem_count }}</b></span>
-                        </footer>
-                    </article>
-                {% endfor %}
-            {% else %}
-                <p>{% translate "You don't have any templates yet." %}</p>
-            {% endif %}
+            <table>
+                <thead>
+                    <tr>
+                        <td>{% translate "Name" %}</td>
+                        <td>{% translate "Problems" context "referring to the count of problems" %}</td>
+                        <td>{% translate "Created At" %}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for template in templates %}
+                        <tr>
+                            <td><a href="{{ template.get_absolute_url }}">{{ template.name }}</a></td>
+                            <td><i class="fa-solid fa-question"></i> {{ template.problem_count }}</td>
+                            <td><span id="created-at-{{ forloop.counter }}"><i class="fa-solid fa-calendar-days"></i> {{ template.created_at|date:"M d, Y" }}</span></td>
+                        </tr>
+                        <script>
+                            tippy("#created-at-{{ forloop.counter }}", {
+                                content: "{{ template.created_at|date:'Y-m-d H:m T'}}",
+                                theme: "pico",
+                            });
+                        </script>
+                    {% endfor %}
+                </tbody>
+            </table>
             <div role="group">
                 <a href="{% url 'app:template-create' %}" class="green" role="button">{% translate "Create Template" %}</a>
             </div>
         </main>
-
-        <script>
-            tippy("#template-count", {
-                content: "{% translate 'The number of problems this template has' %}",
-                theme: "pico",
-            });
-        </script>
     {% endwith %}
 {% endblock %}

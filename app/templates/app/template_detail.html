@@ -1,8 +1,8 @@
 {% extends "common/base.html" %}
 {% load i18n %}
 
-{% head_title %}
-{% object.name %}
+{% block head_title %}
+    {{ object.name }}
 {% endblock %}
 
 {% block content %}
@@ -18,8 +18,8 @@
                 <h1>
                     {{ template.name }}
                 </h1>
-                <a title="{% translate "Edit" %}" href="{% url 'app:template-update' pk=template.pk %}" class="secondary"><i class="fa-regular fa-pen-to-square"></i></a>
-                <a title="{% translate "Delete Template" %}" href="{% url 'app:template-delete' pk=template.pk %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
+                <a href="{% url 'app:template-update' pk=template.pk %}" class="edit-button secondary"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{% url 'app:template-delete' pk=template.pk %}" class="delete-button secondary"><i class="fa-solid fa-trash"></i></a>
             </hgroup>
             <table>
                 <thead>
@@ -34,8 +34,8 @@
                             <td>{{ entry.count }}</td>
                             <td>
                                 <div style="display: flex; justify-content: flex-end; gap: 1em;">
-                                    <a title="{% translate "Edit" %}" href="{% url 'app:templateproblem-update' pk=entry.pk %}" class="secondary"><i class="fa-regular fa-pen-to-square"></i></a>
-                                    <a title="{% translate "Remove" %}" href="{% url 'app:templateproblem-delete' pk=entry.pk %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" class="edit-button secondary"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="{% url 'app:templateproblem-delete' pk=entry.pk %}" class="delete-button secondary"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -47,4 +47,5 @@
             </div>
         </main>
     {% endwith %}
+    {% include "common/includes/tippy.html" %}
 {% endblock %}
