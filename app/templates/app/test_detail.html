@@ -11,7 +11,8 @@
         <main class="container">
             <hgroup>
                 <h1>{{ test.name }}</h1>
-                <p>{% translate "📄 Test" %}</p>
+                <p><em>{% translate "Test" %}</em></p>
+                <a title="{% translate "Delete Test" %}" href="{% url 'app:test-delete' pk=test.id %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
             </hgroup>
 
             {% for test_version in test.versions %}
@@ -19,9 +20,9 @@
                     <a href="{% url 'app:testversion-download' pk=test_version.pk %}" target="_blank" rel="noopener noreferrer">{% blocktranslate with test_version_number=test_version.version_number %}Version {{ test_version_number }}{% endblocktranslate %}</a>
                 </article>
             {% endfor %}
-
-            <a href="{% url 'app:test-download' pk=test.pk %}" role="button" class="secondary" target="_blank" rel="noopener noreferrer">{% translate "Answer Key" %}</a>
-            <a href="{% url 'app:test-delete' pk=test.id %}" role="button" class="secondary outline">{% translate "Delete Test" %}</a>
+            <article style="display:flex; flex-direction: row; gap: 1em;">
+                <a href="{% url 'app:test-download' pk=test.pk %}" class="secondary" target="_blank" rel="noopener noreferrer">{% translate "Answer Key" %}</a>
+            </article>
         </main>
 
     {% endwith %}
