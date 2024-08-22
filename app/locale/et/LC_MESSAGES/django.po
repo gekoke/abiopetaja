@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 18:39+0000\n"
+"POT-Creation-Date: 2024-08-22 18:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,7 +236,7 @@ msgctxt "view in the application"
 msgid "Problems"
 msgstr "Ülesanded"
 
-#: app/templates/app/problemkind_list.html:14
+#: app/templates/app/problemkind_list.html:17
 #: app/templates/app/template_detail.html:14
 #: app/templates/app/template_list.html:17
 #: app/templates/app/test_detail.html:15
@@ -245,21 +245,21 @@ msgstr "Ülesanded"
 msgid "Dashboard"
 msgstr "Peamenüü"
 
-#: app/templates/app/problemkind_list.html:18
+#: app/templates/app/problemkind_list.html:21
 msgctxt "math problems"
 msgid "Problems"
 msgstr "Ülesandeid"
 
-#: app/templates/app/problemkind_list.html:23
+#: app/templates/app/problemkind_list.html:26
 msgctxt "of a math problem"
 msgid "Problem type"
 msgstr "Ülesande tüüp"
 
-#: app/templates/app/problemkind_list.html:24
+#: app/templates/app/problemkind_list.html:27
 msgid "Example"
 msgstr "Näide"
 
-#: app/templates/app/problemkind_list.html:25
+#: app/templates/app/problemkind_list.html:28
 msgctxt "for a math problem"
 msgid "Solution"
 msgstr "Lahend"

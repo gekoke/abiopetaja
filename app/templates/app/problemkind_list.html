@@ -2,8 +2,11 @@
 {% load i18n %}
 {% load functional %}
 
+{% block head_title %}
+    {% translate "Problems" context "view in the application" %}
+{% endblock %}
+
 {% block extra_head %}
-    <title>{% translate "Problems" context "view in the application" %}</title>
     {% include "app/includes/maths.html" %}
 {% endblock %}
 
