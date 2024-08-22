@@ -9,7 +9,13 @@
 
 {% block content %}
     <main class="container">
-        <h2>{% translate "Problems" context "math problems" %}</h2>
+        <nav aria-label="breadcrumb">
+            <ul>
+                <li><a href="{% url 'app:dashboard' %}">{% translate "Dashboard" %}</a></li>
+                <li></li>
+            </ul>
+        </nav>
+        <h1>{% translate "Problems" context "math problems" %}</h1>
         <div class="overflow-auto">
             <table>
                 <thead>

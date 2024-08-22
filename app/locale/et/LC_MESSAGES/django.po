@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 16:09+0000\n"
+"POT-Creation-Date: 2024-08-22 16:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -179,7 +179,7 @@ msgid "Generate a new test"
 msgstr "Genereeri uus töö"
 
 #: app/templates/app/dashboard.html:20
-#: app/templates/app/test_generation.html:17
+#: app/templates/app/test_generation.html:23
 msgid "Generate!"
 msgstr "Genereeri!"
 
@@ -235,61 +235,33 @@ msgctxt "view in the application"
 msgid "Problems"
 msgstr "Ülesanded"
 
-#: app/templates/app/problemkind_list.html:12
+#: app/templates/app/problemkind_list.html:14
+#: app/templates/app/template_detail.html:15
+#: app/templates/app/template_list.html:16
+#: app/templates/app/test_detail.html:15
+#: app/templates/app/test_generation.html:13
+#: app/templates/app/test_list.html:16
+msgid "Dashboard"
+msgstr "Peamenüü"
+
+#: app/templates/app/problemkind_list.html:18
 msgctxt "math problems"
 msgid "Problems"
 msgstr "Ülesanded"
 
-#: app/templates/app/problemkind_list.html:17
+#: app/templates/app/problemkind_list.html:23
 msgctxt "of a math problem"
 msgid "Problem type"
 msgstr "Ülesande tüüp"
 
-#: app/templates/app/problemkind_list.html:18
+#: app/templates/app/problemkind_list.html:24
 msgid "Example"
 msgstr "Näide"
 
-#: app/templates/app/problemkind_list.html:19
+#: app/templates/app/problemkind_list.html:25
 msgctxt "for a math problem"
 msgid "Solution"
 msgstr "Lahend"
-
-#: app/templates/app/problemset_detail.html:5
-msgctxt "view in the application"
-msgid "Problem Set"
-msgstr "Töö"
-
-#: app/templates/app/problemset_detail.html:15
-msgid "Problem count"
-msgstr "Ülesannete arv"
-
-#: app/templates/app/problemset_detail.html:16
-#: app/templates/app/template_detail.html:18
-msgid "Template"
-msgstr "Mall"
-
-#: app/templates/app/problemset_detail.html:20
-msgid "Problem Set"
-msgstr "Ülesande tüüp"
-
-#: app/templates/app/problemset_detail.html:25
-#: app/templates/app/test_detail.html:24
-#: app/templates/app/test_generation.html:35
-msgid "Answer Key"
-msgstr "Vastuseleht"
-
-#: app/templates/app/problemset_list.html:5
-msgctxt "view in the application"
-msgid "Problem Sets"
-msgstr "Tööd"
-
-#: app/templates/app/problemset_list.html:11
-msgid "Problem Sets"
-msgstr "Tööd"
-
-#: app/templates/app/problemset_list.html:26
-msgid "You don't have any problem sets yet."
-msgstr "Teil pole veel ühtegi tööd."
 
 #: app/templates/app/template_confirm_delete.html:5
 #, python-format
@@ -300,7 +272,7 @@ msgstr ""
 "<p>Olete kindel, et soovite kustutada malli <b>%(template_problem)s</b>?</p>"
 
 #: app/templates/app/template_create_form.html:5
-#: app/templates/app/template_list.html:30
+#: app/templates/app/template_list.html:36
 msgid "Create Template"
 msgstr "Loo mall"
 
@@ -310,45 +282,46 @@ msgctxt "view in the application"
 msgid "Templates"
 msgstr "Mall"
 
-#: app/templates/app/template_detail.html:21
-#: app/templates/app/template_detail.html:38
+#: app/templates/app/template_detail.html:16
+#: app/templates/app/template_list.html:20
+msgid "Templates"
+msgstr "Mallid"
+
+#: app/templates/app/template_detail.html:22
+#: app/templates/app/template_detail.html:39
 msgid "Edit"
 msgstr "Muuda"
 
-#: app/templates/app/template_detail.html:22
+#: app/templates/app/template_detail.html:23
 msgid "Delete Template"
 msgstr "Kustuta mall"
 
-#: app/templates/app/template_detail.html:27
+#: app/templates/app/template_detail.html:28
 msgid "Problem"
 msgstr "Ülesanded"
 
-#: app/templates/app/template_detail.html:28
+#: app/templates/app/template_detail.html:29
 msgid "Count"
 msgstr "Arv"
 
-#: app/templates/app/template_detail.html:39
+#: app/templates/app/template_detail.html:40
 msgid "Remove"
 msgstr "Eemalda"
 
-#: app/templates/app/template_detail.html:47
+#: app/templates/app/template_detail.html:48
 msgid "This template doesn't have any problems yet."
 msgstr "Selles mallis pole veel ühtegi ülesannet."
 
-#: app/templates/app/template_detail.html:50
+#: app/templates/app/template_detail.html:51
 #: app/templates/app/templateproblem_create_form.html:5
 msgid "Add Problem"
 msgstr "Lisa ülesanne"
 
-#: app/templates/app/template_list.html:14
-msgid "Templates"
-msgstr "Mallid"
-
-#: app/templates/app/template_list.html:27
+#: app/templates/app/template_list.html:33
 msgid "You don't have any templates yet."
 msgstr "Teil pole veel ühtegi malli."
 
-#: app/templates/app/template_list.html:36
+#: app/templates/app/template_list.html:42
 msgid "The number of problems this template has"
 msgstr "Mitu ülesannet see mall sisaldab"
 
@@ -378,40 +351,45 @@ msgctxt "view in the application"
 msgid "Test"
 msgstr "Töö"
 
-#: app/templates/app/test_detail.html:14
-msgid "Test"
-msgstr "Töö"
+#: app/templates/app/test_detail.html:16 app/templates/app/test_list.html:20
+msgid "Tests"
+msgstr "Tööd"
 
-#: app/templates/app/test_detail.html:15
+#: app/templates/app/test_detail.html:20
 msgid "Delete Test"
 msgstr "Kustuta töö"
 
-#: app/templates/app/test_detail.html:20
+#: app/templates/app/test_detail.html:25
 #, python-format
 msgid "Version %(test_version_number)s"
 msgstr "Variant %(test_version_number)s"
+
+#: app/templates/app/test_detail.html:30
+#: app/templates/app/test_generation.html:41
+msgid "Answer Key"
+msgstr "Vastuseleht"
 
 #: app/templates/app/test_generation.html:6
 msgctxt "view in the application"
 msgid "Generation"
 msgstr "Genereerimine"
 
-#: app/templates/app/test_generation.html:26
+#: app/templates/app/test_generation.html:32
 msgid "Save Test"
 msgstr "Salvesta töö"
 
-#: app/templates/app/test_generation.html:37
+#: app/templates/app/test_generation.html:43
 msgctxt "PDF file name to save"
 msgid "answers.pdf"
 msgstr "vastuseleht.pdf"
 
-#: app/templates/app/test_generation.html:44
+#: app/templates/app/test_generation.html:50
 #, python-format
 msgid "Version %(version_number)s"
 msgstr "Variant %(version_number)s"
 
-#: app/templates/app/test_generation.html:46
 #: app/templates/app/test_generation.html:52
+#: app/templates/app/test_generation.html:58
 msgctxt "PDF file name to save"
 msgid "test.pdf"
 msgstr "töö.pdf"
@@ -421,19 +399,15 @@ msgctxt "view in the application"
 msgid "Tests"
 msgstr "Tööd"
 
-#: app/templates/app/test_list.html:14
-msgid "Tests"
-msgstr "Tööd"
-
-#: app/templates/app/test_list.html:27
+#: app/templates/app/test_list.html:33
 msgid "You don't have any tests yet."
 msgstr "Teil pole veel ühtegi tööd."
 
-#: app/templates/app/test_list.html:30
+#: app/templates/app/test_list.html:36
 msgid "Generate Test"
 msgstr "Genereeri töö"
 
-#: app/templates/app/test_list.html:36
+#: app/templates/app/test_list.html:42
 msgid "The number of versions this test has"
 msgstr "Mitu varianti sellel tööl on"
 

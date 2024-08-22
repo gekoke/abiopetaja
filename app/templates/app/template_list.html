@@ -11,6 +11,12 @@
 {% block content %}
     {% with templates=object_list %}
         <main class="container">
+            <nav aria-label="breadcrumb">
+                <ul>
+                    <li><a href="{% url 'app:dashboard' %}">{% translate "Dashboard" %}</a></li>
+                    <li></li>
+                </ul>
+            </nav>
             <h1>{% translate "Templates" %}</h1>
             {% if templates %}
                 {% for template in templates %}

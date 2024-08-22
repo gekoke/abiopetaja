@@ -10,14 +10,15 @@
     {% with template=object %}
         <main class="container">
             <hgroup>
+                <nav aria-label="breadcrumb">
+                    <ul>
+                        <li><a href="{% url 'app:dashboard' %}">{% translate "Dashboard" %}</a></li>
+                        <li><a href="{% url 'app:template-list' %}">{% translate "Templates" %}</a></li>
+                    </ul>
+                </nav>
                 <h1>
                     {{ template.name }}
                 </h1>
-                <p>
-                    <em>
-                        {% translate "Template" %}
-                    </em>
-                </p>
                 <a title="{% translate "Edit" %}" href="{% url 'app:template-update' pk=template.pk %}" class="secondary"><i class="fa-regular fa-pen-to-square"></i></a>
                 <a title="{% translate "Delete Template" %}" href="{% url 'app:template-delete' pk=template.pk %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
             </hgroup>
