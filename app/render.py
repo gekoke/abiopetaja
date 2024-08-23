@@ -3,13 +3,15 @@ from string import ascii_lowercase
 from django.utils.translation import gettext_lazy as _
 
 from app.models import (
-    Problem,
     Test,
     TestVersion,
+    TestVersionProblem,
 )
 
 
-def _get_problems_by_kind(problems: list[Problem]) -> dict[int, list[Problem]]:
+def _get_problems_by_kind(
+    problems: list[TestVersionProblem],
+) -> dict[int, list[TestVersionProblem]]:
     problem_kind_set = {problem.kind for problem in problems}
     return {
         problem_kind: [problem for problem in problems if problem.kind == problem_kind]
@@ -34,7 +36,7 @@ def _make_document(source: str) -> str:
     """
 
 
-def _render_problems(problems: list[Problem]) -> str:
+def _render_problems(problems: list[TestVersionProblem]) -> str:
     problems_by_kind = _get_problems_by_kind(problems)
 
     return "\n".join(
@@ -43,7 +45,7 @@ def _render_problems(problems: list[Problem]) -> str:
     )
 
 
-def _render_problem_kind(problems: list[Problem], problem_index: int) -> str:
+def _render_problem_kind(problems: list[TestVersionProblem], problem_index: int) -> str:
     assert len(set(problem.kind for problem in problems)) == 1
 
     problem_text = problems[0].problem_text
@@ -56,7 +58,7 @@ def _render_problem_kind(problems: list[Problem], problem_index: int) -> str:
     """
 
 
-def _render_problem(problem: Problem, problem_index: int) -> str:
+def _render_problem(problem: TestVersionProblem, problem_index: int) -> str:
     return f" {ascii_lowercase[problem_index]}) ${problem.definition}$"
 
 
@@ -74,7 +76,7 @@ def _render_header(title: str, subtitle: str) -> str:
 
 def render_test_version(version: TestVersion) -> str:
     test = version.test
-    problems = list(version.problem_set.all())
+    problems = list(version.testversionproblem_set.all())
 
     latex = _make_document(
         f"""
@@ -86,7 +88,7 @@ def render_test_version(version: TestVersion) -> str:
     return latex
 
 
-def _render_problem_kind_answer(problems: list[Problem], problem_index: int) -> str:
+def _render_problem_kind_answer(problems: list[TestVersionProblem], problem_index: int) -> str:
     assert len(set(problem.kind for problem in problems)) == 1
 
     problem_text = problems[0].problem_text
@@ -99,13 +101,13 @@ def _render_problem_kind_answer(problems: list[Problem], problem_index: int) -> 
     """
 
 
-def _render_problem_answer(problem: Problem, problem_index: int) -> str:
+def _render_problem_answer(problem: TestVersionProblem, problem_index: int) -> str:
     return f" {ascii_lowercase[problem_index]}) ${problem.solution}$"
 
 
 def _render_test_version_answers(version: TestVersion) -> str:
     subsection_title = _("Version %(version)s") % {"version": version.version_number}
-    problems_by_kind = _get_problems_by_kind(list(version.problem_set.all()))
+    problems_by_kind = _get_problems_by_kind(list(version.testversionproblem_set.all()))
 
     return f"""
     \\subsection*{{{subsection_title}}}
