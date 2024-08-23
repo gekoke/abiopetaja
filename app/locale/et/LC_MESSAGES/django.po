@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 18:41+0000\n"
+"POT-Creation-Date: 2024-08-23 17:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgid "Number of test versions"
 msgstr "Variantide arv"
 
 #: app/forms.py:53 app/models.py:94 app/models.py:268
-#: app/templates/app/template_list.html:25 app/templates/app/test_list.html:25
+#: app/templates/app/template_list.html:28 app/templates/app/test_list.html:28
 msgid "Name"
 msgstr "Nimi"
 
@@ -273,12 +273,12 @@ msgstr ""
 "<p>Olete kindel, et soovite kustutada malli <b>%(template_problem)s</b>?</p>"
 
 #: app/templates/app/template_create_form.html:5
-#: app/templates/app/template_list.html:47
+#: app/templates/app/template_list.html:23
 msgid "Create Template"
 msgstr "Loo mall"
 
 #: app/templates/app/template_detail.html:15
-#: app/templates/app/template_list.html:21
+#: app/templates/app/template_list.html:22
 msgid "Templates"
 msgstr "Mallid"
 
@@ -300,12 +300,12 @@ msgctxt "view in the application"
 msgid "Templates"
 msgstr "Mallid"
 
-#: app/templates/app/template_list.html:26
+#: app/templates/app/template_list.html:29
 msgctxt "referring to the count of problems"
 msgid "Problems"
 msgstr "Ülesandeid"
 
-#: app/templates/app/template_list.html:27 app/templates/app/test_list.html:27
+#: app/templates/app/template_list.html:30 app/templates/app/test_list.html:30
 msgid "Created At"
 msgstr "Loodud"
 
@@ -330,7 +330,7 @@ msgstr "Uuenda ülesannet"
 msgid "<p>Are you sure you want to delete the test <b>%(test_name)s</b>?</p>"
 msgstr "<p>Olete kindel, et soovite kustutada töö <b>%(test_name)s</b>?</p>"
 
-#: app/templates/app/test_detail.html:16 app/templates/app/test_list.html:21
+#: app/templates/app/test_detail.html:16 app/templates/app/test_list.html:22
 msgid "Tests"
 msgstr "Tööd"
 
@@ -378,14 +378,14 @@ msgctxt "view in the application"
 msgid "Tests"
 msgstr "Tööd"
 
-#: app/templates/app/test_list.html:26
+#: app/templates/app/test_list.html:23
+msgid "Generate Test"
+msgstr "Genereeri töö"
+
+#: app/templates/app/test_list.html:29
 msgctxt "referring to the count of test versions"
 msgid "Versions"
 msgstr "Variante"
-
-#: app/templates/app/test_list.html:47
-msgid "Generate Test"
-msgstr "Genereeri töö"
 
 #: app/templates/app/userfeedback_create_form.html:5
 msgid "Leave Feedback"

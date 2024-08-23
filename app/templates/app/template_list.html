@@ -18,7 +18,10 @@
                     <li></li>
                 </ul>
             </nav>
-            <h1>{% translate "Templates" %}</h1>
+            <div style="display: flex; justify-content: space-between;">
+                <h1>{% translate "Templates" %}</h1>
+                <a href="{% url 'app:template-create' %}" class="green" role="button">{% translate "Create Template" %}</a>
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -43,9 +46,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <div role="group">
-                <a href="{% url 'app:template-create' %}" class="green" role="button">{% translate "Create Template" %}</a>
-            </div>
         </main>
     {% endwith %}
 {% endblock %}
