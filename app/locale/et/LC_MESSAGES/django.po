@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-24 16:00+0000\n"
+"POT-Creation-Date: 2024-08-24 16:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,7 +273,6 @@ msgstr ""
 "<p>Olete kindel, et soovite kustutada malli <b>%(template_problem)s</b>?</p>"
 
 #: app/templates/app/template_create_form.html:5
-#: app/templates/app/template_list.html:23
 msgid "Create Template"
 msgstr "Loo mall"
 
@@ -299,6 +298,10 @@ msgstr "Arv"
 msgctxt "view in the application"
 msgid "Templates"
 msgstr "Mallid"
+
+#: app/templates/app/template_list.html:23
+msgid "New Template"
+msgstr "Uus mall"
 
 #: app/templates/app/template_list.html:29
 msgctxt "referring to the count of problems"
