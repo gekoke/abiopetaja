@@ -15,9 +15,10 @@
                         <li><a href="{% url 'app:template-list' %}">{% translate "Templates" %}</a></li>
                     </ul>
                 </nav>
-                <h1>
-                    {{ template.name }}
-                </h1>
+                <div style="display: flex; justify-content: space-between;">
+                    <h1>{{ template.name }}</h1>
+                    <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green" >{% translate "Add Problem" %}</a>
+                </div>
                 <a href="{% url 'app:template-update' pk=template.pk %}" class="edit-button secondary"><i class="fa-regular fa-pen-to-square"></i></a>
                 <a href="{% url 'app:template-delete' pk=template.pk %}" class="delete-button secondary"><i class="fa-solid fa-trash"></i></a>
             </hgroup>
@@ -42,9 +43,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <div role="group">
-                <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green" >{% translate "Add Problem" %}</a>
-            </div>
         </main>
     {% endwith %}
     {% include "common/includes/tippy.html" %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-23 19:01+0000\n"
+"POT-Creation-Date: 2024-08-24 15:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -282,18 +282,18 @@ msgstr "Loo mall"
 msgid "Templates"
 msgstr "Mallid"
 
-#: app/templates/app/template_detail.html:26
-msgid "Problem"
-msgstr "Ülesanne"
-
-#: app/templates/app/template_detail.html:27
-msgid "Count"
-msgstr "Arv"
-
-#: app/templates/app/template_detail.html:46
+#: app/templates/app/template_detail.html:20
 #: app/templates/app/templateproblem_create_form.html:5
 msgid "Add Problem"
 msgstr "Lisa ülesanne"
+
+#: app/templates/app/template_detail.html:27
+msgid "Problem"
+msgstr "Ülesanne"
+
+#: app/templates/app/template_detail.html:28
+msgid "Count"
+msgstr "Arv"
 
 #: app/templates/app/template_list.html:5
 msgctxt "view in the application"
