@@ -17,6 +17,7 @@
                     </ul>
                 </nav>
                 <h1>{{ test.name }}</h1>
+                <a title="{% translate "Update Test" %}" href="{% url 'app:test-update' pk=test.id %}" class="edit-button secondary"><i class="fa-solid fa-pen-to-square"></i></a>
                 <a title="{% translate "Delete Test" %}" href="{% url 'app:test-delete' pk=test.id %}" class="delete-button secondary"><i class="fa-solid fa-trash"></i></a>
             </hgroup>
 

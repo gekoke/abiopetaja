@@ -66,6 +66,24 @@ class SaveTestForm(ModelForm):
         return name
 
 
+class TestUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+    class Meta:
+        model = Test
+        fields = ["name"]
+
+    def clean_name(self):
+        name = self.cleaned_data["name"]
+        if Test.objects.filter(~Q(pk=self.instance.pk), name=name, author=self.user).exists():
+            raise ValidationError(_("Another test with this name already exists"), code="exists")
+
+        return name
+
+
 class TemplateCreateForm(ModelForm):
     class Meta:
         model = Template

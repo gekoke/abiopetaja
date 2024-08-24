@@ -52,6 +52,25 @@ def test_user_can_not_generate_an_empty_test(client: Client):
 
 
 @pytest.mark.django_db
+def test_user_can_update_test_name(client: Client):
+    user = create_user(client)
+    test = Test()
+    test.author = user
+    test.name = "A"
+    test.title = "Title"
+    test.answer_key_pdf.save("answers.pdf", ContentFile(""))
+    test.is_saved = True
+    test.save()
+    expected_name = "B"
+
+    client.force_login(user)
+    client.post(reverse("app:test-update", kwargs={"pk": test.pk}), {"name": expected_name})
+
+    test = Test.objects.get(pk=test.pk)
+    assert test.name == expected_name
+
+
+@pytest.mark.django_db
 def test_user_can_delete_test(client: Client):
     user = create_user(client)
     test = Test()
@@ -200,6 +219,33 @@ def test_saved_tests_are_kept_after_test_generation(client: Client):
     )
 
     assert Test.objects.contains(saved_test)
+
+
+@pytest.mark.django_db
+def test_can_not_update_test_title_to_existing_title(client: Client):
+    user = create_user(client)
+    test_1 = Test()
+    test_1.author = user
+    test_1.name = "Test 1"
+    test_1.title = "Important test"
+    test_1.answer_key_pdf.save("answers.pdf", ContentFile(""))
+    test_1.is_saved = True
+    test_1.save()
+    test_2 = Test()
+    test_2.author = user
+    test_2.name = "Test 2"
+    test_2.title = "Important test"
+    test_2.answer_key_pdf.save("answers.pdf", ContentFile(""))
+    test_2.is_saved = True
+    test_2.save()
+    expected_name = test_1.name
+
+    client.force_login(user)
+    update_data = {"name": test_2.name, "title": test_1.title}
+    client.post(reverse("app:test-update", kwargs={"pk": test_1.pk}), update_data)
+
+    test_1 = Test.objects.get(pk=test_1.pk)
+    assert test_1.name == expected_name
 
 
 @pytest.mark.django_db

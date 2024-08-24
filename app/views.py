@@ -33,6 +33,7 @@ from app.forms import (
     TemplateProblemCreateFrom,
     TemplateProblemUpdateForm,
     TemplateUpdateForm,
+    TestUpdateForm,
 )
 from app.models import (
     ProblemKind,
@@ -242,6 +243,24 @@ class TestListView(LoginRequiredMixin, ListView):
 class TestDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Test.objects.filter(author=self.request.user)
+
+
+class TestUpdateView(LoginRequiredMixin, UpdateView):
+    success_url = reverse_lazy("app:test-list")
+    success_message = _("The test was updated successfully.")
+
+    form_class = TestUpdateForm
+
+    def get_cancellation_url(self):
+        return reverse_lazy("app:test-detail", kwargs={"pk": self.get_object().pk})
+
+    def get_queryset(self):
+        return Test.objects.filter(author=self.request.user)
+
+    def get_form_kwargs(self) -> dict[str, Any]:
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
 
 
 class TemplateProblemCreateView(
