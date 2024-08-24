@@ -6,6 +6,7 @@ from django.forms import (
     IntegerField,
     ModelChoiceField,
     ModelForm,
+    Textarea,
     ValidationError,
 )
 from django.forms.widgets import TextInput
@@ -70,7 +71,7 @@ class TemplateCreateForm(ModelForm):
         exclude = ["author"]
         widgets = {
             "name": TextInput(attrs={"placeholder": _("Inequalities")}),
-            "title": TextInput(attrs={"placeholder": _("Inequalities Test, Spring 2024")}),
+            "title": Textarea(attrs={"placeholder": _("Inequalities Test, Spring 2024")}),
         }
 
 

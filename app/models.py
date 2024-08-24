@@ -95,8 +95,7 @@ class Template(Entity):
     name = models.CharField(
         _("Name"), max_length=255, blank=False, help_text=_("Only you can see this name")
     )
-    title = models.CharField(
-        max_length=1000,
+    title = models.TextField(
         blank=True,
         verbose_name=pgettext_lazy("of a template", "Title"),
         help_text=_(
