@@ -17,7 +17,7 @@
                     </ul>
                 </nav>
                 <h1>{{ test.name }}</h1>
-                <a title="{% translate "Delete Test" %}" href="{% url 'app:test-delete' pk=test.id %}" class="secondary"><i class="fa-solid fa-trash"></i></a>
+                <a title="{% translate "Delete Test" %}" href="{% url 'app:test-delete' pk=test.id %}" class="delete-button secondary"><i class="fa-solid fa-trash"></i></a>
             </hgroup>
 
             {% for test_version in test.versions %}
@@ -30,6 +30,6 @@
                 <a href="{% url 'app:test-download' pk=test.pk %}" class="secondary" target="_blank" rel="noopener noreferrer">{% translate "Answer Key" %}</a>
             </article>
         </main>
-
     {% endwith %}
+    {% include "common/includes/tippy.html" %}
 {% endblock %}
