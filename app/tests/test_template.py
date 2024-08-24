@@ -77,6 +77,29 @@ def test_can_update_template_title(client: Client):
 
 
 @pytest.mark.django_db
+def test_can_not_update_template_title_to_existing_title(client: Client):
+    user = create_user(client)
+    template_1 = Template()
+    template_1.author = user
+    template_1.name = "Template 1"
+    template_1.title = "Important test"
+    template_1.save()
+    template_2 = Template()
+    template_2.author = user
+    template_2.name = "Template 2"
+    template_2.title = "Important test"
+    template_2.save()
+    expected_name = template_1.name
+
+    client.force_login(user)
+    update_data = {"name": template_2.name, "title": template_1.title}
+    client.post(reverse("app:template-update", kwargs={"pk": template_1.pk}), update_data)
+
+    template_1 = Template.objects.get(pk=template_1.pk)
+    assert template_1.name == expected_name
+
+
+@pytest.mark.django_db
 def test_user_can_get_created_template(client: Client):
     user = create_user(client)
 

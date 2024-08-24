@@ -216,6 +216,11 @@ class TemplateUpdateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMi
     def get_queryset(self):
         return Template.objects.filter(author=self.request.user)
 
+    def get_form_kwargs(self) -> dict[str, Any]:
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
 
 class TemplateDeleteView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy("app:template-list")

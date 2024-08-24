@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-24 16:18+0000\n"
+"POT-Creation-Date: 2024-08-24 17:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,40 +25,44 @@ msgstr "Eesti"
 msgid "English"
 msgstr "Inglise"
 
-#: app/forms.py:23
+#: app/forms.py:24
 msgid "Template to generate test from"
 msgstr "Vali mall, millest dokumente genereerida"
 
-#: app/forms.py:28
+#: app/forms.py:29
 msgid "Number of test versions"
 msgstr "Variantide arv"
 
-#: app/forms.py:54 app/models.py:96 app/models.py:283
+#: app/forms.py:55 app/models.py:96 app/models.py:283
 #: app/templates/app/template_list.html:28 app/templates/app/test_list.html:28
 msgid "Name"
 msgstr "Nimi"
 
-#: app/forms.py:57
+#: app/forms.py:58
 msgid "My Test"
 msgstr "Minu töö"
 
-#: app/forms.py:63
+#: app/forms.py:64
 msgid "A test with this name already exists"
 msgstr "Sellise nimega töö on juba olemas"
 
-#: app/forms.py:73 app/signals.py:23 app/signals.py:25
+#: app/forms.py:74 app/signals.py:23 app/signals.py:25
 msgid "Inequalities"
 msgstr "Võrratused"
 
-#: app/forms.py:74
+#: app/forms.py:75
 msgid "Inequalities Test, Spring 2024"
 msgstr "Kontrolltöö, võrratused - kevad 2024"
 
-#: app/forms.py:92
+#: app/forms.py:93
+msgid "Another template with this name already exists"
+msgstr "Teine sellise nimega mall on juba olemas"
+
+#: app/forms.py:103
 msgid "Number of occurences"
 msgstr "Ülesannete arv"
 
-#: app/forms.py:112
+#: app/forms.py:123
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 
@@ -416,22 +420,22 @@ msgstr "Mall salvestati edukalt"
 msgid "The template was updated successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:222
+#: app/views.py:227
 msgid "The template was deleted successfully."
 msgstr "Mall kustutati edukalt"
 
-#: app/views.py:277
+#: app/views.py:282
 msgid "The problem entry was updated successfully."
 msgstr "Ülesanne salvestati edukalt"
 
-#: app/views.py:293
+#: app/views.py:298
 msgid "The problem entry was deleted successfully."
 msgstr "Ülesanne kustutati edukalt"
 
-#: app/views.py:308
+#: app/views.py:313
 msgid "The test was deleted successfully."
 msgstr "Töö kustutati edukalt"
 
-#: app/views.py:324
+#: app/views.py:329
 msgid "Your feedback was submitted. Thanks!"
 msgstr "Saime su tagasiside kätte. Tänud!"

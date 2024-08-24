@@ -1,6 +1,7 @@
 import logging
 
 from django.contrib.auth.models import AbstractBaseUser, AnonymousUser, User
+from django.db.models import Q
 from django.forms import (
     Form,
     IntegerField,
@@ -77,12 +78,22 @@ class TemplateCreateForm(ModelForm):
 
 class TemplateUpdateForm(ModelForm):
     def __init__(self, *args, **kwargs):
+        self.user: AbstractBaseUser | AnonymousUser = kwargs.pop("user")
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
 
     class Meta:
         model = Template
         exclude = ["author"]
+
+    def clean_name(self):
+        name = self.cleaned_data["name"]
+        if Template.objects.filter(~Q(pk=self.instance.pk), name=name, author=self.user).exists():
+            raise ValidationError(
+                _("Another template with this name already exists"), code="exists"
+            )
+
+        return name
 
 
 TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(
