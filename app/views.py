@@ -22,10 +22,7 @@ from django.views.generic.edit import DeleteView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
-from app.errors import (
-    EmptyTemplate,
-    TestGenerationError,
-)
+from app.errors import EmptyTemplate
 from app.forms import (
     GenerateTestForm,
     SaveTestForm,
@@ -120,7 +117,7 @@ def test_generate(request: HttpRequest) -> HttpResponse:
             match test:
                 case Test():
                     return redirect("app:test-generation", preview_test_pk=test.pk)
-                case TestGenerationError(reason=EmptyTemplate()):
+                case EmptyTemplate():
                     messages.error(
                         request,
                         _("This template has no problems and would result in an empty test."),

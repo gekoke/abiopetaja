@@ -141,7 +141,7 @@ class Template(Entity):
         test.title = self.title
 
         if not self.problem_count:
-            return TestGenerationError(reason=EmptyTemplate())
+            return EmptyTemplate()
 
         for i in range(test_generation_parameters.test_version_count):
             test_version = TestVersion()
@@ -156,19 +156,19 @@ class Template(Entity):
                     problem.save()
 
             match test_version.compile_pdf():
-                case bytes() as pdf_bytes:
+                case bytes() | bytearray() | memoryview() as pdf_bytes:
                     test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(pdf_bytes))
-                case PDFCompilationError() as error:
-                    return TestGenerationError(reason=error)
+                case _ as err:
+                    return err
 
             test_version.save()
             test.add_version(test_version)
 
         match test.compile_answer_key_pdf():
-            case bytes() as pdf_bytes:
+            case bytes() | bytearray() | memoryview() as pdf_bytes:
                 test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(pdf_bytes))
-            case PDFCompilationError() as error:
-                return TestGenerationError(reason=error)
+            case _ as err:
+                return err
 
         test.save()
         return test

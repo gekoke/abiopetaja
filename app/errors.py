@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+type PDFCompilationError = Timeout | FailedUnexpectedly
 
 
 class Timeout:
@@ -9,15 +9,8 @@ class FailedUnexpectedly:
     pass
 
 
-@dataclass
-class PDFCompilationError:
-    reason: Timeout | FailedUnexpectedly
+type TestGenerationError = EmptyTemplate | PDFCompilationError
 
 
 class EmptyTemplate:
     pass
-
-
-@dataclass
-class TestGenerationError:
-    reason: EmptyTemplate | PDFCompilationError

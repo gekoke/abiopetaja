@@ -45,10 +45,10 @@ def _compile_pdf(
             run(["pdflatex", tex_file], cwd=tmp_dir, timeout=5, check=True)
         except TimeoutExpired:
             logger.error(f"pdflatex timed out for {object_reference}")
-            return PDFCompilationError(reason=Timeout())
+            return Timeout()
         except CalledProcessError as e:
             logger.error(f"pdflatex failed for {object_reference}, {e}")
-            return PDFCompilationError(reason=FailedUnexpectedly())
+            return FailedUnexpectedly()
 
         try:
             os.makedirs(os.path.dirname(f"{settings.MEDIA_ROOT}/media"), exist_ok=True)
@@ -56,4 +56,4 @@ def _compile_pdf(
                 return file.read()
         except FileNotFoundError:
             logger.error(f"pdflatex did not produce a PDF for {object_reference}")
-            return PDFCompilationError(reason=FailedUnexpectedly())
+            return FailedUnexpectedly()
