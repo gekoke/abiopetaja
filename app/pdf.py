@@ -20,21 +20,15 @@ logger = logging.getLogger(__name__)
 
 
 def compile_test_version_pdf(version: TestVersion) -> PDFCompilationError | bytes:
-    return _compile_pdf(render_test_version(version), version)
+    return _compile_pdf(render_test_version(version))
 
 
 def compile_answer_key_pdf(test: Test) -> PDFCompilationError | bytes:
-    return _compile_pdf(render_answer_key(test), test)
+    return _compile_pdf(render_answer_key(test))
 
 
-def _compile_pdf(
-    latex_source: str, object_reference: Test | TestVersion
-) -> PDFCompilationError | bytes:
-    """
-    Compile a PDF file from Latex source.
-
-    - object_reference: the object the Latex source was generated from. Used for logging purposes.
-    """
+def _compile_pdf(latex_source: str) -> PDFCompilationError | bytes:
+    """Compile a PDF file from Latex source."""
     with TemporaryDirectory() as tmp_dir:
         tex_file = os.path.join(tmp_dir, "template.tex")
         pdf_file = os.path.join(tmp_dir, "template.pdf")
@@ -44,10 +38,10 @@ def _compile_pdf(
         try:
             run(["pdflatex", tex_file], cwd=tmp_dir, timeout=5, check=True)
         except TimeoutExpired:
-            logger.error(f"pdflatex timed out for {object_reference}")
+            logger.error("pdflatex timed out")
             return Timeout()
         except CalledProcessError as e:
-            logger.error(f"pdflatex failed for {object_reference}, {e}")
+            logger.error(f"pdflatex failed: {e}")
             return FailedUnexpectedly()
 
         try:
@@ -55,5 +49,5 @@ def _compile_pdf(
             with open(pdf_file, "rb") as file:
                 return file.read()
         except FileNotFoundError:
-            logger.error(f"pdflatex did not produce a PDF for {object_reference}")
+            logger.error("pdflatex did not produce a PDF")
             return FailedUnexpectedly()
