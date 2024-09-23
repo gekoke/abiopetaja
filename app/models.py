@@ -254,20 +254,6 @@ class TestVersionProblem(Entity):
         return ProblemKind.get_problem_text(ProblemKind(self.kind))
 
 
-class ProblemRenderingSettings(Entity):
-    solving_area_height = IntegerField(
-        validators=[
-            MinValueValidator(0),
-            MinValueValidator(100),
-        ]
-    )
-    """
-    The height in squares for the checkered print to serve as
-    the area to write down a solution in.
-    If 0, none is printed.
-    """
-
-
 class Test(Entity):
     """A test composed of documents rendered from a `Template`."""
 
