@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-25 18:21+0000\n"
+"POT-Creation-Date: 2024-09-25 18:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,6 +69,11 @@ msgstr "Ülesannete arv"
 #: app/forms.py:141
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
+
+#: app/latex.py:113
+#, python-format
+msgid "Version %(version)s"
+msgstr "Variant %(version)s"
 
 #: app/models.py:50
 msgid "Linear inequality"
@@ -133,11 +138,6 @@ msgstr "[Nimeta töö]"
 msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"
-
-#: app/render.py:113
-#, python-format
-msgid "Version %(version)s"
-msgstr "Variant %(version)s"
 
 #: app/signals.py:33 app/signals.py:35
 msgid "Exponents"

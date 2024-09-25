@@ -31,8 +31,8 @@ from sympy.core import UnevaluatedExpr, symbols
 from sympy.printing.latex import latex
 from typing_extensions import TYPE_CHECKING
 
+from app.latex import render_answer_key, render_test_version
 from app.pdf import PDFCompilationError, compile_pdf
-from app.render import render_answer_key, render_test_version
 
 logger = logging.getLogger(__name__)
 
