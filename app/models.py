@@ -31,10 +31,6 @@ from sympy.core import UnevaluatedExpr, symbols
 from sympy.printing.latex import latex
 from typing_extensions import TYPE_CHECKING
 
-from app.errors import (
-    EmptyTemplate,
-    TestGenerationError,
-)
 from app.pdf import PDFCompilationError, compile_pdf
 from app.render import render_answer_key, render_test_version
 
@@ -82,6 +78,13 @@ class ProblemKind(IntegerChoices):
 
 class TestGenerationParameters(BaseModel):
     test_version_count: int = Field(default=1, ge=1, le=6)
+
+
+type TestGenerationError = EmptyTemplate | PDFCompilationError
+
+
+class EmptyTemplate:
+    pass
 
 
 class Template(Entity):

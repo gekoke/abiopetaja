@@ -22,7 +22,6 @@ from django.views.generic.edit import DeleteView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
-from app.errors import EmptyTemplate
 from app.forms import (
     GenerateTestForm,
     SaveTestForm,
@@ -33,6 +32,7 @@ from app.forms import (
     TestUpdateForm,
 )
 from app.models import (
+    EmptyTemplate,
     ProblemKind,
     Template,
     TemplateProblem,
