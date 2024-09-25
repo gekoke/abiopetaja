@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 18:01+0000\n"
+"POT-Creation-Date: 2024-09-25 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr "Vali mall, millest dokumente genereerida"
 msgid "Number of test versions"
 msgstr "Variantide arv"
 
-#: app/forms.py:55 app/models.py:96 app/models.py:269
+#: app/forms.py:55 app/models.py:97 app/models.py:268
 #: app/templates/app/template_list.html:28 app/templates/app/test_list.html:28
 msgid "Name"
 msgstr "Nimi"
@@ -70,71 +70,71 @@ msgstr "Ülesannete arv"
 msgid "This template already contains this problem kind"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 
-#: app/models.py:53
+#: app/models.py:54
 msgid "Linear inequality"
 msgstr "Lineaarvõrratus"
 
-#: app/models.py:54
+#: app/models.py:55
 msgid "Quadratic inequality"
 msgstr "Ruutvõrratus"
 
-#: app/models.py:55
+#: app/models.py:56
 msgid "Fractional inequality"
 msgstr "Murdvõrratus"
 
-#: app/models.py:56
+#: app/models.py:57
 msgid "Exponent reduction problem"
 msgstr "Astmetega avaldise taandamine"
 
-#: app/models.py:57
+#: app/models.py:58
 msgid "Exponent operation problem"
 msgstr "Astmetega tehe"
 
-#: app/models.py:73
+#: app/models.py:74
 msgid "Solve the following linear inequalities:"
 msgstr "Lahenda järgnevad lineaarvõrratused:"
 
-#: app/models.py:74
+#: app/models.py:75
 msgid "Solve the following quadratic inequalities:"
 msgstr "Lahenda järgnevad ruutvõrratused:"
 
-#: app/models.py:75
+#: app/models.py:76
 msgid "Solve the following fractional inequalities:"
 msgstr "Lahenda järgnevad murdvõrratused:"
 
-#: app/models.py:76
+#: app/models.py:77
 msgid "Reduce the following expressions:"
 msgstr "Taanda avaldised:"
 
-#: app/models.py:77
+#: app/models.py:78
 msgid "Perform the following operations:"
 msgstr "Teosta tehted:"
 
-#: app/models.py:96
+#: app/models.py:97
 msgid "Only you can see this name"
 msgstr "Ainult sina näed seda nime"
 
-#: app/models.py:100
+#: app/models.py:101
 msgctxt "of a template"
 msgid "Title"
 msgstr "Pealkiri"
 
-#: app/models.py:102
+#: app/models.py:103
 msgid ""
 "Anything you add to this field will be rendered at the top of the test "
 "document"
 msgstr "Kõik, mis siia lahtrisse lisad, kuvatakse töölehe ülalosas"
 
-#: app/models.py:314
+#: app/models.py:311
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
-#: app/models.py:319
+#: app/models.py:316
 msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"
 
-#: app/render.py:109
+#: app/render.py:113
 #, python-format
 msgid "Version %(version)s"
 msgstr "Variant %(version)s"

@@ -1,12 +1,16 @@
+from __future__ import annotations
+
 from string import ascii_lowercase
 
 from django.utils.translation import gettext_lazy as _
+from typing_extensions import TYPE_CHECKING
 
-from app.models import (
-    Test,
-    TestVersion,
-    TestVersionProblem,
-)
+if TYPE_CHECKING:
+    from app.models import (
+        Test,
+        TestVersion,
+        TestVersionProblem,
+    )
 
 
 def _get_problems_by_kind(

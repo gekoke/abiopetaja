@@ -5,29 +5,20 @@ from tempfile import TemporaryDirectory
 
 from django.conf import settings
 
-from app.errors import (
-    FailedUnexpectedly,
-    PDFCompilationError,
-    Timeout,
-)
-from app.models import (
-    Test,
-    TestVersion,
-)
-from app.render import render_answer_key, render_test_version
-
 logger = logging.getLogger(__name__)
 
-
-def compile_test_version_pdf(version: TestVersion) -> PDFCompilationError | bytes:
-    return _compile_pdf(render_test_version(version))
+type PDFCompilationError = Timeout | FailedUnexpectedly
 
 
-def compile_answer_key_pdf(test: Test) -> PDFCompilationError | bytes:
-    return _compile_pdf(render_answer_key(test))
+class Timeout:
+    pass
 
 
-def _compile_pdf(latex_source: str) -> PDFCompilationError | bytes:
+class FailedUnexpectedly:
+    pass
+
+
+def compile_pdf(latex_source: str) -> PDFCompilationError | bytes:
     """Compile a PDF file from Latex source."""
     with TemporaryDirectory() as tmp_dir:
         tex_file = os.path.join(tmp_dir, "template.tex")

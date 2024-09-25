@@ -33,9 +33,10 @@ from typing_extensions import TYPE_CHECKING
 
 from app.errors import (
     EmptyTemplate,
-    PDFCompilationError,
     TestGenerationError,
 )
+from app.pdf import PDFCompilationError, compile_pdf
+from app.render import render_answer_key, render_test_version
 
 logger = logging.getLogger(__name__)
 
@@ -235,9 +236,7 @@ class TestVersion(Entity):
         return self.testversionproblem_set.count()
 
     def compile_pdf(self) -> PDFCompilationError | bytes:
-        from app.pdf import compile_test_version_pdf
-
-        return compile_test_version_pdf(self)
+        return compile_pdf(render_test_version(self))
 
     def pdf_b64_str(self) -> str:
         return b64encode(self.pdf.read()).decode("utf-8")
@@ -306,9 +305,7 @@ class Test(Entity):
         return b64encode(self.answer_key_pdf.read()).decode("utf-8")
 
     def compile_answer_key_pdf(self) -> PDFCompilationError | bytes:
-        from app.pdf import compile_answer_key_pdf
-
-        return compile_answer_key_pdf(self)
+        return compile_pdf(render_answer_key(self))
 
     def __str__(self):
         return self.name if self.name is not None else gettext("[Unnamed Test]")

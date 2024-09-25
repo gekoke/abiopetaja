@@ -1,13 +1,4 @@
-type PDFCompilationError = Timeout | FailedUnexpectedly
-
-
-class Timeout:
-    pass
-
-
-class FailedUnexpectedly:
-    pass
-
+from app.pdf import PDFCompilationError
 
 type TestGenerationError = EmptyTemplate | PDFCompilationError
 
