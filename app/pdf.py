@@ -3,8 +3,6 @@ import os
 from subprocess import CalledProcessError, TimeoutExpired, run
 from tempfile import TemporaryDirectory
 
-from django.conf import settings
-
 logger = logging.getLogger(__name__)
 
 type PDFCompilationError = Timeout | FailedUnexpectedly
@@ -36,7 +34,6 @@ def compile_pdf(latex_source: str) -> PDFCompilationError | bytes:
             return FailedUnexpectedly()
 
         try:
-            os.makedirs(os.path.dirname(f"{settings.MEDIA_ROOT}/media"), exist_ok=True)
             with open(pdf_file, "rb") as file:
                 return file.read()
         except FileNotFoundError:
