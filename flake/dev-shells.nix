@@ -6,7 +6,7 @@
         inputsFrom = [ self.packages.${system}.abiopetaja-dev ];
 
         packages = [
-          pkgs.deploy-rs
+          pkgs.deploy-rs.deploy-rs
           pkgs.opentofu
           pkgs.poetry
           pkgs.pyright
@@ -25,7 +25,7 @@
       };
 
       cd = pkgs.mkShellNoCC {
-        packages = [ pkgs.deploy-rs ];
+        packages = [ pkgs.deploy-rs.deploy-rs ];
       };
     };
   };

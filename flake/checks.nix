@@ -9,7 +9,12 @@
       pythonEnv = self.packages.${system}.abiopetaja-dev.dependencyEnv;
     in
     {
-      checks = import ./tests { inherit self pkgs; };
+      checks =
+        let
+          vmTests = import ./tests { inherit self pkgs; };
+          deployChecks = pkgs.deploy-rs.lib.deployChecks self.deploy;
+        in
+        vmTests // deployChecks;
 
       pre-commit = {
         settings = {
@@ -65,8 +70,4 @@
         };
       };
     };
-
-  flake = {
-    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
-  };
 }
