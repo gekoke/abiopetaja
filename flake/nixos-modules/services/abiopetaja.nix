@@ -1,8 +1,9 @@
-{ config
-, lib
-, pkgs
-, abiopetaja
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  abiopetaja,
+  ...
 }:
 let
   inherit (lib) mkEnableOption mkOption;
@@ -13,7 +14,10 @@ in
   options.services.abiopetaja = {
     enable = mkEnableOption "Abiopetaja service";
     domains = mkOption { type = nonEmptyListOf str; };
-    provisionCertificates = mkOption { type = bool; default = true; };
+    provisionCertificates = mkOption {
+      type = bool;
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

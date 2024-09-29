@@ -5,4 +5,3 @@
     initialPassword = "pass";
   };
 }
-

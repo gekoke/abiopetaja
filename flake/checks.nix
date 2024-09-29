@@ -1,10 +1,14 @@
 { inputs, self, ... }:
 {
-  imports = [
-    inputs.pre-commit-hooks.flakeModule
-  ];
+  imports = [ inputs.pre-commit-hooks.flakeModule ];
 
-  perSystem = { pkgs, lib, system, ... }:
+  perSystem =
+    {
+      pkgs,
+      lib,
+      system,
+      ...
+    }:
     let
       pythonEnv = self.packages.${system}.abiopetaja-dev.dependencyEnv;
     in

@@ -1,7 +1,9 @@
 { self, pkgs, ... }:
 let
   nodesDefinition = {
-    node.specialArgs = { inherit (self.packages.${pkgs.system}) abiopetaja; };
+    node.specialArgs = {
+      inherit (self.packages.${pkgs.system}) abiopetaja;
+    };
     nodes = {
       server = import ./test-vm-server.nix { inherit self pkgs; };
       client = import ./test-vm-client.nix { inherit pkgs; };
@@ -33,10 +35,8 @@ let
   ];
 in
 builtins.listToAttrs (
-  map
-    (test: {
-      name = test.name;
-      value = pkgs.testers.runNixOSTest (test // nodesDefinition);
-    })
-    tests
+  map (test: {
+    name = test.name;
+    value = pkgs.testers.runNixOSTest (test // nodesDefinition);
+  }) tests
 )

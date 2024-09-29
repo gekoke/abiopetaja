@@ -1,6 +1,4 @@
-{ flake-parts
-, ...
-} @ inputs:
+{ flake-parts, ... }@inputs:
 flake-parts.lib.mkFlake { inherit inputs; } {
   systems = [ "x86_64-linux" ];
 
@@ -8,6 +6,7 @@ flake-parts.lib.mkFlake { inherit inputs; } {
     ./checks.nix
     ./deploys.nix
     ./dev-shells.nix
+    ./formatter.nix
     ./nixos-configurations
     ./nixos-modules
     ./overlays.nix
