@@ -6,7 +6,7 @@
 
     poetry2nix.url = "github:nix-community/poetry2nix";
 
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     deploy-rs.url = "github:serokell/deploy-rs";
   };

@@ -23,6 +23,16 @@
       pre-commit = {
         settings = {
           hooks = {
+            deadnix = {
+              enable = true;
+              settings = {
+                edit = true;
+              };
+            };
+            nixfmt-rfc-style = {
+              enable = true;
+            };
+            statix.enable = true;
             gitleaks = {
               enable = true;
               name = "gitleaks";
