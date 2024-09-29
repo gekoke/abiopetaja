@@ -161,7 +161,7 @@ class Template(Entity):
                     problem.test_version = test_version
                     problem.save()
 
-            match test_version.compile_pdf():
+            match test_version.generate_pdf():
                 case bytes() | bytearray() | memoryview() as pdf_bytes:
                     test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(pdf_bytes))
                 case _ as err:
@@ -170,7 +170,7 @@ class Template(Entity):
             test_version.save()
             test.add_version(test_version)
 
-        match test.compile_answer_key_pdf():
+        match test.generate_answer_key_pdf():
             case bytes() | bytearray() | memoryview() as pdf_bytes:
                 test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(pdf_bytes))
             case _ as err:
@@ -240,7 +240,7 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.testversionproblem_set.count()
 
-    def compile_pdf(self) -> PDFCompilationError | bytes:
+    def generate_pdf(self) -> PDFCompilationError | bytes:
         return compile_pdf(render_test_version(self))
 
     def pdf_b64_str(self) -> str:
@@ -309,7 +309,7 @@ class Test(Entity):
     def answer_key_pdf_b64_str(self) -> str:
         return b64encode(self.answer_key_pdf.read()).decode("utf-8")
 
-    def compile_answer_key_pdf(self) -> PDFCompilationError | bytes:
+    def generate_answer_key_pdf(self) -> PDFCompilationError | bytes:
         return compile_pdf(render_answer_key(self))
 
     def __str__(self):
