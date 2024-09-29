@@ -1,5 +1,6 @@
 import logging
 import os
+from dataclasses import dataclass
 from subprocess import CalledProcessError, TimeoutExpired, run
 from tempfile import TemporaryDirectory
 
@@ -16,7 +17,12 @@ class FailedUnexpectedly:
     pass
 
 
-def compile_pdf(latex_source: str) -> PDFCompilationError | bytes:
+@dataclass
+class PDF:
+    data: bytes
+
+
+def compile_pdf(latex_source: str) -> PDFCompilationError | PDF:
     """Compile a PDF file from Latex source."""
     with TemporaryDirectory() as tmp_dir:
         tex_file = os.path.join(tmp_dir, "template.tex")
@@ -35,7 +41,7 @@ def compile_pdf(latex_source: str) -> PDFCompilationError | bytes:
 
         try:
             with open(pdf_file, "rb") as file:
-                return file.read()
+                return PDF(file.read())
         except FileNotFoundError:
             logger.error("pdflatex did not produce a PDF")
             return FailedUnexpectedly()

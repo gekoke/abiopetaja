@@ -29,7 +29,7 @@ from typing_extensions import TYPE_CHECKING
 
 import app.math
 from app.latex import render_answer_key, render_test_version
-from app.pdf import PDFCompilationError, compile_pdf
+from app.pdf import PDF, PDFCompilationError, compile_pdf
 
 logger = logging.getLogger(__name__)
 
@@ -162,8 +162,8 @@ class Template(Entity):
                     problem.save()
 
             match test_version.generate_pdf():
-                case bytes() | bytearray() | memoryview() as pdf_bytes:
-                    test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(pdf_bytes))
+                case PDF() as pdf:
+                    test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(pdf.data))
                 case _ as err:
                     return err
 
@@ -171,8 +171,8 @@ class Template(Entity):
             test.add_version(test_version)
 
         match test.generate_answer_key_pdf():
-            case bytes() | bytearray() | memoryview() as pdf_bytes:
-                test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(pdf_bytes))
+            case PDF() as pdf:
+                test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(pdf.data))
             case _ as err:
                 return err
 
@@ -240,7 +240,7 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.testversionproblem_set.count()
 
-    def generate_pdf(self) -> PDFCompilationError | bytes:
+    def generate_pdf(self) -> PDFCompilationError | PDF:
         return compile_pdf(render_test_version(self))
 
     def pdf_b64_str(self) -> str:
@@ -309,7 +309,7 @@ class Test(Entity):
     def answer_key_pdf_b64_str(self) -> str:
         return b64encode(self.answer_key_pdf.read()).decode("utf-8")
 
-    def generate_answer_key_pdf(self) -> PDFCompilationError | bytes:
+    def generate_answer_key_pdf(self) -> PDFCompilationError | PDF:
         return compile_pdf(render_answer_key(self))
 
     def __str__(self):
