@@ -11,7 +11,7 @@
           (_final: prev: {
             deploy-rs = {
               inherit (inputs.nixpkgs.legacyPackages.${system}) deploy-rs;
-              lib = prev.deploy-rs.lib;
+              inherit (prev.deploy-rs) lib;
             };
           })
         ];

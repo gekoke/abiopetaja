@@ -1,6 +1,6 @@
 { self, inputs, ... }:
 let
-  deploy-rs = inputs.deploy-rs;
+  inherit (inputs) deploy-rs;
 in
 {
   flake = {

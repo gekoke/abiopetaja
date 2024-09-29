@@ -10,7 +10,7 @@ let
     };
   };
   tests = [
-    ({
+    {
       name = "smoke_test_server_responds_to_client";
 
       testScript = ''
@@ -20,8 +20,8 @@ let
 
         client.wait_until_succeeds("curl -L http://server/ | grep -o \"Sign up\"", timeout=60)
       '';
-    })
-    ({
+    }
+    {
       name = "test_server_serves_static_resources";
 
       testScript = ''
@@ -31,12 +31,12 @@ let
 
         client.wait_until_succeeds("wget http://server/static/app/example.pdf", timeout=60)
       '';
-    })
+    }
   ];
 in
 builtins.listToAttrs (
   map (test: {
-    name = test.name;
+    inherit (test) name;
     value = pkgs.testers.runNixOSTest (test // nodesDefinition);
   }) tests
 )
