@@ -63,6 +63,8 @@ def _render_problem_kind(problems: list[TestVersionProblem], problem_index: int)
 
 
 def _render_problem(problem: TestVersionProblem, problem_index: int) -> str:
+    # TODO: here!!
+    # use latex serializer from sympy
     return f" {ascii_lowercase[problem_index]}) ${problem.definition}$"
 
 

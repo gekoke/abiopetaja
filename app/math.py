@@ -2,11 +2,7 @@ import random
 
 from sympy import Expr, S, simplify, solveset, sympify
 from sympy.core import UnevaluatedExpr, symbols
-from sympy.printing.latex import latex
-
-
-def _latex(expr):
-    return latex(expr, decimal_separator="comma")
+from sympy.printing.repr import srepr
 
 
 def _make_plus_or_minus():
@@ -55,8 +51,8 @@ def make_linear_inequality_problem() -> Problem:
     problem_solution = solveset(problem_definition, "x", S.Reals)
 
     problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
+    problem.definition = srepr(problem_definition)
+    problem.solution = srepr(problem_solution)
     return problem
 
 
@@ -75,8 +71,8 @@ def make_quadratic_inequality_problem() -> Problem:
     problem_solution = solveset(problem_definition, "x", S.Reals)
 
     problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
+    problem.definition = srepr(problem_definition)
+    problem.solution = srepr(problem_solution)
     return problem
 
 
@@ -114,8 +110,8 @@ def make_fractional_inequality_problem() -> Problem:
     problem_solution = solveset(problem_definition, "x", S.Reals)
 
     problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
+    problem.definition = srepr(problem_definition)
+    problem.solution = srepr(problem_solution)
     return problem
 
 
@@ -139,8 +135,8 @@ def make_exponent_reduction_problem() -> Problem:
         problem_solution = simplify(problem_definition)
 
         problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
+        problem.definition = srepr(problem_definition)
+        problem.solution = srepr(problem_solution)
 
         return problem
 
@@ -159,8 +155,8 @@ def make_exponent_reduction_problem() -> Problem:
         problem_solution = simplify(problem_definition)
 
         problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
+        problem.definition = srepr(problem_definition)
+        problem.solution = srepr(problem_solution)
 
         return problem
 
@@ -185,8 +181,8 @@ def make_exponent_operation_problem() -> Problem:
         problem_solution = simplify(problem_definition)
 
         problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
+        problem.definition = srepr(problem_definition)
+        problem.solution = srepr(problem_solution)
 
         return problem
 
@@ -204,8 +200,8 @@ def make_exponent_operation_problem() -> Problem:
         problem_solution = simplify(problem_definition)
 
         problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
+        problem.definition = srepr(problem_definition)
+        problem.solution = srepr(problem_solution)
 
         return problem
 
@@ -219,8 +215,8 @@ def make_exponent_operation_problem() -> Problem:
         problem_solution = simplify(problem_definition)
 
         problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
+        problem.definition = srepr(problem_definition)
+        problem.solution = srepr(problem_solution)
 
         return problem
 
@@ -233,8 +229,8 @@ def make_exponent_operation_problem() -> Problem:
         problem_solution = simplify(problem_definition)
 
         problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
+        problem.definition = srepr(problem_definition)
+        problem.solution = srepr(problem_solution)
 
         return problem
 
