@@ -22,6 +22,7 @@
             pkgs.poppler_utils
             pkgs.djhtml
             pkgs.djlint
+            pkgs.awscli2
           ];
 
           shellHook = ''
