@@ -13,16 +13,16 @@
           inputsFrom = [ self.packages.${system}.abiopetaja-dev ];
 
           packages = [
+            pkgs.awscli2
             pkgs.deploy-rs.deploy-rs
+            pkgs.djhtml
+            pkgs.djlint
             pkgs.opentofu
             pkgs.poetry
+            pkgs.poppler_utils
             pkgs.pyright
             pkgs.ruff
             pkgs.texliveBasic
-            pkgs.poppler_utils
-            pkgs.djhtml
-            pkgs.djlint
-            pkgs.awscli2
           ];
 
           shellHook = ''
