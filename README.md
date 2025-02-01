@@ -104,7 +104,7 @@ Inspect the [`infra/main.tf` file](./infra/main.tf) for the specific infrastruct
 
 To deploy the application from a clean state:
 
-- Generate a root user access key on AWS and store it locally in `~/.aws/credentials` - see [the AWS CLI docs](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html#cli-configure-files-where) for more
+- Generate a root user access key on AWS and store it locally using `aws configure`
 - Generate a [public-private key pair](https://en.wikipedia.org/wiki/Public-key_cryptography) - using `ssh-keygen`, for example
 - Replace the public key fingerprint in `./infra/main.tf` with your public key's fingerprint - this will be used to allow SSH connections to the machine for deployments
 - In GitHub, [set a repository secret](https://github.com/gekoke/abiopetaja/settings/secrets/actions) with the name `SSH_PRIVATE_KEY` to your private key string. This is used in the [continuous deployment definition](./.github/workflows/cd.yaml) to deploy the configuration to the instance
