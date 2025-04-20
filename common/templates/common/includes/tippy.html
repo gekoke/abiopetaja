@@ -1,0 +1,38 @@
+{% load i18n %}
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+
+<style>
+    .tippy-box[data-theme~='pico'] {
+        background-color: var(--pico-color-slate-800);
+    }
+
+    .tippy-box[data-theme~='pico'][data-placement^='top']>.tippy-arrow::before {
+        border-top-color: var(--pico-color-slate-800);
+    }
+
+    .tippy-box[data-theme~='pico'][data-placement^='bottom']>.tippy-arrow::before {
+        border-top-color: var(--pico-color-slate-800);
+    }
+
+    .tippy-box[data-theme~='pico'][data-placement^='left']>.tippy-arrow::before {
+        border-top-color: var(--pico-color-slate-800);
+    }
+
+    .tippy-box[data-theme~='pico'][data-placement^='right']>.tippy-arrow::before {
+        border-top-color: var(--pico-color-slate-800);
+    }
+</style>
+
+<script>
+    tippy(".edit-button", {
+        content: "{% translate "Edit" %}",
+        theme: "pico",
+    });
+    tippy(".delete-button", {
+        content: "{% translate "Delete" %}",
+        theme: "pico",
+    });
+</script>
+

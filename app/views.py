@@ -1,0 +1,402 @@
+import logging
+from typing import Any
+from uuid import UUID
+
+import django.views.generic
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.http import (
+    HttpRequest,
+    HttpResponse,
+    HttpResponseNotAllowed,
+)
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
+from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
+from django.views.generic.base import ContextMixin, TemplateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.list import ListView
+
+from app.annoying import get_object_or_None
+from app.forms import (
+    AITestGenerationForm,
+    GenerateTestForm,
+    SaveTestForm,
+    TemplateCreateForm,
+    TemplateProblemCreateForm,  # updated form name
+    TemplateProblemUpdateForm,
+    TemplateUpdateForm,
+    TestUpdateForm,
+)
+from app.math import generate_ai_test_problems
+from app.models import (
+    EmptyTemplate,
+    Template,
+    TemplateProblem,
+    Test,
+    TestVersion,
+    TestVersionProblem,
+    UserFeedback,
+)
+
+logger = logging.getLogger(__name__)
+
+
+class CancellationMixin(ContextMixin):
+    cancellation_url = ""
+
+    def get_cancellation_url(self):
+        return self.cancellation_url
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["cancellation_url"] = self.get_cancellation_url()
+        return context
+
+
+class TopicDifficultyListView(ListView):
+    template_name = "app/topic_difficulty_list.html"  # Create a corresponding template file.
+    context_object_name = "topic_difficulties"
+
+    def get_queryset(self) -> list:
+        qs = TemplateProblem.objects.values_list("topic", "difficulty").distinct()
+        return list(qs)
+
+
+class CreateView(django.views.generic.CreateView):
+    template_name_suffix = "_create_form"
+
+
+class UpdateView(django.views.generic.UpdateView):
+    template_name_suffix = "_update_form"
+
+
+class DashboardView(LoginRequiredMixin, TemplateView):
+    template_name = "app/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Count the number of templates for the user.
+        template_count = Template.objects.filter(author=self.request.user).count()
+        # Count the number of saved tests for the user.
+        test_count = Test.objects.filter(author=self.request.user, is_saved=True).count()
+        # Compute distinct topics from TemplateProblem for the current user's templates.
+        topic_count = (
+            TemplateProblem.objects.filter(template__author=self.request.user)
+            .values("topic")
+            .distinct()
+            .count()
+        )
+        context.update(
+            user=self.request.user,
+            template_count=template_count,
+            test_count=test_count,
+            topic_count=topic_count,
+        )
+        return context
+
+
+@login_required
+def test_generation(
+    request: HttpRequest,
+    preview_test_pk: UUID | None = None,
+    save_test_form: SaveTestForm | None = None,
+) -> HttpResponse:
+    preview_test = get_object_or_None(Test, pk=preview_test_pk, author=request.user)
+    generate_test_form = GenerateTestForm(user=request.user)
+    show_save_form = preview_test is not None and not preview_test.is_saved
+    save_test_form = (
+        (save_test_form if save_test_form is not None else SaveTestForm(user=request.user))
+        if show_save_form
+        else None
+    )
+
+    context = {
+        "preview_test": preview_test,
+        "generate_test_form": generate_test_form,
+        "save_test_form": save_test_form,
+    }
+    return render(request, "app/test_generation.html", context)
+
+
+def ai_generate_test_view(request):
+    if request.method == "POST":
+        form = AITestGenerationForm(request.POST)
+        if form.is_valid():
+            topic = form.cleaned_data["topic"]
+            difficulty = form.cleaned_data["difficulty"]
+            count = form.cleaned_data["number_of_problems"]
+
+            # Create a new Test and TestVersion (unsaved)
+            test = Test(
+                author=request.user,
+                title=f"AI Test: {topic} ({difficulty})",
+                is_saved=False,
+            )
+            test.save()
+
+            test_version = TestVersion(test=test, version_number=1)
+            test_version.save()
+
+            # Generate problems
+            generated_problems = generate_ai_test_problems(topic, difficulty, count)
+
+            for prob in generated_problems:
+                problem = TestVersionProblem()
+                problem.topic = topic
+                problem.difficulty = difficulty
+                problem.definition = prob["definition"]
+                problem.solution = prob["solution"]
+                problem.test_version = test_version
+                problem.save()
+
+            # Instead of rendering a separate template, redirect to test_generation
+            return redirect("app:test-generation", preview_test_pk=test.pk)
+    else:
+        form = AITestGenerationForm()
+    return render(request, "app/ai_generate_test_form.html", {"form": form})
+
+
+@login_required
+def test_generate(request: HttpRequest) -> HttpResponse:
+    def delete_unsaved_tests():
+        Test.objects.filter(author=request.user, is_saved=False).delete()
+
+    if request.method == "POST":
+        form = GenerateTestForm(request.POST, user=request.user)
+        if form.is_valid():
+            delete_unsaved_tests()
+            template = form.get_template()
+            test_generation_parameters = form.get_test_generation_parameters()
+            test = template.generate_test(test_generation_parameters)
+
+            match test:
+                case Test():
+                    return redirect("app:test-generation", preview_test_pk=test.pk)
+                case EmptyTemplate():
+                    messages.error(
+                        request,
+                        _("This template has no problems and would result in an empty test."),
+                    )
+                    return redirect(request.path)
+
+    return test_generation(request)
+
+
+@login_required
+def test_save(request: HttpRequest, pk: UUID) -> HttpResponse:
+    test = get_object_or_404(Test, pk=pk, author=request.user)
+    form = SaveTestForm(request.POST, user=request.user)
+
+    if form.is_valid():
+        test.name = form.cleaned_data["name"]
+        test.is_saved = True
+        test.save()
+        message = _(
+            '<div>The test was saved successfully. <a href="%(url)s">Click here</a> to view the test.</div>'
+        ) % {"url": test.get_absolute_url()}
+        messages.success(request, mark_safe(message))
+        return redirect("app:test-generation", preview_test_pk=pk)
+    return test_generation(request, pk, form)
+
+
+@login_required
+def testversion_download(request: HttpRequest, pk: UUID):
+    if request.method != "GET":
+        return HttpResponseNotAllowed(permitted_methods=["POST"])
+
+    test_version = get_object_or_404(TestVersion, pk=pk, test__author=request.user)
+    return HttpResponse(test_version.pdf.read(), content_type="application/pdf")
+
+
+@login_required
+def test_download(request: HttpRequest, pk: UUID):
+    if request.method == "GET":
+        test = get_object_or_404(Test, pk=pk, author=request.user)
+        answer_key = test.answer_key_pdf
+        return HttpResponse(answer_key.read(), content_type="application/pdf")
+
+    return redirect("app:test-detail", kwargs={"pk": pk})
+
+
+#
+#     def get_queryset(self) -> Iterable:
+#         # Return distinct topic/difficulty pairs from TemplateProblem objects.
+#         qs = TemplateProblem.objects.all().values_list("topic", "difficulty").distinct()
+#         return qs
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["examples"] = list(self.get_queryset())
+#         return context
+
+
+class TemplateListView(LoginRequiredMixin, ListView):
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
+
+
+class TemplateDetailView(LoginRequiredMixin, DetailView):
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
+
+
+class TemplateCreateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, CreateView):
+    success_message = _("The template was created successfully.")
+    success_url = reverse_lazy("app:template-list")
+    cancellation_url = success_url
+    model = Template
+    form_class = TemplateCreateForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user  # pyright: ignore
+        return super().form_valid(form)
+
+
+class TemplateUpdateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, UpdateView):
+    form_class = TemplateUpdateForm
+    success_message = _("The template was updated successfully.")
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().pk})
+
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
+
+    def get_form_kwargs(self) -> dict[str, Any]:
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
+
+class TemplateDeleteView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView):
+    success_url = reverse_lazy("app:template-list")
+    success_message = _("The template was deleted successfully.")
+    cancellation_url = success_url
+
+    def get_cancellation_url(self):
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_object().pk})
+
+    def get_queryset(self):
+        return Template.objects.filter(author=self.request.user)
+
+
+class TestListView(LoginRequiredMixin, ListView):
+    def get_queryset(self):
+        return Test.objects.filter(author=self.request.user, is_saved=True)
+
+
+class TestDetailView(LoginRequiredMixin, DetailView):
+    def get_queryset(self):
+        return Test.objects.filter(author=self.request.user)
+
+
+class TestUpdateView(LoginRequiredMixin, UpdateView):
+    success_url = reverse_lazy("app:test-list")
+    success_message = _("The test was updated successfully.")
+    form_class = TestUpdateForm
+
+    def get_cancellation_url(self):
+        return reverse_lazy("app:test-detail", kwargs={"pk": self.get_object().pk})
+
+    def get_queryset(self):
+        return Test.objects.filter(author=self.request.user)
+
+    def get_form_kwargs(self) -> dict[str, Any]:
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
+
+class TemplateProblemCreateView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, CreateView
+):
+    form_class = TemplateProblemCreateForm  # Updated form name
+    model = TemplateProblem
+
+    def get_template(self) -> Template:
+        return get_object_or_404(Template, pk=self.kwargs["template_pk"])
+
+    def get_form_kwargs(self) -> dict[str, Any]:
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        kwargs["template"] = self.get_template()
+        return kwargs
+
+    def get_success_url(self) -> str:
+        return reverse_lazy("app:template-detail", kwargs={"pk": self.get_template().pk})
+
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
+    def form_valid(self, form):
+        form.instance.template = self.get_template()  # type: ignore
+        return super().form_valid(form)
+
+    def get_queryset(self):
+        return TemplateProblem.objects.filter(template__author=self.request.user)
+
+
+class TemplateProblemUpdateView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, UpdateView
+):
+    form_class = TemplateProblemUpdateForm
+    success_message = _("The problem entry was updated successfully.")
+
+    def get_success_url(self) -> str:
+        template_problem: TemplateProblem = self.get_object()  # type: ignore
+        return reverse_lazy("app:template-detail", kwargs={"pk": template_problem.template.pk})
+
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
+    def get_queryset(self):
+        return TemplateProblem.objects.filter(template__author=self.request.user)
+
+
+class TemplateProblemDeleteView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView
+):
+    success_message = _("The problem entry was deleted successfully.")
+
+    def get_success_url(self) -> str:
+        template_problem: TemplateProblem = self.get_object()  # type: ignore
+        return reverse_lazy("app:template-detail", kwargs={"pk": template_problem.template.pk})
+
+    def get_cancellation_url(self):
+        return self.get_success_url()
+
+    def get_queryset(self):
+        return TemplateProblem.objects.filter(template__author=self.request.user)
+
+
+class TestDeleteView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, DeleteView):
+    success_url = reverse_lazy("app:test-list")
+    success_message = _("The test was deleted successfully.")
+
+    def get_cancellation_url(self):
+        return reverse_lazy("app:test-detail", kwargs={"pk": self.get_object().pk})
+
+    def get_queryset(self):
+        return Test.objects.filter(author=self.request.user)
+
+
+class UserFeedbackCreateView(
+    LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, CreateView
+):
+    model = UserFeedback
+    fields = ["content"]
+    success_url = reverse_lazy("app:dashboard")
+    success_message = _("Your feedback was submitted. Thanks!")
+    cancellation_url = success_url
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user  # pyright: ignore
+        return super().form_valid(form)

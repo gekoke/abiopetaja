@@ -1,0 +1,51 @@
+{% extends "common/base.html" %}
+{% load i18n %}
+
+{% block head_title %}
+    {% translate "Templates" context "view in the application" %}
+{% endblock %}
+
+{% block extra_head %}
+    {% include "common/includes/tippy.html" %}
+{% endblock %}
+
+{% block content %}
+    {% with templates=object_list %}
+        <main class="container">
+            <nav aria-label="breadcrumb">
+                <ul>
+                    <li><a href="{% url 'app:dashboard' %}">{% translate "Dashboard" %}</a></li>
+                    <li></li>
+                </ul>
+            </nav>
+            <div style="display: flex; justify-content: space-between;">
+                <h1>{% translate "Templates" %}</h1>
+                <a href="{% url 'app:template-create' %}" class="green" role="button">{% translate "New Template" %}</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>{% translate "Name" %}</td>
+                        <td>{% translate "Problems" context "referring to the count of problems" %}</td>
+                        <td>{% translate "Created At" %}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for template in templates %}
+                        <tr>
+                            <td><a href="{{ template.get_absolute_url }}">{{ template.name }}</a></td>
+                            <td><i class="fa-solid fa-question"></i> {{ template.problem_count }}</td>
+                            <td><span id="created-at-{{ forloop.counter }}"><i class="fa-solid fa-calendar-days"></i> {{ template.created_at|date:"M d, Y" }}</span></td>
+                        </tr>
+                        <script>
+                            tippy("#created-at-{{ forloop.counter }}", {
+                                content: "{{ template.created_at|date:'Y-m-d H:m T'}}",
+                                theme: "pico",
+                            });
+                        </script>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    {% endwith %}
+{% endblock %}

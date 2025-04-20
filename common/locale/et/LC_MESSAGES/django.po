@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-22 18:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: common/templates/403.html:6
+msgid "You do not have permission to view that resource."
+msgstr "Teil pole õigusi seda ressurssi vaadata."
+
+#: common/templates/404.html:6
+msgid "The resource was not found."
+msgstr "Ressurssi ei leitud."
+
+#: common/templates/500.html:6
+msgid "Something went wrong on our end. Sorry!"
+msgstr "Miski läks meie süsteemis valesti. Palume vabandust!"
+
+#: common/templates/common/includes/nav.html:44
+msgid "Admin"
+msgstr ""
+
+#: common/templates/common/includes/nav.html:46
+msgid "Leave Feedback"
+msgstr "Jäta tagasisidet"
+
+#: common/templates/common/includes/nav.html:47
+msgid "Change Password"
+msgstr "Muuda salasõna"
+
+#: common/templates/common/includes/nav.html:48
+msgid "Sign Out"
+msgstr "Logi välja"
+
+#: common/templates/common/includes/tippy.html:30
+msgid "Edit"
+msgstr ""
+
+#: common/templates/common/includes/tippy.html:34
+msgid "Delete"
+msgstr ""

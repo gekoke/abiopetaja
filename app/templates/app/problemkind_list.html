@@ -1,0 +1,44 @@
+{% extends "common/base.html" %}
+{% load i18n %}
+{% load functional %}
+
+{% block head_title %}
+    {% translate "Teemad ja raskusastmed" context "view in the application" %}
+{% endblock %}
+
+{% block extra_head %}
+    {% include "app/includes/maths.html" %}
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+        <nav aria-label="breadcrumb">
+            <ul>
+                <li><a href="{% url 'app:dashboard' %}">{% translate "Peamenüü" %}</a></li>
+            </ul>
+        </nav>
+        <h1>{% translate "Kõik teemad ja raskusastmed" %}</h1>
+        <div class="overflow-auto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>{% translate "Teema" %}</th>
+                        <th>{% translate "Raskusaste" %}</th>
+                        <th>{% translate "Näide" %}</th>
+                        <th>{% translate "Lahend" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for topic, difficulty, example in topic_difficulty_list %}
+                        <tr>
+                            <td>{{ topic }}</td>
+                            <td>{{ difficulty }}</td>
+                            <td>$$ {{ example.definition }} $$</td>
+                            <td>$$ {{ example.solution }} $$</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

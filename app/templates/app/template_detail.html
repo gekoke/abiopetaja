@@ -1,0 +1,49 @@
+{% extends "common/base.html" %}
+{% load i18n %}
+
+{% block head_title %}
+    {{ object.name }}
+{% endblock %}
+
+{% block content %}
+    {% with template=object %}
+        <main class="container">
+            <hgroup>
+                <nav aria-label="breadcrumb">
+                    <ul>
+                        <li><a href="{% url 'app:dashboard' %}">{% translate "Dashboard" %}</a></li>
+                        <li><a href="{% url 'app:template-list' %}">{% translate "Templates" %}</a></li>
+                    </ul>
+                </nav>
+                <div style="display: flex; justify-content: space-between;">
+                    <h1>{{ template.name }}</h1>
+                    <a href="{% url 'app:templateproblem-create' template_pk=template.pk %}" role="button" class="green" >{% translate "Add Problem" %}</a>
+                </div>
+                <a href="{% url 'app:template-update' pk=template.pk %}" class="edit-button secondary"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{% url 'app:template-delete' pk=template.pk %}" class="delete-button secondary"><i class="fa-solid fa-trash"></i></a>
+            </hgroup>
+            <table>
+                <thead>
+                    <th>{% translate "Problem" %}</th>
+                    <th>{% translate "Count" %}</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {% for entry in template.entries %}
+                        <tr>
+                            <td>{{ entry }}</td>
+                            <td>{{ entry.count }}</td>
+                            <td>
+                                <div style="display: flex; justify-content: flex-end; gap: 1em;">
+                                    <a href="{% url 'app:templateproblem-update' pk=entry.pk %}" class="edit-button secondary"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="{% url 'app:templateproblem-delete' pk=entry.pk %}" class="delete-button secondary"><i class="fa-solid fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    {% endwith %}
+    {% include "common/includes/tippy.html" %}
+{% endblock %}

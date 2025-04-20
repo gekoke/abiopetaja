@@ -1,0 +1,32 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>
+            {% block head_title %}{% endblock head_title %} | Abiõpetaja
+        </title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
+        {% include "common/includes/style.html" %}
+        {% block extra_head %}
+        {% endblock extra_head %}
+    </head>
+
+    <body>
+        <div class="container">
+            {% include "common/includes/nav.html" %}
+        </div>
+        <div class="container">
+            {% include "common/includes/messages.html" %}
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+
+</html>

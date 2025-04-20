@@ -1,0 +1,7 @@
+{% extends "app/base/base_delete.html" %}
+{% load i18n %}
+
+{% block confirmation %}
+    {% blocktranslate with template_problem=object %}<p>Are you sure you want to remove the problem <b>{{ template_problem }}</b> from the test?</p>{% endblocktranslate %}
+{% endblock %}
+

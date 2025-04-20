@@ -1,0 +1,61 @@
+{% extends "common/base.html" %}
+{% load i18n %}
+
+{% block head_title %}
+    {% translate "Dashboard" context "view in the application" %}
+{% endblock %}
+
+{% block content %}
+    <header class="container">
+        <hgroup>
+            {% blocktrans with name=user.username %}
+                Welcome, {{ name }}!
+            {% endblocktrans %} 👋
+        </hgroup>
+    </header>
+
+    <main class="container">
+        <div class="grid">
+            <article id="new-problem-set">
+                <h2>{% translate "New Test ✅️" %}</h2>
+                <p>{% translate "Generate a new test" %}</p>
+                <a href="{% url 'app:test-generation' %}" role="button" style="width: 100%">{% translate "Generate!" %}</a>
+            </article>
+        </div>
+        <div class="grid">
+            <article id="templates">
+                <h2>{% translate "My Templates 📐" %}</h2>
+                <p>{% translate "Collections of problems that can be used to generate tests" %}</p>
+                <a href="{% url 'app:template-list' %}" role="button" class="secondary" style="width: 100%">
+                    {% blocktrans count counter=template_count %}
+                        Vaata {{ counter }} malli
+                    {% plural %}
+                        Vaata {{ counter }} malli
+                    {% endblocktrans %}
+                </a>
+            </article>
+            <article id="tests">
+                <h2>{% translate "My Tests 📄" context "math tests" %}</h2>
+                <p>{% translate "Browse all your tests" %}</p>
+                <a href="{% url 'app:test-list' %}" role="button" class="secondary" style="width: 100%">
+                    {% blocktrans count counter=test_count %}
+                        Vaata {{ counter }} tööd
+                    {% plural %}
+                        Vaata {{ counter }} tööd
+                    {% endblocktrans %}
+                </a>
+            </article>
+            <article id="topics">
+                <h2>{% translate "Kõik teemad ja raskusastmed 🧠" %}</h2>
+                <p>{% translate "Sirvi kõiki olemasolevaid teemasid ja raskusastmeid" %}</p>
+                <a href="{% url 'app:topic-difficulty-list' %}" role="button" class="secondary" style="width: 100%">
+                    {% blocktrans count counter=topic_count %}
+                        Vaata {{ counter }} teemat
+                    {% plural %}
+                        Vaata {{ counter }} teemat
+                    {% endblocktrans %}
+                </a>
+            </article>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "app/base/base_delete.html" %}
+{% load i18n %}
+
+{% block confirmation %}
+    {% blocktranslate with test_name=object %}<p>Are you sure you want to delete the test <b>{{ test_name }}</b>?</p>{% endblocktranslate %}
+{% endblock %}
+
