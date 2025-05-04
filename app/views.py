@@ -32,7 +32,7 @@ from app.forms import (
     TemplateUpdateForm,
     TestUpdateForm,
 )
-from app.math import generate_ai_test_problems
+from app.math import generate_problems_with_ai
 from app.models import (
     EmptyTemplate,
     Template,
@@ -143,7 +143,7 @@ def ai_generate_test_view(request):
             test_version.save()
 
             # Generate problems
-            generated_problems = generate_ai_test_problems(topic, difficulty, count)
+            generated_problems = generate_problems_with_ai(topic, difficulty, count)
 
             for prob in generated_problems:
                 problem = TestVersionProblem()
@@ -223,16 +223,15 @@ def test_download(request: HttpRequest, pk: UUID):
     return redirect("app:test-detail", kwargs={"pk": pk})
 
 
-#
-#     def get_queryset(self) -> Iterable:
-#         # Return distinct topic/difficulty pairs from TemplateProblem objects.
-#         qs = TemplateProblem.objects.all().values_list("topic", "difficulty").distinct()
-#         return qs
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["examples"] = list(self.get_queryset())
-#         return context
+#def get_queryset(self) -> Iterable:
+# Return distinct topic/difficulty pairs from TemplateProblem objects.
+ #   qs = TemplateProblem.objects.all().values_list("topic", "difficulty").distinct()
+ #   return qs
+
+#def get_context_data(self, **kwargs):
+ #   context = super().get_context_data(**kwargs)
+  #  context["examples"] = list(self.get_queryset())
+   # return context
 
 
 class TemplateListView(LoginRequiredMixin, ListView):

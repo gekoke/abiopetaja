@@ -20,6 +20,7 @@
           torch
           accelerate
           pydantic
+          openai
         ]
       );
     in

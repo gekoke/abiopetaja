@@ -1,0 +1,1139 @@
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Lihtsustage avaldis: $\frac{3x^2 - 12}{3}$
+   Lahendus: $x^2 - 4$
+
+2) Lihtsustage avaldis: $\sqrt{16} + 2\sqrt{9} - 5$
+   Lahendus: $4$
+
+3) Lihtsustage avaldis: $2 + \frac{8}{4} - 3$
+   Lahendus: $3$
+
+4) Lihtsustage avaldis: $\frac{2x^2 + 4x}{2x} + \sqrt{16}$
+   Lahendus: $x + 4$
+
+5) Lihtsustage avaldis: $\frac{(x^2 - 1)(x + 1)}{x^2 - 1}$
+   Lahendus: $x + 1, \quad x \neq 1, -1$
+
+6) Lihtsustage avaldis: $\frac{2x + 6}{2} - \frac{x + 3}{2}$
+   Lahendus: $x$
+
+7) Lihtsustage avaldis: $A = \frac{(x^2 - 4)(x + 2)}{x^2 - 4} \times \frac{(x - 2)(x + 2)}{(x + 2)(x - 2)}$
+   Lahendus: $A = 1, \quad x \neq 2, -2$
+
+8) Lihtsustage avaldis: $A = \left(\frac{3x^2 - 12}{x - 2} + \frac{2x^2 - 8}{x + 2}\right) \div (x + 2)$, arvutage kui $x = 4$.
+   Lahendus: $A = 3$
+
+9) Lihtsustage avaldis: $A = \left(\frac{(x^2 - 1)(x + 1)}{(x - 1)(x + 1)} - \frac{x^2 - 1}{x - 1}\right) \times \frac{1}{x + 1}$, arvutage kui $x = 3$.
+   Lahendus: $A = 0$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) **Ülesanne**  
+Lihtsustage avaldis: $\frac{3x + 6}{3}$
+
+   **Lahendus (samm-sammuline)**  
+   ① Jagame 3x ja 6 eraldi 3-ga: $\frac{3x}{3} + \frac{6}{3}$  
+   ② Lihtsustame: $x + 2$  
+   **Vastus:** $x + 2$
+
+2) **Ülesanne**  
+Arvutage avaldise väärtus: $5 \times (2 + 3) - 4$
+
+   **Lahendus (samm-sammuline)**  
+   ① Arvutame sulgudes: $2 + 3 = 5$  
+   ② Korrutame: $5 \times 5 = 25$  
+   ③ Lahutame: $25 - 4 = 21$  
+   **Vastus:** $21$
+
+3) **Ülesanne**  
+Lihtsustage avaldis: $2(a + 3) - 4(a - 1)$
+
+   **Lahendus (samm-sammuline)**  
+   ① Avame sulud: $2a + 6 - 4a + 4$  
+   ② Liidame: $-2a + 10$  
+   **Vastus:** $-2a + 10$
+
+4) **Ülesanne**  
+Arvutage avaldise väärtus: $3x^2 - 2x + 1$ kui $x = 2$.
+
+   **Lahendus (samm-sammuline)**  
+   ① Asendame x väärtuse: $3(2^2) - 2(2) + 1$  
+   ② Arvutame: $3(4) - 4 + 1$  
+   ③ Liidame: $12 - 4 + 1 = 9$  
+   **Vastus:** $9$
+
+5) **Ülesanne**  
+Lihtsustage avaldis: $\frac{a^2 - b^2}{a - b}$
+
+   **Lahendus (samm-sammuline)**  
+   ① Kasutame ruutude vahe valemit: $a^2 - b^2 = (a - b)(a + b)$  
+   ② Lihtsustame: $\frac{(a - b)(a + b)}{a - b} = a + b$  
+   **Vastus:** $a + b$
+
+6) **Ülesanne**  
+Arvutage: $x^2 + y^2$ kui $x + y = 10$ ja $xy = 21$.
+
+   **Lahendus (samm-sammuline)**  
+   ① Kasutame identiteeti: $x^2 + y^2 = (x + y)^2 - 2xy$  
+   ② Asendame: $10^2 - 2 \times 21 = 100 - 42 = 58$  
+   **Vastus:** $58$
+
+7) **Ülesanne**  
+Tõestage, et $x^3 - x$ on jagatav $x(x^2 - 1)$.
+
+   **Lahendus (samm-sammuline)**  
+   ① Kirjutame: $x^3 - x = x(x^2 - 1)$  
+   ② Tunnistame, et $x^2 - 1 = (x - 1)(x + 1)$, seega $x^3 - x = x(x - 1)(x + 1)$  
+   ③ Seega on $x^3 - x$ jagatav $x(x^2 - 1)$.  
+   **Vastus:** Tõestatud
+
+8) **Ülesanne**  
+Lihtsustage avaldis: $\frac{a^3 - b^3}{a - b}$.
+
+   **Lahendus (samm-sammuline)**  
+   ① Kasutame kuupide vahe valemit: $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$  
+   ② Lihtsustame: $\frac{(a - b)(a^2 + ab + b^2)}{a - b} = a^2 + ab + b^2$  
+   **Vastus:** $a^2 + ab + b^2$
+
+9) **Ülesanne**  
+Tõestage, et iga paaritu arv $n$ võib kirjutada kujul $n = 2k + 1$, kus $k$ on täisarv.
+
+   **Lahendus (samm-sammuline)**  
+   ① Oletame, et $n$ on paaritu arv.  
+   ② Paaritu arv on definitsioonilt selline, mis ei ole jagatav 2-ga, seega $n = 2k + 1$ on täidetud, kus $k$ on täisarv.  
+   ③ Seega on iga paaritu arv esitatud kujul $2k + 1$.  
+   **Vastus:** Tõestatud
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Lihtsustage avaldis: }(5 + 3)(2 - 1)$  
+   Lahendus: $8$
+
+2) $\text{Lihtsustage avaldis: }\frac{2a + 4}{2}$  
+   Lahendus: $a + 2$
+
+3) $\text{Lihtsustage avaldis: }(4 - 2)(3 + 5)$  
+   Lahendus: $16$
+
+4) $\text{Arvutage avaldise vaartus: }(2^3 + 3^2) - (4 \times 5)$  
+   Lahendus: $-1$
+
+5) $\text{Lihtsustage avaldis: }\frac{(x^2 - 1)}{(x - 1)(x + 1)} + \frac{2}{x - 1}$  
+   Lahendus: $\frac{2}{x + 1}$
+
+6) $\text{Arvutage avaldise vaartus: }(3 \times 4) + 2^2 - \sqrt{16}$  
+   Lahendus: $10$
+
+7) $\text{Lihtsustage avaldis: }A = \frac{\sqrt{2x} - \sqrt{8}}{\sqrt{2x} + \sqrt{8}} - \frac{\sqrt{8} - \sqrt{2x}}{\sqrt{2x} + \sqrt{8}},\quad \text{arvutage } B = \frac{1}{A}$  
+   Lahendus: $A = -2,\quad B = -\frac{1}{2}$
+
+8) $\text{Lihtsustage avaldis: }A = \left(\frac{a^2 - b^2}{a - b}\right) \times \left(\frac{a + b}{\sqrt{a} + \sqrt{b}}\right),\quad \text{arvutage kui } a = 9,\quad b = 1$  
+   Lahendus: $A = 10$
+
+9) $\text{Lihtsustage avaldis: }A = \left(\frac{\sqrt{3x} - \sqrt{3y}}{\sqrt{3x} + \sqrt{3y}} - \frac{\sqrt{3y} - \sqrt{3x}}{\sqrt{3x} + \sqrt{3y}}\right) \times \left(\frac{y}{x}\right)^{-1},\quad \text{arvutage kui } x = 4,\quad y = 1$  
+   Lahendus: $A = 2$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Lihtsustage avaldis: }(2 + 3)^2$
+   Solution: $25$
+
+2) $\text{Lihtsustage avaldis: }\frac{4a^2 + 8a}{4}$
+   Solution: $a^2 + 2a$
+
+3) $\text{Lihtsustage avaldis: }(x + 2)(x - 2)$
+   Solution: $x^2 - 4$
+
+4) $\text{Lihtsustage avaldis: }\frac{(x^2 - 1)(x + 1)}{x^2 - 1}$
+   Solution: $x + 1, \quad x \neq 1, -1$
+
+5) $\text{Arvutage avaldise vaartus: }12 \times 5 - 4^2 + \frac{16}{4}$
+   Solution: $40$
+
+6) $\text{Arvutage avaldise vaartus: }(3 + 2)^3 - 5 \times 6 + 18$
+   Solution: $29$
+
+7) $\text{Lihtsustage avaldis: }\frac{(x^2 - 4)(x + 2)}{x^2 - 4}$
+   Solution: $x + 2, \quad x \neq 2, -2$
+
+8) $\text{Lihtsustage avaldis: }\frac{(x^2 - 1)(x^2 + 1)}{x^4 - 1}$
+   Solution: $\frac{x^2 + 1}{(x^2 - 1)}, \quad x \neq 1, -1$
+
+9) $\text{Lihtsustage avaldis: }\frac{\sqrt{x^2 + 4x + 4} - \sqrt{x^2}}{x + 2}$
+   Solution: $1, \quad x \neq -2$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Simplify the expression: $\frac{3x + 6}{3}$
+   Solution: $\frac{3(x + 2)}{3} = x + 2$
+
+2) Simplify the expression: $\frac{4y - 8}{2y - 4}$
+   Solution: $\frac{4(y - 2)}{2(y - 2)} = 2 \quad (y \neq 2)$
+
+3) Simplify the expression: $\frac{x^2 - 1}{x - 1}$
+   Solution: $\frac{(x - 1)(x + 1)}{x - 1} = x + 1 \quad (x \neq 1)$
+
+4) Simplify the expression: $\frac{2a^2 - 8}{4a} \div \frac{a - 2}{2}$
+   Solution: $\frac{2(a^2 - 4)}{4a} \cdot \frac{2}{a - 2} = \frac{2(a - 2)(a + 2)}{4a(a - 2)} = \frac{a + 2}{2a} \quad (a \neq 2)$
+
+5) Simplify the expression: $\frac{(x^3 - 27)}{(x - 3)} \times \frac{(x + 3)}{(x^2 + 3x + 9)}$
+   Solution: $\frac{(x - 3)(x^2 + 3x + 9)}{(x - 3)} \times \frac{(x + 3)}{(x^2 + 3x + 9)} = x + 3 \quad (x \neq 3)$
+
+6) Simplify the expression: $A = \frac{(x^2 - 4)(x + 2)}{x^2 - 2x - 8} + \frac{(2x + 4)(x - 2)}{x^2 - 4}$
+   Solution: $A = \frac{(x - 2)(x + 2)(x + 2)}{(x - 2)(x + 2)} + \frac{2(x + 2)(x - 2)}{(x - 2)(x + 2)} = x + 2 + 2 = x + 4 \quad (x \neq 2, -2)$
+
+7) Simplify the expression: $A = \left( \frac{1}{x} + \frac{1}{y} \right) \left( \frac{1}{y} + \frac{1}{z} \right) - \frac{1}{xyz}$
+   Solution: $A = \frac{y + x}{xy} \cdot \frac{z + y}{yz} - \frac{1}{xyz} = \frac{(y + x)(z + y) - 1}{xyz} = \frac{yz + y^2 + xz + xy - 1}{xyz}$
+
+8) Simplify the expression: $A = \left( \frac{x^2 - 1}{x - 1} - \frac{x + 1}{x + 1} \right) \cdot \left( \frac{x^2 + 2x + 1}{x + 1} \right)$
+   Solution: $A = (x + 1 - 1) \cdot (x + 1) = x \cdot (x + 1) = x^2 + x$
+
+9) Simplify the expression: $A = \left( \frac{a^2 - b^2}{a - b} \right) - \left( \frac{a + b}{2} \right)$, calculate if $a = 5$ and $b = 3$.
+   Solution: $A = (a + b)(a - b) - \frac{a + b}{2} = (5 + 3)(5 - 3) - \frac{5 + 3}{2} = 8 \cdot 2 - 4 = 16 - 4 = 12$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Simplify the expression: $(3 + 2\sqrt{5})^2$
+   Solution: 
+   \[
+   (3 + 2\sqrt{5})^2 = 3^2 + 2 \cdot 3 \cdot 2\sqrt{5} + (2\sqrt{5})^2 = 9 + 12\sqrt{5} + 20 = 29 + 12\sqrt{5}
+   \]
+
+2) Simplify the expression: $(\sqrt{8} + \sqrt{2})(\sqrt{8} - \sqrt{2})$
+   Solution: 
+   \[
+   (\sqrt{8} + \sqrt{2})(\sqrt{8} - \sqrt{2}) = (\sqrt{8})^2 - (\sqrt{2})^2 = 8 - 2 = 6
+   \]
+
+3) Simplify the expression: $(x + 4\sqrt{y})^2$
+   Solution: 
+   \[
+   (x + 4\sqrt{y})^2 = x^2 + 2 \cdot x \cdot 4\sqrt{y} + (4\sqrt{y})^2 = x^2 + 8x\sqrt{y} + 16y
+   \]
+
+4) Simplify the expression: $A = \frac{2x + 3}{x + 1}, \quad B = \frac{3x - 1}{2x + 5}, \quad \text{find } A + B$.
+   Solution: 
+   \[
+   A + B = \frac{2x + 3}{x + 1} + \frac{3x - 1}{2x + 5} = \frac{(2x + 3)(2x + 5) + (3x - 1)(x + 1)}{(x + 1)(2x + 5)}
+   \]
+   Expanding the numerators and simplifying gives a final result of:
+   \[
+   \frac{7x^2 + 13x + 8}{(x + 1)(2x + 5)}
+   \]
+
+5) Simplify the expression: $\frac{(x^2 - 1)(x + 1)}{x^2 - 1}$
+   Solution: 
+   \[
+   \frac{(x^2 - 1)(x + 1)}{x^2 - 1} = x + 1, \quad \text{for } x \neq 1 \text{ and } x \neq -1
+   \]
+
+6) Simplify the expression: $A = \frac{(x^2 - 4)(x + 2)}{x^2 - 4}, \quad \text{calculate if } A = 2$.
+   Solution: 
+   \[
+   A = \frac{(x^2 - 4)(x + 2)}{x^2 - 4} = x + 2, \quad \text{set } x + 2 = 2 \Rightarrow x = 0
+   \]
+
+7) Simplify the expression: $A = \frac{\sqrt{x^2 + 4x + 4} - 2}{x + 2}, \quad \text{calculate the limit as } x \to 0$.
+   Solution: 
+   \[
+   A = \frac{\sqrt{(x + 2)^2} - 2}{x + 2} = \frac{|x + 2| - 2}{x + 2}
+   \]
+   As $x \to 0$, $A \to 0$.
+
+8) Simplify the expression: $A = \frac{(x^2 + 3x + 2)(x - 1)}{x^2 - 1}, \quad \text{calculate if } x = 0$.
+   Solution: 
+   \[
+   A = \frac{(0 + 0 + 2)(-1)}{0 - 1} = \frac{-2}{-1} = 2
+   \]
+
+9) Simplify the expression: $A = \left(\frac{x^2 - 1}{x - 1} - \frac{x + 1}{x + 1}\right) \times \frac{x^2 + x + 1}{x^2 - 1}$.
+   Solution: 
+   \[
+   A = \left((x + 1) - 1\right) \times \frac{x^2 + x + 1}{(x - 1)(x + 1)} = \frac{x(x^2 + x + 1)}{(x - 1)(x + 1)} = \frac{x^3 + x^2 + x}{(x - 1)(x + 1)}
+   \]
+   This expression can be simplified further depending on the values of $x$.
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Simplify the expression: $\sqrt{45} + 3\sqrt{5} - \sqrt{20}$
+   Solution: 
+   First, simplify each square root:
+   \[
+   \sqrt{45} = \sqrt{9 \cdot 5} = 3\sqrt{5}
+   \]
+   \[
+   \sqrt{20} = \sqrt{4 \cdot 5} = 2\sqrt{5}
+   \]
+   Now substitute back into the expression:
+   \[
+   3\sqrt{5} + 3\sqrt{5} - 2\sqrt{5} = 4\sqrt{5}
+   \]
+   Final answer: $4\sqrt{5}$
+
+2) Simplify the expression: $\frac{3x^2 - 12}{3x^2 - 6x}$
+   Solution: 
+   Factor out common terms:
+   \[
+   3(x^2 - 4) \text{ and } 3x(x - 2)
+   \]
+   So the expression becomes:
+   \[
+   \frac{3(x^2 - 4)}{3x(x - 2)} = \frac{x^2 - 4}{x(x - 2)}
+   \]
+   Further factor $x^2 - 4$:
+   \[
+   \frac{(x - 2)(x + 2)}{x(x - 2)}
+   \]
+   Cancel $(x - 2)$:
+   \[
+   = \frac{x + 2}{x}, \quad x \neq 2
+   \]
+   Final answer: $\frac{x + 2}{x}$
+
+3) Simplify the expression: $2\sqrt{32} - 4\sqrt{8} + \sqrt{18}$
+   Solution: 
+   Simplify each term:
+   \[
+   2\sqrt{32} = 2\sqrt{16 \cdot 2} = 8\sqrt{2}
+   \]
+   \[
+   4\sqrt{8} = 4\sqrt{4 \cdot 2} = 8\sqrt{2}
+   \]
+   \[
+   \sqrt{18} = \sqrt{9 \cdot 2} = 3\sqrt{2}
+   \]
+   Now combine:
+   \[
+   8\sqrt{2} - 8\sqrt{2} + 3\sqrt{2} = 3\sqrt{2}
+   \]
+   Final answer: $3\sqrt{2}$
+
+4) Simplify the expression: $\frac{(x^2 - 1)(x + 1)}{(x - 1)(x^2 + x + 1)}$
+   Solution: 
+   Factor $x^2 - 1$:
+   \[
+   \frac{(x - 1)(x + 1)(x + 1)}{(x - 1)(x^2 + x + 1)}
+   \]
+   Cancel $(x - 1)$:
+   \[
+   = \frac{(x + 1)^2}{x^2 + x + 1}
+   \]
+   Final answer: $\frac{(x + 1)^2}{x^2 + x + 1}$
+
+5) Simplify the expression: $\frac{1}{\sqrt{2} + 1} + \frac{1}{\sqrt{2} - 1}$
+   Solution: 
+   Rationalize each term:
+   \[
+   \frac{1}{\sqrt{2} + 1} \cdot \frac{\sqrt{2} - 1}{\sqrt{2} - 1} = \frac{\sqrt{2} - 1}{1} = \sqrt{2} - 1
+   \]
+   \[
+   \frac{1}{\sqrt{2} - 1} \cdot \frac{\sqrt{2} + 1}{\sqrt{2} + 1} = \frac{\sqrt{2} + 1}{1} = \sqrt{2} + 1
+   \]
+   Now combine:
+   \[
+   (\sqrt{2} - 1) + (\sqrt{2} + 1) = 2\sqrt{2}
+   \]
+   Final answer: $2\sqrt{2}$
+
+6) Simplify the expression: $\frac{\sqrt{3} - \sqrt{2}}{\sqrt{6} - \sqrt{3}}$
+   Solution: 
+   Rationalize the denominator:
+   \[
+   \frac{(\sqrt{3} - \sqrt{2})(\sqrt{6} + \sqrt{3})}{(\sqrt{6} - \sqrt{3})(\sqrt{6} + \sqrt{3})} = \frac{(\sqrt{18} + \sqrt{9} - \sqrt{12} - \sqrt{6})}{3}
+   \]
+   Simplifying the numerator:
+   \[
+   = \frac{3\sqrt{2} + 3 - 2\sqrt{3} - \sqrt{6}}{3} = \sqrt{2} + 1 - \frac{2\sqrt{3} + \sqrt{6}}{3}
+   \]
+   Final answer: $\sqrt{2} + 1 - \frac{2\sqrt{3} + \sqrt{6}}{3}$
+
+7) Simplify the expression: $A = \frac{(x^2 - 4)(
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Simplify the expression: $(3 + 2\sqrt{5})(3 - 2\sqrt{5})$
+   Solution: $(3 + 2\sqrt{5})(3 - 2\sqrt{5}) = 3^2 - (2\sqrt{5})^2 = 9 - 20 = -11$
+
+2) Simplify the expression: $2\sqrt{18} + 3\sqrt{50}$
+   Solution: $2\sqrt{18} = 2 \cdot 3\sqrt{2} = 6\sqrt{2}$ and $3\sqrt{50} = 3 \cdot 5\sqrt{2} = 15\sqrt{2}$. Thus, $2\sqrt{18} + 3\sqrt{50} = 6\sqrt{2} + 15\sqrt{2} = 21\sqrt{2}$.
+
+3) Simplify the expression: $\frac{4\sqrt{3}}{2\sqrt{3}}$
+   Solution: $\frac{4\sqrt{3}}{2\sqrt{3}} = \frac{4}{2} = 2$.
+
+---
+
+4) Simplify the expression: $\frac{x^2 - 4}{x^2 - 2x - 8} \cdot \frac{2x + 4}{x - 2}$
+   Solution: First, factor the expressions: $x^2 - 4 = (x - 2)(x + 2)$ and $x^2 - 2x - 8 = (x - 4)(x + 2)$. Thus, the expression becomes $\frac{(x - 2)(x + 2)}{(x - 4)(x + 2)} \cdot \frac{2(x + 2)}{x - 2}$. Cancel $(x - 2)$ and $(x + 2)$: $\frac{2}{x - 4}$. 
+
+5) Calculate the value of the expression: $5 \times (2 + 3) - 4^2 + 6$
+   Solution: $5 \times (2 + 3) = 5 \times 5 = 25$. Then, $25 - 4^2 + 6 = 25 - 16 + 6 = 15$.
+
+6) Simplify the expression: $\frac{3a^2 - 12}{3a - 6} \div \frac{a^2 - 4}{a + 2}$
+   Solution: First, factor: $3a^2 - 12 = 3(a^2 - 4) = 3(a - 2)(a + 2)$ and $3a - 6 = 3(a - 2)$. The first fraction simplifies to $\frac{3(a - 2)(a + 2)}{3(a - 2)} = a + 2$. Now, $\frac{a + 2}{\frac{(a - 2)(a + 2)}{(a + 2)}} = \frac{a + 2}{a - 2}$. 
+
+---
+
+7) Prove that the expression $A = \frac{(x^2 - 1)(x^2 + 1)}{x^4 - 1}$ simplifies to $\frac{x^2 + 1}{x^2 - 1}$.
+   Solution: Factor the denominator: $x^4 - 1 = (x^2 - 1)(x^2 + 1)$. Thus, $A = \frac{(x^2 - 1)(x^2 + 1)}{(x^2 - 1)(x^2 + 1)} = 1$. This shows that the expression simplifies to 1, not $\frac{x^2 + 1}{x^2 - 1}$.
+
+8) Simplify the expression: $A = \frac{\sqrt{a^2 + b^2} - a}{b} + \frac{b}{\sqrt{a^2 + b^2} + a}$
+   Solution: Combine the fractions: $A = \frac{(\sqrt{a^2 + b^2} - a)^2 + b^2}{b(\sqrt{a^2 + b^2} + a)}$. Expanding gives $A = \frac{(a^2 + b^2 - 2a\sqrt{a^2 + b^2} + a^2) + b^2}{b(\sqrt{a^2 + b^2} + a)}$. This simplifies to $\frac{2b^2}{b(\sqrt{a^2 + b^2} + a)} = \frac{2b}{\sqrt{a^2 + b^2} + a}$.
+
+9) Prove that $\frac{(x^2 - 4)(x^2 + 4)}{(x^2 - 2)^2} = \frac{(x^2 - 2)(x^2 + 2)}{(x^2 - 2)^2}$.
+   Solution: Factor both sides: LHS becomes $\frac{(x - 2)(x + 2)(x^2 + 4)}{(x - 2)^2}$, which simplifies to $\frac{(x + 2)(x^2 + 4)}{x - 2}$. The RHS is $\frac{(x^2 - 2)(x^2 + 2)}
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Simplify the expression: $\sqrt{36} + 2 \times 3$
+   Solution: $\sqrt{36} = 6$, so $6 + 2 \times 3 = 6 + 6 = 12$.
+
+2) Simplify the expression: $\frac{4 + 2\sqrt{9}}{2}$
+   Solution: $\sqrt{9} = 3$, so $4 + 2 \times 3 = 4 + 6 = 10$, thus $\frac{10}{2} = 5$.
+
+3) Simplify the expression: $3(\sqrt{16} - 2) + 4$
+   Solution: $\sqrt{16} = 4$, so $3(4 - 2) + 4 = 3 \times 2 + 4 = 6 + 4 = 10$.
+
+4) Simplify the expression: $\frac{2x + 4}{2} + \frac{6}{2}$
+   Solution: $\frac{2x + 4}{2} = x + 2$, and $\frac{6}{2} = 3$, thus $x + 2 + 3 = x + 5$.
+
+5) Calculate the value of the expression: $2^3 + 3^2 - 4$
+   Solution: $2^3 = 8$, $3^2 = 9$, so $8 + 9 - 4 = 13$.
+
+6) Simplify the expression: $\frac{x^2 - 4}{x - 2} \cdot \frac{x + 2}{x + 4}$
+   Solution: Factor the numerator: $x^2 - 4 = (x - 2)(x + 2)$. Thus, $\frac{(x - 2)(x + 2)}{x - 2} \cdot \frac{x + 2}{x + 4} = \frac{(x + 2)^2}{x + 4}$, provided $x \neq 2$.
+
+7) Simplify the expression: $\frac{\sqrt{a^2} - a}{\sqrt{a^2} + a} \cdot \frac{a + b}{a - b}$
+   Solution: $\sqrt{a^2} = |a|$. If $a \geq 0$, this becomes $\frac{|a| - a}{|a| + a} = \frac{0}{2a} = 0$. Thus, the expression simplifies to $0$ if $a \geq 0$.
+
+8) Simplify the expression: $\frac{\sqrt{a} - 1}{\sqrt{a} + 1} + \frac{\sqrt{a} + 1}{\sqrt{a} - 1}$
+   Solution: The first term can be rewritten as $\frac{(\sqrt{a} - 1)^2}{(\sqrt{a} - 1)(\sqrt{a} + 1)} = \frac{a - 2\sqrt{a} + 1}{a - 1}$, and the second term as $\frac{(\sqrt{a} + 1)^2}{(\sqrt{a} - 1)(\sqrt{a} + 1)} = \frac{a + 2\sqrt{a} + 1}{a - 1}$. Adding these gives $\frac{(a - 2\sqrt{a} + 1) + (a + 2\sqrt{a} + 1)}{a - 1} = \frac{2a + 2}{a - 1} = \frac{2(a + 1)}{a - 1}$.
+
+9) Prove that for any positive integers $x$ and $y$, the expression $x^2 + y^2 \geq 2xy$ holds.
+   Solution: This is known as the Cauchy-Schwarz inequality. We can rearrange it to $(x - y)^2 \geq 0$, which is always true since the square of any real number is non-negative. Thus, $x^2 + y^2 \geq 2xy$ is proven.
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) **Problem**  
+What is the value of \( 3^2 + 4^2 \)?
+
+   **Solution (step by step)**  
+   ① Calculate \( 3^2 = 9 \).  
+   ② Calculate \( 4^2 = 16 \).  
+   ③ Add the results: \( 9 + 16 = 25 \).  
+   **Answer:** 25
+
+2) **Problem**  
+Solve for \( x \) in the equation \( 2x + 5 = 15 \).
+
+   **Solution (step by step)**  
+   ① Subtract 5 from both sides: \( 2x = 10 \).  
+   ② Divide by 2: \( x = 5 \).  
+   **Answer:** 5
+
+3) **Problem**  
+Calculate the area of a rectangle with length 8 cm and width 3 cm.
+
+   **Solution (step by step)**  
+   ① Use the area formula \( A = \text{length} \times \text{width} \).  
+   ② Calculate \( A = 8 \times 3 = 24 \).  
+   **Answer:** 24 cm²
+
+4) **Problem**  
+If \( f(x) = 2x + 3 \) and \( g(x) = x^2 \), find \( f(g(2)) \).
+
+   **Solution (step by step)**  
+   ① Calculate \( g(2) = 2^2 = 4 \).  
+   ② Substitute into \( f \): \( f(4) = 2(4) + 3 = 8 + 3 = 11 \).  
+   **Answer:** 11
+
+5) **Problem**  
+A triangle has sides of lengths 6, 8, and 10. Prove that it is a right triangle.
+
+   **Solution (step by step)**  
+   ① Check if \( 6^2 + 8^2 = 10^2 \).  
+   ② Calculate \( 36 + 64 = 100 \).  
+   ③ Since \( 100 = 100 \), the triangle is a right triangle.  
+   **Answer:** Yes, it is a right triangle.
+
+6) **Problem**  
+Find the value of \( x \) for which \( 3(x - 2) = 2(x + 4) \).
+
+   **Solution (step by step)**  
+   ① Expand both sides: \( 3x - 6 = 2x + 8 \).  
+   ② Rearrange: \( 3x - 2x = 8 + 6 \).  
+   ③ Simplify: \( x = 14 \).  
+   **Answer:** 14
+
+7) **Problem**  
+Let \( A = \frac{x^2 - 4}{x - 2} \). Simplify \( A \) and find the value when \( x = 3 \).
+
+   **Solution (step by step)**  
+   ① Factor the numerator: \( A = \frac{(x - 2)(x + 2)}{x - 2} \).  
+   ② Cancel \( x - 2 \): \( A = x + 2 \) (for \( x \neq 2 \)).  
+   ③ Substitute \( x = 3 \): \( A = 3 + 2 = 5 \).  
+   **Answer:** 5
+
+8) **Problem**  
+Prove that for any positive integer \( n \), \( n^3 - n \) is divisible by 6.
+
+   **Solution (step by step)**  
+   ① Factor: \( n^3 - n = n(n^2 - 1) = n(n - 1)(n + 1) \).  
+   ② Note that \( n(n - 1)(n + 1) \) is the product of three consecutive integers, hence divisible by 2.  
+   ③ Among any three consecutive integers, one is divisible by 3.  
+   ④ Thus, \( n(n - 1)(n + 1) \) is divisible by \( 2 \times 3 = 6 \).  
+   **Answer:** True, \( n^3 - n \) is divisible by 6.
+
+9) **Problem**  
+Let \( S = \frac{1}{1^2} + \frac{1}{2^2} + \frac{1}{3^2} + \ldots + \frac{1}{n^2} \). Show that \( S < 2 \) for all \( n \geq 1 \).
+
+   **Solution (step by step)**  
+   ① Use the comparison test with the integral \( \int_1^n \frac{1}{x^2} \, dx \).  
+   ② Calculate the integral: \( \int_1^n \frac{1}{x^2} \, dx = 1 - \frac{1}{n} < 1 \).  
+   ③ Therefore, \( S < 1 + 1 = 2 \).  
+   **Answer:** True, \( S < 2 \) for all \( n \geq 1 \).
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) **Problem**  
+Simplify the expression: \( (3 + 2)^2 \)
+
+   **Solution (step by step)**  
+   1 Calculate \( 3 + 2 = 5 \)  
+   2 Calculate \( 5^2 = 25 \)  
+   **Answer:** 25
+
+2) **Problem**  
+Simplify the expression: \( \sqrt{16} + 3 \)
+
+   **Solution (step by step)**  
+   1 Calculate \( \sqrt{16} = 4 \)  
+   2 Add \( 4 + 3 = 7 \)  
+   **Answer:** 7
+
+3) **Problem**  
+Simplify the expression: \( \frac{8}{4} + 2 \)
+
+   **Solution (step by step)**  
+   1 Calculate \( \frac{8}{4} = 2 \)  
+   2 Add \( 2 + 2 = 4 \)  
+   **Answer:** 4
+
+4) **Problem**  
+Solve for \( x \): \( 2x + 3 = 11 \)
+
+   **Solution (step by step)**  
+   1 Subtract 3 from both sides: \( 2x = 8 \)  
+   2 Divide by 2: \( x = 4 \)  
+   **Answer:** 4
+
+5) **Problem**  
+If \( y = 3x + 2 \) and \( x = 5 \), find \( y \).
+
+   **Solution (step by step)**  
+   1 Substitute \( x = 5 \): \( y = 3(5) + 2 \)  
+   2 Calculate \( y = 15 + 2 = 17 \)  
+   **Answer:** 17
+
+6) **Problem**  
+Find the value of \( x \) if \( x^2 - 4x - 5 = 0 \).
+
+   **Solution (step by step)**  
+   1 Factor the equation: \( (x-5)(x+1) = 0 \)  
+   2 Set each factor to zero: \( x = 5 \) or \( x = -1 \)  
+   **Answer:** 5, -1
+
+7) **Problem**  
+Prove that if \( a + b = 10 \) and \( ab = 21 \), then \( a \) and \( b \) are the roots of \( x^2 - 10x + 21 = 0 \).
+
+   **Solution (step by step)**  
+   1 Use Vieta's formulas: roots are \( a \) and \( b \).  
+   2 The quadratic \( x^2 - (a+b)x + ab = 0 \) matches the given equation.  
+   **Answer:** True
+
+8) **Problem**  
+Show that the expression \( \frac{a^2 - b^2}{a - b} \) simplifies to \( a + b \) for \( a \neq b \).
+
+   **Solution (step by step)**  
+   1 Factor \( a^2 - b^2 = (a-b)(a+b) \).  
+   2 Cancel \( a-b \) (since \( a \neq b \)): \( \frac{(a-b)(a+b)}{a-b} = a + b \).  
+   **Answer:** \( a + b \)
+
+9) **Problem**  
+If \( x^2 + y^2 = 25 \) and \( xy = 12 \), find the value of \( x + y \).
+
+   **Solution (step by step)**  
+   1 Use \( (x+y)^2 = x^2 + y^2 + 2xy \).  
+   2 Substitute: \( (x+y)^2 = 25 + 24 = 49 \).  
+   3 Take the square root: \( x+y = 7 \) or \( x+y = -7 \).  
+   **Answer:** 7, -7
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Problem: $\text{Solve for } x: 2x + 3 = 11$
+
+   **Solution (step by step)**  
+   1 Subtract 3 from both sides: $2x = 8$  
+   2 Divide by 2: $x = 4$  
+   **Answer:** 4
+
+2) Problem: $\text{Find the value of } 5^2 + 3^2$
+
+   **Solution (step by step)**  
+   1 Calculate $5^2 = 25$  
+   2 Calculate $3^2 = 9$  
+   3 Add the results: $25 + 9 = 34$  
+   **Answer:** 34
+
+3) Problem: $\text{Evaluate } \frac{12}{4} + 3 \times 2$
+
+   **Solution (step by step)**  
+   1 Calculate $\frac{12}{4} = 3$  
+   2 Calculate $3 \times 2 = 6$  
+   3 Add the results: $3 + 6 = 9$  
+   **Answer:** 9
+
+4) Problem: $\text{Solve for } x: 3(x - 2) + 4 = 13$
+
+   **Solution (step by step)**  
+   1 Distribute: $3x - 6 + 4 = 13$  
+   2 Combine like terms: $3x - 2 = 13$  
+   3 Add 2: $3x = 15$  
+   4 Divide by 3: $x = 5$  
+   **Answer:** 5
+
+5) Problem: $\text{Calculate the area of a triangle with base } 10 \text{ and height } 5$
+
+   **Solution (step by step)**  
+   1 Use the area formula: $A = \frac{1}{2} \times \text{base} \times \text{height}$  
+   2 Substitute values: $A = \frac{1}{2} \times 10 \times 5$  
+   3 Calculate: $A = 25$  
+   **Answer:** 25
+
+6) Problem: $\text{Find the value of } x \text{ in the equation } 2x^2 - 8 = 0$
+
+   **Solution (step by step)**  
+   1 Add 8 to both sides: $2x^2 = 8$  
+   2 Divide by 2: $x^2 = 4$  
+   3 Take the square root: $x = 2 \text{ or } -2$  
+   **Answer:** 2, -2
+
+7) Problem: $\text{Prove that } \sqrt{a^2 + b^2} \geq \sqrt{2ab}$ \text{ for } a, b \geq 0$
+
+   **Solution (step by step)**  
+   1 Square both sides: $a^2 + b^2 \geq 2ab$  
+   2 Rearrange: $a^2 - 2ab + b^2 \geq 0$  
+   3 Factor: $(a - b)^2 \geq 0$  
+   **Answer:** True for all $a, b \geq 0$
+
+8) Problem: $\text{Show that } x^3 - 3x + 2 = 0 \text{ has at least one real root}$
+
+   **Solution (step by step)**  
+   1 Calculate values: $f(-2) = -6$, $f(-1) = 4$, $f(0) = 2$, $f(1) = 0$  
+   2 By the Intermediate Value Theorem, since $f(-1) > 0$ and $f(1) = 0$, there is a root in $(-1, 1)$  
+   **Answer:** At least one real root exists
+
+9) Problem: $\text{Prove that the sum of two odd integers is even}$
+
+   **Solution (step by step)**  
+   1 Let odd integers be $a = 2m + 1$ and $b = 2n + 1$ for integers $m, n$  
+   2 Sum: $a + b = (2m + 1) + (2n + 1) = 2(m + n + 1)$  
+   3 Result is of the form $2k$ where $k = m + n + 1$, hence even  
+   **Answer:** The sum is even.
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) **Problem:** Simplify the expression: $\frac{6x^2 - 9x}{3x}$.  
+   **Solution (step by step)**  
+   1 Factor out the numerator: $3x(2x - 3)$.  
+   2 Divide by the denominator: $\frac{3x(2x - 3)}{3x}$.  
+   3 Simplify: $2x - 3$.  
+   **Answer:** $2x - 3$
+
+2) **Problem:** Solve for $x$: $2(x - 3) = 4 + x$.  
+   **Solution (step by step)**  
+   1 Distribute: $2x - 6 = 4 + x$.  
+   2 Subtract $x$ from both sides: $2x - x - 6 = 4$.  
+   3 Add $6$ to both sides: $x = 10$.  
+   **Answer:** $10$
+
+3) **Problem:** Calculate the area of a triangle with base $b = 10$ and height $h = 5$.  
+   **Solution (step by step)**  
+   1 Use the formula for area: $A = \frac{1}{2}bh$.  
+   2 Substitute values: $A = \frac{1}{2} \times 10 \times 5$.  
+   3 Calculate: $A = 25$.  
+   **Answer:** $25$
+
+4) **Problem:** Simplify the expression: $\frac{(x^2 - 4)}{(x - 2)(x + 2)}$.  
+   **Solution (step by step)**  
+   1 Factor the numerator: $x^2 - 4 = (x - 2)(x + 2)$.  
+   2 Substitute into the expression: $\frac{(x - 2)(x + 2)}{(x - 2)(x + 2)}$.  
+   3 Cancel common factors: $1$.  
+   **Answer:** $1$
+
+5) **Problem:** Solve for $x$: $3x + 5 = 2(x + 6)$.  
+   **Solution (step by step)**  
+   1 Distribute on the right: $3x + 5 = 2x + 12$.  
+   2 Subtract $2x$ from both sides: $x + 5 = 12$.  
+   3 Subtract $5$ from both sides: $x = 7$.  
+   **Answer:** $7$
+
+6) **Problem:** Find the value of $x$ in the equation: $x^2 + 5x + 6 = 0$.  
+   **Solution (step by step)**  
+   1 Factor the quadratic: $(x + 2)(x + 3) = 0$.  
+   2 Set each factor to zero: $x + 2 = 0$ or $x + 3 = 0$.  
+   3 Solve: $x = -2$ or $x = -3$.  
+   **Answer:** $-2, -3$
+
+7) **Problem:** Prove that the sum of the angles in any triangle is $180^\circ$.  
+   **Solution (step by step)**  
+   1 Draw a triangle and extend one side.  
+   2 Label angles at the vertices as $A$, $B$, and $C$.  
+   3 Use the exterior angle theorem: the exterior angle equals the sum of the two opposite angles.  
+   4 Conclude that $A + B + C = 180^\circ$.  
+   **Answer:** $180^\circ$
+
+8) **Problem:** Show that if $a + b + c = 0$, then $a^3 + b^3 + c^3 = 3abc$.  
+   **Solution (step by step)**  
+   1 Use the identity: $a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - ac - bc)$.  
+   2 Substitute $a + b + c = 0$: the equation simplifies to $a^3 + b^3 + c^3 = 3abc$.  
+   **Answer:** $3abc$
+
+9) **Problem:** Prove that the square root of 2 is irrational.  
+   **Solution (step by step)**  
+   1 Assume $\sqrt{2}$ is rational: $\sqrt{2} = \frac{p}{q}$ in lowest terms.  
+   2 Square both sides: $2 = \frac{p^2}{q^2} \implies p^2 = 2q^2$.  
+   3 Conclude $p^2$ is even, hence $p$ is even. Let $p = 2k$.  
+   4 Substitute: $4k^2 = 2q^2 \implies q^2 = 2k^2$, so $q$ is also even.  
+   5 This contradicts the assumption that $p/q$ is in lowest terms.  
+   **Answer:** Irrational
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) Define the expression: $\text{Calculate: } 5 + 3 \times 2$
+   Solution: $\begin{aligned} 
+   &\text{1. Follow order of operations: } 3 \times 2 = 6 \\ 
+   &\text{2. Then add: } 5 + 6 = 11 \\ 
+   &\text{Answer: }\boxed{11} 
+   \end{aligned}$
+
+2) Define the expression: $\text{Calculate: } 12 - 4 \div 2$
+   Solution: $\begin{aligned} 
+   &\text{1. Follow order of operations: } 4 \div 2 = 2 \\ 
+   &\text{2. Then subtract: } 12 - 2 = 10 \\ 
+   &\text{Answer: }\boxed{10} 
+   \end{aligned}$
+
+3) Define the expression: $\text{Calculate: } (3 + 5)^2$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate inside the parentheses: } 3 + 5 = 8 \\ 
+   &\text{2. Then square: } 8^2 = 64 \\ 
+   &\text{Answer: }\boxed{64} 
+   \end{aligned}$
+
+4) Define the expression: $\text{Simplify: } \frac{2x + 4}{2}$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor out common term: } \frac{2(x + 2)}{2} = x + 2 \\ 
+   &\text{Answer: }\boxed{x + 2} 
+   \end{aligned}$
+
+5) Define the expression: $\text{Evaluate: } \frac{3x^2 - 12}{3}$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor out common term: } \frac{3(x^2 - 4)}{3} = x^2 - 4 \\ 
+   &\text{Answer: }\boxed{x^2 - 4} 
+   \end{aligned}$
+
+6) Define the expression: $\text{Simplify: } \frac{x^2 - 9}{x - 3}$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor numerator: } \frac{(x - 3)(x + 3)}{x - 3} \\ 
+   &\text{2. Cancel common terms: } x + 3 \\ 
+   &\text{Answer: }\boxed{x + 3} 
+   \end{aligned}$
+
+7) Define the expression: $\text{Calculate: } \int_0^1 (3x^2 + 2) \, dx$
+   Solution: $\begin{aligned} 
+   &\text{1. Find the antiderivative: } \int (3x^2 + 2) \, dx = x^3 + 2x \\ 
+   &\text{2. Evaluate from 0 to 1: } [1^3 + 2 \cdot 1] - [0^3 + 2 \cdot 0] = 1 + 2 - 0 = 3 \\ 
+   &\text{Answer: }\boxed{3} 
+   \end{aligned}$
+
+8) Define the expression: $\text{Solve: } 2x^2 - 8x + 6 = 0$
+   Solution: $\begin{aligned} 
+   &\text{1. Use the quadratic formula: } x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \\ 
+   &\text{2. Here, } a=2, b=-8, c=6 \\ 
+   &\text{3. Calculate: } x = \frac{8 \pm \sqrt{(-8)^2 - 4 \cdot 2 \cdot 6}}{2 \cdot 2} = \frac{8 \pm \sqrt{64 - 48}}{4} \\ 
+   &\text{4. Simplify: } x = \frac{8 \pm \sqrt{16}}{4} = \frac{8 \pm 4}{4} \\ 
+   &\text{5. Solutions: } x = 3 \text{ or } x = 1 \\ 
+   &\text{Answer: }\boxed{1 \text{ and } 3} 
+   \end{aligned}$
+
+9) Define the expression: $\text{Prove: } \int_0^1 x^2 \, dx = \frac{1}{3}$
+   Solution: $\begin{aligned} 
+   &\text{1. Find the antiderivative: } \int x^2 \, dx = \frac{x^3}{3} \\ 
+   &\text{2. Evaluate from 0 to 1: } \left[\frac{1^3}{3}\right] - \left[\frac{0^3}{3}\right] = \frac{1}{3} - 0 = \frac{1}{3} \\ 
+   &\text{Answer: }\boxed{\frac{1}{3}} 
+   \end{aligned}$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: } \frac{3x + 6}{3}$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor the numerator: }3(x + 2) \\[2pt] 
+   &\text{2. Divide by 3: } x + 2 \\[2pt] 
+   &\text{Answer: }\boxed{x + 2} 
+   \end{aligned}$
+
+2) $\text{Simplify the expression: } \frac{4x^2 - 16}{4}$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor the numerator: }4(x^2 - 4) \\[2pt] 
+   &\text{2. Factor further: }4(x - 2)(x + 2) \\[2pt] 
+   &\text{3. Divide by 4: }(x - 2)(x + 2) \\[2pt] 
+   &\text{Answer: }\boxed{(x - 2)(x + 2)} 
+   \end{aligned}$
+
+3) $\text{Simplify the expression: } \frac{\sqrt{9} - 3}{\sqrt{9} + 3}$
+   Solution: $\begin{aligned} 
+   &\text{1. Evaluate: } \frac{3 - 3}{3 + 3} = \frac{0}{6} \\[2pt] 
+   &\text{2. Result: }0 \\[2pt] 
+   &\text{Answer: }\boxed{0} 
+   \end{aligned}$
+
+4) $\text{Calculate the value of the expression: } 15 \times 0.2 + 3 \times 4$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate }15 \times 0.2 = 3 \\[2pt] 
+   &\text{2. Calculate }3 \times 4 = 12 \\[2pt] 
+   &\text{3. Add: }3 + 12 = 15 \\[2pt] 
+   &\text{Answer: }\boxed{15} 
+   \end{aligned}$
+
+5) $\text{Simplify the expression: } \frac{2x^2 - 8}{2x} \div \frac{x - 2}{x}$
+   Solution: $\begin{aligned} 
+   &\text{1. Left fraction: } \frac{2(x^2 - 4)}{2x} = \frac{x^2 - 4}{x} = \frac{(x - 2)(x + 2)}{x} \\[2pt] 
+   &\text{2. Right fraction: } \frac{x - 2}{x} \\[2pt] 
+   &\text{3. Division = multiply by reciprocal: } \frac{(x - 2)(x + 2)}{x} \cdot \frac{x}{x - 2} \\[2pt] 
+   &\text{4. Cancel: } x + 2 \\[2pt] 
+   &\text{Answer: }\boxed{x + 2} 
+   \end{aligned}$
+
+6) $\text{Simplify the expression: } \frac{(x^2 - 1)}{(x - 1)(x + 1)} + \frac{(x - 1)}{(x + 1)}$
+   Solution: $\begin{aligned} 
+   &\text{1. First term simplifies to: } \frac{(x - 1)(x + 1)}{(x - 1)(x + 1)} = 1 \\[2pt] 
+   &\text{2. Second term: } \frac{x - 1}{x + 1} \\[2pt] 
+   &\text{3. Combine: } 1 + \frac{x - 1}{x + 1} = \frac{(x + 1) + (x - 1)}{x + 1} = \frac{2x}{x + 1} \\[2pt] 
+   &\text{Answer: }\boxed{\frac{2x}{x + 1}} 
+   \end{aligned}$
+
+7) $\text{Show that: } \frac{(x^2 - 4)}{(x - 2)(x + 2)} = 1 \text{ for } x \neq 2, -2$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor the numerator: } x^2 - 4 = (x - 2)(x + 2) \\[2pt] 
+   &\text{2. Rewrite the expression: } \frac{(x - 2)(x + 2)}{(x - 2)(x + 2)} = 1 \\[2pt] 
+   &\text{3. Conclusion: Valid for } x \neq 2, -2 \\[2pt] 
+   &\text{Answer: }\boxed{1} 
+   \end{aligned}$
+
+8) $\text{Prove that: } \frac{x^2 - 1}{x - 1} = x + 1 \text{ for } x \neq 1$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor the numerator: } x^2
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Calculate the value of the expression: } 3 + 5 - 2 \times 4$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate multiplication first: } 2 \times 4 = 8 \\ 
+   &\text{2. Now substitute: } 3 + 5 - 8 \\ 
+   &\text{3. Perform addition: } 3 + 5 = 8 \\ 
+   &\text{4. Finally, subtract: } 8 - 8 = 0 \\ 
+   &\text{Answer: } \boxed{0} 
+   \end{aligned}$
+
+2) $\text{Solve for } x: 2x + 3 = 11$
+   Solution: $\begin{aligned} 
+   &\text{1. Subtract 3 from both sides: } 2x = 11 - 3 \\ 
+   &\text{2. This simplifies to: } 2x = 8 \\ 
+   &\text{3. Divide both sides by 2: } x = \frac{8}{2} \\ 
+   &\text{4. Thus, } x = 4 \\ 
+   &\text{Answer: } \boxed{4} 
+   \end{aligned}$
+
+3) $\text{Find the value of } y \text{ if } 3y - 2 = 4y + 1$
+   Solution: $\begin{aligned} 
+   &\text{1. Rearranging gives: } 3y - 4y = 1 + 2 \\ 
+   &\text{2. Simplifying results in: } -y = 3 \\ 
+   &\text{3. Therefore, } y = -3 \\ 
+   &\text{Answer: } \boxed{-3} 
+   \end{aligned}$
+
+4) $\text{Calculate the value of the expression: } (2 + 3)^2 - 4 \times 3$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate the square: } (2 + 3)^2 = 5^2 = 25 \\ 
+   &\text{2. Calculate the multiplication: } 4 \times 3 = 12 \\ 
+   &\text{3. Now substitute: } 25 - 12 \\ 
+   &\text{4. Finally, subtract: } 25 - 12 = 13 \\ 
+   &\text{Answer: } \boxed{13} 
+   \end{aligned}$
+
+5) $\text{Simplify the expression: } \frac{2x^2 - 8}{2}$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor the numerator: } 2(x^2 - 4) \\ 
+   &\text{2. Divide by 2: } \frac{2(x^2 - 4)}{2} = x^2 - 4 \\ 
+   &\text{Answer: } \boxed{x^2 - 4} 
+   \end{aligned}$
+
+6) $\text{Solve for } x: \frac{x+3}{2} = 5$
+   Solution: $\begin{aligned} 
+   &\text{1. Multiply both sides by 2: } x + 3 = 10 \\ 
+   &\text{2. Subtract 3 from both sides: } x = 10 - 3 \\ 
+   &\text{3. Thus, } x = 7 \\ 
+   &\text{Answer: } \boxed{7} 
+   \end{aligned}$
+
+7) $\text{Calculate the value of the expression: } \frac{(2x + 4)(x - 1)}{x + 2} \text{ for } x = 2$
+   Solution: $\begin{aligned} 
+   &\text{1. Substitute } x = 2: \frac{(2(2) + 4)(2 - 1)}{2 + 2} \\ 
+   &\text{2. Calculate: } \frac{(4 + 4)(1)}{4} = \frac{8}{4} \\ 
+   &\text{3. Therefore, } 2 \\ 
+   &\text{Answer: } \boxed{2} 
+   \end{aligned}$
+
+8) $\text{Simplify the expression: } \frac{(x^2 - 1)}{(x - 1)(x + 1)}$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor the numerator: } x^2 - 1 = (x - 1)(x + 1) \\ 
+   &\text{2. Substitute: } \frac{(x - 1)(x + 1)}{(x - 1)(x + 1)} \\ 
+   &\text{3. Cancel common terms: } 1 \\ 
+   &\text{Answer: } \boxed{1} 
+   \end{aligned}$
+
+9) $\text{Prove that } \frac{a^2 - b^2}{a - b} = a + b \text{ for } a \neq b$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor the numerator: } a^2 - b^2 = (a - b)(a + b) \\ 
+   &\text{2. Substitute into the expression: } \frac{(a -
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Calculate the value of the expression: } 3(2 + 4) - 5$
+   Solution: $\begin{aligned} 
+   &\text{1. Evaluate inside the parentheses: } 2 + 4 = 6 \\ 
+   &\text{2. Multiply: } 3 \times 6 = 18 \\ 
+   &\text{3. Subtract: } 18 - 5 = 13 \\ 
+   &\text{Answer: }\boxed{13} 
+   \end{aligned}$
+
+2) $\text{Calculate the value of the expression: } 5^2 - 3 \times 4 + 2$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate } 5^2 = 25 \\ 
+   &\text{2. Calculate } 3 \times 4 = 12 \\ 
+   &\text{3. Combine: } 25 - 12 + 2 = 15 \\ 
+   &\text{Answer: }\boxed{15} 
+   \end{aligned}$
+
+3) $\text{Calculate the value of the expression: } \frac{8 + 4}{2} \times 3 - 5$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate the numerator: } 8 + 4 = 12 \\ 
+   &\text{2. Divide: } \frac{12}{2} = 6 \\ 
+   &\text{3. Multiply: } 6 \times 3 = 18 \\ 
+   &\text{4. Subtract: } 18 - 5 = 13 \\ 
+   &\text{Answer: }\boxed{13} 
+   \end{aligned}$
+
+4) $\text{Calculate the value of the expression: } (3 + 5)(4 - 2) + 6$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate } (3 + 5) = 8 \\ 
+   &\text{2. Calculate } (4 - 2) = 2 \\ 
+   &\text{3. Multiply: } 8 \times 2 = 16 \\ 
+   &\text{4. Add: } 16 + 6 = 22 \\ 
+   &\text{Answer: }\boxed{22} 
+   \end{aligned}$
+
+5) $\text{Calculate the value of the expression: } 2(3x + 4) - 5(x - 2)$
+   Solution: $\begin{aligned} 
+   &\text{1. Distribute: } 2(3x) + 2(4) - 5(x) + 5(2) \\ 
+   &\text{2. Combine like terms: } 6x + 8 - 5x + 10 \\ 
+   &\text{3. Simplify: } (6x - 5x) + (8 + 10) = x + 18 \\ 
+   &\text{Answer: }\boxed{x + 18} 
+   \end{aligned}$
+
+6) $\text{Calculate the value of the expression: } \frac{(2x + 3)(x - 1)}{x} + 4$
+   Solution: $\begin{aligned} 
+   &\text{1. Expand the numerator: } (2x^2 - 2x + 3x - 3) = 2x^2 + x - 3 \\ 
+   &\text{2. Divide by } x: \frac{2x^2 + x - 3}{x} = 2x + 1 - \frac{3}{x} \\ 
+   &\text{3. Add 4: } 2x + 1 - \frac{3}{x} + 4 = 2x + 5 - \frac{3}{x} \\ 
+   &\text{Answer: }\boxed{2x + 5 - \frac{3}{x}} 
+   \end{aligned}$
+
+7) $\text{Solve for } x: 2(x - 3) + 4 = 3(x + 1) - 5$
+   Solution: $\begin{aligned} 
+   &\text{1. Expand both sides: } 2x - 6 + 4 = 3x + 3 - 5 \\ 
+   &\text{2. Simplify: } 2x - 2 = 3x - 2 \\ 
+   &\text{3. Rearrange: } 2x - 3x = -2 + 2 \\ 
+   &\text{4. Solve: } -x = 0 \Rightarrow x = 0 \\ 
+   &\text{Answer: }\boxed{0} 
+   \end{aligned}$
+
+8) $\text{Solve for } x: 3(x + 4) - 2(2x - 1) = 5$
+   Solution: $\begin{aligned} 
+   &\text{1. Expand: } 3x + 12 - 4x + 2 = 5 \\ 
+   &\text{2. Combine like terms: } -x + 14 = 5 \\ 
+   &\text{3. Rearranging gives: } -x = 5 - 14 \\ 
+   &\text{4. Solve: } -x = -9 \Rightarrow x = 9 \\ 
+   &\text{Answer:
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Calculate the value: } 5 + 3 \times 2$
+   Solution: $\begin{aligned} 
+   &\text{1. Calculate multiplication: }3 \times 2 = 6\\
+   &\text{2. Add: }5 + 6 = 11\\
+   &\text{Answer: }\boxed{11} 
+   \end{aligned}$
+
+2) $\text{Solve for } x: 2x + 3 = 11$
+   Solution: $\begin{aligned} 
+   &\text{1. Subtract 3 from both sides: }2x = 8\\
+   &\text{2. Divide by 2: }x = 4\\
+   &\text{Answer: }\boxed{4} 
+   \end{aligned}$
+
+3) $\text{Find the area of a triangle with base 10 and height 5.}$
+   Solution: $\begin{aligned} 
+   &\text{1. Area formula: }A = \frac{1}{2} \times \text{base} \times \text{height}\\
+   &\text{2. Substitute values: }A = \frac{1}{2} \times 10 \times 5 = 25\\
+   &\text{Answer: }\boxed{25} 
+   \end{aligned}$
+
+4) $\text{Solve the equation: } x^2 - 4x - 5 = 0$
+   Solution: $\begin{aligned} 
+   &\text{1. Factor: }(x - 5)(x + 1) = 0\\
+   &\text{2. Set each factor to zero: }x - 5 = 0 \Rightarrow x = 5, \; x + 1 = 0 \Rightarrow x = -1\\
+   &\text{Answer: }\boxed{5 \text{ and } -1} 
+   \end{aligned}$
+
+5) $\text{Calculate the sum: } \frac{1}{2} + \frac{2}{3} + \frac{3}{4}$
+   Solution: $\begin{aligned} 
+   &\text{1. Find common denominator (12): }\\
+   &\frac{1}{2} = \frac{6}{12}, \; \frac{2}{3} = \frac{8}{12}, \; \frac{3}{4} = \frac{9}{12}\\
+   &\text{2. Sum: } \frac{6 + 8 + 9}{12} = \frac{23}{12}\\
+   &\text{Answer: }\boxed{\frac{23}{12}} 
+   \end{aligned}$
+
+6) $\text{If } f(x) = 2x^2 - 3x + 1, \text{ find } f(2).$
+   Solution: $\begin{aligned} 
+   &\text{1. Substitute } x = 2: \\
+   &f(2) = 2(2^2) - 3(2) + 1 = 8 - 6 + 1 = 3\\
+   &\text{Answer: }\boxed{3} 
+   \end{aligned}$
+
+7) $\text{Solve the system of equations: } \begin{cases} 2x + 3y = 6 \\ x - y = 1 \end{cases}$
+   Solution: $\begin{aligned} 
+   &\text{1. From the second equation: } x = y + 1\\
+   &\text{2. Substitute into the first: }2(y + 1) + 3y = 6\\
+   &\text{3. Simplify: }2y + 2 + 3y = 6 \Rightarrow 5y = 4 \Rightarrow y = \frac{4}{5}\\
+   &\text{4. Substitute back: }x = \frac{4}{5} + 1 = \frac{9}{5}\\
+   &\text{Answer: } \boxed{\left(\frac{9}{5}, \frac{4}{5}\right)} 
+   \end{aligned}$
+
+8) $\text{Prove that } \sqrt{a^2 + b^2} \geq \frac{a + b}{\sqrt{2}} \text{ for all } a, b \in \mathbb{R}.$
+   Solution: $\begin{aligned} 
+   &\text{1. Square both sides: } a^2 + b^2 \geq \frac{(a + b)^2}{2}\\
+   &\text{2. Expand: } a^2 + b^2 \geq \frac{a^2 + 2ab + b^2}{2}\\
+   &\text{3. Multiply by 2: } 2a^2 + 2b^2 \geq a^2 + 2ab + b^2\\
+   &\text{4. Rearrange: } a^2 + b^2 - 2ab \geq 0 \Rightarrow (a - b)^2 \geq 0\\
+   &\text{5. Thus, the inequality holds.}\\
+   &\text{Answer: }\text{True} 
+   \end{aligned}$
+
+9) $\text{Show that } \int_0^1 (x^2 +
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: } \sqrt{50} + 3\sqrt{2} - \sqrt{8}$
+   Solution: $7\sqrt{2}$ (A)
+
+2) $\text{Calculate the value of the expression: } 5 + \frac{3}{\sqrt{9}} - 2\sqrt{1}$
+   Solution: $6$ (A)
+
+3) $\text{Simplify the expression: } \frac{3x^2 - 3}{3}$
+   Solution: $x^2 - 1$ (A)
+
+4) $\text{Calculate the value of the expression: } \frac{(2 + 3)^2 - 4 \cdot 5}{3}$
+   Solution: $1$ (B)
+
+5) $\text{Simplify the expression: } \frac{2x - \sqrt{4x^2}}{x} \div \left(\frac{2x + 4}{\sqrt{x}} - 4\right)$
+   Solution: $\frac{1}{\sqrt{x}-2}$ (B)
+
+6) $\text{Calculate the value of the expression: } 12 \times 0.5 + \frac{15}{5} - 2^3$
+   Solution: $2$ (B)
+
+7) $\text{Simplify the expression: } A = \frac{\sqrt{3x} - \sqrt{x}}{\sqrt{3} - 1}, \quad \text{calculate if } x = 4$
+   Solution: $A = 4\sqrt{3} - 4$ (C)
+
+8) $\text{Simplify the expression: } \frac{\left(\frac{y - \sqrt{xy}}{\sqrt{x} + \sqrt{y}} + \sqrt{x}\right)}{\left(\frac{y}{\sqrt{xy} - x} + \frac{x}{\sqrt{xy} + y} - \frac{x + y}{\sqrt{xy}}\right)}$
+   Solution: $\sqrt{y} - \sqrt{x}$ (C)
+
+9) $\text{Simplify the expression: } A = \left(\frac{\sqrt{2a} - \sqrt{b}}{\sqrt{2a} + \sqrt{b}} - \frac{\sqrt{2a} + \sqrt{b}}{\sqrt{2a} - \sqrt{b}}\right) \times \left(\sqrt{\frac{b}{4a}} - \sqrt{\frac{a}{b}}\right), \quad \text{calculate } B = \frac{2^{-0.5}}{A}$
+   Solution: $A = 2\sqrt{2}, \quad B = \frac{1}{4}$ (C)
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Calculate the value of the expression: } 5 + 3 \times 2$
+   Solution: $5 + 6 = 11$
+
+2) $\text{Calculate the value of the expression: } 12 - (2 + 3) \times 2$
+   Solution: $12 - 10 = 2$
+
+3) $\text{Calculate the value of the expression: } 8 \div 2 + 3$
+   Solution: $4 + 3 = 7$
+
+4) $\text{Solve for } x \text{ in the equation: } 2x + 3 = 11$
+   Solution: $2x = 8 \Rightarrow x = 4$
+
+5) $\text{Solve for } x \text{ in the equation: } 3(x - 1) = 2x + 4$
+   Solution: $3x - 3 = 2x + 4 \Rightarrow x = 7$
+
+6) $\text{Solve for } x \text{ in the equation: } 5x - 4 = 2(x + 3)$
+   Solution: $5x - 4 = 2x + 6 \Rightarrow 3x = 10 \Rightarrow x = \frac{10}{3}$
+
+7) $\text{Prove that } \sqrt{x^2 + y^2} \geq \sqrt{2} \cdot \sqrt{xy} \text{ for all } x, y \geq 0.$$
+   Solution: By applying the Cauchy-Schwarz inequality, we have $(x^2 + y^2)(1 + 1) \geq (x + y)^2$, thus $\sqrt{x^2 + y^2} \geq \sqrt{2xy}$.
+
+8) $\text{Show that } \frac{a^2 - b^2}{a - b} = a + b \text{ for } a \neq b.$$
+   Solution: Factor the left side: $\frac{(a-b)(a+b)}{a-b} = a + b$.
+
+9) $\text{Prove that for any real numbers } a, b, c, \text{ if } a + b + c = 0, \text{ then } a^3 + b^3 + c^3 = 3abc.$$
+   Solution: Using the identity $a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - ac - bc)$, and since $a + b + c = 0$, we have $a^3 + b^3 + c^3 = 3abc$.
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: }(3x + 4)^2$ (A)  
+   Solution: $(3x + 4)^2 = 9x^2 + 24x + 16$
+
+2) $\text{Simplify the expression: }\sqrt{50} + 3\sqrt{2} - \sqrt{18}$ (A)  
+   Solution: $5\sqrt{2} + 3\sqrt{2} - 3\sqrt{2} = 5\sqrt{2}$
+
+3) $\text{Simplify the expression: }(2\sqrt{3} - \sqrt{12})(\sqrt{3} + 2)$ (A)  
+   Solution: $2\sqrt{3}\cdot\sqrt{3} + 4\sqrt{3} - \sqrt{12}\cdot\sqrt{3} - 2\sqrt{12} = 6 + 4\sqrt{3} - 6 - 4 = 4\sqrt{3} - 4$
+
+4) $\text{Simplify the expression: }\frac{(3x^2 - 12)}{3(x - 2)}$ (B)  
+   Solution: $\frac{3(x^2 - 4)}{3(x - 2)} = \frac{(x - 2)(x + 2)}{(x - 2)} = x + 2 \quad (x \neq 2)$
+
+5) $\text{Calculate the value of the expression: }(2^{-3})^{-2} + 4^{-1} \times 16^{-1}$ (B)  
+   Solution: $2^{6} + \frac{1}{4} \times \frac{1}{16} = 64 + \frac{1}{64} = \frac{64^2 + 1}{64} = \frac{4097}{64}$
+
+6) $\text{Simplify the expression: }\frac{(2x + 3)(4 - x)}{(x - 1)(2x + 3)}$ (B)  
+   Solution: $\frac{(4 - x)}{(x - 1)} \quad (x \neq -\frac{3}{2})$
+
+7) $\text{Simplify the expression: }\frac{\sqrt{a} + \sqrt{b}}{\sqrt{a} - \sqrt{b}} - \frac{2ab}{a - b}$ (C)  
+   Solution: $\text{Multiply by } \frac{(\sqrt{a} - \sqrt{b})}{(\sqrt{a} - \sqrt{b})}$ to rationalize the numerator: $\frac{(\sqrt{a} + \sqrt{b})(\sqrt{a} - \sqrt{b})}{a - b} - \frac{2ab}{a - b} = \frac{a - b - 2ab}{a - b} = \frac{a(1 - 2b) + b(1 - 2a)}{a - b}$
+
+8) $\text{Simplify the expression: }\frac{(x^2 - 1)(x + 1)}{(x - 1)(x^2 + x + 1)}$ (C)  
+   Solution: $= \frac{(x - 1)(x + 1)(x + 1)}{(x - 1)(x^2 + x + 1)} = \frac{(x + 1)^2}{x^2 + x + 1} \quad (x \neq 1)$
+
+9) $\text{Prove that: } \frac{(x^2 + y^2)(x^2 - y^2)}{x^4 - y^4} = 1$ for $x \neq y$ (C)  
+   Solution: $x^4 - y^4 = (x^2 + y^2)(x^2 - y^2)$, thus $\frac{(x^2 + y^2)(x^2 - y^2)}{(x^2 + y^2)(x^2 - y^2)} = 1$ for $x \neq y$.
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: } \frac{4\sqrt{2}}{2\sqrt{2}}$ (A)  
+   Solution: $2$
+
+2) $\text{Simplify the expression: } \frac{3x + 6}{3} - 2$ (A)  
+   Solution: $x$
+
+3) $\text{Simplify the expression: } \frac{(\sqrt{16} + 4)^2}{4}$ (A)  
+   Solution: $12$
+
+4) $\text{Simplify the expression: } \frac{x^2 - 9}{x - 3} \div (x + 3)$ (B)  
+   Solution: $\frac{x + 3}{1}$
+
+5) $\text{Simplify the expression: } \frac{2x^2 - 8}{4} + \frac{3x}{2}$ (B)  
+   Solution: $\frac{x^2 - 4 + 6x}{4} = \frac{x^2 + 6x - 4}{4}$
+
+6) $\text{Simplify the expression: } \frac{(x^2 - 1)(x + 1)}{x^2 - 1}$ (B)  
+   Solution: $x + 1, \quad x \neq 1, -1$
+
+7) $\text{Simplify the expression: } \frac{(x^2 - 4)(x + 2)}{x^2 - 4} - \frac{x + 2}{2}$ (C)  
+   Solution: $0, \quad x \neq 2, -2$
+
+8) $\text{Simplify the expression: } \frac{(\sqrt{x} - 2)(\sqrt{x} + 2)}{\sqrt{x^2 - 4}}$ (C)  
+   Solution: $\frac{x - 4}{\sqrt{(x-4)(x+4)}} = \sqrt{x - 4}$, for $x > 4$
+
+9) $\text{Simplify the expression: } \frac{(a^2 - b^2)(a + b)}{a^2 - b^2} \times \frac{b}{a}$ (C)  
+   Solution: $\frac{b(a + b)}{a}, \quad a \neq b$
+

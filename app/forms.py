@@ -127,35 +127,37 @@ class TemplateProblemCreateForm(ModelForm):
         self.user: User = kwargs.pop("user")
         self.template: Template = kwargs.pop("template")
         super().__init__(*args, **kwargs)
-        # Optionally: prepopulate the available topics from a lookup list (for instance from the JSON)
         self.fields["topic"].initial = "ARVUHULGAD"
-        self.fields["difficulty"].initial = "A"
 
     class Meta:
         model = TemplateProblem
         fields = ["topic", "difficulty", "count"]
 
     def clean_topic(self):
-        topic = self.cleaned_data["topic"]
+        topic = self.cleaned_data.get("topic", "")
         if topic == "":
             raise ValidationError(_("Topic cannot be empty"))
         return topic
 
     def clean(self):
         cleaned_data = super().clean()
-        # Optionally: check that template does not already have a problem for the same topic and difficulty
         topic = cleaned_data.get("topic")
         difficulty = cleaned_data.get("difficulty")
-        if topic and difficulty:
-            if (
-                topic in self.template.problem_topics
-                and difficulty in self.template.problem_difficulties
-            ):
-                raise ValidationError(
-                    _("This template already contains a problem for this topic and difficulty")
-                )
-        return cleaned_data
 
+        if topic and difficulty:
+            # Check for existing TemplateProblem with same topic & difficulty
+            exists = TemplateProblem.objects.filter(
+                template=self.template,
+                topic=topic,
+                difficulty=difficulty
+            ).exists()
+            if exists:
+                raise ValidationError(
+                    _("This template already contains a problem for this topic and difficulty"),
+                    code="exists"
+                )
+
+        return cleaned_data
 
 class TemplateProblemUpdateForm(ModelForm):
     count = TEMPLATE_PROBLEM_COUNT_FIELD

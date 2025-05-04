@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from collections import defaultdict
 import logging
 import uuid
 from base64 import b64encode
@@ -112,22 +112,29 @@ class Template(Entity):
         if not self.problem_count:
             return EmptyTemplate()
 
-        from app.math import generate_problem_with_ai
+        from app.math import generate_mixed_difficulty_problems
 
         for i in range(test_generation_parameters.test_version_count):
             test_version = TestVersion(test=test, version_number=i + 1)
             test_version.save()  # Save the test version early if needed.
             # Generate and attach problems.
-            for entry in self.templateproblem_set.all():
-                for _ in range(entry.count):
-                    generated = generate_problem_with_ai(entry.topic, entry.difficulty)
-                    problem = TestVersionProblem(
-                        test_version=test_version,
-                        definition=generated["definition"],
-                        solution=generated["solution"],
-                        # 'kind' is deprecated or can be set to a default value.
+            for topic in {e.topic for e in self.templateproblem_set.all()}:
+                diff_counts = defaultdict(int)
+                for entry in self.templateproblem_set.filter(topic=topic):
+                    diff_counts[entry.difficulty] += entry.count
+
+# 2) batch-generate mixed difficulties
+                batch = generate_mixed_difficulty_problems(topic, diff_counts)
+
+# 3) save them
+                for gen in batch:
+                    TestVersionProblem.objects.create(
+                        test_version = test_version,
+                        topic        = topic,
+                        difficulty   = gen["difficulty"],
+                        definition   = gen["definition"],
+                        solution     = gen["solution"],
                     )
-                    problem.save()
 
             match test_version.generate_pdf():
                 case PDF() as pdf:
@@ -233,12 +240,11 @@ class TestVersion(Entity):
 
 
 class TestVersionProblem(Entity):
-    # Remove or ignore the old kind field if not needed:
-    # kind = models.IntegerField(choices=ProblemKind.choices, default=0)
+
     topic = models.CharField(
         max_length=100,
         help_text=_("The topic of the problem (e.g., ARVUHULGAD, AVALDISED, etc.)"),
-        default="",  # Set an empty default or a sensible default if needed.
+        default="AVALDISED",  # Set an empty default or a sensible default if needed.
     )
     difficulty = models.CharField(
         max_length=1,
