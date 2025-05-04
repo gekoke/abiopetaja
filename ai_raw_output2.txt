@@ -1137,3 +1137,59 @@ If \( x^2 + y^2 = 25 \) and \( xy = 12 \), find the value of \( x + y \).
 9) $\text{Simplify the expression: } \frac{(a^2 - b^2)(a + b)}{a^2 - b^2} \times \frac{b}{a}$ (C)  
    Solution: $\frac{b(a + b)}{a}, \quad a \neq b$
 
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: }(3x + 4) - (2x + 5)$  
+   Solution: $x - 1$
+
+2) $\text{Calculate the value of the expression: }5 + 3(2 - 1) + 4$  
+   Solution: $12$
+
+3) $\text{Simplify the expression: }\frac{4y + 8}{2(y + 2)}$  
+   Solution: $2$
+
+4) $\text{Calculate the value of the expression: }(2 + 3)^2 - 4 \times 3$  
+   Solution: $7$
+
+5) $\text{Simplify the expression: }A = \frac{x^2 - 1}{x - 1}, \quad B = \frac{x^2 - 4}{x - 2}, \quad \text{find } A + B$  
+   Solution: $x + 3$
+
+6) $\text{Calculate the value of the expression: }(3^2 + 4^2) \div (2 + 2) + 5$  
+   Solution: $11$
+
+7) $\text{Simplify the expression: }\frac{(x^2 - 4)(x + 2)}{x^2 - 4}$, \text{ where } x \neq 2 \text{ or } -2$  
+   Solution: $x + 2$
+
+8) $\text{Calculate the value of the expression: } \frac{(x^2 - 1)(x + 1)}{(x - 1)(x + 1)} \text{ and find } x \text{ if this equals } 0$  
+   Solution: $x = 1$
+
+9) $\text{Simplify the expression: } \frac{\sqrt{a^2 - b^2}}{a - b} + \frac{a + b}{\sqrt{a^2 - b^2}}$  
+   Solution: $1 + \frac{a + b}{\sqrt{a^2 - b^2}}$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: }(2 + 3)(4 - 1)$  
+   Solution: $15$  
+
+2) $\text{Calculate the value of the expression: }5^2 - 3 \times 4 + 12$  
+   Solution: $25$  
+
+3) $\text{Simplify the expression: }\frac{8}{4} + 2 \times 3 - 1$  
+   Solution: $9$  
+
+4) $\text{Simplify the expression: }\frac{2(x+3) - 4}{x-1} \div (x+2)$  
+   Solution: $\frac{2}{x-1}$  
+
+5) $\text{Calculate the value of the expression: }\frac{(x^2 - 1)(x + 1)}{x - 1}$, where $x = 3$  
+   Solution: $12$  
+
+6) $\text{Simplify the expression: }A=\frac{2a + 3}{a - 1},\quad B=\frac{a^2 - 1}{a + 2},\quad \text{find } A \times B$  
+   Solution: $A \times B = \frac{(2a + 3)(a - 1)(a - 1)}{(a - 1)(a + 2)} = \frac{(2a + 3)(a - 1)}{a + 2}$  
+
+7) $\text{Prove that: } \frac{(x^2 + y^2)(x^2 - y^2)}{x^4 - y^4} = 1$ for $x \neq y$  
+   Solution: The left-hand side simplifies to $\frac{(x^2 + y^2)(x^2 - y^2)}{(x^2 - y^2)(x^2 + y^2)} = 1$  
+
+8) $\text{Simplify the expression: }\frac{\sqrt{a^2 + 2a + 1}}{a + 1} + \frac{\sqrt{a^2 - 2a + 1}}{a - 1}$, where $a = 4$  
+   Solution: $2$  
+
+9) $\text{Prove that: } \frac{\sqrt{a^2 + b^2} - \sqrt{b^2}}{a} = \frac{1}{\sqrt{a^2 + b^2} + \sqrt{b^2}}$ for $a > 0$  
+   Solution: Cross-multiplying gives $(\sqrt{a^2 + b^2} - \sqrt{b^2})(\sqrt{a^2 + b^2} + \sqrt{b^2}) = a$, confirming the identity.
+
