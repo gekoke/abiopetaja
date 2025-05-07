@@ -1193,3 +1193,115 @@ If \( x^2 + y^2 = 25 \) and \( xy = 12 \), find the value of \( x + y \).
 9) $\text{Prove that: } \frac{\sqrt{a^2 + b^2} - \sqrt{b^2}}{a} = \frac{1}{\sqrt{a^2 + b^2} + \sqrt{b^2}}$ for $a > 0$  
    Solution: Cross-multiplying gives $(\sqrt{a^2 + b^2} - \sqrt{b^2})(\sqrt{a^2 + b^2} + \sqrt{b^2}) = a$, confirming the identity.
 
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: }(3 + 2)^2$  
+   Solution: $(3 + 2)^2 = 5^2 = 25$  
+
+2) $\text{Simplify the expression: }\frac{4x + 8}{4}$  
+   Solution: $\frac{4(x + 2)}{4} = x + 2$  
+
+3) $\text{Simplify the expression: }(x - 4)(x + 4)$  
+   Solution: $x^2 - 16$  
+
+4) $\text{Simplify the expression: }\frac{(x^2 - 4)(x + 2)}{x - 2}$  
+   Solution: $x^2 + 2$ (for $x \neq 2$)  
+
+5) $\text{Simplify the expression: }\frac{x^3 - 27}{x - 3}$  
+   Solution: $x^2 + 3x + 9$ (using synthetic division)  
+
+6) $\text{Simplify the expression: }\frac{(2x + 4)^{2}}{4}$  
+   Solution: $x^2 + 4x + 4$  
+
+7) $\text{Simplify the expression: }\frac{(x^2 + 3x - 10)(x - 2)}{x^2 - 4}$  
+   Solution: $\frac{(x + 5)(x - 2)}{(x - 2)(x + 2)} = \frac{x + 5}{x + 2}$ (for $x \neq 2, -2$)  
+
+8) $\text{Simplify the expression: }\frac{\sqrt{x^2 - 4}}{x - 2} + \frac{\sqrt{x^2 - 4}}{x + 2}$  
+   Solution: $\frac{2\sqrt{x^2 - 4}}{x^2 - 4} = \frac{2}{\sqrt{x^2 - 4}}$ (for $x \neq 2, -2$)  
+
+9) $\text{Prove that: } \frac{(x - 1)^2}{x^2 - 2x + 1} = 1$ for $x \neq 1$  
+   Solution: The expression simplifies to $\frac{(x - 1)^2}{(x - 1)^2} = 1$ for $x \neq 1$.
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: }(3\sqrt{12} + 4\sqrt{3})^2$  
+   Solution: $144 + 72\sqrt{3}$
+
+2) $\text{Calculate the value of the expression: }(2 + \sqrt{5})(2 - \sqrt{5}) + 3$  
+   Solution: $4$
+
+3) $\text{Simplify the expression: }(x + 3)(x - 3) + 2x^2$  
+   Solution: $2x^2 + 9$
+
+4) $\text{Simplify the expression: }\frac{(\sqrt{8} + \sqrt{2})^2 - 10}{\sqrt{2}}$  
+   Solution: $6$
+
+5) $\text{Simplify the expression: }(x^2 - 4)(x + 2) - (x - 2)(x + 2)$  
+   Solution: $x^3 - 2x^2 - 4$
+
+6) $\text{Calculate the value of the expression: }(3x + 2)(4x - 5) + (x - 1)(2x + 3)$  
+   Solution: $14x^2 + 7x - 1$
+
+7) $\text{Simplify the expression: }\frac{(x^2 - 1)(x + 1)}{x - 1} + \frac{x^2 - 1}{x + 1}$  
+   Solution: $x^2 + 1$
+
+8) $\text{Simplify the expression: }\frac{(2x + 3)(3x - 4) - (x^2 - 1)^2}{x^2 + 2x - 3}$  
+   Solution: $2x + 5$
+
+9) $\text{Simplify the expression: }\frac{\sqrt{(x^2 - y^2)(x^2 + y^2)} - (x^2 - y^2)}{y^2}$  
+   Solution: $0$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Simplify the expression: }(4 + 2\sqrt{3})(4 - 2\sqrt{3})$  
+   Solution: $4$
+
+2) $\text{Calculate the value of the expression: }(3 + 2\sqrt{5})^2$  
+   Solution: $29 + 12\sqrt{5}$
+
+3) $\text{Simplify the expression: }(x + 3)(x - 3) + 9$  
+   Solution: $x^2 + 9$
+
+4) $\text{Calculate the value of the expression: }(2 + \sqrt{3})^2 + (2 - \sqrt{3})^2$  
+   Solution: $14$
+
+5) $\text{Simplify the expression: }\frac{(x^2 - 4)(x^2 + 4)}{x^4 - 16}$  
+   Solution: $\frac{x^2 + 4}{x^2 - 4}$
+
+6) $\text{Calculate the value of the expression: }\sqrt{(2 + \sqrt{3})^2} + \sqrt{(2 - \sqrt{3})^2}$  
+   Solution: $4$
+
+7) $\text{Simplify the expression: }\frac{(x - 1)(x + 1)}{(x^2 - 1)^{1/2}}$  
+   Solution: $1$
+
+8) $\text{Simplify the expression: }\frac{(2x + 3)(2x - 3)}{x^2 - 9}$  
+   Solution: $-4$
+
+9) $\text{Simplify the expression: }A = \frac{(x^2 - y^2)}{(x - y)(x + y)}, \quad \text{calculate if } x = 5, \quad y = 3$  
+   Solution: $A = 8$
+
+=== Raw AI for AVALDISED defaultdict(<class 'int'>, {'A': 3, 'B': 3, 'C': 3}) ===
+1) $\text{Calculate the value of the expression: } 3 + 2 \times 5$ (A)  
+   Solution: $3 + 10 = 13$
+
+2) $\text{Simplify the expression: } \sqrt{49} + 3\sqrt{16} - \sqrt{9}$ (A)  
+   Solution: $7 + 12 - 3 = 16$
+
+3) $\text{Calculate the value of the expression: } (2 + 3)^2 - 4$ (A)  
+   Solution: $5^2 - 4 = 25 - 4 = 21$
+
+4) $\text{Simplify the expression: } \frac{4a^2 - 16}{4a}$ (B)  
+   Solution: $\frac{4(a^2 - 4)}{4a} = \frac{a^2 - 4}{a} = a - \frac{4}{a}$
+
+5) $\text{Calculate the value of the expression: } (x^2 - 1)(x + 1) \text{ for } x = 2$ (B)  
+   Solution: $(2^2 - 1)(2 + 1) = (4 - 1)(3) = 3 \times 3 = 9$
+
+6) $\text{Simplify the expression: } \frac{(x^2 - 4)}{(x - 2)(x + 2)}$ (B)  
+   Solution: $\frac{(x - 2)(x + 2)}{(x - 2)(x + 2)} = 1 \text{ (for } x \neq 2 \text{ or } -2)$
+
+7) $\text{Simplify the expression: } \frac{\sqrt{a^2 + 2a + 1} - \sqrt{a^2 - 1}}{a + 1}$ (C)  
+   Solution: $\frac{(a + 1) - \sqrt{a^2 - 1}}{a + 1} = 1 - \frac{\sqrt{a^2 - 1}}{a + 1}$
+
+8) $\text{Prove that: } \frac{(x+y)^2 - (x^2 + y^2)}{xy} = 2$ (C)  
+   Solution: $\frac{x^2 + 2xy + y^2 - x^2 - y^2}{xy} = \frac{2xy}{xy} = 2$
+
+9) $\text{Simplify the expression: } \frac{\sqrt{a+b} - \sqrt{a-b}}{\sqrt{a+b} + \sqrt{a-b}}$ (C)  
+   Solution: $\frac{(a+b) - (a-b)}{(a+b) - (a-b)} = \frac{2b}{2\sqrt{(a+b)(a-b)}} = \frac{b}{\sqrt{(a+b)(a-b)}}$
+
