@@ -1,46 +1,44 @@
-import re
 import json
 import logging
-from typing import List, Dict
+import re
 from dataclasses import dataclass
-
+from typing import Dict, List
+from app.models import get_short_lang
 from openai import OpenAI
+
+# SymPy‑powered verification helper
+from .validators import verify
 
 logger = logging.getLogger(__name__)
 
 # ─────────────── CONFIG ───────────────
-OPENAI_API_KEY = "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"
-OPENAI_MODEL   = "gpt-4o-mini" 
-PROBLEMS_JSON_PATH = "problems.json"
-# ────────────────────────────────────────
+OPENAI_API_KEY      = "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"                          # put in .env in production!
+OPENAI_MODEL        = "gpt-4.1-mini"
+# gpt-4.1-mini , gpt-4o-mini, gpt-4.1-nano
+PROBLEMS_JSON_PATH  = "problems.json"             # seed examples
+RAW_LOG_PATH        = "ai_raw_output2.txt"        # full AI reply
+PROMPT_LOG_PATH     = "ai_example2.txt"           # prompt snippet
 
 client = OpenAI(api_key=OPENAI_API_KEY)
+# ───────────────────────────────────────
 
-logger = logging.getLogger(__name__)
 
+# ────────────────────────── helpers ──────────────────────────
 @dataclass
 class ProblemExample:
-    definition: str
-    solution: str
+    definition_et: str = ""
+    definition_en: str = ""
+    solution: str = ""
+    spec: dict | None = None
 
-def get_examples_from_json(
+
+def _load_examples(
     topic: str,
     difficulty: str,
     json_file_path: str = PROBLEMS_JSON_PATH,
-    max_examples: int = 10
+    max_examples: int = 10,
 ) -> List[ProblemExample]:
-    """
-    Load up to `max_examples` examples from problems.json filtered by topic & difficulty,
-    assuming a nested JSON structure:
-      {
-        "TOPIC1": {
-          "A": [ { "definition": "...", "solution": "..." }, … ],
-          "B": [ … ],
-          "C": [ … ]
-        },
-        "TOPIC2": { … }
-      }
-    """
+    """Pull up to `max_examples` rows for the prompt."""
     try:
         with open(json_file_path, encoding="utf-8") as f:
             data = json.load(f)
@@ -48,153 +46,167 @@ def get_examples_from_json(
         logger.error("Failed loading JSON examples: %s", e)
         return []
 
-    examples: List[ProblemExample] = []
-    # Only nested dict-of-dicts supported:
-    if isinstance(data, dict) and topic in data:
-        topic_block = data[topic]
-        if isinstance(topic_block, dict):
-            raw_list = topic_block.get(difficulty, [])
-            from random import shuffle
-            shuffle(raw_list)
-        else:
-            raw_list = []
-    else:
-        raw_list = []
+    raw_list = (
+        data.get(topic, {}).get(difficulty, []) if isinstance(data, dict) else []
+    )
+    from random import shuffle
 
+    shuffle(raw_list)
+
+    examples = []
     for item in raw_list[:max_examples]:
-        examples.append(ProblemExample(
-            definition=item.get("definition", ""),
-            solution=item.get("solution", "")
-        ))
-
-    # <— Return after collecting all items, not inside the loop
+        examples.append(
+            ProblemExample(
+                definition_et=item.get("definition_et", ""),
+                definition_en=item.get("definition_en", ""),
+                solution=item.get("solution", ""),
+                spec=item.get("spec"),          # may be None
+            )
+        )
     return examples
 
 
-
-
+# ────────────────────────── generator ──────────────────────────
 
 def generate_mixed_difficulty_problems(
     topic: str,
-    counts: Dict[str,int],        # e.g. {"A":3, "B":3, "C":3}
-    max_examples_per_diff: int = 5,
+    counts: Dict[str, int],  # e.g. {"A": 3, "B": 3, "C": 3}
+    max_examples_per_diff: int = 3,
     model: str | None = None,
-    temperature: float = 0.5,
-    max_tokens: int = 1200
-) -> List[Dict[str,str]]:
+    temperature: float = 0.4,
+    max_tokens: int = 4000,
+    
+) -> List[Dict[str, str]]:
     """
-    1) Tells GPT exactly Topic + how many A/B/C
-    2) Seeds with any examples you have
-    3) Falls back if no examples for a diff
-    4) Parses and tags each problem with its difficulty
+    Return a verified list of problem dicts, each carrying:
+        {"spec": ..., "definition_et": ..., "definition_en": ..., "difficulty": ...}
+
+    The caller can specify `lang` – "et" or "en" – to indicate which language
+    should be used for the problem wording.  Only that language will be shown
+    in the few‑shot examples and the AI will be instructed to output the
+    wording in the same language (filling only the corresponding definition
+    field and leaving the other empty).
     """
+
+    lang = get_short_lang()
+    language_name = "Estonian" if lang == "et" else "English"
+
     model = model or OPENAI_MODEL
     total = sum(counts.values())
 
-    # 1) Build the examples blocks & write to ai_example2.txt
-    examples_blocks = []
-    for diff in ["A","B","C"]:
-        cnt = counts.get(diff,0)
-        if cnt <= 0:
+    # 1)  Few‑shot examples
+    example_chunks: list[str] = []
+    diff_labels = {"A": "easy", "B": "medium", "C": "hard"}
+
+    for diff in "ABC":
+        need = counts.get(diff, 0)
+        if need == 0:
             continue
 
-        exs = get_examples_from_json(topic, diff, max_examples=max_examples_per_diff)
-        labels = {"A": "easy – single idea, 1‑2 steps",
-                "B": "medium – multi‑step, combine two ideas",
-                "C": "hard – olympiad/insight or proof sketch"}
+        exs = _load_examples(topic, diff, max_examples=max_examples_per_diff)
         if exs:
-            block = f"## Examples for difficulty {diff} — {labels[diff]}:\n"
-            for ex in exs:
-                block += f"Problem: {ex.definition}\nSolution: {ex.solution}\n\n"
-        else:
-            block = f"## No past examples for difficulty {diff}; please generate {cnt} new { 'easy' if diff=='A' else 'medium' if diff=='B' else 'hard' } problems on the same topic.\n\n"
-            logger.warning("No JSON examples for %s/%s", topic, diff)
+            chunk: list[str] = [f"# {diff_labels[diff]} EXAMPLES"]
+            for e in exs:
+                # Only keep the examples in the desired language
+                if lang == "et":
+                    chunk.append(f" definition:  {e.definition_et}")
+                else:
+                    chunk.append(f" definition:  {e.definition_en}")
+                chunk.append(f" solution: {e.solution}")
+                if e.spec:
+                    chunk.append(f" spec: {json.dumps(e.spec, ensure_ascii=False)}")
+            example_chunks.append("\n".join(chunk))
 
-        examples_blocks.append(block)
+    examples_text = "\n\n".join(example_chunks)
 
-    examples_text = "\n".join(examples_blocks)
+    # 2)  Log the few‑shot block
 
-    # persist seed examples for audit
-    try:
-        with open("ai_example2.txt","a",encoding="utf-8") as f2:
-            f2.write(f"=== Topic: {topic}; Counts: {counts} ===\n")
-            f2.write(examples_text + "\n\n")
-    except Exception as e:
-        logger.error("Failed to write ai_example2.txt: %s", e)
-
-    # 2) Build a super‐explicit prompt
+    # 3)  Build the prompt
     prompt = f"""
-Topic: {topic}
+### TASK
+Generate {total} new **high‑school mathematics problems** on the topic \"{topic}\" based on the examples given below.
 
-I want a total of {total} problems, broken down by difficulty:
-- {counts.get('A',0)} easy (A)
-- {counts.get('B',0)} medium (B)
-- {counts.get('C',0)} hard (C)
+### LANGUAGE
+Write the *definition* in **{language_name}**. **Wrap the entire definition and solution in exactly one pair of `$` characters.**
 
-Generate a new, original high school math problem similiar to the examples below with the output formatted in LaTeX and the language in English. The topic is in estonian. 
-Calculate the problem and show your calculations step by step and the final answer in the solution. Ensure the answer is correct and also in latex. Add behind each Number the difficulty level of the problem.
-Number them 1)…{total} in this format:
+### DIFFICULTY DISTRIBUTION (must match exactly)
+A (easy): {counts.get('A',0)}  B (medium): {counts.get('B',0)}  C (hard): {counts.get('C',0)}
 
-1) <definition>
-   <solution>
+### SOLUTION 
+You must solve the problems you generated step by step and show the result in solutions. Dont put any text into the solution besides the latex formatting, just show the steps in between '=' signs.
+– For evaluation tasks, avoid approximations; compute symbolic/numeric values exactly.
+Wrap the *whole derivation* in one pair of `$` as in this example:
+"$5*3+2=15+2=17$"
+MAKE SURE THE ANSWER IS CORRECT.
+Write the answer in the answers field, as shown in the examples.
 
-2) <definition>
-   <solution>
+### OUTPUT – ONE JSON OBJECT PER LINE
+{{
+  "difficulty": "A" | "B" | "C",
+  "definition": "$…$",  # problem wording in {language_name}
+  "solution"  : "$…$",  # derivation as described above
+  "spec": {{
+      "type"       : string,            # e.g. "simplify", "simplify_then_evaluate"
+      "expr"       : string,            # SymPy‑parsable
+      "answer_expr": string            # SymPy‑parsable
+  }}
+}}
 
-…through {total}.
+### STRICT RULES
+1. **Start and end both `definition` and `solution` with `$`.**
+2. **Return only JSON lines – no Markdown, no back‑ticks, no extra commentary.**
+3. Use `*` for multiplication and `**` for powers inside `spec` (never `^`).
+4. Write every backslash as `\\` in the JSON output for python to parse it correctly.
 
-Here are past examples or instructions for each difficulty:
-
+### Make your problems similiar to the examples below. 
 {examples_text}
-
-Your response MUST strictly follow the numbering and formatting above, and must only contain the problems and solutions.
 """
 
-    # 3) Call GPT
+    # 4)  OpenAI call
     try:
         resp = client.chat.completions.create(
             model=model,
-            messages=[{"role":"user", "content":prompt}],
+            messages=[{"role": "user", "content": prompt}],
             temperature=temperature,
             max_tokens=max_tokens,
         )
-        raw = resp.choices[0].message.content.strip()
+        raw_text = resp.choices[0].message.content.strip()
     except Exception as e:
-        logger.error("OpenAI API error: %s", e)
+        logger.error("OpenAI error: %s", e)
         raise
 
-    # log raw GPT reply
-    try:
-        with open("ai_raw_output2.txt","a",encoding="utf-8") as f3:
-            f3.write(f"=== Raw AI for {topic} {counts} ===\n")
-            f3.write(raw + "\n\n")
-    except Exception as e:
-        logger.error("Failed to write ai_raw_output.txt: %s", e)
+    # 5)  Save raw model reply
 
-    # 4) Parse & tag
-    pieces = re.split(r"^\s*\d+\)\s*", raw, flags=re.MULTILINE)[1:]
-    problems: List[Dict[str,str]] = []
-    idx = 0
-    for diff in ["A","B","C"]:
-        n = counts.get(diff,0)
-        for _ in range(n):
-            if idx >= len(pieces):
-                break
-            block = pieces[idx].strip()
-            idx += 1
-            lines = block.split("\n",1)
-            problems.append({
-                "definition": lines[0].strip(),
-                "solution":   (lines[1].strip() if len(lines)>1 else ""),
-                "difficulty": diff,
-                "topic":      topic,
-            })
+    # 6)  Parse & verify
+    problems: list[dict] = []
+    for line in raw_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+
+        try:
+            ok, _msg = verify(obj["spec"])
+        except Exception as e:
+            logger.error("verify() crashed: %s", e)
+            ok = False
+
+        if not ok:
+            logger.warning("Failed verification, skipping: %s", line[:120])
+            continue
+
+        # Make sure language rule is respected; if not, fix keys to always exist
+        problems.append(obj)
 
     if len(problems) < total:
-        logger.warning("Expected %d problems but parsed %d.\nRaw:\n%s", total, len(problems), raw)
+        logger.warning(
+            "Needed %d problems, validated %d (raw lines %d)",
+            total, len(problems), len(raw_text.splitlines())
+        )
 
     return problems
 
+
+# ─────────────────── compatibility wrappers ───────────────────
 
 def generate_problems_with_ai(
     topic: str,
@@ -202,24 +214,23 @@ def generate_problems_with_ai(
     count: int,
     max_examples: int = 3,
     model: str | None = None,
-    temperature: float = 0.7,
-    max_tokens: int = 800
+    temperature: float = 0.6,
+    max_tokens: int = 2000,
+    *,
+    lang: str = "et",
 ) -> List[Dict[str, str]]:
-    """
-    Back-compat wrapper so old views/models importing generate_problems_with_ai
-    continue to work by routing to our mixed-difficulty batcher.
-    """
-    # Build a single-difficulty dict for the mixed generator:
-    counts = {difficulty: count}
+    """Legacy single‑difficulty wrapper."""
     return generate_mixed_difficulty_problems(
         topic=topic,
-        counts=counts,
+        counts={difficulty: count},
         max_examples_per_diff=max_examples,
         model=model,
         temperature=temperature,
         max_tokens=max_tokens,
+        lang=lang,
     )
 
-# And if you still have views calling the old alias:
-def generate_ai_test_problems(topic: str, difficulty: str, count: int):
-    return generate_problems_with_ai(topic, difficulty, count)
+
+def generate_ai_test_problems(topic: str, difficulty: str, count: int, *, lang: str = "et"):
+    """Old alias kept alive for imports that haven’t migrated."""
+    return generate_problems_with_ai(topic, difficulty, count, lang=lang)

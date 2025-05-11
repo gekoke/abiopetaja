@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from string import ascii_lowercase
 
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import(
+     gettext_lazy as _,
+     get_language,
+)
 from typing_extensions import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -113,9 +116,33 @@ def _render_problem_group_answer(
     )
     return f"\\noindent {group_index + 1}) {header}\n\n{answers}\n\n"
 
+# ───── helper ────────────────────────────────────
+def _ensure_dollar_wrapped(text: str) -> str:
+    """
+    Guarantee the string starts **and** ends with $.
+    Handles all four cases:
+      $…$   → unchanged
+      $…    → add trailing $
+      …$    → add leading $
+      …     → wrap with $…$
+    """
+    s = text.strip()
+    has_start = s.startswith("$")
+    has_end   = s.endswith("$")
+
+    if has_start and has_end:
+        return s
+    if has_start and not has_end:
+        return s + "$"
+    if has_end and not has_start:
+        return "$" + s
+    return f"${s}$"
+
 
 def _render_problem_answer(problem: TestVersionProblem, problem_index: int) -> str:
-    return f"\\noindent {ascii_lowercase[problem_index]}) {problem.solution}\n\n"
+    # Ensure solution is in math mode
+    sol = _ensure_dollar_wrapped(problem.solution)
+    return f"\\noindent {ascii_lowercase[problem_index]}) {sol}\n\n"
 
 
 def _render_test_version_answers(version: TestVersion) -> str:

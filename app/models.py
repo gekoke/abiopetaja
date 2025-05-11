@@ -3,8 +3,6 @@ from collections import defaultdict
 import logging
 import uuid
 from base64 import b64encode
-from typing import Iterable
-
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.core.validators import MaxValueValidator, MinLengthValidator, MinValueValidator
@@ -16,11 +14,12 @@ from django.db.models import (
     Model,
     PositiveIntegerField,
     Q,
+    JSONField,
     TextField,
 )
 from django.db.models.constraints import UniqueConstraint
 from django.urls import reverse
-from django.utils.translation import gettext, pgettext_lazy
+from django.utils.translation import gettext, pgettext_lazy, get_language
 from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
@@ -30,6 +29,13 @@ from app.pdf import PDF, PDFCompilationError, compile_pdf
 
 logger = logging.getLogger(__name__)
 
+def get_short_lang() -> str:
+    """
+    Return 'et' if the current active language starts with 'et',
+    otherwise return 'en'.
+    """
+    lang = get_language() or "en"
+    return "et" if lang.startswith("et") else "en"
 
 class Entity(Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
@@ -107,7 +113,7 @@ class Template(Entity):
         self, test_generation_parameters: TestGenerationParameters
     ) -> Test | TestGenerationError:
         test = Test(author=self.author, is_saved=False, title=self.title)
-        test.save()  # Save here so that test has a primary key before adding versions.
+        test.save()
 
         if not self.problem_count:
             return EmptyTemplate()
@@ -116,35 +122,67 @@ class Template(Entity):
 
         for i in range(test_generation_parameters.test_version_count):
             test_version = TestVersion(test=test, version_number=i + 1)
-            test_version.save()  # Save the test version early if needed.
-            # Generate and attach problems.
+            test_version.save()
+
+            # Generate and attach problems
             for topic in {e.topic for e in self.templateproblem_set.all()}:
                 diff_counts = defaultdict(int)
                 for entry in self.templateproblem_set.filter(topic=topic):
                     diff_counts[entry.difficulty] += entry.count
 
-# 2) batch-generate mixed difficulties
-                batch = generate_mixed_difficulty_problems(topic, diff_counts)
+                buffered = {d: c + 1 for d, c in diff_counts.items() if c > 0}
 
-# 3) save them
+
+                batch = generate_mixed_difficulty_problems(topic, buffered)
+                accepted = defaultdict(int)
+                
+                           
+                
                 for gen in batch:
-                    TestVersionProblem.objects.create(
-                        test_version = test_version,
-                        topic        = topic,
-                        difficulty   = gen["difficulty"],
-                        definition   = gen["definition"],
-                        solution     = gen["solution"],
-                    )
+                    diff = gen["difficulty"]
+                    if accepted[diff] >= diff_counts[diff]:
+                        continue
 
-            match test_version.generate_pdf():
-                case PDF() as pdf:
-                    test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(pdf.data))
-                case _ as err:
-                    return err
+                    TestVersionProblem.objects.create(
+                        test_version=test_version,
+                        topic=topic,
+                        difficulty=diff,
+                        definition=gen.get("definition", ""),
+                        solution=gen.get("solution", ""),
+                        spec=gen.get("spec"),
+                    )
+                    accepted[diff] += 1
+
+            # Compile LaTeX, removing one problematic problem per error, then retry
+            while True:
+                result = test_version.generate_pdf()
+                if isinstance(result, PDF):
+                    test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(result.data))
+                    break
+                else:
+                    err = result  # PDFCompilationError
+                    logger.warning(
+                        "LaTeX compile error for TestVersion %s: %s. Removing one problem and retrying.",
+                        test_version.pk,
+                        err,
+                    )
+                    bad = (
+                        test_version.testversionproblem_set
+                        .order_by("-created_at")
+                        .first()
+                    )
+                    if bad is None:
+                        logger.error(
+                            "No problems left in version %s; skipping PDF.",
+                            test_version.pk,
+                        )
+                        break
+                    bad.delete()
 
             test_version.save()
             test.add_version(test_version)
 
+        # Generate answer key PDF
         match test.generate_answer_key_pdf():
             case PDF() as pdf:
                 test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(pdf.data))
@@ -153,6 +191,7 @@ class Template(Entity):
 
         test.save()
         return test
+
 
     @property
     def entries(self):
@@ -177,7 +216,7 @@ class TemplateProblem(Entity):
     template = models.ForeignKey(Template, on_delete=models.CASCADE)
     topic = models.CharField(
         max_length=100,
-        default="ARVUHULGAD",  # Default topic; change this as needed
+        default="AVALDISED",  # Default topic; change this as needed
         # You can change this default as needed
     )
     difficulty = models.CharField(
@@ -255,7 +294,9 @@ class TestVersionProblem(Entity):
     definition = models.TextField()
     solution = models.TextField()
     test_version = models.ForeignKey(TestVersion, on_delete=models.CASCADE)
+    spec = models.JSONField(null=True, blank=True)
 
+    
     @property
     def problem_text(self) -> str:
         # If topic/difficulty are set, group problems by those;
@@ -263,7 +304,6 @@ class TestVersionProblem(Entity):
         if self.topic:
             return f"{self.topic} ({self.get_difficulty_display()})"
         return _("Generated Problem")
-
 
 class Test(Entity):
     """A test composed of rendered documents from a Template."""
