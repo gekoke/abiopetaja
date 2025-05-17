@@ -11,7 +11,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v17
 
       - name: Set up binary cache
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v16
         with:
           name: abiopetaja
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
