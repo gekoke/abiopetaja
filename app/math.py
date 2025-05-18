@@ -1,224 +1,250 @@
-############################ math.py ################################
-# Local generation with Qwen/Qwen2.5‑Math‑7B‑Instruct (plain FP16)
-# All text **must be English**.
-# All mathematics **must be written in LaTeX math mode**, i.e. wrap
-#   inline formulas in `$ ... $` and multi‑line in `$$ ... $$` or `\[ ... \]`.
-########################################################################
-
-from __future__ import annotations
-
 import json
 import logging
-import os
-import re
+import time
 from dataclasses import dataclass
-from typing import List
+from typing import Dict, List
+from app.models import get_short_lang
+from openai import OpenAI
 
-# import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
+# SymPy‑powered verification helper
+from .validators import verify
 
-###############################################################################
-# Model initialisation (loads once per process)
-###############################################################################
-_MODEL_NAME = "Qwen/Qwen2.5-Math-7B-Instruct"
-_tokenizer = AutoTokenizer.from_pretrained(
-    _MODEL_NAME,
-    trust_remote_code=True,
-)
-_model = AutoModelForCausalLM.from_pretrained(
-    _MODEL_NAME,
-    #  torch_dtype=torch.float16,
-    device_map="auto",
-    trust_remote_code=True,
-)
-_streamer = TextStreamer(_tokenizer, skip_prompt=True, skip_special_tokens=True)
-
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-###############################################################################
-# Helper dataclass and JSON example‑loading utilities
-###############################################################################
+# ─────────────── CONFIG ───────────────
+OPENAI_API_KEY      = "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"                          # put in .env in production!
+OPENAI_MODEL        = "gpt-4o-mini"
+# gpt-4.1-mini , gpt-4o-mini, gpt-4.1-nano,
+PROBLEMS_JSON_PATH  = "problems.json"             # seed examples
+RAW_LOG_PATH        = "ai_raw_output2.txt"        # full AI reply
+PROMPT_LOG_PATH     = "ai_example2.txt"           # prompt snippet
+
+client = OpenAI(api_key=OPENAI_API_KEY)
+# ───────────────────────────────────────
 
 
+# ────────────────────────── helpers ──────────────────────────
 @dataclass
 class ProblemExample:
-    definition: str
-    solution: str
+    definition_et: str = ""
+    definition_en: str = ""
+    solution: str = ""
+    spec: dict | None = None
 
 
-def _read_json(path: str | os.PathLike) -> object | None:
-    try:
-        with open(path, "r", encoding="utf‑8") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        logger.warning("Example JSON file '%s' not found", path)
-    except json.JSONDecodeError as e:
-        logger.error("Malformed JSON in '%s': %s", path, e)
-    return None
-
-
-def get_examples_from_json(
+def _load_examples(
     topic: str,
     difficulty: str,
-    json_file_path: str | os.PathLike = "problems.json",
+    json_file_path: str = PROBLEMS_JSON_PATH,
+    max_examples: int = 10,
 ) -> List[ProblemExample]:
-    """Return a list of `ProblemExample`s filtered by *topic* and *difficulty*."""
-    data = _read_json(json_file_path)
-    if data is None:
+    """Pull up to `max_examples` rows for the prompt."""
+    try:
+        with open(json_file_path, encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        logger.error("Failed loading JSON examples: %s", e)
         return []
 
-    examples: List[ProblemExample] = []
+    raw_list = (
+        data.get(topic, {}).get(difficulty, []) if isinstance(data, dict) else []
+    )
+    from random import shuffle
 
-    if isinstance(data, dict):
-        topic_entry = data.get(topic)
-        if isinstance(topic_entry, dict):
-            for item in topic_entry.get(difficulty, []):
-                examples.append(
-                    ProblemExample(
-                        definition=item.get("definition", ""),
-                        solution=item.get("solution", ""),
-                    )
-                )
-        else:  # flat dict list per topic
-            for item in topic_entry or []:
-                if item.get("difficulty") == difficulty:
-                    examples.append(
-                        ProblemExample(
-                            definition=item.get("definition", ""),
-                            solution=item.get("solution", ""),
-                        )
-                    )
-    elif isinstance(data, list):  # completely flat
-        for item in data:
-            if (
-                isinstance(item, dict)
-                and item.get("topic") == topic
-                and item.get("difficulty") == difficulty
-            ):
-                examples.append(
-                    ProblemExample(
-                        definition=item.get("definition", ""),
-                        solution=item.get("solution", ""),
-                    )
-                )
-    else:
-        logger.error("Unexpected JSON schema in '%s'", json_file_path)
+    shuffle(raw_list)
 
+    examples = []
+    for item in raw_list[:max_examples]:
+        examples.append(
+            ProblemExample(
+                definition_et=item.get("definition_et", ""),
+                definition_en=item.get("definition_en", ""),
+                solution=item.get("solution", ""),
+                spec=item.get("spec"),          # may be None
+            )
+        )
     return examples
 
 
-###############################################################################
-# Utility for light post‑processing (optional)
-###############################################################################
+# ────────────────────────── generator ──────────────────────────
 
+def generate_mixed_difficulty_problems(
+    topic: str,
+    counts: Dict[str, int],  # e.g. {"A": 3, "B": 3, "C": 3}
+    max_examples_per_diff: int = 2,
+    model: str | None = None,
+    temperature: float = 0.4,
+    max_tokens: int = 4000,
+    
+) -> List[Dict[str, str]]:
+    """
+    Return a verified list of problem dicts, each carrying:
+        {"spec": ..., "definition_et": ..., "definition_en": ..., "difficulty": ...}
 
-def format_math_expression(raw_text: str) -> str:
-    """Ensure math part is wrapped in `$ ... $` if the problem statement includes a label."""
-    if ":" in raw_text:
-        label, expr = raw_text.split(":", 1)
-        label = label.strip() + ":"
-        expr = expr.strip()
-    else:
-        label, expr = "", raw_text.strip()
+    The caller can specify `lang` – "et" or "en" – to indicate which language
+    should be used for the problem wording.  Only that language will be shown
+    in the few‑shot examples and the AI will be instructed to output the
+    wording in the same language (filling only the corresponding definition
+    field and leaving the other empty).
+    """
 
-    if not (expr.startswith("$") and expr.endswith("$")):
-        expr = f"${expr}$"
-    return f"{label} {expr}" if label else expr
+    lang = get_short_lang()
+    language_name = "Estonian" if lang == "et" else "English"
 
+    model = model or OPENAI_MODEL
+    total = sum(counts.values())
 
-###############################################################################
-# LLM wrapper
-###############################################################################
+    # 1)  Few‑shot examples
+    example_chunks: list[str] = []
+    diff_labels = {"A": "easy", "B": "medium", "C": "hard"}
 
+    for diff in "ABC":
+        need = counts.get(diff, 0)
+        if need == 0:
+            continue
 
-def _generate_with_llm(prompt: str, max_new_tokens: int = 512, temperature: float = 0.7) -> str:
-    """Query Qwen model and return decoded text."""
-    input_ids = _tokenizer(prompt, return_tensors="pt").to(_model.device).input_ids
+        exs = _load_examples(topic, diff, max_examples=max_examples_per_diff)
+        if exs:
+            chunk: list[str] = [f"# {diff_labels[diff]} EXAMPLES"]
+            for e in exs:
+                # Only keep the examples in the desired language
+                if lang == "et":
+                    chunk.append(f" definition:  {e.definition_et}")
+                else:
+                    chunk.append(f" definition:  {e.definition_en}")
+                chunk.append(f" solution: {e.solution}")
+                if e.spec:
+                    chunk.append(f" spec: {json.dumps(e.spec, ensure_ascii=False)}")
+            example_chunks.append("\n".join(chunk))
 
+    examples_text = "\n\n".join(example_chunks)
 
-#    with torch.no_grad():
-#       output_ids = _model.generate(
-#          input_ids,
-#         max_new_tokens=max_new_tokens,
-#        do_sample=True,
-#       temperature=temperature,
-#      streamer=None,  # not streaming because we need full text
-# )
-# return _tokenizer.decode(output_ids[0][input_ids.shape[-1] :], skip_special_tokens=True).strip()
+    # 2)  Log the few‑shot block
 
+    # 3)  Build the prompt
+    prompt = f"""
+### TASK
+Generate {total} new **high‑school mathematics problems** on the topic \"{topic}\" based on the examples given below.
 
-###############################################################################
-# Public API – generate_problem_with_ai / generate_ai_test_problems
-###############################################################################
+### LANGUAGE
+Write the *definition* in **{language_name}**. **Wrap the entire definition and solution in exactly one pair of `$` characters.**
 
+### DIFFICULTY DISTRIBUTION (must match exactly)
+A (easy): {counts.get('A',0)}  B (medium): {counts.get('B',0)}  C (hard): {counts.get('C',0)}
 
-def _build_prompt(topic: str, difficulty: str, examples: List[ProblemExample]) -> str:
-    examples_txt = "\n".join(
-        f"### Example {i+1}\nProblem: {ex.definition}\nSolution: {ex.solution}"
-        for i, ex in enumerate(examples[:3])
-    )
-    return (
-        "You are a helpful mathematical problem composer. "
-        "Create a *new* high‑school mathematics problem and its fully worked solution.\n"
-        "Requirements:\n"
-        "- **Language:** English only.\n"
-        "- **Math:** Every mathematical expression *must* be in LaTeX (math mode).\n"
-        "  Use inline `$ ... $` for short expressions and `\\[ ... \\]` for multi‑line when necessary.\n"
-        "- Include enough randomness so that consecutive calls differ.\n"
-        "- Follow the structural pattern shown in the examples below.\n"
-        "- At the end, verify your answer by recomputing. If you find a mistake, correct it before replying.\n"
-        "- Output *only* two paragraphs, with no extra commentary:\n"
-        "  1️⃣ The problem statement (labelled 'Problem:').\n"
-        "  2️⃣ The solution (labelled 'Solution:').\n"
-        "### Topic: {topic}\n"
-        "### Difficulty: {difficulty}\n"
-        "\n"
-        f"{examples_txt}\n\n"
-        "### Your Turn\n"
-        "Problem:"
-    )
+### SOLUTION 
+You must solve the problems you generated step by step and show the result in solutions. SHOW THE STEPS MATHEMATICALLY, NO TEXTUAL EXPLANATIONS OR WORDS. Show a maximum on 3 steps per problem.
+Wrap the *whole derivation* in one pair of `$` as in this example:
+"$5*3x+2=15x+2$"
+– For evaluation tasks, avoid approximations; compute symbolic/numeric values exactly.
+MOST IMPORTANT.MAKE SURE THE ANSWER IS CORRECT.
 
+### OUTPUT – ONE JSON OBJECT PER LINE
+{{
+  "difficulty": "A" | "B" | "C",
+  "definition": "$…$",  # problem wording in {language_name}
+  "solution"  : "$…$",  # derivation as described above
+  "spec": {{
+      "type"       : string,           
+      "expr"       : string,            # SymPy‑parsable
+      "answer_expr": string            # SymPy‑parsable
+  }}
+}}
 
-def generate_problem_with_ai(topic: str, difficulty: str) -> dict[str, str]:
-    """Return a dict containing 'definition' and 'solution' generated by Qwen."""
-    examples = get_examples_from_json(topic, difficulty)
-    prompt = _build_prompt(topic, difficulty, examples)
+### STRICT RULES
+1. **Start and end both `definition` and `solution` with `$`.**
+2. **Return only JSON lines – no Markdown, no back‑ticks, no extra commentary.**
+3. Use `*` for multiplication and `**` for powers inside `spec` (never `^`).
+4. Write every backslash as `\\` in the JSON output for python to parse it correctly.
 
-    logger.info("[LLM‑call] generating problem for topic=%s difficulty=%s", topic, difficulty)
-    ai_output = _generate_with_llm(prompt, max_new_tokens=512, temperature=0.7)
+### Make your problems similiar to the examples below. 
+{examples_text}
+"""
 
-    # Capture first occurrence of "Solution:" (case‑insensitive)
-    match = re.search(r"(?i)solution:\s*", ai_output)
-    if match:
-        def_part = ai_output[: match.start()].strip()
-        sol_part = ai_output[match.end() :].strip()
-    else:
-        def_part, sol_part = ai_output, "Solution not generated; please retry."
-
-    # Append to logs for debugging
+    # 4)  OpenAI call
     try:
-        with open("ai_raw_output.txt", "a", encoding="utf‑8") as f:
-            f.write(f"Topic: {topic} | Difficulty: {difficulty}\n{ai_output}\n\n")
+        t_ai0 = time.perf_counter()
+        resp = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        raw_text = resp.choices[0].message.content.strip()
+        t_ai1 = time.perf_counter()
     except Exception as e:
-        logger.error("Failed writing raw output: %s", e)
+        logger.error("OpenAI error: %s", e)
+        raise
 
-    return {
-        "definition": format_math_expression(def_part),
-        "solution": sol_part,
-    }
+    # 5)  Save raw model reply
+
+    # 6)  Parse & verify
+    problems: list[dict] = []
+    for line in raw_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+
+        try:
+            with open("ai_raw_output2.txt","a",encoding="utf-8") as f2:
+              f2.write(f"=== Topic: {topic}; Counts: {counts} ===\n")
+              f2.write(line + "\n\n")
+        except Exception as e:
+            logger.error("Failed to write ai_example2.txt: %s", e)
+
+        try:
+            obj = json.loads(line)
+            ok, _msg = verify(obj["spec"])
+        except Exception as e:
+            logger.error("verify() crashed: %s", e)
+            ok = False
+
+        if not ok:
+            logger.warning("Failed verification, skipping: %s", line[:120])
+            continue
+
+        # Make sure language rule is respected; if not, fix keys to always exist
+        problems.append(obj)
+        t_verify_done = time.perf_counter()
+        logger.info(
+            "TIMES ai=%4.1fs verify=%4.1fs",
+            t_ai1 - t_ai0,
+            t_verify_done - t_ai1,
+        )
+    if len(problems) < total:
+        logger.warning(
+            "Needed %d problems, validated %d (raw lines %d)",
+            total, len(problems), len(raw_text.splitlines())
+        )
+
+    return problems
 
 
-def generate_ai_test_problems(topic: str, difficulty: str, count: int) -> list[dict[str, str]]:
-    """Generate *count* problems via `generate_problem_with_ai`."""
-    return [generate_problem_with_ai(topic, difficulty) for _ in range(count)]
+# ─────────────────── compatibility wrappers ───────────────────
+
+def generate_problems_with_ai(
+    topic: str,
+    difficulty: str,
+    count: int,
+    max_examples: int = 3,
+    model: str | None = None,
+    temperature: float = 0.6,
+    max_tokens: int = 2000,
+    *,
+    lang: str = "et",
+) -> List[Dict[str, str]]:
+    """Legacy single‑difficulty wrapper."""
+    return generate_mixed_difficulty_problems(
+        topic=topic,
+        counts={difficulty: count},
+        max_examples_per_diff=max_examples,
+        model=model,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        lang=lang,
+    )
 
 
-###############################################################################
-# __main__ quick testcase (optional)
-###############################################################################
-
-if __name__ == "__main__":
-    sample = generate_problem_with_ai("ALGEBRA", "A")
-    print("\n# Generated Problem\n", sample["definition"])
-    print("\n# Solution\n", sample["solution"])
+def generate_ai_test_problems(topic: str, difficulty: str, count: int, *, lang: str = "et"):
+    """Old alias kept alive for imports that haven’t migrated."""
+    return generate_problems_with_ai(topic, difficulty, count, lang=lang)

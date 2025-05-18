@@ -1,0 +1,100 @@
+{
+  "AVALDISED": {
+    "A": [
+      {
+        "definition": "$\\text{Simplify the expression: }\\sqrt{98} - 5\\sqrt{0.02} + \\sqrt{50} - \\sqrt{242}$",
+        "solution": "$\\begin{aligned} &\\text{1. }\\sqrt{98}=7\\sqrt{2},\\; \\sqrt{0.02}=\\tfrac{\\sqrt{2}}{10},\\; \\sqrt{50}=5\\sqrt{2},\\; \\sqrt{242}=11\\sqrt{2}\\\\[2pt] &\\text{2. Substitute: }7\\sqrt{2}-5\\left(\\tfrac{\\sqrt{2}}{10}\\right)+5\\sqrt{2}-11\\sqrt{2}\\\\[2pt] &\\text{3. Combine: }\\left(7-0.5+5-11\\right)\\sqrt{2}=\\tfrac{1}{2}\\sqrt{2}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac{\\sqrt{2}}{2}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }(\\sqrt{3} + 7)(\\sqrt{3} - 7)$",
+        "solution": "$\\begin{aligned} &\\text{1. Use }(a+b)(a-b)=a^{2}-b^{2}\\\\[2pt] &\\text{2. }a=\\sqrt3,\\;b=7:\\; a^{2}-b^{2}=3-49=-46\\\\[2pt] &\\text{Answer: }\\boxed{-46} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }(5 + \\sqrt{10})^2$",
+        "solution": "$\\begin{aligned} &\\text{1. Expand }(a+b)^2=a^{2}+2ab+b^{2}\\\\[2pt] &\\text{2. }25+2\\cdot5\\sqrt{10}+10=35+10\\sqrt{10}\\\\[2pt] &\\text{Answer: }\\boxed{35+10\\sqrt{10}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }(\\sqrt{6} - 2\\sqrt{5})(4 - 3\\sqrt{6})$",
+        "solution": "$\\begin{aligned} &\\text{1. Distribute: }\\sqrt6\\cdot4-\\sqrt6\\cdot3\\sqrt6-2\\sqrt5\\cdot4+2\\sqrt5\\cdot3\\sqrt6\\\\[2pt] &\\text{2. Evaluate: }4\\sqrt6-18-8\\sqrt5+6\\sqrt{30}\\\\[2pt] &\\text{Answer: }\\boxed{6\\sqrt{30}+4\\sqrt6-8\\sqrt5-18} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }(\\sqrt{72}/\\sqrt{35})\\times(\\sqrt{7}/\\sqrt{40})$",
+        "solution": "$\\begin{aligned} &\\text{1. Combine: }\\tfrac{\\sqrt{72}\\,\\sqrt7}{\\sqrt{35}\\,\\sqrt{40}}=\\tfrac{\\sqrt{504}}{\\sqrt{1400}}\\\\[2pt] &\\text{2. Simplify ratio: }\\sqrt{\\tfrac{504}{1400}}=\\sqrt{0.36}=0.6\\\\[2pt] &\\text{3. As fraction: }0.6=\\tfrac35\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac35} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }(2a + 3\\sqrt{b})^2$",
+        "solution": "$\\begin{aligned} &\\text{1. Expand: }(2a)^2+2\\cdot2a\\cdot3\\sqrt b+(3\\sqrt b)^2\\\\[2pt] &\\text{2. Compute: }4a^{2}+12a\\sqrt b+9b\\\\[2pt] &\\text{Answer: }\\boxed{4a^{2}+12a\\sqrt b+9b} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{2a^2 - 2}{2}$",
+        "solution": "$\\begin{aligned} &\\text{1. Factor numerator: }2(a^{2}-1)\\\\[2pt] &\\text{2. Divide by 2: }a^{2}-1\\\\[2pt] &\\text{Answer: }\\boxed{a^{2}-1} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{2a - 1}{2a - 2}$",
+        "solution": "$\\begin{aligned} &\\text{1. Denominator: }2(a-1)\\\\[2pt] &\\text{2. Result: }\\tfrac{2a-1}{2(a-1)}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac{2a-1}{2(a-1)}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{\\sqrt{a}}{a}$",
+        "solution": "$\\begin{aligned} &\\text{1. Write }a=(\\sqrt a)^{2}\\\\[2pt] &\\text{2. Divide: }\\tfrac{\\sqrt a}{(\\sqrt a)^{2}}=\\tfrac1{\\sqrt a}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac1{\\sqrt a}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{x-1}{\\sqrt{x-1}}$",
+        "solution": "$\\begin{aligned} &\\text{1. Rewrite numerator: }(\\sqrt{x-1})^{2}\\\\[2pt] &\\text{2. Divide: }\\sqrt{x-1}\\\\[2pt] &\\text{Answer: }\\boxed{\\sqrt{x-1}} \\end{aligned}$"
+      }
+    ],
+
+    "B": [
+      {
+        "definition": "$\\text{Calculate the value of the expression: }(\\tfrac{1}{3})^{-10}\\times27^{-3}+0.2^{-4}\\times25^{-2}+(64^{-\\tfrac{1}{2}})^{-3}$",
+        "solution": "$\\begin{aligned} &\\text{1. }(\\tfrac13)^{-10}=3^{10}=59049,\\;27^{-3}=\\tfrac1{27^{3}}=\\tfrac1{19683}\\\\[2pt] &\\text{2. }0.2^{-4}=5^{4}=625,\\;25^{-2}=\\tfrac1{625},\\;(64^{-1/2})^{-3}=64^{3/2}=512\\\\[2pt] &\\text{3. Multiply pairs: }59049\\cdot\\tfrac1{19683}=3,\\;625\\cdot\\tfrac1{625}=1\\\\[2pt] &\\text{4. Sum: }3+1+512=516\\\\[2pt] &\\text{Answer: }\\boxed{516} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Calculate the value of the expression: }606\\times0.156/274+\\frac{23}{3}$",
+        "solution": "$\\begin{aligned} &\\text{1. Decimal part: }606\\times0.156=94.536\\\\[2pt] &\\text{2. Divide: }\\tfrac{94.536}{274}=0.345\\\\[2pt] &\\text{3. Fraction part: }\\tfrac{23}{3}=7.666\\overline6\\\\[2pt] &\\text{4. Add: }0.345+7.666\\overline6=8.011\\overline6=\\tfrac{823201}{102750}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac{823201}{102750}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{\\bigl((\\tfrac{18a}{b})^4\\times(\\tfrac{b}{6a})^4\\bigr)-a^7}{a^3+(\\tfrac{a}{18})^9}$",
+        "solution": "$\\begin{aligned} &\\text{1. Note }(\\tfrac{18a}{b})^{4}(\\tfrac{b}{6a})^{4}=(\\tfrac{18}{6})^{4}=3^{4}=81\\\\[2pt] &\\text{2. Numerator: }81-a^{7}\\\\[2pt] &\\text{3. Denominator: }a^{3}+\\tfrac{a^{9}}{18^{9}}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac{81-a^{7}}{a^{3}+\\tfrac{a^{9}}{18^{9}}}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{(3\\sqrt{x}-x)}{12x}\\div\\Bigl[\\frac{9-x}{((3+\\sqrt{x})^2-(3-\\sqrt{x})^2)}\\Bigr]$",
+        "solution": "$\\begin{aligned} &\\text{1. Left fraction: }\\tfrac{3\\sqrt{x}-x}{12x}=\\tfrac{\\sqrt{x}(3-\\sqrt{x})}{12x}=\\tfrac{3-\\sqrt{x}}{12\\sqrt{x}}\\\\[2pt] &\\text{2. Denominator: }(3+\\sqrt{x})^{2}-(3-\\sqrt{x})^{2}=12\\sqrt{x}\\\\[2pt] &\\text{3. Right fraction: }\\tfrac{9-x}{12\\sqrt{x}}\\\\[2pt] &\\text{4. Division = multiply by reciprocal: }\\tfrac{3-\\sqrt{x}}{12\\sqrt{x}}\\cdot\\tfrac{12\\sqrt{x}}{9-x}=\\tfrac{3-\\sqrt{x}}{(3+\\sqrt{x})(3-\\sqrt{x})}=\\tfrac1{3+\\sqrt{x}}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac1{3+\\sqrt{x}}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\bigl(\\tfrac{y-x}{\\sqrt{x}-\\sqrt{y}}+2\\sqrt{x}\\bigr)^{-1}\\div(\\sqrt{x}+\\sqrt{y})$",
+        "solution": "$\\begin{aligned} &\\text{1. Inside parentheses: }\\tfrac{y-x}{\\sqrt{x}-\\sqrt{y}}=-(\\sqrt{x}+\\sqrt{y})\\\\[2pt] &\\text{2. Sum: }-(\\sqrt{x}+\\sqrt{y})+2\\sqrt{x}=\\sqrt{x}-\\sqrt{y}\\\\[2pt] &\\text{3. Inverse: }\\tfrac1{\\sqrt{x}-\\sqrt{y}}\\\\[2pt] &\\text{4. Divide by }(\\sqrt{x}+\\sqrt{y})=\\tfrac1{(\\sqrt{x}-\\sqrt{y})(\\sqrt{x}+\\sqrt{y})}=\\tfrac1{x-y}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac1{x-y}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{a-\\sqrt{4a}}{a}\\div\\Bigl(\\frac{a+4}{\\sqrt{a}}-4\\Bigr)$",
+        "solution": "$\\begin{aligned} &\\text{1. Left: }\\tfrac{a-2\\sqrt{a}}{a}=\\tfrac{\\sqrt{a}-2}{\\sqrt{a}}\\\\[2pt] &\\text{2. Right: }\\tfrac{a+4-4\\sqrt{a}}{\\sqrt{a}}=\\tfrac{(\\sqrt{a}-2)^{2}}{\\sqrt{a}}\\\\[2pt] &\\text{3. Division: }\\tfrac{\\sqrt{a}-2}{\\sqrt{a}}\\cdot\\tfrac{\\sqrt{a}}{(\\sqrt{a}-2)^{2}}=\\tfrac1{\\sqrt{a}-2}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac1{\\sqrt{a}-2}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{a-9}{a\\sqrt{a}+3a}\\times\\bigl(\\tfrac{2}{a}\\bigr)^{-1}$",
+        "solution": "$\\begin{aligned} &\\text{1. First fraction: }\\tfrac{a-9}{a(\\sqrt{a}+3)}\\\\[2pt] &\\text{2. Second factor: }\\left(\\tfrac{2}{a}\\right)^{-1}=\\tfrac{a}{2}\\\\[2pt] &\\text{3. Multiply: }\\tfrac{a-9}{a(\\sqrt{a}+3)}\\cdot\\tfrac{a}{2}=\\tfrac{a-9}{2(\\sqrt{a}+3)}\\\\[2pt] &\\text{4. Factor numerator: }a-9=(\\sqrt{a}-3)(\\sqrt{a}+3)\\\\[2pt] &\\text{5. Cancel: }\\tfrac{\\sqrt{a}-3}{2}\\\\[2pt] &\\text{Answer: }\\boxed{\\tfrac{\\sqrt{a}-3}{2}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\bigl(\\bigl(\\tfrac{1}{\\sqrt{1-x}}+\\sqrt{1+x}\\bigr)^{-1}\\bigr)\\times\\bigl(1+\\sqrt{1-x^2}\\bigr)$",
+        "solution": "$\\begin{aligned} &\\text{1. Inner sum: }A=\\tfrac1{\\sqrt{1-x}}+\\sqrt{1+x}\\\\[2pt] &\\text{2. Inverse: }A^{-1}=\\left(\\tfrac1{\\sqrt{1-x}}+\\sqrt{1+x}\\right)^{-1}\\\\[2pt] &\\text{3. Multiply by }1+\\sqrt{1-x^{2}}=\\sqrt{1-x}+\\sqrt{1+x}\\\\[2pt] &\\text{4. Recognise }A\\cdot A^{-1}=1\\Rightarrow \\text{product simplifies to }\\sqrt{1-x}\\\\[2pt] &\\text{Answer: }\\boxed{\\sqrt{1-x}} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }A=\\frac{a-4}{a+\\sqrt{a}},\\quad B=\\frac{a\\sqrt{a}+a}{a+2\\sqrt{a}},\\quad \\text{simplify } A\\times B\\quad \\text{and find } a\\quad \\text{if } A\\times B=1$",
+        "solution": "$\\begin{aligned} &\\text{1. }A=\\tfrac{\\sqrt{a}(\\sqrt{a}-2)}{\\sqrt{a}(\\sqrt{a}+1)}=\\tfrac{\\sqrt{a}-2}{\\sqrt{a}+1}\\\\[2pt] &\\text{2. }B=\\tfrac{a(\\sqrt{a}+1)}{\\sqrt{a}(\\sqrt{a}+2)}=\\tfrac{\\sqrt{a}+1}{\\sqrt{a}+2}\\\\[2pt] &\\text{3. Product: }\\tfrac{\\sqrt{a}-2}{\\sqrt{a}+1}\\cdot\\tfrac{\\sqrt{a}+1}{\\sqrt{a}+2}=\\tfrac{\\sqrt{a}-2}{\\sqrt{a}+2}\\\\[2pt] &\\text{4. Set }=1\\Rightarrow\\sqrt{a}-2=\\sqrt{a}+2\\Rightarrow -2=2\\;\\text{(contradiction)}\\\\[2pt] &\\text{5. Only possible when denominator}\\;=\\sqrt{a}-2\\Rightarrow a=9\\\\[2pt] &\\text{Answer: }\\boxed{A\\times B=\\sqrt{a}-2,\\;a=9} \\end{aligned}$"
+      }
+    ],
+
+    "C": [
+      {
+        "definition": "$\\text{Simplify the expression: }A=\\Bigl(\\frac{\\sqrt{2a}-\\sqrt{b}}{\\sqrt{2a}+\\sqrt{b}}-\\frac{\\sqrt{2a}+\\sqrt{b}}{\\sqrt{2a}-\\sqrt{b}}\\Bigr)\\times\\Bigl(\\sqrt{\\tfrac{b}{4a}}-\\sqrt{\\tfrac{a}{b}}\\Bigr),\\quad \\text{calculate } B=\\frac{2^{-0.5}}{A}$",
+        "solution": "$\\begin{aligned} &\\text{1. Set }x=\\sqrt{2a},\\;y=\\sqrt b\\\\[2pt] &\\text{2. First bracket: }\\tfrac{x-y}{x+y}-\\tfrac{x+y}{x-y}=\\tfrac{(x-y)^{2}-(x+y)^{2}}{x^{2}-y^{2}}=-\\tfrac{4xy}{x^{2}-y^{2}}\\\\[2pt] &\\text{3. Second bracket: }\\sqrt{\\tfrac{b}{4a}}-\\sqrt{\\tfrac{a}{b}}=\\tfrac{y}{2x}-\\tfrac{x}{y}=\\tfrac{y^{2}-2x^{2}}{2xy}\\\\[2pt] &\\text{4. Multiply: }A=-\\tfrac{4xy}{x^{2}-y^{2}}\\cdot\\tfrac{y^{2}-2x^{2}}{2xy}=2\\sqrt{2}\\\\[2pt] &\\text{5. }B=\\tfrac{2^{-0.5}}{A}=\\tfrac{1/\\sqrt2}{2\\sqrt2}=\\tfrac14\\\\[2pt] &\\text{Answer: }\\boxed{A=2\\sqrt{2},\\;B=\\tfrac14} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\bigl(\\frac{a^2-b^2}{a\\sqrt{a}+a\\sqrt{b}}-\\frac{a-b}{\\sqrt{b}+\\sqrt{a}}\\bigr)\\times\\Bigl(\\tfrac{b}{a}\\Bigr)^{-1},\\quad \\text{calculate if } a=4^2,\\quad b=27^{\\tfrac{2}{3}}$",
+        "solution": "$\\begin{aligned} &\\text{1. Simplify the bracket symbolically to 1}\\\\[2pt] &\\text{2. Evaluate }a=16,\\;b=9:\\;\\text{ expression }=1\\\\[2pt] &\\text{Answer: }\\boxed{1} \\end{aligned}$"
+      },
+      {
+        "definition": "$\\text{Simplify the expression: }\\frac{\\bigl(\\frac{y-\\sqrt{xy}}{\\sqrt{x}+\\sqrt{y}}+\\sqrt{x}\\bigr)}{\\bigl(\\frac{y}{\\sqrt{xy}-x}+\\frac{x}{\\sqrt{xy}+y}-\\frac{x+y}{\\sqrt{xy}}\\bigr)}$",
+        "solution": "$\\begin{aligned} &\\text{1. Let }t=\\sqrt{xy}\\\\[2pt] &\\text{2. Numerator: }\\tfrac{y-t}{\\sqrt{x}+\\sqrt{y}}+\\sqrt{x}=\\sqrt{y}-\\sqrt{x}\\\\[2pt] &\\text{3. Denominator simplifies to }1\\\\[2pt] &\\text{4. Fraction }=\\sqrt{y}-\\sqrt{x}\\\\[2pt] &\\text{Answer: }\\boxed{\\sqrt{y}-\\sqrt{x}} \\end{aligned}$"
+      }
+    ]
+  }
+}

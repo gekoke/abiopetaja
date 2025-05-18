@@ -1,0 +1,602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-14 21:34+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: constants.py:4
+msgid "Number sets"
+msgstr ""
+
+#: constants.py:5
+msgid "Expressions"
+msgstr ""
+
+#: constants.py:6
+msgid "Exponential and logarithmic functions"
+msgstr ""
+
+#: constants.py:7
+msgid "Functions and sequences"
+msgstr ""
+
+#: constants.py:8
+msgid "Trigonometry I and II"
+msgstr ""
+
+#: constants.py:9
+msgid "Equations and systems of equations"
+msgstr ""
+
+#: constants.py:10
+msgid "Inequalities and systems of inequalities"
+msgstr ""
+
+#: constants.py:11
+msgid "Vectors in the plane and line equations"
+msgstr ""
+
+#: constants.py:12
+msgid "Trigonometric functions, limits and results"
+msgstr ""
+
+#: constants.py:13
+msgid "Applications of the derivative"
+msgstr ""
+
+#: constants.py:14
+msgid "Integral and plane geometry"
+msgstr ""
+
+#: constants.py:15
+msgid "Line and plane in space"
+msgstr ""
+
+#: constants.py:16
+msgid "Solid geometry"
+msgstr ""
+
+#: constants.py:17
+msgid "Applications of mathematics, study of real-world processes"
+msgstr ""
+
+#: forms.py:27
+msgid "Template to generate test from"
+msgstr ""
+
+#: forms.py:31
+msgid "Number of test versions"
+msgstr ""
+
+#: forms.py:57 models.py:80 models.py:325 templates/app/template_list.html:28
+#: templates/app/test_list.html:28
+msgid "Name"
+msgstr ""
+
+#: forms.py:60
+msgid "My Test"
+msgstr ""
+
+#: forms.py:66
+msgid "A test with this name already exists"
+msgstr ""
+
+#: forms.py:83
+msgid "Another test with this name already exists"
+msgstr ""
+
+#: forms.py:92
+msgid "Inequalities"
+msgstr ""
+
+#: forms.py:93
+msgid "Inequalities Test, Spring 2024"
+msgstr ""
+
+#: forms.py:111
+msgid "Another template with this name already exists"
+msgstr ""
+
+#: forms.py:120
+msgid "Number of occurrences"
+msgstr ""
+
+#: forms.py:126
+msgid "topic"
+msgstr ""
+
+#: forms.py:140
+msgid "Topic cannot be empty"
+msgstr ""
+
+#: forms.py:157
+msgid "This template already contains a problem for this topic and difficulty"
+msgstr ""
+
+#: latex.py:148
+#, python-format
+msgid "Version %(version)s"
+msgstr ""
+
+#: models.py:80
+msgid "Only you can see this name"
+msgstr ""
+
+#: models.py:84
+msgctxt "of a template"
+msgid "Title"
+msgstr ""
+
+#: models.py:86
+msgid ""
+"Anything you add to this field will be rendered at the top of the test "
+"document"
+msgstr ""
+
+#: models.py:292
+msgid "The topic of the problem (e.g., ARVUHULGAD, AVALDISED, etc.)"
+msgstr ""
+
+#: models.py:297
+msgid "Lihtne"
+msgstr ""
+
+#: models.py:297
+msgid "Keskmine"
+msgstr ""
+
+#: models.py:297
+msgid "Raske"
+msgstr ""
+
+#: models.py:298
+msgid "The difficulty of the problem"
+msgstr ""
+
+#: models.py:310
+msgid "Generated Problem"
+msgstr ""
+
+#: models.py:364
+msgid "[Unnamed Test]"
+msgstr ""
+
+#: models.py:369
+msgctxt "of a user feedback"
+msgid "Content"
+msgstr ""
+
+#: signals.py:39
+msgid "Arvuhulgad"
+msgstr ""
+
+#: signals.py:40
+msgid "Avaldised"
+msgstr ""
+
+#: signals.py:41
+msgid "Eksponent- ja logaritmfunktsioon"
+msgstr ""
+
+#: signals.py:42
+msgid "Funktsioonid ja arvjadad"
+msgstr ""
+
+#: signals.py:43
+msgid "Trigonomeetrilised I ja II"
+msgstr ""
+
+#: signals.py:44
+msgid "Võrrandid ja võrrandisüsteemid"
+msgstr ""
+
+#: signals.py:45
+msgid "Võrratused ja võrratusesüsteemid"
+msgstr ""
+
+#: signals.py:46
+msgid "Vektor tasandil ja joone võrrand"
+msgstr ""
+
+#: signals.py:49
+msgid "Trigonomeetrilised funktsioonid, piirväärtus ja tulemised"
+msgstr ""
+
+#: signals.py:51
+msgid "Tuletise rakendused"
+msgstr ""
+
+#: signals.py:52
+msgid "Integraal ja planimeetria"
+msgstr ""
+
+#: signals.py:53
+msgid "Sirge ja tasand ruumis"
+msgstr ""
+
+#: signals.py:54
+msgid "Stereomeetria"
+msgstr ""
+
+#: signals.py:57
+msgid "Matemaatika rakendused, reaalse protsessi uurimine"
+msgstr ""
+
+#: signals.py:83
+msgid "Test Mall"
+msgstr ""
+
+#: templates/app/base/base_create.html:8
+msgid "Save"
+msgstr ""
+
+#: templates/app/base/base_create.html:10
+#: templates/app/base/base_delete.html:16
+#: templates/app/base/base_update.html:10
+msgid "Cancel"
+msgstr ""
+
+#: templates/app/base/base_delete.html:5
+msgid "Confirm Deletion"
+msgstr ""
+
+#: templates/app/base/base_delete.html:14
+msgid "Delete Permanently"
+msgstr ""
+
+#: templates/app/base/base_update.html:8
+msgid "Update"
+msgstr ""
+
+#: templates/app/dashboard.html:5
+msgctxt "view in the application"
+msgid "Dashboard"
+msgstr ""
+
+#: templates/app/dashboard.html:11
+#, python-format
+msgid ""
+"\n"
+"                Welcome, %(name)s!\n"
+"            "
+msgstr ""
+
+#: templates/app/dashboard.html:20
+msgid "New Test ✅️"
+msgstr ""
+
+#: templates/app/dashboard.html:21
+msgid "Generate a new test"
+msgstr ""
+
+#: templates/app/dashboard.html:22
+msgid "Generate!"
+msgstr ""
+
+#: templates/app/dashboard.html:27
+msgid "My Templates 📐"
+msgstr ""
+
+#: templates/app/dashboard.html:28
+msgid "Collections of problems that can be used to generate tests"
+msgstr ""
+
+#: templates/app/dashboard.html:30
+#, python-format
+msgid ""
+"\n"
+"                        View %(counter)s template\n"
+"                    "
+msgid_plural ""
+"\n"
+"                        View %(counter)s templates\n"
+"                    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/app/dashboard.html:38
+msgctxt "math tests"
+msgid "My Tests 📄"
+msgstr ""
+
+#: templates/app/dashboard.html:39
+msgid "Browse all your tests"
+msgstr ""
+
+#: templates/app/dashboard.html:41
+#, python-format
+msgid ""
+"\n"
+"                        View %(counter)s test\n"
+"                    "
+msgid_plural ""
+"\n"
+"                        View %(counter)s tests\n"
+"                    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/app/dashboard.html:49
+msgid "All Topics and Difficulties 🧠"
+msgstr ""
+
+#: templates/app/dashboard.html:50
+msgid "Browse all the available topics"
+msgstr ""
+
+#: templates/app/dashboard.html:52
+#, python-format
+msgid ""
+"\n"
+"                        View %(counter)s topic\n"
+"                    "
+msgid_plural ""
+"\n"
+"                        View %(counter)s topics\n"
+"                    "
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/app/problemkind_list.html:6
+msgctxt "view in the application"
+msgid "Teemad ja raskusastmed"
+msgstr ""
+
+#: templates/app/problemkind_list.html:17
+msgid "Peamenüü"
+msgstr ""
+
+#: templates/app/problemkind_list.html:20
+msgid "Kõik teemad ja raskusastmed"
+msgstr ""
+
+#: templates/app/problemkind_list.html:25
+msgid "Teema"
+msgstr ""
+
+#: templates/app/problemkind_list.html:26
+msgid "Raskusaste"
+msgstr ""
+
+#: templates/app/problemkind_list.html:27
+msgid "Näide"
+msgstr ""
+
+#: templates/app/problemkind_list.html:28
+msgid "Lahend"
+msgstr ""
+
+#: templates/app/template_confirm_delete.html:5
+#, python-format
+msgid ""
+"<p>Are you sure you want to delete the template <b>%(template_problem)s</b>?"
+"</p>"
+msgstr ""
+
+#: templates/app/template_create_form.html:5
+msgid "Create Template"
+msgstr ""
+
+#: templates/app/template_detail.html:14 templates/app/template_list.html:17
+#: templates/app/test_detail.html:15 templates/app/test_generation.html:13
+#: templates/app/test_list.html:17 templates/app/topic_difficulty_list.html:12
+msgid "Dashboard"
+msgstr ""
+
+#: templates/app/template_detail.html:15 templates/app/template_list.html:22
+#: templates/app/topic_difficulty_list.html:13
+msgid "Templates"
+msgstr ""
+
+#: templates/app/template_detail.html:20
+#: templates/app/templateproblem_create_form.html:5
+msgid "Add Problem"
+msgstr ""
+
+#: templates/app/template_detail.html:27
+msgid "Problem"
+msgstr ""
+
+#: templates/app/template_detail.html:28
+msgid "Count"
+msgstr ""
+
+#: templates/app/template_list.html:5
+msgctxt "view in the application"
+msgid "Templates"
+msgstr ""
+
+#: templates/app/template_list.html:23
+msgid "New Template"
+msgstr ""
+
+#: templates/app/template_list.html:29
+msgctxt "referring to the count of problems"
+msgid "Problems"
+msgstr ""
+
+#: templates/app/template_list.html:30 templates/app/test_list.html:30
+msgid "Created At"
+msgstr ""
+
+#: templates/app/template_update_form.html:5
+#: templates/app/template_update_form.html:9
+msgid "Update Template"
+msgstr ""
+
+#: templates/app/templateproblem_confirm_delete.html:5
+#, python-format
+msgid ""
+"<p>Are you sure you want to remove the problem <b>%(template_problem)s</b> "
+"from the test?</p>"
+msgstr ""
+
+#: templates/app/templateproblem_update_form.html:5
+msgid "Update Problem"
+msgstr ""
+
+#: templates/app/test_confirm_delete.html:5
+#, python-format
+msgid "<p>Are you sure you want to delete the test <b>%(test_name)s</b>?</p>"
+msgstr ""
+
+#: templates/app/test_detail.html:16 templates/app/test_list.html:22
+msgid "Tests"
+msgstr ""
+
+#: templates/app/test_detail.html:20 templates/app/test_update_form.html:5
+#: templates/app/test_update_form.html:9
+msgid "Update Test"
+msgstr ""
+
+#: templates/app/test_detail.html:21
+msgid "Delete Test"
+msgstr ""
+
+#: templates/app/test_detail.html:26
+#, python-format
+msgid "Version %(test_version_number)s"
+msgstr ""
+
+#: templates/app/test_detail.html:31 templates/app/test_generation.html:48
+msgid "Answer Key"
+msgstr ""
+
+#: templates/app/test_generation.html:6
+msgctxt "view in the application"
+msgid "Generate Test"
+msgstr ""
+
+#: templates/app/test_generation.html:22
+msgid "Create a Test from a Template"
+msgstr ""
+
+#: templates/app/test_generation.html:26
+msgid "Generate"
+msgstr ""
+
+#: templates/app/test_generation.html:33
+msgid "Save This Test"
+msgstr ""
+
+#: templates/app/test_generation.html:37
+msgid "Save Test"
+msgstr ""
+
+#: templates/app/test_generation.html:61
+#, python-format
+msgid "Version %(version_number)s"
+msgstr ""
+
+#: templates/app/test_list.html:5
+msgctxt "view in the application"
+msgid "Tests"
+msgstr ""
+
+#: templates/app/test_list.html:23
+msgid "Generate Test"
+msgstr ""
+
+#: templates/app/test_list.html:29
+msgctxt "referring to the count of test versions"
+msgid "Versions"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:5
+#: templates/app/topic_difficulty_list.html:17
+msgid "Topics and Difficulties"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:14
+msgid "Topics & Difficulties"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:21
+msgid "Topic"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:22
+msgid "Difficulty"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:31
+msgid "Easy"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:33
+msgid "Medium"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:35
+msgid "Hard"
+msgstr ""
+
+#: templates/app/topic_difficulty_list.html:43
+msgid "No topics found."
+msgstr ""
+
+#: templates/app/userfeedback_create_form.html:5
+#: templates/app/userfeedback_create_form.html:9
+msgid "Leave Feedback"
+msgstr ""
+
+#: tests/test_pdf.py:79 tests/test_pdf.py:81
+msgid "Test Template"
+msgstr ""
+
+#: views.py:183
+msgid "This template has no problems and would result in an empty test."
+msgstr ""
+
+#: views.py:200
+#, python-format
+msgid ""
+"<div>The test was saved successfully. <a href=\"%(url)s\">Click here</a> to "
+"view the test.</div>"
+msgstr ""
+
+#: views.py:248
+msgid "The template was created successfully."
+msgstr ""
+
+#: views.py:261
+msgid "The template was updated successfully."
+msgstr ""
+
+#: views.py:280
+msgid "The template was deleted successfully."
+msgstr ""
+
+#: views.py:302
+msgid "The test was updated successfully."
+msgstr ""
+
+#: views.py:350
+msgid "The problem entry was updated successfully."
+msgstr ""
+
+#: views.py:366
+msgid "The problem entry was deleted successfully."
+msgstr ""
+
+#: views.py:381
+msgid "The test was deleted successfully."
+msgstr ""
+
+#: views.py:396
+msgid "Your feedback was submitted. Thanks!"
+msgstr ""

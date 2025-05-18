@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 15:18+0000\n"
+"POT-Creation-Date: 2025-05-14 21:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,323 +17,420 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: abiopetaja/settings_common.py:113
-msgid "Estonian"
-msgstr "Eesti"
+#: constants.py:4
+msgid "Number sets"
+msgstr "Arvuhulgad"
 
-#: abiopetaja/settings_common.py:114
-msgid "English"
-msgstr "Inglise"
+#: constants.py:5
+msgid "Expressions"
+msgstr "Avaldised"
 
-#: app/forms.py:26
+#: constants.py:6
+msgid "Exponential and logarithmic functions"
+msgstr "Eksponent- ja logaritmfunktsioon"
+
+#: constants.py:7
+msgid "Functions and sequences"
+msgstr "Funktsioonid ja arvjadad"
+
+#: constants.py:8
+msgid "Trigonometry I and II"
+msgstr "Trigonomeetrilised I ja II"
+
+#: constants.py:9
+msgid "Equations and systems of equations"
+msgstr "Võrrandid ja võrrandisüsteemid"
+
+#: constants.py:10
+msgid "Inequalities and systems of inequalities"
+msgstr "Võrratused ja võrratusesüsteemid"
+
+#: constants.py:11
+msgid "Vectors in the plane and line equations"
+msgstr "Vektor tasandil ja joone võrrand"
+
+#: constants.py:12
+msgid "Trigonometric functions, limits and results"
+msgstr "Trigonomeetrilised funktsioonid, piirväärtus ja tulemised"
+
+#: constants.py:13
+msgid "Applications of the derivative"
+msgstr "Tuletise rakendused"
+
+#: constants.py:14
+msgid "Integral and plane geometry"
+msgstr "Integraal ja planimeetria"
+
+#: constants.py:15
+msgid "Line and plane in space"
+msgstr "Sirge ja tasand ruumis"
+
+#: constants.py:16
+msgid "Solid geometry"
+msgstr "Stereomeetria"
+
+#: constants.py:17
+msgid "Applications of mathematics, study of real-world processes"
+msgstr "Matemaatika rakendused, reaalse protsessi uurimine"
+
+#: forms.py:27
 msgid "Template to generate test from"
 msgstr "Vali mall, millest dokumente genereerida"
 
-#: app/forms.py:30
+#: forms.py:31
 msgid "Number of test versions"
 msgstr "Variantide arv"
 
-#: app/forms.py:56 app/models.py:66 app/models.py:274
-#: app/templates/app/template_list.html:28 app/templates/app/test_list.html:28
+#: forms.py:57 models.py:80 models.py:325 templates/app/template_list.html:28
+#: templates/app/test_list.html:28
 msgid "Name"
 msgstr "Nimi"
 
-#: app/forms.py:59
+#: forms.py:60
 msgid "My Test"
 msgstr "Minu töö"
 
-#: app/forms.py:65
+#: forms.py:66
 msgid "A test with this name already exists"
 msgstr "Sellise nimega töö on juba olemas"
 
-#: app/forms.py:82
+#: forms.py:83
 msgid "Another test with this name already exists"
 msgstr "Teine sellise nimega töö on juba olemas"
 
-#: app/forms.py:91
+#: forms.py:92
 msgid "Inequalities"
 msgstr "Võrratused"
 
-#: app/forms.py:92
+#: forms.py:93
 msgid "Inequalities Test, Spring 2024"
 msgstr "Kontrolltöö, võrratused - kevad 2024"
 
-#: app/forms.py:110
+#: forms.py:111
 msgid "Another template with this name already exists"
 msgstr "Teine sellise nimega mall on juba olemas"
 
-#: app/forms.py:119
+#: forms.py:120
 #, fuzzy
 #| msgid "Number of occurences"
 msgid "Number of occurrences"
 msgstr "Ülesannete arv"
 
-#: app/forms.py:141
-msgid "Topic cannot be empty"
-msgstr ""
+#: forms.py:126
+#, fuzzy
+#| msgid "Topic"
+msgid "topic"
+msgstr "Teema"
 
-#: app/forms.py:155
+#: forms.py:140
+msgid "Topic cannot be empty"
+msgstr "Teema ei saa olla tühi"
+
+#: forms.py:157
 #, fuzzy
 #| msgid "This template already contains this problem kind"
 msgid "This template already contains a problem for this topic and difficulty"
 msgstr "See mall juba sisaldab seda ülesandetüüpi"
 
-#: app/latex.py:112
+#: latex.py:148
 #, python-format
 msgid "Version %(version)s"
 msgstr "Variant %(version)s"
 
-#: app/models.py:66
+#: models.py:80
 msgid "Only you can see this name"
 msgstr "Ainult sina näed seda nime"
 
-#: app/models.py:70
+#: models.py:84
 msgctxt "of a template"
 msgid "Title"
 msgstr "Pealkiri"
 
-#: app/models.py:72
+#: models.py:86
 msgid ""
 "Anything you add to this field will be rendered at the top of the test "
 "document"
 msgstr "Kõik, mis siia lahtrisse lisad, kuvatakse töölehe ülalosas"
 
-#: app/models.py:240
+#: models.py:292
 msgid "The topic of the problem (e.g., ARVUHULGAD, AVALDISED, etc.)"
-msgstr ""
+msgstr "Teema"
 
-#: app/models.py:245
+#: models.py:297
 msgid "Lihtne"
-msgstr ""
+msgstr "Easy"
 
-#: app/models.py:245
+#: models.py:297
 msgid "Keskmine"
-msgstr ""
+msgstr "Medium"
 
-#: app/models.py:245
+#: models.py:297
 msgid "Raske"
-msgstr ""
+msgstr "Hard"
 
-#: app/models.py:246
+#: models.py:298
 msgid "The difficulty of the problem"
-msgstr ""
+msgstr "Ülesande raskusaste"
 
-#: app/models.py:259
+#: models.py:310
 #, fuzzy
 #| msgid "Update Problem"
 msgid "Generated Problem"
 msgstr "Uuenda ülesannet"
 
-#: app/models.py:313
+#: models.py:364
 msgid "[Unnamed Test]"
 msgstr "[Nimeta töö]"
 
-#: app/models.py:318
+#: models.py:369
 msgctxt "of a user feedback"
 msgid "Content"
 msgstr "Sisu"
 
-#: app/signals.py:39
+#: signals.py:39
 msgid "Arvuhulgad"
 msgstr ""
 
-#: app/signals.py:40
+#: signals.py:40
 msgid "Avaldised"
 msgstr ""
 
-#: app/signals.py:41
+#: signals.py:41
+#, fuzzy
+#| msgid "Exponential and logarithmic functions"
 msgid "Eksponent- ja logaritmfunktsioon"
-msgstr ""
+msgstr "Eksponent- ja logaritmfunktsioon"
 
-#: app/signals.py:42
+#: signals.py:42
 msgid "Funktsioonid ja arvjadad"
 msgstr ""
 
-#: app/signals.py:43
+#: signals.py:43
+#, fuzzy
+#| msgid "Trigonometry I and II"
 msgid "Trigonomeetrilised I ja II"
-msgstr ""
+msgstr "Trigonomeetrilised I ja II"
 
-#: app/signals.py:44
+#: signals.py:44
 msgid "Võrrandid ja võrrandisüsteemid"
 msgstr ""
 
-#: app/signals.py:45
+#: signals.py:45
 msgid "Võrratused ja võrratusesüsteemid"
 msgstr ""
 
-#: app/signals.py:46
+#: signals.py:46
 msgid "Vektor tasandil ja joone võrrand"
 msgstr ""
 
-#: app/signals.py:49
+#: signals.py:49
+#, fuzzy
+#| msgid "Trigonometric functions, limits and results"
 msgid "Trigonomeetrilised funktsioonid, piirväärtus ja tulemised"
-msgstr ""
+msgstr "Trigonomeetrilised funktsioonid, piirväärtus ja tulemised"
 
-#: app/signals.py:51
+#: signals.py:51
 msgid "Tuletise rakendused"
 msgstr ""
 
-#: app/signals.py:52
+#: signals.py:52
+#, fuzzy
+#| msgid "Integral and plane geometry"
 msgid "Integraal ja planimeetria"
-msgstr ""
+msgstr "Integraal ja planimeetria"
 
-#: app/signals.py:53
+#: signals.py:53
 msgid "Sirge ja tasand ruumis"
 msgstr ""
 
-#: app/signals.py:54
+#: signals.py:54
 msgid "Stereomeetria"
 msgstr ""
 
-#: app/signals.py:57
+#: signals.py:57
 msgid "Matemaatika rakendused, reaalse protsessi uurimine"
 msgstr ""
 
-#: app/signals.py:83
+#: signals.py:83
 msgid "Test Mall"
 msgstr ""
 
-#: app/templates/app/base/base_create.html:8
+#: templates/app/base/base_create.html:8
 msgid "Save"
 msgstr "Salvesta"
 
-#: app/templates/app/base/base_create.html:10
-#: app/templates/app/base/base_delete.html:16
-#: app/templates/app/base/base_update.html:10
+#: templates/app/base/base_create.html:10
+#: templates/app/base/base_delete.html:16
+#: templates/app/base/base_update.html:10
 msgid "Cancel"
 msgstr "Tühista"
 
-#: app/templates/app/base/base_delete.html:5
+#: templates/app/base/base_delete.html:5
 msgid "Confirm Deletion"
 msgstr "Kinnita kustutamine"
 
-#: app/templates/app/base/base_delete.html:14
+#: templates/app/base/base_delete.html:14
 msgid "Delete Permanently"
 msgstr "Kustuta jäädavalt"
 
-#: app/templates/app/base/base_update.html:8
+#: templates/app/base/base_update.html:8
 msgid "Update"
 msgstr "Uuenda"
 
-#: app/templates/app/dashboard.html:5
+#: templates/app/dashboard.html:5
 msgctxt "view in the application"
 msgid "Dashboard"
 msgstr "Peamenüü"
 
-#: app/templates/app/dashboard.html:11
+#: templates/app/dashboard.html:11
 #, python-format
 msgid ""
 "\n"
 "                Welcome, %(name)s!\n"
 "            "
 msgstr ""
+"\n"
+"                Tere, %(name)s!\n"
+"            "
 
-#: app/templates/app/dashboard.html:20
+#: templates/app/dashboard.html:20
 msgid "New Test ✅️"
 msgstr "Uus töö ✅"
 
-#: app/templates/app/dashboard.html:21
+#: templates/app/dashboard.html:21
 msgid "Generate a new test"
 msgstr "Genereeri uus töö"
 
-#: app/templates/app/dashboard.html:22
+#: templates/app/dashboard.html:22
 msgid "Generate!"
 msgstr "Genereeri!"
 
-#: app/templates/app/dashboard.html:27
+#: templates/app/dashboard.html:27
 msgid "My Templates 📐"
 msgstr "Minu mallid 📐"
 
-#: app/templates/app/dashboard.html:28
+#: templates/app/dashboard.html:28
 msgid "Collections of problems that can be used to generate tests"
 msgstr "Ülesannete kogud, mida saab töödeks genereerida"
 
-#: app/templates/app/dashboard.html:30
-#, python-format
+#: templates/app/dashboard.html:30
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                Welcome, %(name)s!\n"
+#| "            "
 msgid ""
 "\n"
-"                        Vaata %(counter)s malli\n"
+"                        View %(counter)s template\n"
 "                    "
 msgid_plural ""
 "\n"
-"                        Vaata %(counter)s malli\n"
+"                        View %(counter)s templates\n"
 "                    "
 msgstr[0] ""
+"\n"
+"                Tere, %(name)s!\n"
+"            "
 msgstr[1] ""
+"\n"
+"                Tere, %(name)s!\n"
+"            "
 
-#: app/templates/app/dashboard.html:38
+#: templates/app/dashboard.html:38
 msgctxt "math tests"
 msgid "My Tests 📄"
 msgstr "Minu tööd 📄"
 
-#: app/templates/app/dashboard.html:39
+#: templates/app/dashboard.html:39
 msgid "Browse all your tests"
-msgstr "Sirvi kõiki sinu töid"
+msgstr "Vaata kõiki oma teste"
 
-#: app/templates/app/dashboard.html:41
-#, python-format
+#: templates/app/dashboard.html:41
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                Welcome, %(name)s!\n"
+#| "            "
 msgid ""
 "\n"
-"                        Vaata %(counter)s tööd\n"
+"                        View %(counter)s test\n"
 "                    "
 msgid_plural ""
 "\n"
-"                        Vaata %(counter)s tööd\n"
+"                        View %(counter)s tests\n"
 "                    "
 msgstr[0] ""
+"\n"
+"                Tere, %(name)s!\n"
+"            "
 msgstr[1] ""
+"\n"
+"                Tere, %(name)s!\n"
+"            "
 
-#: app/templates/app/dashboard.html:49
-msgid "Kõik teemad ja raskusastmed 🧠"
-msgstr ""
+#: templates/app/dashboard.html:49
+msgid "All Topics and Difficulties 🧠"
+msgstr "Kõik teemad ja raskusastmed 🧠"
 
-#: app/templates/app/dashboard.html:50
-msgid "Sirvi kõiki olemasolevaid teemasid ja raskusastmeid"
-msgstr ""
+#: templates/app/dashboard.html:50
+msgid "Browse all the available topics"
+msgstr "Vaata kõiki teemasid"
 
-#: app/templates/app/dashboard.html:52
-#, python-format
+#: templates/app/dashboard.html:52
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                Welcome, %(name)s!\n"
+#| "            "
 msgid ""
 "\n"
-"                        Vaata %(counter)s teemat\n"
+"                        View %(counter)s topic\n"
 "                    "
 msgid_plural ""
 "\n"
-"                        Vaata %(counter)s teemat\n"
+"                        View %(counter)s topics\n"
 "                    "
 msgstr[0] ""
+"\n"
+"                Tere, %(name)s!\n"
+"            "
 msgstr[1] ""
+"\n"
+"                Tere, %(name)s!\n"
+"            "
 
-#: app/templates/app/problemkind_list.html:6
+#: templates/app/problemkind_list.html:6
 msgctxt "view in the application"
 msgid "Teemad ja raskusastmed"
 msgstr ""
 
-#: app/templates/app/problemkind_list.html:17
+#: templates/app/problemkind_list.html:17
 msgid "Peamenüü"
 msgstr ""
 
-#: app/templates/app/problemkind_list.html:20
+#: templates/app/problemkind_list.html:20
 msgid "Kõik teemad ja raskusastmed"
 msgstr ""
 
-#: app/templates/app/problemkind_list.html:25
+#: templates/app/problemkind_list.html:25
 msgid "Teema"
 msgstr ""
 
-#: app/templates/app/problemkind_list.html:26
+#: templates/app/problemkind_list.html:26
+#, fuzzy
+#| msgid "Raske"
 msgid "Raskusaste"
-msgstr ""
+msgstr "Hard"
 
-#: app/templates/app/problemkind_list.html:27
+#: templates/app/problemkind_list.html:27
 msgid "Näide"
 msgstr ""
 
-#: app/templates/app/problemkind_list.html:28
+#: templates/app/problemkind_list.html:28
 msgid "Lahend"
 msgstr ""
 
-#: app/templates/app/template_confirm_delete.html:5
+#: templates/app/template_confirm_delete.html:5
 #, python-format
 msgid ""
 "<p>Are you sure you want to delete the template <b>%(template_problem)s</b>?"
@@ -341,62 +438,58 @@ msgid ""
 msgstr ""
 "<p>Olete kindel, et soovite kustutada malli <b>%(template_problem)s</b>?</p>"
 
-#: app/templates/app/template_create_form.html:5
+#: templates/app/template_create_form.html:5
 msgid "Create Template"
 msgstr "Loo mall"
 
-#: app/templates/app/template_detail.html:14
-#: app/templates/app/template_list.html:17
-#: app/templates/app/test_detail.html:15
-#: app/templates/app/test_generation.html:13
-#: app/templates/app/test_list.html:17
-#: app/templates/app/topic_difficulty_list.html:12
+#: templates/app/template_detail.html:14 templates/app/template_list.html:17
+#: templates/app/test_detail.html:15 templates/app/test_generation.html:13
+#: templates/app/test_list.html:17 templates/app/topic_difficulty_list.html:12
 msgid "Dashboard"
 msgstr "Peamenüü"
 
-#: app/templates/app/template_detail.html:15
-#: app/templates/app/template_list.html:22
-#: app/templates/app/topic_difficulty_list.html:13
+#: templates/app/template_detail.html:15 templates/app/template_list.html:22
+#: templates/app/topic_difficulty_list.html:13
 msgid "Templates"
 msgstr "Mallid"
 
-#: app/templates/app/template_detail.html:20
-#: app/templates/app/templateproblem_create_form.html:5
+#: templates/app/template_detail.html:20
+#: templates/app/templateproblem_create_form.html:5
 msgid "Add Problem"
 msgstr "Lisa ülesanne"
 
-#: app/templates/app/template_detail.html:27
+#: templates/app/template_detail.html:27
 msgid "Problem"
 msgstr "Ülesanne"
 
-#: app/templates/app/template_detail.html:28
+#: templates/app/template_detail.html:28
 msgid "Count"
 msgstr "Arv"
 
-#: app/templates/app/template_list.html:5
+#: templates/app/template_list.html:5
 msgctxt "view in the application"
 msgid "Templates"
 msgstr "Mallid"
 
-#: app/templates/app/template_list.html:23
+#: templates/app/template_list.html:23
 msgid "New Template"
 msgstr "Uus mall"
 
-#: app/templates/app/template_list.html:29
+#: templates/app/template_list.html:29
 msgctxt "referring to the count of problems"
 msgid "Problems"
 msgstr "Ülesandeid"
 
-#: app/templates/app/template_list.html:30 app/templates/app/test_list.html:30
+#: templates/app/template_list.html:30 templates/app/test_list.html:30
 msgid "Created At"
 msgstr "Loodud"
 
-#: app/templates/app/template_update_form.html:5
-#: app/templates/app/template_update_form.html:9
+#: templates/app/template_update_form.html:5
+#: templates/app/template_update_form.html:9
 msgid "Update Template"
 msgstr "Uuenda malli"
 
-#: app/templates/app/templateproblem_confirm_delete.html:5
+#: templates/app/templateproblem_confirm_delete.html:5
 #, python-format
 msgid ""
 "<p>Are you sure you want to remove the problem <b>%(template_problem)s</b> "
@@ -404,141 +497,132 @@ msgid ""
 msgstr ""
 "<p>Olete kindel, et soovite <b>%(template_problem)s</b> eemaldada tööst?</p>"
 
-#: app/templates/app/templateproblem_update_form.html:5
+#: templates/app/templateproblem_update_form.html:5
 msgid "Update Problem"
 msgstr "Uuenda ülesannet"
 
-#: app/templates/app/test_confirm_delete.html:5
+#: templates/app/test_confirm_delete.html:5
 #, python-format
 msgid "<p>Are you sure you want to delete the test <b>%(test_name)s</b>?</p>"
 msgstr "<p>Olete kindel, et soovite kustutada töö <b>%(test_name)s</b>?</p>"
 
-#: app/templates/app/test_detail.html:16 app/templates/app/test_list.html:22
+#: templates/app/test_detail.html:16 templates/app/test_list.html:22
 msgid "Tests"
 msgstr "Tööd"
 
-#: app/templates/app/test_detail.html:20
-#: app/templates/app/test_update_form.html:5
-#: app/templates/app/test_update_form.html:9
+#: templates/app/test_detail.html:20 templates/app/test_update_form.html:5
+#: templates/app/test_update_form.html:9
 msgid "Update Test"
 msgstr "Uuenda tööd"
 
-#: app/templates/app/test_detail.html:21
+#: templates/app/test_detail.html:21
 msgid "Delete Test"
 msgstr "Kustuta töö"
 
-#: app/templates/app/test_detail.html:26
+#: templates/app/test_detail.html:26
 #, python-format
 msgid "Version %(test_version_number)s"
 msgstr "Variant %(test_version_number)s"
 
-#: app/templates/app/test_detail.html:31
-#: app/templates/app/test_generation.html:48
+#: templates/app/test_detail.html:31 templates/app/test_generation.html:48
 msgid "Answer Key"
 msgstr "Vastuseleht"
 
-#: app/templates/app/test_generation.html:6
+#: templates/app/test_generation.html:6
 #, fuzzy
 #| msgid "Generate Test"
 msgctxt "view in the application"
 msgid "Generate Test"
 msgstr "Genereeri töö"
 
-#: app/templates/app/test_generation.html:22
-#, fuzzy
-#| msgid "Create Template"
+#: templates/app/test_generation.html:22
 msgid "Create a Test from a Template"
-msgstr "Loo mall"
+msgstr "Genereeri test"
 
-#: app/templates/app/test_generation.html:26
+#: templates/app/test_generation.html:26
 #, fuzzy
 #| msgid "Generate!"
 msgid "Generate"
 msgstr "Genereeri!"
 
-#: app/templates/app/test_generation.html:33
+#: templates/app/test_generation.html:33
 #, fuzzy
 #| msgid "Save Test"
 msgid "Save This Test"
 msgstr "Salvesta töö"
 
-#: app/templates/app/test_generation.html:37
+#: templates/app/test_generation.html:37
 msgid "Save Test"
 msgstr "Salvesta töö"
 
-#: app/templates/app/test_generation.html:61
+#: templates/app/test_generation.html:61
 #, python-format
 msgid "Version %(version_number)s"
 msgstr "Variant %(version_number)s"
 
-#: app/templates/app/test_generation.html:72
-msgctxt "PDF file name to save"
-msgid "test.pdf"
-msgstr "töö.pdf"
-
-#: app/templates/app/test_list.html:5
+#: templates/app/test_list.html:5
 msgctxt "view in the application"
 msgid "Tests"
 msgstr "Tööd"
 
-#: app/templates/app/test_list.html:23
+#: templates/app/test_list.html:23
 msgid "Generate Test"
 msgstr "Genereeri töö"
 
-#: app/templates/app/test_list.html:29
+#: templates/app/test_list.html:29
 msgctxt "referring to the count of test versions"
 msgid "Versions"
 msgstr "Variante"
 
-#: app/templates/app/topic_difficulty_list.html:5
-#: app/templates/app/topic_difficulty_list.html:17
+#: templates/app/topic_difficulty_list.html:5
+#: templates/app/topic_difficulty_list.html:17
 msgid "Topics and Difficulties"
-msgstr ""
+msgstr "Teemad ja raskusastmed"
 
-#: app/templates/app/topic_difficulty_list.html:14
+#: templates/app/topic_difficulty_list.html:14
 msgid "Topics & Difficulties"
-msgstr ""
+msgstr "Teemad ja raskusastmed"
 
-#: app/templates/app/topic_difficulty_list.html:21
+#: templates/app/topic_difficulty_list.html:21
 msgid "Topic"
-msgstr ""
+msgstr "Teema"
 
-#: app/templates/app/topic_difficulty_list.html:22
+#: templates/app/topic_difficulty_list.html:22
 msgid "Difficulty"
-msgstr ""
+msgstr "Raskusaste"
 
-#: app/templates/app/topic_difficulty_list.html:31
+#: templates/app/topic_difficulty_list.html:31
 msgid "Easy"
-msgstr ""
+msgstr "Lihtne"
 
-#: app/templates/app/topic_difficulty_list.html:33
+#: templates/app/topic_difficulty_list.html:33
 msgid "Medium"
-msgstr ""
+msgstr "Keskmine"
 
-#: app/templates/app/topic_difficulty_list.html:35
+#: templates/app/topic_difficulty_list.html:35
 msgid "Hard"
-msgstr ""
+msgstr "Raske"
 
-#: app/templates/app/topic_difficulty_list.html:43
+#: templates/app/topic_difficulty_list.html:43
 msgid "No topics found."
-msgstr ""
+msgstr "Teemasid ei leitud"
 
-#: app/templates/app/userfeedback_create_form.html:5
-#: app/templates/app/userfeedback_create_form.html:9
+#: templates/app/userfeedback_create_form.html:5
+#: templates/app/userfeedback_create_form.html:9
 msgid "Leave Feedback"
 msgstr "Jäta tagasisidet"
 
-#: app/tests/test_pdf.py:79 app/tests/test_pdf.py:81
+#: tests/test_pdf.py:79 tests/test_pdf.py:81
 #, fuzzy
 #| msgid "New Template"
 msgid "Test Template"
 msgstr "Uus mall"
 
-#: app/views.py:183
+#: views.py:183
 msgid "This template has no problems and would result in an empty test."
 msgstr "Sellel mallil puuduvad ülesanded, mille tõttu genereeriks tühi töö."
 
-#: app/views.py:200
+#: views.py:200
 #, python-format
 msgid ""
 "<div>The test was saved successfully. <a href=\"%(url)s\">Click here</a> to "
@@ -547,34 +631,62 @@ msgstr ""
 "<div>Töö salvestati edukalt. <a href=\"%(url)s\">Klõpsa siia</a>, et tööd "
 "vaadata."
 
-#: app/views.py:249
+#: views.py:248
 msgid "The template was created successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:262
+#: views.py:261
 msgid "The template was updated successfully."
 msgstr "Mall salvestati edukalt"
 
-#: app/views.py:281
+#: views.py:280
 msgid "The template was deleted successfully."
 msgstr "Mall kustutati edukalt"
 
-#: app/views.py:303
+#: views.py:302
 msgid "The test was updated successfully."
 msgstr "Töö salvestati edukalt"
 
-#: app/views.py:351
+#: views.py:350
 msgid "The problem entry was updated successfully."
 msgstr "Ülesanne salvestati edukalt"
 
-#: app/views.py:367
+#: views.py:366
 msgid "The problem entry was deleted successfully."
 msgstr "Ülesanne kustutati edukalt"
 
-#: app/views.py:382
+#: views.py:381
 msgid "The test was deleted successfully."
 msgstr "Töö kustutati edukalt"
 
-#: app/views.py:397
+#: views.py:396
 msgid "Your feedback was submitted. Thanks!"
 msgstr "Saime su tagasiside kätte. Tänud!"
+
+#, python-format
+#~ msgid "View %(counter)s template"
+#~ msgid_plural "View %(counter)s templates"
+#~ msgstr[0] "Vaata %(counter)s malli"
+#~ msgstr[1] "Vaata %(counter)s malli"
+
+#, python-format
+#~ msgid "View %(counter)s test"
+#~ msgid_plural "View %(counter)s tests"
+#~ msgstr[0] "Vaata %(counter)s tööd"
+#~ msgstr[1] "Vaata %(counter)s tööd"
+
+#, python-format
+#~ msgid "View %(counter)s topic"
+#~ msgid_plural "View %(counter)s topics"
+#~ msgstr[0] "Vaata %(counter)s teemat"
+#~ msgstr[1] "Vaata %(counter)s teemat"
+
+#~ msgctxt "PDF file name to save"
+#~ msgid "test.pdf"
+#~ msgstr "töö.pdf"
+
+#~ msgid "Estonian"
+#~ msgstr "Eesti"
+
+#~ msgid "English"
+#~ msgstr "Inglise"

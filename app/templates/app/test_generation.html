@@ -68,10 +68,6 @@
                             </iframe>
                         </details>
                     {% endfor %}
-                {% else %}
-                    <iframe style="height: 80vh" width="100%" type="application/pdf" name="{% translate "test.pdf" context "PDF file name to save" %}"
-                            src="{% static 'app/example.pdf' %}">
-                    </iframe>
 
                 {% endif %}
             </div>

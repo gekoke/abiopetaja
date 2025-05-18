@@ -28,9 +28,9 @@
                 <p>{% translate "Collections of problems that can be used to generate tests" %}</p>
                 <a href="{% url 'app:template-list' %}" role="button" class="secondary" style="width: 100%">
                     {% blocktrans count counter=template_count %}
-                        Vaata {{ counter }} malli
+                        View {{ counter }} template
                     {% plural %}
-                        Vaata {{ counter }} malli
+                        View {{ counter }} templates
                     {% endblocktrans %}
                 </a>
             </article>
@@ -39,20 +39,20 @@
                 <p>{% translate "Browse all your tests" %}</p>
                 <a href="{% url 'app:test-list' %}" role="button" class="secondary" style="width: 100%">
                     {% blocktrans count counter=test_count %}
-                        Vaata {{ counter }} tööd
+                        View {{ counter }} test
                     {% plural %}
-                        Vaata {{ counter }} tööd
+                        View {{ counter }} tests
                     {% endblocktrans %}
                 </a>
             </article>
             <article id="topics">
-                <h2>{% translate "Kõik teemad ja raskusastmed 🧠" %}</h2>
-                <p>{% translate "Sirvi kõiki olemasolevaid teemasid ja raskusastmeid" %}</p>
+                <h2>{% translate "All Topics and Difficulties 🧠" %}</h2>
+                <p>{% translate "Browse all the available topics" %}</p>
                 <a href="{% url 'app:topic-difficulty-list' %}" role="button" class="secondary" style="width: 100%">
                     {% blocktrans count counter=topic_count %}
-                        Vaata {{ counter }} teemat
+                        View {{ counter }} topic
                     {% plural %}
-                        Vaata {{ counter }} teemat
+                        View {{ counter }} topics
                     {% endblocktrans %}
                 </a>
             </article>

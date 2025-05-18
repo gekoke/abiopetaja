@@ -47,8 +47,8 @@ msgstr "Logi välja"
 
 #: common/templates/common/includes/tippy.html:30
 msgid "Edit"
-msgstr ""
+msgstr "Muuda"
 
 #: common/templates/common/includes/tippy.html:34
 msgid "Delete"
-msgstr ""
+msgstr "Kustuta"
