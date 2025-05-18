@@ -1,6 +1,6 @@
 import json
 import logging
-import re
+import time
 from dataclasses import dataclass
 from typing import Dict, List
 from app.models import get_short_lang
@@ -13,8 +13,8 @@ logger = logging.getLogger(__name__)
 
 # ─────────────── CONFIG ───────────────
 OPENAI_API_KEY      = "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"                          # put in .env in production!
-OPENAI_MODEL        = "gpt-4.1-mini"
-# gpt-4.1-mini , gpt-4o-mini, gpt-4.1-nano
+OPENAI_MODEL        = "gpt-4o-mini"
+# gpt-4.1-mini , gpt-4o-mini, gpt-4.1-nano,
 PROBLEMS_JSON_PATH  = "problems.json"             # seed examples
 RAW_LOG_PATH        = "ai_raw_output2.txt"        # full AI reply
 PROMPT_LOG_PATH     = "ai_example2.txt"           # prompt snippet
@@ -71,7 +71,7 @@ def _load_examples(
 def generate_mixed_difficulty_problems(
     topic: str,
     counts: Dict[str, int],  # e.g. {"A": 3, "B": 3, "C": 3}
-    max_examples_per_diff: int = 3,
+    max_examples_per_diff: int = 2,
     model: str | None = None,
     temperature: float = 0.4,
     max_tokens: int = 4000,
@@ -133,12 +133,11 @@ Write the *definition* in **{language_name}**. **Wrap the entire definition and 
 A (easy): {counts.get('A',0)}  B (medium): {counts.get('B',0)}  C (hard): {counts.get('C',0)}
 
 ### SOLUTION 
-You must solve the problems you generated step by step and show the result in solutions. Dont put any text into the solution besides the latex formatting, just show the steps in between '=' signs.
-– For evaluation tasks, avoid approximations; compute symbolic/numeric values exactly.
+You must solve the problems you generated step by step and show the result in solutions. SHOW THE STEPS MATHEMATICALLY, NO TEXTUAL EXPLANATIONS OR WORDS. Show a maximum on 3 steps per problem.
 Wrap the *whole derivation* in one pair of `$` as in this example:
-"$5*3+2=15+2=17$"
-MAKE SURE THE ANSWER IS CORRECT.
-Write the answer in the answers field, as shown in the examples.
+"$5*3x+2=15x+2$"
+– For evaluation tasks, avoid approximations; compute symbolic/numeric values exactly.
+MOST IMPORTANT.MAKE SURE THE ANSWER IS CORRECT.
 
 ### OUTPUT – ONE JSON OBJECT PER LINE
 {{
@@ -146,7 +145,7 @@ Write the answer in the answers field, as shown in the examples.
   "definition": "$…$",  # problem wording in {language_name}
   "solution"  : "$…$",  # derivation as described above
   "spec": {{
-      "type"       : string,            # e.g. "simplify", "simplify_then_evaluate"
+      "type"       : string,           
       "expr"       : string,            # SymPy‑parsable
       "answer_expr": string            # SymPy‑parsable
   }}
@@ -164,6 +163,7 @@ Write the answer in the answers field, as shown in the examples.
 
     # 4)  OpenAI call
     try:
+        t_ai0 = time.perf_counter()
         resp = client.chat.completions.create(
             model=model,
             messages=[{"role": "user", "content": prompt}],
@@ -171,6 +171,7 @@ Write the answer in the answers field, as shown in the examples.
             max_tokens=max_tokens,
         )
         raw_text = resp.choices[0].message.content.strip()
+        t_ai1 = time.perf_counter()
     except Exception as e:
         logger.error("OpenAI error: %s", e)
         raise
@@ -185,6 +186,14 @@ Write the answer in the answers field, as shown in the examples.
             continue
 
         try:
+            with open("ai_raw_output2.txt","a",encoding="utf-8") as f2:
+              f2.write(f"=== Topic: {topic}; Counts: {counts} ===\n")
+              f2.write(line + "\n\n")
+        except Exception as e:
+            logger.error("Failed to write ai_example2.txt: %s", e)
+
+        try:
+            obj = json.loads(line)
             ok, _msg = verify(obj["spec"])
         except Exception as e:
             logger.error("verify() crashed: %s", e)
@@ -196,7 +205,12 @@ Write the answer in the answers field, as shown in the examples.
 
         # Make sure language rule is respected; if not, fix keys to always exist
         problems.append(obj)
-
+        t_verify_done = time.perf_counter()
+        logger.info(
+            "TIMES ai=%4.1fs verify=%4.1fs",
+            t_ai1 - t_ai0,
+            t_verify_done - t_ai1,
+        )
     if len(problems) < total:
         logger.warning(
             "Needed %d problems, validated %d (raw lines %d)",

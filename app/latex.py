@@ -7,7 +7,6 @@ from django.utils.translation import(
      get_language,
 )
 from typing_extensions import TYPE_CHECKING
-
 if TYPE_CHECKING:
     from app.models import (
         Test,
@@ -79,7 +78,7 @@ def _render_problem(problem: TestVersionProblem, problem_index: int) -> str:
 
     text = problem.definition
 
-    return f" {ascii_lowercase[problem_index]})  {text}\n\n {generate_latex_grid(15, 7)}"
+    return f" {ascii_lowercase[problem_index]})  {text}\n\n {generate_latex_grid(15, 6)}"
 
 
 def _render_header(title: str, subtitle: str) -> str:

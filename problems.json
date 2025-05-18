@@ -195,7 +195,7 @@
           "answer_expr": "sqrt(a) - 2",
           "equation_rhs": 1,
           "solve_var": "a",
-          "solution": 9
+          "answer": 9
         }
       }
     ],
@@ -240,5 +240,4892 @@
         }
       }
     ]
+  },
+  "VÕRRANDID_JA_VÕRRANDISÜSTEEMID": {
+    "A": [
+  {
+  "definition_et": "$\\text{Lahendage võrrand: }\\dfrac{a}{\\sqrt{a-1}} = 0$",
+  "definition_en": "$\\text{Solve the equation: }\\dfrac{a}{\\sqrt{a-1}} = 0$",
+  "solution": "$puudub$",
+  "spec": {
+    "type": "solve_equation",
+    "equation": "a/sqrt(a-1)=0",
+    "solve_var": "a",
+    "answer_expr": []              
   }
+},
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }\\dfrac{2x-3}{4}=2+\\dfrac{3-4x}{2}$",
+    "definition_en": "$\\text{Solve the equation: }\\dfrac{2x-3}{4}=2+\\dfrac{3-4x}{2}$",
+    "solution": "$x=\\tfrac{17}{10}$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "(2*x-3)/4=2+(3-4*x)/2",
+      "solve_var": "x",
+      "answer_expr": ["17/10"]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }x^{2}+5x+6=0$",
+    "definition_en": "$\\text{Solve the equation: }x^{2}+5x+6=0$",
+    "solution": "$x=-3$ või $-2$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "x**2+5*x+6=0",
+      "solve_var": "x",
+      "answer_expr": ["-3", "-2"]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }x^{2}-9=0$",
+    "definition_en": "$\\text{Solve the equation: }x^{2}-9=0$",
+    "solution": "$x=-3$ või $3$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "x**2-9=0",
+      "solve_var": "x",
+      "answer_expr": ["-3", "3"]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }x^{2}+2x=0$",
+    "definition_en": "$\\text{Solve the equation: }x^{2}+2x=0$",
+    "solution": "$x=-2$ või $0$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "x**2+2*x=0",
+      "solve_var": "x",
+      "answer_expr": ["-2", "0"]
+    }
+  },
+  {
+  "definition_et": "$\\text{Lahendage võrrand: }\\sqrt{x-3}=5$",
+  "definition_en": "$\\text{Solve the equation: }\\sqrt{x-3}=5$",
+  "solution": "$x = 28$",
+  "spec": {
+    "type": "solve_equation",
+    "equation": "sqrt(x-3)=5",
+    "solve_var": "x",
+    "answer_expr": ["28"]
+  }
+},
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }\\dfrac{2}{x-1}=4$",
+    "definition_en": "$\\text{Solve the equation: }\\dfrac{2}{x-1}=4$",
+    "solution": "$x=\\tfrac32$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "2/(x-1)=4",
+      "solve_var": "x",
+      "answer_expr": ["3/2"]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }|x|=5$",
+    "definition_en": "$\\text{Solve the equation: }|x|=5$",
+    "solution": "$x=-5$ või $5$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "Abs(x)=5",
+      "solve_var": "x",
+      "answer_expr": ["-5", "5"]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }|x-3|=4$",
+    "definition_en": "$\\text{Solve the equation: }|x-3|=4$",
+    "solution": "$x=-1$ või $7$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "Abs(x-3)=4",
+      "solve_var": "x",
+      "answer_expr": ["-1", "7"]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\begin{cases}x^{2}-y=1\\\\ x-y=-5\\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: }\\begin{cases}x^{2}-y=1\\\\ x-y=-5\\end{cases}$",
+    "solution": "$(x,y)=(-2,3)$ või $(3,8)$",
+    "spec": {
+      "type": "solve_system",
+      "equations": ["x**2 - y = 1", "x - y = -5"],
+      "solve_vars": ["x", "y"],
+      "answer_list": [
+        {"x": "-2", "y": "3"},
+        {"x": "3",  "y": "8"}
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\begin{cases}7x+5y=36\\\\ 3x-y=28\\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: }\\begin{cases}7x+5y=36\\\\ 3x-y=28\\end{cases}$",
+    "solution": "$(x,y)=(8,-4)$",
+    "spec": {
+      "type": "solve_system",
+      "equations": ["7*x + 5*y = 36", "3*x - y = 28"],
+      "solve_vars": ["x", "y"],
+      "answer_list": [
+        {"x": "8", "y": "-4"}
+      ]
+    }
+  }
+
+],
+
+
+    "B": [
+  {
+  "definition_et": "$\\text{Lahendage võrrand: }\\sqrt{x-2}\\;{}-\\;x\\;+\\;4\\;=\\;0$",
+  "definition_en": "$\\text{Solve the equation: }\\sqrt{x-2}\\;{}-\\;x\\;+\\;4\\;=\\;0$",
+  "solution": "$x = 6$",
+  "spec": {
+    "type": "solve_equation",
+    "equation": "sqrt(x-2) - x + 4 = 0",
+    "solve_var": "x",
+    "answer_expr": ["6"]
+  }
+},
+  {
+  "definition_et": "$\\text{Lahendage võrrand: }\\sqrt[3]{19 + 5\\,\\sqrt{7x+18}} = 4$",
+  "definition_en": "$\\text{Solve the equation: }\\sqrt[3]{19 + 5\\,\\sqrt{7x+18}} = 4$",
+  "solution": "$x = 9$",
+  "spec": {
+    "type": "solve_equation",
+    "equation": "cbrt(19 + 5*sqrt(7*x + 18)) = 4",
+    "solve_var": "x",
+    "answer_expr": ["9"]
+  }
+},
+  {
+  "definition_et": "$\\text{Lahendage võrrand: }\\sqrt{5x-6}\\;{}-\\;\\sqrt{x-2}\\;=\\2$",
+  "definition_en": "$\\text{Solve the equation: }\\sqrt{5x-6}\\;{}-\\;\\sqrt{x-2}\\;=\\2$",
+  "solution": "$x = 2$ või $3$",
+  "spec": {
+    "type": "solve_equation",
+    "equation": "sqrt(5*x - 6) - sqrt(x - 2) = 2",
+    "solve_var": "x",
+    "answer_expr": ["2", "3"]
+  }
+},
+
+ 
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }\\dfrac{1}{(x+3)^{2}}+\\dfrac{6}{x^{2}-9}=\\dfrac{1}{x-3}$",
+    "definition_en": "$\\text{Solve the equation: }\\dfrac{1}{(x+3)^{2}}+\\dfrac{6}{x^{2}-9}=\\dfrac{1}{x-3}$",
+    "solution": "$x=-2$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "1/(x+3)**2 + 6/(x**2 - 9) = 1/(x - 3)",
+      "solve_var": "x",
+      "answer_expr": ["-2"]
+    }
+  },
+
+
+ {
+  "definition_et": "$\\text{Lahendage võrrand: }12x^{2} + 4x\\;=\\;3\\,(2x+1)^{2} + 1$",
+  "definition_en": "$\\text{Solve the equation: }12x^{2} + 4x\\;=\\;3\\,(2x+1)^{2} + 1$",
+  "solution": "$x = -\\tfrac12$",
+  "spec": {
+    "type": "solve_equation",
+    "equation": "12*x**2 + 4*x = 3*(2*x + 1)**2 + 1",
+    "solve_var": "x",
+    "answer_expr": ["-1/2"]
+  }
+},
+
+
+  {
+    "definition_et": "Millise $a$ korral $2(a-2x)=ax+3$ puudub lahend?",
+    "definition_en": "For which $a$ has $2(a-2x)=ax+3$ no solution?",
+    "solution": "$a=-4$",
+    "spec": {
+      "type": "parameter_problem",
+      "equation": "2*(a-2*x) = a*x + 3",
+      "parameter": "a",
+      "answer_expr": ["-4"]
+    }
+  },
+
+ 
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\begin{cases}x+y=7\\\\ y=\\tfrac{6}{x}\\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: }\\begin{cases}x+y=7\\\\ y=\\tfrac{6}{x}\\end{cases}$",
+    "solution": "$(1,6)$ või $(6,1)$",
+    "spec": {
+      "type": "solve_system",
+      "equations": ["x + y = 7", "y = 6/x"],
+      "solve_vars": ["x","y"],
+      "answer_list": [
+        {"x":"1", "y":"6"},
+        {"x":"6", "y":"1"}
+      ]
+    }
+  },
+
+
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\begin{cases}1-2x=y-x\\\\ \\dfrac{2x-y}{3}=1-\\dfrac{x+y}{2}\\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: }\\begin{cases}1-2x=y-x\\\\ \\dfrac{2x-y}{3}=1-\\dfrac{x+y}{2}\\end{cases}$",
+    "solution": "$x=\\tfrac56,\\; y=\\tfrac16$",
+    "spec": {
+      "type": "solve_system",
+      "equations": ["1-2*x = y - x", "(2*x - y)/3 = 1 - (x + y)/2"],
+      "solve_vars": ["x","y"],
+      "answer_list": [
+        {"x":"5/6", "y":"1/6"}
+      ]
+    }
+  },
+
+  
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\begin{cases}x^{2}-y^{2}=15\\\\ 2x-y=7\\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: }\\begin{cases}x^{2}-y^{2}=15\\\\ 2x-y=7\\end{cases}$",
+    "solution": "$(4,1)$ või $(\\tfrac{16}{3},\\tfrac{11}{3})$",
+    "spec": {
+      "type": "solve_system",
+      "equations": ["x**2 - y**2 = 15", "2*x - y = 7"],
+      "solve_vars": ["x","y"],
+      "answer_list": [
+        {"x":"4",          "y":"1"},
+        {"x":"16/3",       "y":"11/3"}
+      ]
+    }
+  }
+
+  
+
+ 
+
+],
+
+
+    "C": [
+
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }\\dfrac{a^{3}+8}{a^{2}-2a+4}=4$",
+    "definition_en": "$\\text{Solve the equation: }\\dfrac{a^{3}+8}{a^{2}-2a+4}=4$",
+    "solution": "$a = 2$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "(a**3 + 8)/(a**2 - 2*a + 4) = 4",
+      "solve_var": "a",
+      "answer_expr": ["2"]
+    }
+  },
+
+
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }5-3\\bigl(x-2(x-2(x-2(x-2)))\\bigr)=2$",
+    "definition_en": "$\\text{Solve the equation: }5-3\\bigl(x-2(x-2(x-2(x-2)))\\bigr)=2$",
+    "solution": "$x = 3$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "5 - 3*(x - 2*(x - 2*(x - 2*(x - 2)))) = 2",
+      "solve_var": "x",
+      "answer_expr": ["3"]
+    }
+  },
+
+
+  {
+    "definition_et": "$\\text{Lahendage võrrand: }(x+1)\\sqrt{x^{2}-5x+5}=x+1$",
+    "definition_en": "$\\text{Solve the equation: }(x+1)\\sqrt{x^{2}-5x+5}=x+1$",
+    "solution": "$x = -1,\\;1,\\;4$",
+    "spec": {
+      "type": "solve_equation",
+      "equation": "(x+1)*sqrt(x**2 - 5*x + 5) = x + 1",
+      "solve_var": "x",
+      "answer_expr": ["-1", "1", "4"]
+    }
+  },
+
+
+  {
+  "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\dfrac{1}{x - y} \\;{}-\\; \\dfrac{10}{x - y} \\;=\\;1,\\qquad \\dfrac{1}{x + y} \\;{}-\\; \\dfrac{2}{x - y} \\;=\\; -\\dfrac{3}{5}$",
+  "definition_en": "$\\text{Solve the system of equations: }\\dfrac{1}{x - y} \\;{}-\\; \\dfrac{10}{x - y} \\;=\\;1,\\qquad \\dfrac{1}{x + y} \\;{}-\\; \\dfrac{2}{x - y} \\;=\\; -\\dfrac{3}{5}$",
+  "solution": "$(x,y)=\\bigl(-\\tfrac{189}{37},\\;\\tfrac{144}{37}\\bigr)$",
+  "spec": {
+    "type": "solve_system",
+    "equations": [
+      "1/(x - y) - 10/(x - y) = 1",
+      "1/(x + y) - 2/(x - y) = -3/5"
+    ],
+    "solve_vars": ["x", "y"],
+    "answer_list": [
+      { "x": "-189/37", "y": "144/37" }
+    ]
+  }
+},
+
+
+  {
+  "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\begin{cases}x^{2}+y^{2}=34\\\\ xy=15\\end{cases}$",
+  "definition_en": "$\\text{Solve the system of equations: }\\begin{cases}x^{2}+y^{2}=34\\\\ xy=15\\end{cases}$",
+  "solution": "Lahendid: $(3,5),\\;(5,3),\\;(-3,-5),\\;(-5,-3)$",
+  "spec": {
+    "type": "solve_system",
+    "equations": [
+      "x**2 + y**2 = 34",
+      "x*y = 15"
+    ],
+    "solve_vars": ["x", "y"],
+    "answer_list": [
+      { "x": "3",  "y": "5"  },
+      { "x": "5",  "y": "3"  },
+      { "x": "-3", "y": "-5" },
+      { "x": "-5", "y": "-3" }
+    ]
+  }
+},
+
+  
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: }\\begin{cases}x^{2}+y = 12\\\\ 2x^{2}-y^{2} = 5\\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: }\\begin{cases}x^{2}+y = 12\\\\ 2x^{2}-y^{2} = 5\\end{cases}$",
+    "solution": "4 reaalset lahendit (vt allpool)",
+    "spec": {
+      "type": "solve_system",
+      "equations": ["x**2 + y = 12", "2*x**2 - y**2 = 5"],
+      "solve_vars": ["x","y"],
+      "answer_list": [
+        { "x": "-sqrt(13 - 2*sqrt(5))", "y": "-1 + 2*sqrt(5)" },
+        { "x":  "sqrt(13 - 2*sqrt(5))", "y": "-1 + 2*sqrt(5)" },
+        { "x": "-sqrt(2*sqrt(5) + 13)", "y": "-2*sqrt(5) - 1" },
+        { "x":  "sqrt(2*sqrt(5) + 13)", "y": "-2*sqrt(5) - 1" }
+      ]
+    }
+  },
+
+
+  {
+    "definition_et": "Leidke $m$, mille korral $(m-2)x^{2}-2mx+2m-3=0$ on ühe lahendiga.",
+    "definition_en": "Find $m$ so that … has exactly one real root.",
+    "solution": "$m = 3$",
+    "spec": {
+      "type": "parameter_problem",
+      "equation": "(m-2)*x**2 - 2*m*x + 2*m - 3 = 0",
+      "parameter": "m",
+      "answer_expr": ["3"]
+    }
+  }
+
+
+
+]
+  },
+  "VÕRRATUSED": {
+  "A": [
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }2x-5>0$",
+      "definition_en": "$\\text{Solve the inequality: }2x-5>0$",
+      "solution": "$x>\\tfrac{5}{2}$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "2*x-5>0",
+        "solve_var": "x",
+        "answer_interval": "(5/2, ∞)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }2x-5< -7$",
+      "definition_en": "$\\text{Solve the inequality: }2x-5< -7$",
+      "solution": "$x< -1$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "2*x-5< -7",
+        "solve_var": "x",
+        "answer_interval": "(-∞, -1)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage kahevõrratus: }1<2x-5<6$",
+      "definition_en": "$\\text{Solve the double inequality: }1<2x-5<6$",
+      "solution": "$\\tfrac{3}{2}<x<\\tfrac{11}{2}$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "1<2*x-5<6",
+        "solve_var": "x",
+        "answer_interval": "(3/2, 11/2)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }2x-5\\le3$",
+      "definition_en": "$\\text{Solve the inequality: }2x-5\\le3$",
+      "solution": "$x\\le4$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "2*x-5<=3",
+        "solve_var": "x",
+        "answer_interval": "(-∞, 4]"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }2x-5\\ge7$",
+      "definition_en": "$\\text{Solve the inequality: }2x-5\\ge7$",
+      "solution": "$x\\ge6$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "2*x-5>=7",
+        "solve_var": "x",
+        "answer_interval": "[6, ∞)"
+      }
+    }
+  ],
+  "B": [
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }\\frac{1-x}{2}-2>-3$",
+      "definition_en": "$\\text{Solve the inequality: }(1-x)/2 - 2 > -3$",
+      "solution": "$x\\le7$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(1-x)/2 - 2 > -3",
+        "solve_var": "x",
+        "answer_interval": "(-∞, 7]"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }(2x-1)^{2}-4x^{2}\\ge3$",
+      "definition_en": "$\\text{Solve the inequality: }(2x-1)^{2}-4x^{2}\\ge3$",
+      "solution": "$x\\le-\\tfrac{1}{2}$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(2*x-1)**2 - 4*x**2 >= 3",
+        "solve_var": "x",
+        "answer_interval": "(-∞, -1/2]"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }\\frac{3x-1}{2x+5}<1$",
+      "definition_en": "$\\text{Solve the inequality: }(3x-1)/(2x+5)<1$",
+      "solution": "$-\\tfrac{5}{2}<x<6$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(3*x-1)/(2*x+5) < 1",
+        "solve_var": "x",
+        "answer_interval": "(-5/2, 6)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }(2x-3)(2-3x)^{2}(3x+9)<0$",
+      "definition_en": "$\\text{Solve the inequality: }(2x-3)(2-3x)^{2}(3x+9)<0$",
+      "solution": "$x\\in(-3,\\tfrac{2}{3})\\cup(\\tfrac{2}{3},\\tfrac{3}{2})$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(2*x-3)*(2-3*x)**2*(3*x+9) < 0",
+        "solve_var": "x",
+        "answer_interval": "(-3,2/3) U (2/3,3/2)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }-3(x-11)(x+5)>0$",
+      "definition_en": "$\\text{Solve the inequality: }-3(x-11)(x+5)>0$",
+      "solution": "$-5<x<11$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "-3*(x-11)*(x+5) > 0",
+        "solve_var": "x",
+        "answer_interval": "(-5,11)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }x^{3}-4x^{2}+4x<0$",
+      "definition_en": "$\\text{Solve the inequality: }x^{3}-4x^{2}+4x<0$",
+      "solution": "$x<0$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "x**3 - 4*x**2 + 4*x < 0",
+        "solve_var": "x",
+        "answer_interval": "(-∞,0)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }\\frac{4x^{2}-12x+9}{x+5}\\le0$",
+      "definition_en": "$\\text{Solve the inequality: }(4x^{2}-12x+9)/(x+5)\\le0$",
+      "solution": "$x<-5$ või $x=\\tfrac{3}{2}$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(4*x**2 - 12*x + 9)/(x+5) <= 0",
+        "solve_var": "x",
+        "answer_interval": "(-∞,-5) U {3/2}"
+      }
+    },
+    {
+      "definition_et": "$\\text{Millistel x on defineeritud }\\sqrt{3x^{2}-x-4}$",
+      "definition_en": "$\\text{Find the domain of }\\sqrt{3x^{2}-x-4}$",
+      "solution": "$x\\le-1$ või $x\\ge\\tfrac{4}{3}$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "3*x**2 - x - 4 >= 0",
+        "solve_var": "x",
+        "answer_interval": "(-∞,-1] U [4/3,∞)"
+      }
+    }
+  ],
+    "C": [
+    {
+      "definition_et": "$\\text{Ristkülikukujulisele maatükile mõõtmetega 15 m × 20 m tahetakse kõigisse äärtesse külvata võrdse laiusega mururiba. Kui lai võib see riba olla, et muru ei võtaks enda alla üle 25\\% esialgsest maatükist?}$",
+      "definition_en": "$\\text{Along a rectangular plot of size 15 m × 20 m a lawn strip of equal width is sown on all sides. How wide can the strip be so that it covers no more than 25\\% of the original area?}$",
+      "solution": "$w \\le \\dfrac{35 - 5\\sqrt{37}}{4}\\,\\text{m} \\approx 1.15\\,\\text{m}$",
+      "spec": {
+        "type": "word_problem",
+        "equations": ["300 - (15-2*w)*(20-2*w) - 0.25*300 = 0"],
+        "solve_vars": ["w"],
+        "answer_expr": ["(35 - 5*sqrt(37))/4"]
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }\\dfrac{x^{4} + 2x^{2} - x - 2}{3x^{2}} < 0$",
+      "definition_en": "$\\text{Solve the inequality: }\\dfrac{x^{4} + 2x^{2} - x - 2}{3x^{2}} < 0$",
+      "solution": "$-0.7152 < x < 0 \\;\\text{või}\\; 0 < x < 1$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(x**4 + 2*x**2 - x - 2)/(3*x**2) < 0",
+        "solve_var": "x",
+        "answer_interval": "(-0.7152252384, 0) U (0, 1)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratus: }(x - 5)\\sqrt{x - 2} \\ge 0$",
+      "definition_en": "$\\text{Solve the inequality: }(x - 5)\\sqrt{x - 2} \\ge 0$",
+      "solution": "$x \\ge 5$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(x - 5)*sqrt(x - 2) >= 0",
+        "solve_var": "x",
+        "answer_interval": "[5, ∞)"
+      }
+    }
+  ]
+  },
+  "VÕRRATUSESÜSTEEMID": {
+  "A": [
+    {
+      "definition_et": "$\\text{Lahendage võrratusesüsteem: }\\{6x+16\\ge4;\\;2x+4>4x-4\\}$",
+      "definition_en": "$\\text{Solve the system of inequalities: }\\{6x+16\\ge4;\\;2x+4>4x-4\\}$",
+      "solution": "$x=1,2,3$",
+      "spec": {
+        "type": "solve_system",
+        "equations": ["6*x+16 >= 4", "2*x+4 > 4*x-4"],
+        "solve_vars": ["x"],
+        "answer_list": [{"x":"1"},{"x":"2"},{"x":"3"}]
+      }
+    }
+  ],
+  "B": [
+    {
+      "definition_et": "$\\text{Lahendage võrratusesüsteem: }\\{-5x^{2}+10x\\ge0;\\;(2x+1)/3-4<1/2-(12x+2)/4\\}$",
+      "definition_en": "$\\text{Solve the system of inequalities: }\\{-5x^{2}+10x\\ge0;\\;(2x+1)/3-4<1/2-(12x+2)/4\\}$",
+      "solution": "$0\\le x<1$",
+      "spec": {
+        "type": "solve_inequality_system",
+        "equations": ["-5*x**2+10*x >= 0","(2*x+1)/3-4 < 1/2-(12*x+2)/4"],
+        "solve_vars": ["x"],
+        "answer_interval": "[0,1)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrratusesüsteem: }\\{8x^{2}-24x>0;\\;2(x-1)-3(3x+2)>6\\}$",
+      "definition_en": "$\\text{Solve the system of inequalities: }\\{8x^{2}-24x>0;\\;2(x-1)-3(3x+2)>6\\}$",
+      "solution": "$x<-2$",
+      "spec": {
+        "type": "solve_inequality_system",
+        "equations": ["8*x**2-24*x > 0","2*(x-1)-3*(3*x+2) > 6"],
+        "solve_vars": ["x"],
+        "answer_interval": "(-oo,-2)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke suurim täisarvuline lahend võrratusest: }\\dfrac{2x-1}{3-x}>2$",
+      "definition_en": "$\\text{Find the largest integer solution of: }\\dfrac{2x-1}{3-x}>2$",
+      "solution": "$\\max x = 2$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(2*x-1)/(3-x) > 2",
+        "solve_var": "x",
+        "answer_interval": "(7/4,3)",
+        "answer_expr": ["2"]
+      }
+    }
+  ],
+  "C": [
+    {
+      "definition_et": "$\\text{Lahendage võrratusesüsteem: }\\{|x|>1;\\;x^{2}+3x<3(x+4)-3;\\;x\\ge-2\\}$",
+      "definition_en": "$\\text{Solve the system of inequalities: }\\{|x|>1;\\;x^{2}+3x<3(x+4)-3;\\;x\\ge-2\\}$",
+      "solution": "$x=2$",
+      "spec": {
+        "type": "solve_system",
+        "equations": ["Abs(x)>1","x**2+3*x < 3*(x+4)-3","x >= -2"],
+        "solve_vars": ["x"],
+        "answer_list": [{"x":"2"}]
+      }
+    },
+    {
+      "definition_et": "$\\text{Tekstülesanne: ristkülik 15×20 m, mururiba nii, et järelejäänud pindala 75–96 m^{2}?}$",
+      "definition_en": "$\\text{Word problem: rectangle 15×20 m, lawn strip so that remaining area is 75–96 m^{2}?}$",
+      "solution": "",
+      "spec": {
+        "type": "word_problem",
+        "equations": [
+          "(15-2*w)*(20-2*w) - 75 = 0",
+          "(15-2*w)*(20-2*w) - 96 = 0"
+        ],
+        "solve_vars": ["w"],
+        "answer_expr": []
+      }
+    }
+  ]
+},
+  "TÄISNURKSE_KOLMNURGA_LAHENDAMINE": {
+    "A": [
+      {
+        "definition_et": "$\\text{Lahendage täisnurkne kolmnurk: üks nurk }60^\\circ,\\;vastaskaatet=5\\,\\mathrm{cm}$",
+        "definition_en": "$\\text{Solve the right triangle: angle }60^\\circ,\\;\\text{opposite side}=5\\,\\mathrm{cm}$",
+        "solution": "$\\text{hypotenuse}=\\tfrac{10}{\\sqrt3},\\;\\text{adjacent leg}=\\tfrac{5}{\\sqrt3}$",
+        "spec": {
+          "type": "solve_triangle",
+          "known": {"angle": 60, "opp": 5},
+          "solve_vars": ["hyp", "adj"],
+          "answer_expr": ["10/sqrt(3)", "5/sqrt(3)"]
+        }
+      },
+      {
+        "definition_et": "$\\text{Lahendage täisnurkne kolmnurk: üks kaatet}=5\\,\\mathrm{cm},\\;hüpotenuus=17\\,\\mathrm{cm}$",
+        "definition_en": "$\\text{Solve the right triangle: leg}=5\\,\\mathrm{cm},\\;\\text{hypotenuse}=17\\,\\mathrm{cm}$",
+        "solution": "$\\text{other leg}=2\\sqrt{66}$",
+        "spec": {
+          "type": "solve_triangle",
+          "known": {"leg": 5, "hyp": 17},
+          "solve_vars": ["other_leg"],
+          "answer_expr": ["2*sqrt(66)"]
+        }
+      }
+    ],
+    "B": [
+      {
+        "definition_et": "$\\text{Leidke täisnurkse trapetsi pindala: teravnurk }62^\\circ,\\;lühem haar=12\\,\\mathrm{cm},\\;lühem alus=29\\,\\mathrm{cm}$",
+        "definition_en": "$\\text{Find area of a right trapezoid with acute angle }62^\\circ,\\;short leg=12\\,\\mathrm{cm},\\;short base=29\\,\\mathrm{cm}$",
+        "solution": "$h=12\\tan62^\\circ,\\;B=29+\\tfrac{12}{\\tan62^\\circ},\\;A=\\tfrac{29+B}{2}\\,h$",
+        "spec": {
+          "type": "solve_trapezoid",
+          "angle": 62,
+          "short_leg": 12,
+          "short_base": 29,
+          "solve_vars": ["h","B","area"],
+          "answer_expr": [
+            "12*tan(62*pi/180)",
+            "29+12/tan(62*pi/180)",
+            "(29+(29+12/tan(62*pi/180)))/2 * (12*tan(62*pi/180))"
+          ]
+        }
+      },
+      {
+        "definition_et": "$\\text{Leidke võrdhaarse kolmnurga pindala: alus }8\\,\\mathrm{cm},\\;lähisnurgad=74^\\circ34'$",
+        "definition_en": "$\\text{Find area of an isosceles triangle with base }8\\,\\mathrm{cm},\\;base angles=74^\\circ34'$",
+        "solution": "$h=4\\tan\\bigl(74.5667^\\circ\\bigr),\\;A=\\tfrac12\\cdot8\\cdot h$",
+        "spec": {
+          "type": "solve_isosceles_triangle",
+          "base": 8,
+          "base_angle": 74.5667,
+          "solve_vars": ["h","area"],
+          "answer_expr": [
+            "4*tan(74.5667*pi/180)",
+            "0.5*8*(4*tan(74.5667*pi/180))"
+          ]
+        }
+      },
+      {
+        "definition_et": "$\\text{Ehitada sild BC, kui }AB=80\\,\\mathrm{m},\\;\\angle CAB=74^\\circ$",
+        "definition_en": "$\\text{Build bridge BC with }AB=80\\,\\mathrm{m},\\;\\angle CAB=74^\\circ$",
+        "solution": "$BC=80\\tan74^\\circ$",
+        "spec": {
+          "type": "solve_triangle_side",
+          "known": {"adj": 80, "angle": 74},
+          "solve_vars": ["opp"],
+          "answer_expr": ["80*tan(74*pi/180)"]
+        }
+      }
+    ],
+    "C": [
+      {
+        "definition_et": "$\\text{Kindlusetorni kõrgus: vaatenurk }14.1^\\circ,\\;50\\,\\mathrm{m}\\text{ lähemal }21^\\circ$",
+        "definition_en": "$\\text{Tower height given angles }14.1^\\circ\\text{ and }21^\\circ\\text{ after moving }50\\,\\mathrm{m}$",
+        "solution": "$h=50\\dfrac{\\tan14.1^\\circ\\tan21^\\circ}{\\tan21^\\circ-\\tan14.1^\\circ}$",
+        "spec": {
+          "type": "solve_tower_height",
+          "angles": [14.1, 21],
+          "move": 50,
+          "solve_vars": ["h"],
+          "answer_expr": [
+            "50*(tan(14.1*pi/180)*tan(21*pi/180))/(tan(21*pi/180)-tan(14.1*pi/180))"
+          ]
+        }
+      },
+      {
+        "definition_et": "$\\text{Inimese kiirus: torni kõrgus }20\\,\\mathrm{m},\\;vaatenurgad }5^\\circ\\text{ ja }12^\\circ\\text{ pärast 5 min}$",
+        "definition_en": "$\\text{Walking speed: height }20\\,\\mathrm{m},\\;angles }5^\\circ\\text{ then }12^\\circ\\text{ after 5 min}$",
+        "solution": "$d=20(\\cot5^\\circ-\\cot12^\\circ),\\;v=d/5$",
+        "spec": {
+          "type": "solve_walking_speed",
+          "height": 20,
+          "angles": [5, 12],
+          "time_min": 5,
+          "solve_vars": ["d","v"],
+          "answer_expr": [
+            "20*((1/tan(5*pi/180))-(1/tan(12*pi/180)))",
+            "20*((1/tan(5*pi/180))-(1/tan(12*pi/180)))/5"
+          ]
+        }
+      }
+    ]
+  },
+"TRIGONOMEETRILISED_AVALDISED": {
+    "A": [
+      {
+        "definition_et": "$\\text{Leidke avalduste hulgast need, mille väärtus }\\neq1$: 2−\\sin^{2}40^\\circ−\\cos^{2}40^\\circ;\\;\\cos^{2}35^\\circ+\\sin^{2}35^\\circ;\\;\\cos^{2}35^\\circ+\\cos^{2}55^\\circ;\\;\\sin15^\\circ+\\cos15^\\circ$",
+        "definition_en": "$\\text{Find from the list those expressions not equal to 1: }2-\\sin^{2}40^\\circ-\\cos^{2}40^\\circ;\\;\\cos^{2}35^\\circ+\\sin^{2}35^\\circ;\\;\\cos^{2}35^\\circ+\\cos^{2}55^\\circ;\\;\\sin15^\\circ+\\cos15^\\circ$",
+        "solution": "$\\sin15^\\circ+\\cos15^\\circ\\neq1$",
+        "spec": {
+          "type": "compare_expressions",
+          "expressions": [
+            "2 - sin(40*pi/180)**2 - cos(40*pi/180)**2",
+            "cos(35*pi/180)**2 + sin(35*pi/180)**2",
+            "cos(35*pi/180)**2 + cos(55*pi/180)**2",
+            "sin(15*pi/180) + cos(15*pi/180)"
+          ],
+          "not_equal": ["sin(15*pi/180) + cos(15*pi/180)"],
+          "equal": [
+            "2 - (sin(40*pi/180)**2+cos(40*pi/180)**2)",
+            "cos(35*pi/180)**2+sin(35*pi/180)**2",
+            "cos(35*pi/180)**2+cos(55*pi/180)**2"
+          ]
+        }
+      },
+      {
+        "definition_et": "$\\text{Arvutage: }3\\tan45^\\circ-\\sqrt3\\tan30^\\circ+4\\sin30^\\circ$",
+        "definition_en": "$\\text{Compute: }3\\tan45^\\circ-\\sqrt3\\tan30^\\circ+4\\sin30^\\circ$",
+        "solution": "$4$",
+        "spec": {
+          "type": "evaluate_expression",
+          "expression": "3*tan(45*pi/180) - sqrt(3)*tan(30*pi/180) + 4*sin(30*pi/180)",
+          "answer_expr": ["4"]
+        }
+      }
+    ],
+    "B": [
+      {
+        "definition_et": "$\\text{Tõestage: }\\frac{1}{\\tan^{2}\\alpha}+\\frac{(1-\\sin\\alpha)(1+\\sin\\alpha)}{\\cos^{2}\\alpha}=\\frac{1}{\\sin^{2}\\alpha}$",
+        "definition_en": "$\\text{Prove: }1/\\tan^{2}\\alpha + (1-\\sin\\alpha)(1+\\sin\\alpha)/\\cos^{2}\\alpha = 1/\\sin^{2}\\alpha$",
+        "solution": "$\\text{identical}$",
+        "spec": {
+          "type": "prove_identity",
+          "lhs": "1/tan(alpha)**2 + (1-sin(alpha))*(1+sin(alpha))/cos(alpha)**2",
+          "rhs": "1/sin(alpha)**2"
+        }
+      },
+      {
+        "definition_et": "$\\text{Leidke: }\\tan^{2}\\alpha-\\sin\\alpha+\\cos\\alpha-2\\sin\\alpha,\\;\\alpha=60^\\circ$",
+        "definition_en": "$\\text{Find: }\\tan^{2}\\alpha-\\sin\\alpha+\\cos\\alpha-2\\sin\\alpha\\text{ at }\\alpha=60^\\circ$",
+        "solution": "$\\tfrac{7-3\\sqrt3}{2}$",
+        "spec": {
+          "type": "evaluate_expression",
+          "expression": "tan(alpha)**2 - sin(alpha) + cos(alpha) - 2*sin(alpha)",
+          "variables": {"alpha":"60*pi/180"},
+          "answer_expr": ["(7-3*sqrt(3))/2"]
+        }
+      },
+      {
+        "definition_et": "$\\text{Lihtsustage: }(1+\\cos\\beta)^{2}(1-\\cos\\beta)=\\tan^{2}\\beta+\\cos^{2}(90^\\circ-\\beta)$",
+        "definition_en": "$\\text{Simplify: }(1+\\cos\\beta)^{2}(1-\\cos\\beta)\\;?=\\tan^{2}\\beta+\\cos^{2}(90^\\circ-\\beta)$",
+        "solution": "$\\text{identity holds}$",
+        "spec": {
+          "type": "simplify_identity",
+          "lhs": "(1+cos(beta))**2*(1-cos(beta))",
+          "rhs": "tan(beta)**2 + cos(pi/2-beta)**2"
+        }
+      }
+    ],
+    "C": [
+      {
+        "definition_et": "$\\text{Lihtsustage: }1-\\cos^{4}\\alpha-\\sin^{2}\\alpha\\cos^{2}\\alpha-\\cos^{2}\\alpha$",
+        "definition_en": "$\\text{Simplify: }1-\\cos^{4}\\alpha-\\sin^{2}\\alpha\\cos^{2}\\alpha-\\cos^{2}\\alpha$",
+        "solution": "$-\\cos2\\alpha$",
+        "spec": {
+          "type": "simplify_expression",
+          "expression": "1 - cos(alpha)**4 - sin(alpha)**2*cos(alpha)**2 - cos(alpha)**2",
+          "answer_expr": ["-cos(2*alpha)"]
+        }
+      }
+    ]
+  },
+  "TRIGONOMEETRIA_II": {
+    "A": [
+  {
+    "definition_et": "$\\text{Leidke }\\sin\\alpha,\\ \\cos\\alpha \\text{ ja } \\tan\\alpha, \\text{ kui nurga } \\alpha \\text{ lõpphaaral asub punkt } A(1, -3).$",
+    "definition_en": "$\\text{Find }\\sin\\alpha,\\ \\cos\\alpha \\text{ and } \\tan\\alpha \\text{ if the terminal side of angle } \\alpha \\text{ passes through the point } A(1, -3).$",
+    "solution": "$\\sin\\alpha = -\\tfrac{3}{\\sqrt{10}},\\; \\cos\\alpha = \\tfrac{1}{\\sqrt{10}},\\; \\tan\\alpha = -3$",
+    "spec": {
+      "type": "trig_ratios_from_point",
+      "point": [
+        1,
+        -3
+      ],
+      "answer_expr": {
+        "sin": "-3/sqrt(10)",
+        "cos": "1/sqrt(10)",
+        "tan": "-3"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Antud on } \\sin a = -0{,}7.\\ \\text{Leidke } \\cos a \\text{ ja } \\tan a, \\text{ kui } a \\text{ on teise veerandi nurk.}$",
+    "definition_en": "$\\text{Given } \\sin a = -0.7.\\ \\text{Find } \\cos a \\text{ and } \\tan a \\text{ if } a \\text{ is in the second quadrant.}$",
+    "solution": "$\\cos a = -\\sqrt{1 - (-0{,}7)^2} = -\\sqrt{0{,}51},\\; \\tan a = \\tfrac{-0{,}7}{-\\sqrt{0{,}51}} = \\tfrac{0{,}7}{\\sqrt{0{,}51}}$",
+    "spec": {
+      "type": "trig_ratios_from_sin",
+      "sin_val": "-0.7",
+      "quadrant": 2,
+      "answer_expr": {
+        "cos": "-sqrt(1 - (-0.7)**2)",
+        "tan": "0.7/sqrt(1 - 0.7**2)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Antud on } \\sin\\alpha = 0{,}6.\\ \\text{Leidke } \\cos\\alpha \\text{ ja } \\tan\\alpha, \\text{ kui } \\alpha \\text{ on teravnurk.}$",
+    "definition_en": "$\\text{Given } \\sin\\alpha = 0.6.\\ \\text{Find } \\cos\\alpha \\text{ and } \\tan\\alpha \\text{ if } \\alpha \\text{ is an acute angle.}$",
+    "solution": "$\\cos\\alpha = \\sqrt{1 - 0{,}6^2} = \\sqrt{0{,}64} = 0{,}8,\\; \\tan\\alpha = \\tfrac{0{,}6}{0{,}8} = 0{,}75$",
+    "spec": {
+      "type": "trig_ratios_from_sin",
+      "sin_val": "0.6",
+      "quadrant": 1,
+      "answer_expr": {
+        "cos": "sqrt(1 - 0.6**2)",
+        "tan": "0.6/sqrt(1 - 0.6**2)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Arvutage avaldis: } \\sin 405^\\circ + \\sin 135^\\circ$",
+    "definition_en": "$\\text{Evaluate: } \\sin 405^\\circ + \\sin 135^\\circ$",
+    "solution": "$\\sin 45^\\circ + \\sin 135^\\circ = \\tfrac{\\sqrt{2}}{2} + \\tfrac{\\sqrt{2}}{2} = \\sqrt{2}$",
+    "spec": {
+      "type": "evaluate",
+      "expr": "sin(405*pi/180) + sin(135*pi/180)",
+      "answer_expr": "sqrt(2)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Arvutage avaldis: } \\sin(-30^\\circ) - \\cos 240^\\circ$",
+    "definition_en": "$\\text{Evaluate: } \\sin(-30^\\circ) - \\cos 240^\\circ$",
+    "solution": "$-\\tfrac{1}{2} - (-\\tfrac{1}{2}) = 0$",
+    "spec": {
+      "type": "evaluate",
+      "expr": "sin(-30*pi/180) - cos(240*pi/180)",
+      "answer_expr": "0"
+    }
+  },
+  {
+    "definition_et": "$\\text{Rakendage kahekordse nurga valemit: } 2 \\sin 22{,}5^\\circ \\cos 22{,}5^\\circ$",
+    "definition_en": "$\\text{Apply double-angle identity: } 2 \\sin 22.5^\\circ \\cos 22.5^\\circ$",
+    "solution": "$\\sin(45^\\circ) = \\tfrac{\\sqrt{2}}{2}$",
+    "spec": {
+      "type": "evaluate",
+      "expr": "2*sin(22.5*pi/180)*cos(22.5*pi/180)",
+      "answer_expr": "sqrt(2)/2"
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Arvutage avaldis: } \\frac{4\\sqrt{3}}{3} \\sin\\frac{\\pi}{3} - 5\\sin\\pi + \\sqrt{2}\\cos\\frac{\\pi}{4} + 2\\cos\\frac{3\\pi}{2}$",
+    "definition_en": "$\\text{Evaluate: } \\frac{4\\sqrt{3}}{3}\\sin\\frac{\\pi}{3} - 5\\sin\\pi + \\sqrt{2}\\cos\\frac{\\pi}{4} + 2\\cos\\frac{3\\pi}{2}$",
+    "solution": "$\\frac{4\\sqrt{3}}{3} \\cdot \\frac{\\sqrt{3}}{2} + 0 + \\sqrt{2}\\cdot\\frac{\\sqrt{2}}{2} + 0 = 2 + 1 = 3$",
+    "spec": {
+      "type": "evaluate",
+      "expr": "(4*sqrt(3)/3)*sin(pi/3) - 5*sin(pi) + sqrt(2)*cos(pi/4) + 2*cos(3*pi/2)",
+      "answer_expr": "3"
+    }
+  },
+  {
+    "definition_et": "$\\text{Lihtsustage avaldis: } \\cos(360^\\circ - 2\\alpha) - \\cos 2\\alpha$",
+    "definition_en": "$\\text{Simplify the expression: } \\cos(360^\\circ - 2\\alpha) - \\cos 2\\alpha$",
+    "solution": "$0$ (kuna \\cos(360^\\circ - x) = \\cos x)$",
+    "spec": {
+      "type": "simplify",
+      "expr": "cos(2*alpha) - cos(2*alpha)",
+      "answer_expr": "0"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke avaldise } \\sin x - \\cos x + \\tan 2x \\text{ täpne väärtus, kui } \\cos x = 0{,}6 \\text{ ja } x \\text{ on neljanda veerandi nurk.}$",
+    "definition_en": "$\\text{Find the exact value of } \\sin x - \\cos x + \\tan 2x \\text{ given } \\cos x = 0.6 \\text{ and } x \\text{ is in the 4th quadrant.}$",
+    "solution": "$\\sin x = -0.8, \\tan 2x = \\frac{2 \\cdot (-0.8)(0.6)}{0.6^2 - 0.8^2} = \\frac{-0.96}{-0.28} = 3.428...$",
+    "spec": {
+      "type": "evaluate_given_cos",
+      "cos_val": "0.6",
+      "quadrant": 4,
+      "expr": "sin(x) - cos(x) + tan(2*x)",
+      "answer_expr": "-sqrt(1 - 0.6**2) - 0.6 + (2*(-sqrt(1 - 0.6**2)*0.6)/(0.6**2 - (1 - 0.6**2)))"
+    }
+  },
+  {
+    "definition_et": "$\\text{Lihtsustage avaldis: } \\cos x + \\sin 2x \\tan x$",
+    "definition_en": "$\\text{Simplify the expression: } \\cos x + \\sin 2x \\tan x$",
+    "solution": "$\\cos x + 2\\sin x\\cos x \\cdot \\tan x = \\cos x + 2\\sin x\\cos x \\cdot \\frac{\\sin x}{\\cos x} = \\cos x + 2\\sin^2 x$",
+    "spec": {
+      "type": "simplify",
+      "expr": "cos(x) + sin(2*x)*tan(x)",
+      "answer_expr": "cos(x) + 2*sin(x)**2"
+    }
+  }
+],
+"C" :
+[
+  {
+    "definition_et": "$\\text{Milliste } m \\text{ väärtuste korral on funktsiooni } \\sin\\alpha = \\frac{4m - 5}{m + 3} \\text{ väärtus arvutatav?}$",
+    "definition_en": "$\\text{For which values of } m \\text{ is } \\sin\\alpha = \\frac{4m - 5}{m + 3} \\text{ defined?}$",
+    "solution": "$-1 \\le \\frac{4m - 5}{m + 3} \\le 1$",
+    "spec": {
+      "type": "solve_inequality",
+      "inequality": "-1 <= (4*m - 5)/(m + 3) <= 1",
+      "solve_var": "m",
+      "answer_expr": "solve((-1 <= (4*m - 5)/(m + 3)) & ((4*m - 5)/(m + 3) <= 1), m)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Milliste } a \\text{ väärtuste korral kehtib } \\tan(180^\\circ + \\alpha) = \\frac{a^2 - 37}{a + 1} > 3?$",
+    "definition_en": "$\\text{For which } a \\text{ is } \\tan(180^\\circ + \\alpha) = \\frac{a^2 - 37}{a + 1} > 3?$",
+    "solution": "$\\frac{a^2 - 37}{a + 1} > 3$",
+    "spec": {
+      "type": "solve_inequality",
+      "inequality": "(a**2 - 37)/(a + 1) > 3",
+      "solve_var": "a",
+      "answer_expr": "solve((a**2 - 37)/(a + 1) > 3, a)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Avaldage } \\sin 4\\alpha \\text{ ja } \\cos 4\\alpha \\text{ nurga } \\alpha \\text{ trigonomeetriliste funktsioonide kaudu.}$",
+    "definition_en": "$\\text{Express } \\sin 4\\alpha \\text{ and } \\cos 4\\alpha \\text{ using trigonometric functions of } \\alpha.$",
+    "solution": "$\\sin 4\\alpha = 4 \\sin\\alpha \\cos\\alpha (1 - 2 \\sin^2\\alpha)$, $\\cos 4\\alpha = 8 \\cos^4\\alpha - 8 \\cos^2\\alpha + 1$",
+    "spec": {
+      "type": "trig_identity_expansion",
+      "expressions": {
+        "sin_4a": "4*sin(alpha)*cos(alpha)*(1 - 2*sin(alpha)**2)",
+        "cos_4a": "8*cos(alpha)**4 - 8*cos(alpha)**2 + 1"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Üleujutuse ajal jäi vee alla nelinurkne põld, mille küljed on } 0{,}5\\,\\text{km ja } 1{,}5\\,\\text{km ning vastavad nurgad } 120^\\circ \\text{ ja } 45^\\circ. \\text{ Kahjutasu on } 10\\,000\\,\\text{kr/ha.}$",
+    "definition_en": "$\\text{A quadrilateral field was flooded. Sides: } 0.5\\,\\text{km and } 1.5\\,\\text{km, angles } 120^\\circ \\text{ and } 45^\\circ. \\text{ Compensation is 10,000 kr/ha.}$",
+    "solution": "$A = \\tfrac{1}{2} ab \\sin \\theta = \\tfrac{1}{2}\\cdot 0.5\\cdot 1.5\\cdot \\sin 120^\\circ + \\tfrac{1}{2}\\cdot 0.5\\cdot 1.5\\cdot \\sin 45^\\circ \\approx 0.489\\,\\text{ha},\\;\\text{kaha} = 4890 kr$",
+    "spec": {
+      "type": "geometry_area_compensation",
+      "sides_km": [
+        0.5,
+        1.5
+      ],
+      "angles_deg": [
+        120,
+        45
+      ],
+      "rate_kr_per_ha": 10000,
+      "answer_expr": "0.5*0.5*1.5*(sin(120*pi/180) + sin(45*pi/180))"
+    }
+  }
+]
+  },
+  "VEKTOR_TASANDIL":{
+    "A": [
+  {
+    "definition_et": "$\\text{Antud on kaks punkti. Leidke nende vaheline kaugus ja nende punktidega määratud lõigu keskpunkt.}$",
+    "definition_en": "$\\text{Given two points. Find the distance between them and the midpoint of the segment they define.}$",
+    "solution": "$\\text{Kaugus } d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2},\\; \\text{keskpunkt } M = \\left(\\frac{x_1 + x_2}{2},\\frac{y_1 + y_2}{2}\\right)$",
+    "spec": {
+      "type": "vector_distance_midpoint",
+      "points": [
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          -2
+        ]
+      ],
+      "answer_expr": {
+        "distance": "sqrt((7 - 8)**2 + (-2 - 0)**2)",
+        "midpoint": "((8 + 7)/2, (0 + -2)/2)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke vektori koordinaadid, kui on antud alguspunkt ja lõpp-punkt.}$",
+    "definition_en": "$\\text{Find the vector coordinates given the initial and terminal point.}$",
+    "solution": "$\\vec{v} = (x_2 - x_1, y_2 - y_1)$",
+    "spec": {
+      "type": "vector_from_points",
+      "start": [
+        -9,
+        1
+      ],
+      "end": [
+        -6,
+        -9
+      ],
+      "answer_expr": "(3, -10)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke antud vektori alguspunkti koordinaadid, kui lõpp-punkt on antud.}$",
+    "definition_en": "$\\text{Find the starting point of a vector given its terminal point and components.}$",
+    "solution": "$A = (x_2 - v_x, y_2 - v_y)$",
+    "spec": {
+      "type": "vector_start_from_end",
+      "vector": [
+        -9,
+        8
+      ],
+      "end": [
+        7,
+        -6
+      ],
+      "answer_expr": "(16, -14)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke antud vektori lõpp-punkti koordinaadid, kui alguspunkt on antud.}$",
+    "definition_en": "$\\text{Find the endpoint of a vector given the starting point and components.}$",
+    "solution": "$B = (x_1 + v_x, y_1 + v_y)$",
+    "spec": {
+      "type": "vector_end_from_start",
+      "vector": [
+        -5,
+        -10
+      ],
+      "start": [
+        1,
+        4
+      ],
+      "answer_expr": "(-4, -6)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Antud on vektorid } \\vec{a} = (1, -2), \\vec{b} = (-1, 3), \\vec{c} = (2, 2). \\text{ Leidke } 2\\vec{a} - 3\\vec{b} + \\vec{c}.$",
+    "definition_en": "$\\text{Given vectors } \\vec{a} = (1, -2), \\vec{b} = (-1, 3), \\vec{c} = (2, 2). \\text{ Find } 2\\vec{a} - 3\\vec{b} + \\vec{c}.$",
+    "solution": "$2\\vec{a} = (2, -4), -3\\vec{b} = (3, -9), \\text{sum} = (2+3+2, -4-9+2) = (7, -11)$",
+    "spec": {
+      "type": "vector_linear_combination",
+      "vectors": {
+        "a": [
+          1,
+          -2
+        ],
+        "b": [
+          -1,
+          3
+        ],
+        "c": [
+          2,
+          2
+        ]
+      },
+      "expression": "2*a - 3*b + c",
+      "answer_expr": "(7, -11)"
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Rööpküliku tipp on } A(1, 3),\\; \\vec{AB} = (3, 1),\\; \\vec{AD} = (1, 4). \\text{ Leidke ülejäänud tipud, diagonaalid ja nende lõikepunkt.}$",
+    "definition_en": "$\\text{A parallelogram has vertex } A(1, 3),\\; \\vec{AB} = (3, 1),\\; \\vec{AD} = (1, 4). \\text{ Find the other vertices, diagonals, and their intersection.}$",
+    "solution": "$B = (4, 4), D = (2, 7), C = (5, 8),\\; \\text{diagonaalid } AC, BD,\\; Lõikepunkt } = (3, 5.5)$",
+    "spec": {
+      "type": "parallelogram_geometry",
+      "A": [
+        1,
+        3
+      ],
+      "AB": [
+        3,
+        1
+      ],
+      "AD": [
+        1,
+        4
+      ],
+      "answer_expr": {
+        "B": "(4, 4)",
+        "D": "(2, 7)",
+        "C": "(5, 8)",
+        "AC": "((5 - 1), (8 - 3))",
+        "BD": "((2 - 4), (7 - 4))",
+        "intersection": "((1+5)/2, (3+8)/2)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Vektorid } \\vec{a} = (4, 0), \\vec{b} = (0, 1). \\text{ Arvutage } \\vec{c} = \\vec{a} + \\vec{b}. \\text{ Leidke } |\\vec{c}|_{\\text{max}}, |\\vec{c}|_{\\text{min}}.}$",
+    "definition_en": "$\\text{Vectors } \\vec{a} = (4, 0), \\vec{b} = (0, 1). \\text{ Compute } \\vec{c} = \\vec{a} + \\vec{b}. \\text{ Find } |\\vec{c}|_{\\text{max}}, |\\vec{c}|_{\\text{min}}.$",
+    "solution": "$\\vec{c} = (4, 1),\\; |\\vec{c}| = \\sqrt{17},\\; |\\vec{a} - \\vec{b}| = \\sqrt{17}$",
+    "spec": {
+      "type": "vector_extreme_lengths",
+      "a": [
+        4,
+        0
+      ],
+      "b": [
+        0,
+        1
+      ],
+      "answer_expr": {
+        "c_max": "sqrt((4 + 0)**2 + (0 + 1)**2)",
+        "c_min": "sqrt((4 - 0)**2 + (0 - 1)**2)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Kolmnurk } ABC \\text{ tippudega } A(1,3), B(4,1), C(2,5). \\text{ Leidke mediaani AB suhtes ja BC-ga paralleelse kesklõigu pikkus.}$",
+    "definition_en": "$\\text{Triangle } ABC \\text{ with vertices } A(1,3), B(4,1), C(2,5). \\text{ Find median from C to AB and the midsegment parallel to BC.}$",
+    "solution": "$M_{AB} = (2.5, 2),\\; CM = \\sqrt{(2.5-2)^2 + (2-5)^2} = \\sqrt{0.25 + 9} = \\sqrt{9.25}$",
+    "spec": {
+      "type": "triangle_geometry_vectors",
+      "A": [
+        1,
+        3
+      ],
+      "B": [
+        4,
+        1
+      ],
+      "C": [
+        2,
+        5
+      ],
+      "answer_expr": {
+        "median_CM": "sqrt((2.5 - 2)**2 + (2 - 5)**2)",
+        "midsegment_parallel_BC": "sqrt((4 - 2)**2 + (1 - 5)**2)"
+      }
+    }
+  }
+],
+"C": [
+  {
+    "definition_et": "$\\text{Antud on punktid } A(m, m^2 - 3), B(m, 2m). \\text{ Millise } m \\text{ väärtuse korral on } \\vec{OA} \\text{ ja } \\vec{OB} \\text{ vastandvektorid?}$",
+    "definition_en": "$\\text{Given points } A(m, m^2 - 3), B(m, 2m). \\text{ For which } m \\text{ are vectors } \\vec{OA} \\text{ and } \\vec{OB} \\text{ opposite?}$",
+    "solution": "$\\vec{OA} = -\\vec{OB} \\Rightarrow (m, m^2 - 3) = (-m, -2m) \\Rightarrow m = -1$",
+    "spec": {
+      "type": "solve_vector_opposite",
+      "equations": [
+        "m = -m",
+        "m**2 - 3 = -2*m"
+      ],
+      "solve_var": "m",
+      "answer_expr": [
+        "-1"
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Tasandil on punktid A, B, C ja D. Leidke punkt M nii, et } \\vec{AB} + \\vec{BM} = \\vec{CD}.\\text{}$",
+    "definition_en": "$\\text{In the plane, given points A, B, C and D. Find point M such that } \\vec{AB} + \\vec{BM} = \\vec{CD}.\\text{}$",
+    "solution": "$\\vec{BM} = \\vec{CD} - \\vec{AB} \\Rightarrow M = B + (CD - AB)$",
+    "spec": {
+      "type": "vector_point_condition",
+      "points": {
+        "A": [
+          1,
+          2
+        ],
+        "B": [
+          3,
+          5
+        ],
+        "C": [
+          2,
+          2
+        ],
+        "D": [
+          6,
+          3
+        ]
+      },
+      "answer_expr": "(3 + ((6 - 2) - (3 - 1)), 5 + ((3 - 2) - (5 - 2)))"
+    }
+  },
+  {
+    "definition_et": "$\\text{Antud lõigu AB otspunktid. Leidke punkt C koordinaadid, kui lõik jaguneb suhtes } 2:3.\\text{}$",
+    "definition_en": "$\\text{Given endpoints A and B. Find coordinates of point C that divides the segment in ratio } 2:3.\\text{}$",
+    "solution": "$C = \\left(\\frac{3x_1 + 2x_2}{5}, \\frac{3y_1 + 2y_2}{5}\\right)$",
+    "spec": {
+      "type": "segment_ratio_point",
+      "A": [
+        2,
+        3
+      ],
+      "B": [
+        7,
+        8
+      ],
+      "ratio": [
+        2,
+        3
+      ],
+      "answer_expr": "((3*2 + 2*7)/5, (3*3 + 2*8)/5)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Tõestage, et } |\\vec{a}| - |\\vec{b}| \\le |\\vec{a} + \\vec{b}| \\text{ kehtib. Kontrollige, kui } \\vec{a} = (8, -6), \\vec{b} = (3, 4).$",
+    "definition_en": "$\\text{Prove that } |\\vec{a}| - |\\vec{b}| \\le |\\vec{a} + \\vec{b}|.\\text{ Check with } \\vec{a} = (8, -6), \\vec{b} = (3, 4).$",
+    "solution": "$|\\vec{a}| = 10, |\\vec{b}| = 5, |\\vec{a} + \\vec{b}| = \\sqrt{(11)^2 + (-2)^2} = \\sqrt{125} \\approx 11.18 \\ge 5$",
+    "spec": {
+      "type": "vector_triangle_inequality",
+      "a": [
+        8,
+        -6
+      ],
+      "b": [
+        3,
+        4
+      ],
+      "answer_expr": "sqrt((8 + 3)**2 + (-6 + 4)**2)"
+    }
+  }
+]
+  },
+  "JOONE_VORRAND":{
+    "A": [
+  {
+    "definition_et": "$\\text{Sirge lõikab abstsisstelge punktis } (3, 0) \\text{ ja ordinaattelge punktis } (0, -4). \\text{ Koostage selle sirge võrrand.}$",
+    "definition_en": "$\\text{A line intersects the x-axis at } (3, 0) \\text{ and the y-axis at } (0, -4). \\text{ Find the equation of this line.}$",
+    "solution": "$y = \\frac{4}{3}x - 4$",
+    "spec": {
+      "type": "line_from_intercepts",
+      "x_intercept": 3,
+      "y_intercept": -4,
+      "answer_expr": "Eq(y, (4/3)*x - 4)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Antud on joon } y = -2x + 1. \\text{ Leida sellele joontele peegeldatud joon y-telje suhtes.}$",
+    "definition_en": "$\\text{Given line } y = -2x + 1. \\text{ Find its reflection over the y-axis.}$",
+    "solution": "$y = 2x + 1$",
+    "spec": {
+      "type": "reflect_line_y_axis",
+      "original_eq": "y = -2*x + 1",
+      "answer_expr": "Eq(y, 2*x + 1)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: } \\begin{cases} y = x^2 - 2x \\\\ y = 2x \\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: } \\begin{cases} y = x^2 - 2x \\\\ y = 2x \\end{cases}$",
+    "solution": "$x^2 - 4x = 0 \\Rightarrow x = 0 \\text{ või } 4 \\Rightarrow y = 0 \\text{ või } 8$",
+    "spec": {
+      "type": "solve_system",
+      "equations": [
+        "y = x**2 - 2*x",
+        "y = 2*x"
+      ],
+      "solve_vars": [
+        "x",
+        "y"
+      ],
+      "answer_list": [
+        {
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "x": "4",
+          "y": "8"
+        }
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Koostage piisav arv punkte joonte jaoks } y = x^2 + 1 \\text{ ja } y = -2x + 3.\\text{ Kontrollige, kas neil on lõikepunkt.}$",
+    "definition_en": "$\\text{Plot sufficient number of points for lines } y = x^2 + 1 \\text{ and } y = -2x + 3.\\text{ Check if they intersect.}$",
+    "solution": "$x^2 + 1 = -2x + 3 \\Rightarrow x^2 + 2x - 2 = 0 \\Rightarrow \\text{2 real roots: } x = -1 \\pm \\sqrt{3}$",
+    "spec": {
+      "type": "intersection_quadratic_linear",
+      "equations": [
+        "y = x**2 + 1",
+        "y = -2*x + 3"
+      ],
+      "solve_var": "x",
+      "answer_expr": "solve(x**2 + 2*x - 2, x)"
+    }
+  }
+],
+"B": [
+  {
+    "definition_et": "$\\text{Ruudu diagonaal asub sirgel } -3x - 5y = -15 \\text{ ja üks tipp on punktis } (1, 0). \\text{ Leidke diagonaalide lõikepunkt.}$",
+    "definition_en": "$\\text{The diagonal of a square lies on the line } -3x - 5y = -15 \\text{ and one vertex is at } (1, 0). \\text{ Find the intersection of the diagonals.}$",
+    "solution": "$\\text{Lõikepunkt on diagonaali keskpunkt } \\Rightarrow \\text{keskpunkt kahe sümmeetrilise tipu vahel}$",
+    "spec": {
+      "type": "square_diagonal_intersection",
+      "line": "-3*x - 5*y + 15 = 0",
+      "point": [
+        1,
+        0
+      ],
+      "answer_expr": "midpoint of square’s diagonal via reflection"
+    }
+  },
+  {
+    "definition_et": "$\\text{Ringjoone võrrand on } (x - 2)^2 + (y + 1)^2 = 16. \\text{ Leidke koordinaattelgedega ristuvate diameetrite võrrandid.}$",
+    "definition_en": "$\\text{Equation of the circle is } (x - 2)^2 + (y + 1)^2 = 16. \\text{ Find the equations of diameters that intersect coordinate axes.}$",
+    "solution": "$x = 2, y = -1$",
+    "spec": {
+      "type": "circle_diameter_axes",
+      "center": [
+        2,
+        -1
+      ],
+      "radius": 4,
+      "answer_expr": [
+        "x = 2",
+        "y = -1"
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Hüperbool läbib punktid } (1, 9) \\text{ ja } (-1, -9). \\text{ Koostage hüperbooli võrrand.}$",
+    "definition_en": "$\\text{A hyperbola passes through points } (1, 9) \\text{ and } (-1, -9). \\text{ Write the equation of the hyperbola.}$",
+    "solution": "$y = 9x$",
+    "spec": {
+      "type": "hyperbola_from_points",
+      "points": [
+        [
+          1,
+          9
+        ],
+        [
+          -1,
+          -9
+        ]
+      ],
+      "answer_expr": "Eq(y, 9*x)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrandisüsteem: } \\begin{cases} y = 4x - 1 \\\\ x^2 + y^2 = 10 \\end{cases}$",
+    "definition_en": "$\\text{Solve the system of equations: } \\begin{cases} y = 4x - 1 \\\\ x^2 + y^2 = 10 \\end{cases}$",
+    "solution": "$x^2 + (4x - 1)^2 = 10 \\Rightarrow x = -1, \\tfrac{1}{5},\\; y = -5, -\\tfrac{1}{5}$",
+    "spec": {
+      "type": "solve_system",
+      "equations": [
+        "y = 4*x - 1",
+        "x**2 + y**2 = 10"
+      ],
+      "solve_vars": [
+        "x",
+        "y"
+      ],
+      "answer_list": [
+        {
+          "x": "-1",
+          "y": "-5"
+        },
+        {
+          "x": "1/5",
+          "y": "-1/5"
+        }
+      ]
+    }
+  }
+],
+"C": [
+  {
+    "definition_et": "$\\text{Milline seos peab olema parameetrite } a \\text{ ja } b \\text{ vahel, et sirge } ax - by = 1 \\text{ lõikaks x-telge 45° nurga all?}$",
+    "definition_en": "$\\text{What condition must } a \\text{ and } b \\text{ satisfy so that the line } ax - by = 1 \\text{ intersects the x-axis at a 45° angle?}$",
+    "solution": "$\\tan 45° = \\left| \\frac{a}{b} \\right| = 1 \\Rightarrow |a| = |b|$",
+    "spec": {
+      "type": "parameter_condition_line_angle",
+      "equation": "a*x - b*y = 1",
+      "angle_deg": 45,
+      "answer_expr": "|a| = |b|"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke ringjoone } (x - 3)^2 + y^2 = 8 \\text{ puutujad, mis läbivad punkti } (5, 6).$",
+    "definition_en": "$\\text{Find the tangents to the circle } (x - 3)^2 + y^2 = 8 \\text{ that pass through the point } (5, 6).$",
+    "solution": "$\\text{Kasutades joone üldvõrrandit ja tingimust kauguseks raadius}$",
+    "spec": {
+      "type": "circle_tangent_through_point",
+      "circle_center": [
+        3,
+        0
+      ],
+      "radius": "sqrt(8)",
+      "external_point": [
+        5,
+        6
+      ],
+      "answer_expr": "line equations solving from point-circle condition"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke ringjoone } x^2 + y^2 - 4x - 4y - 32 = 0 \\text{ puutujad, mis on paralleelsed sirgega } x - 3y = 6.$",
+    "definition_en": "$\\text{Find tangents to the circle } x^2 + y^2 - 4x - 4y - 32 = 0 \\text{ that are parallel to the line } x - 3y = 6.$",
+    "solution": "$\\text{Puutujate kalle } k = \\frac{1}{3},\\; y = kx + d$ ja kasutades kaugusvalemit",
+    "spec": {
+      "type": "circle_parallel_tangent",
+      "circle_eq": "x**2 + y**2 - 4*x - 4*y - 32",
+      "parallel_slope": "1/3",
+      "answer_expr": "lines y = (1/3)x + d where distance to center = r"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke ringjoone } (x - 4)^2 + (y - 3)^2 = 25 \\text{ puutuja punktis } B, kus } B \\text{ on } y \\text{-telje lõikepunkt.}$",
+    "definition_en": "$\\text{Find the tangent to the circle } (x - 4)^2 + (y - 3)^2 = 25 \\text{ at the point } B, where B is the y-intercept.}$",
+    "solution": "$\\text{Punkt } B = (4, -2),\\; \\text{gradient from center to B is normal to tangent}$",
+    "spec": {
+      "type": "tangent_at_point",
+      "center": [
+        4,
+        3
+      ],
+      "point": [
+        4,
+        -2
+      ],
+      "answer_expr": "line perpendicular to radius at B"
+    }
+  }
+]
+  },
+  "TOENAOSUS":{
+    "A": [
+  {
+    "definition_et": "$\\text{Karbis on 7 valget ja 2 musta nööpi. Võetakse 2 nööpi. Leidke tõenäosus:}$\\begin{enumerate}\\item $\\text{mõlemad on valged}$\\item $\\text{nööbid on eri värvi}$\\end{enumerate}",
+    "definition_en": "$\\text{A box contains 7 white and 2 black buttons. Two buttons are drawn. Find the probability:}$\\begin{enumerate}\\item $\\text{both are white}$\\item $\\text{they are of different color}$\\end{enumerate}",
+    "solution": "$P(\\text{valged}) = \\frac{7}{9} \\cdot \\frac{6}{8} = \\frac{42}{72} = \\frac{7}{12},\\;P(\\text{eri värvi}) = \\frac{7}{9} \\cdot \\frac{2}{8} + \\frac{2}{9} \\cdot \\frac{7}{8} = \\frac{28}{72} = \\frac{7}{18}$",
+    "spec": {
+      "type": "probability_combinations",
+      "items": {
+        "white": 7,
+        "black": 2
+      },
+      "draws": 2,
+      "scenarios": [
+        {
+          "description": "both white",
+          "prob_expr": "7/9 * 6/8"
+        },
+        {
+          "description": "different colors",
+          "prob_expr": "7/9 * 2/8 + 2/9 * 7/8"
+        }
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Kotis on 15 õuna, neist 5 magusad ja 10 hapud. Võetakse pimesi 4 õuna. Leidke tõenäosus, et vähemalt üks on magus.}$",
+    "definition_en": "$\\text{A bag contains 15 apples: 5 sweet and 10 sour. Four are drawn at random. Find the probability that at least one is sweet.}$",
+    "solution": "$1 - P(\\text{all sour}) = 1 - \\frac{10}{15} \\cdot \\frac{9}{14} \\cdot \\frac{8}{13} \\cdot \\frac{7}{12} \\approx 0.897$",
+    "spec": {
+      "type": "probability_at_least_one",
+      "total": 15,
+      "special": 5,
+      "draw": 4,
+      "answer_expr": "1 - (10/15)*(9/14)*(8/13)*(7/12)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Kirjastuses töötab 8 toimetajat: 2 meest ja 6 naist. Juhuslikult valitakse 2. Leidke:}$\\begin{enumerate}\\item $\\text{valikute arv}$\\item $\\text{tõenäosus, et mõlemad on mehed}$\\end{enumerate}",
+    "definition_en": "$\\text{A publishing house employs 8 editors: 2 men and 6 women. Two are chosen at random. Find:}$\\begin{enumerate}\\item $\\text{number of combinations}$\\item $\\text{probability both are men}$\\end{enumerate}",
+    "solution": "$\\binom{8}{2} = 28,\\; \\binom{2}{2} / \\binom{8}{2} = 1/28$",
+    "spec": {
+      "type": "combinatorics_probability",
+      "total": 8,
+      "select": 2,
+      "subset": {
+        "men": 2,
+        "women": 6
+      },
+      "answer_expr": {
+        "combinations": "binomial(8,2)",
+        "both_men": "binomial(2,2)/binomial(8,2)"
+      }
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Täringuveeretuse mäng: kui tuleb 1 või 6, saad 2€, muidu kaotad 1€. Kas see mäng on õiglane?}$",
+    "definition_en": "$\\text{Dice game: roll 1 or 6 → win 2€, otherwise lose 1€. Is this game fair?}$",
+    "solution": "$E = \\frac{2}{6} \\cdot 2 + \\frac{4}{6} \\cdot (-1) = \\frac{4 - 4}{6} = 0 → \\text{õiglane}$",
+    "spec": {
+      "type": "expected_value_game",
+      "outcomes": [
+        {
+          "prob": "2/6",
+          "value": 2
+        },
+        {
+          "prob": "4/6",
+          "value": -1
+        }
+      ],
+      "answer_expr": "(2/6)*2 + (4/6)*(-1)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Kati tabab märklaua keskpunkti tõenäosusega } \\frac{5}{6},\\; \\text{Mart } \\frac{6}{7}. \\text{Leidke tõenäosus, et:}$\\begin{enumerate}\\item $\\text{mõlemad tabavad}$\\item $\\text{vähemalt üks tabab}$\\end{enumerate}",
+    "definition_en": "$\\text{Kati hits bullseye with probability } \\frac{5}{6},\\; \\text{Mart } \\frac{6}{7}. \\text{Find the probability:}$\\begin{enumerate}\\item $\\text{both hit}$\\item $\\text{at least one hits}$\\end{enumerate}",
+    "solution": "$P_1 = \\frac{5}{6} \\cdot \\frac{6}{7} = \\frac{30}{42},\\; P_2 = 1 - (1 - \\frac{5}{6})(1 - \\frac{6}{7}) = 1 - \\frac{1}{6} \\cdot \\frac{1}{7} = \\frac{41}{42}$",
+    "spec": {
+      "type": "probability_independent_events",
+      "probs": {
+        "Kati": "5/6",
+        "Mart": "6/7"
+      },
+      "scenarios": [
+        {
+          "description": "both hit",
+          "prob_expr": "(5/6)*(6/7)"
+        },
+        {
+          "description": "at least one hits",
+          "prob_expr": "1 - (1 - 5/6)*(1 - 6/7)"
+        }
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke tõenäosus, et raadius 6 cm ringi sees juhuslikult valitud punkt satub sinna joonistatud ruutu.}$",
+    "definition_en": "$\\text{Find the probability that a point randomly selected inside a circle of radius 6 cm lies inside an inscribed square.}$",
+    "solution": "$P = \\frac{A_{\\text{square}}}{A_{\\text{circle}}} = \\frac{(6\\sqrt{2})^2}{\\pi 6^2} = \\frac{72}{36\\pi} = \\frac{2}{\\pi}$",
+    "spec": {
+      "type": "geometric_probability",
+      "circle_radius": 6,
+      "inscribed_shape": "square",
+      "answer_expr": "(6*sqrt(2))**2 / (pi*6**2)"
+    }
+  }
+],
+"C" : [
+  {
+    "definition_et": "$\\text{Kõrvitsa seemne idanemise tõenäosus on } 0{,}6. Aednikul on 6 seemet. Leidke tõenäosus, et idaneb:}$\\begin{enumerate}\\item $\\text{täpselt 3 seemet}$\\item $\\text{vähemalt 3 seemet}$\\end{enumerate}",
+    "definition_en": "$\\text{Pumpkin seed germination probability is } 0.6. Gardener plants 6 seeds. Find the probability that:}$\\begin{enumerate}\\item $\\text{exactly 3 seeds germinate}$\\item $\\text{at least 3 seeds germinate}$\\end{enumerate}",
+    "solution": "$P(X=3) = \\binom{6}{3}0{,}6^3 \\cdot 0{,}4^3,\\; P(X\\ge3) = 1 - P(0) - P(1) - P(2)$",
+    "spec": {
+      "type": "binomial_probability",
+      "n": 6,
+      "p": 0.6,
+      "queries": [
+        {
+          "k": 3,
+          "mode": "exact"
+        },
+        {
+          "k": 3,
+          "mode": "at_least"
+        }
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Kolmest vabavisest tabab mängija keskmiselt 80\\%. Missugune on tõenäosus, et:}$\\begin{enumerate}\\item $\\text{tabab täpselt 2 viset}$\\item $\\text{tabab vähemalt 2 viset}$\\end{enumerate}",
+    "definition_en": "$\\text{A basketball player hits 80\\% of free throws. From 3 throws, find probability:}$\\begin{enumerate}\\item $\\text{exactly 2 are hits}$\\item $\\text{at least 2 are hits}$\\end{enumerate}",
+    "solution": "$P(2) = \\binom{3}{2}0.8^2\\cdot0.2,\\; P(\\ge2) = P(2) + P(3) = 0.384 + 0.512 = 0.896$",
+    "spec": {
+      "type": "binomial_probability",
+      "n": 3,
+      "p": 0.8,
+      "queries": [
+        {
+          "k": 2,
+          "mode": "exact"
+        },
+        {
+          "k": 2,
+          "mode": "at_least"
+        }
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Visatakse 3 eri värvi täringut. Leidke tõenäosus:}$\\begin{enumerate}\\item $\\text{silmasumma = 6}$\\item $\\text{vähemalt ühel täringul tuleb 6}$\\item $\\text{kõigil täringutel tuleb erinev arv}$\\item $\\text{kõigil tuleb sama arv}$\\item $\\text{vähemalt kahel on sama arv}$\\end{enumerate}",
+    "definition_en": "$\\text{Three differently colored dice are rolled. Find the probability:}$\\begin{enumerate}\\item $\\text{sum = 6}$\\item $\\text{at least one shows 6}$\\item $\\text{all different}$\\item $\\text{all same}$\\item $\\text{at least two same}$\\end{enumerate}",
+    "solution": "$\\text{Sum = 6: 10 cases, total: 216} \\Rightarrow P=\\frac{10}{216},\\; P(\\ge1 six) = \\frac{91}{216},\\; P(all diff) = \\frac{120}{216},\\; P(all same) = \\frac{6}{216},\\; P(\\ge2 same) = 1 - P(all diff) = \\frac{96}{216}$",
+    "spec": {
+      "type": "dice_probability_multiple",
+      "dice": 3,
+      "sides": 6,
+      "queries": [
+        {
+          "condition": "sum",
+          "value": 6
+        },
+        {
+          "condition": "at_least_one",
+          "value": 6
+        },
+        {
+          "condition": "all_different"
+        },
+        {
+          "condition": "all_same"
+        },
+        {
+          "condition": "at_least_two_same"
+        }
+      ]
+    }
+  }
+]
+  },
+  "STATISTIKA" : {
+    "A" : [
+  {
+    "definition_et": "$\\text{Andmed: } 61, 57, 73, 65, 70, 59, 66, 73, 69, 65, 71, 66, 54, 65, 68. \\text{Leidke: maht, variatsioonrida, ulatus, mediaan, keskmine, sagedustabel.}$",
+    "definition_en": "$\\text{Data: } 61, 57, 73, 65, 70, 59, 66, 73, 69, 65, 71, 66, 54, 65, 68. Find: size, ordered list, range, median, mean, frequency table.$",
+    "solution": "$n = 15,\\; \\text{mediaan} = 65,\\; \\text{ulatus} = 73 - 54 = 19,\\; \\bar{x} = \\frac{1002}{15} = 66.8$",
+    "spec": {
+      "type": "basic_statistics",
+      "data": [
+        61,
+        57,
+        73,
+        65,
+        70,
+        59,
+        66,
+        73,
+        69,
+        65,
+        71,
+        66,
+        54,
+        65,
+        68
+      ],
+      "answer_expr": {
+        "size": 15,
+        "median": 65,
+        "range": 19,
+        "mean": "1002 / 15"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Andmed: } 10, 11, 14, 13, 14, 11, 10, 14, 15. \\text{Leidke: variatsioonrida, mood, mediaan, keskväärtus.}$",
+    "definition_en": "$\\text{Data: } 10, 11, 14, 13, 14, 11, 10, 14, 15. Find: sorted data, mode, median, mean.$",
+    "solution": "$\\text{Mood} = 14,\\; \\text{Mediaan} = 13,\\; \\bar{x} = 112/9 \\approx 12.44$",
+    "spec": {
+      "type": "basic_statistics",
+      "data": [
+        10,
+        11,
+        14,
+        13,
+        14,
+        11,
+        10,
+        14,
+        15
+      ],
+      "answer_expr": {
+        "mode": 14,
+        "median": 13,
+        "mean": "112 / 9"
+      }
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Mõõdeti 10 tudengi pulsisagedus: } 88, 67, 91, 75, 77, 69, 76, 84, 68, 86. \\text{Leidke:}$\\begin{enumerate}\\item $\\text{keskväärtus, mediaan, standardhälve}$\\item $\\text{hinnanguline vahemik enamiku jaoks}$\\item $\\text{95\\% usaldusvahemik, kui jaotus on normaalne}$\\end{enumerate}",
+    "definition_en": "$\\text{Pulse rates of 10 students: } 88, 67, 91, 75, 77, 69, 76, 84, 68, 86. Find:$\\begin{enumerate}\\item $\\text{mean, median, standard deviation}$\\item $\\text{estimated interval for most students}$\\item $\\text{95\\% confidence interval assuming normal distribution}$\\end{enumerate}",
+    "solution": "$\\bar{x} = 78.1,\\; \\text{mediaan} = 76.5,\\; s \\approx 8.4,\\; 95\\%\\text{ usaldusvahemik } \\approx [61.3; 94.9]$",
+    "spec": {
+      "type": "descriptive_statistics_confidence",
+      "data": [
+        88,
+        67,
+        91,
+        75,
+        77,
+        69,
+        76,
+        84,
+        68,
+        86
+      ],
+      "confidence": 0.95,
+      "answer_expr": {
+        "mean": "78.1",
+        "median": "76.5",
+        "std_dev": "8.4",
+        "confidence_interval": "[61.3, 94.9]"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Loodusringi õpilased kaalusid linde: } 7, 9, 11, 12, 7, 12, 8, 8, 8, 10, 9, 6, 9, 9, 10, 9, 10, 8.\\;\\text{Leidke: mood, mediaan, aritmeetiline keskmine, standardhälve, protsent väärtusi vahemikus } [\\bar{x}-s, \\bar{x}+s]$",
+    "definition_en": "$\\text{Students weighed birds: } 7, 9, 11, 12, 7, 12, 8, 8, 8, 10, 9, 6, 9, 9, 10, 9, 10, 8.\\;Find: mode, median, mean, std dev, percent in interval } [\\bar{x}-s, \\bar{x}+s]$",
+    "solution": "$\\text{Mood} = 9,\\; \\text{Mediaan} = 9,\\; \\bar{x} = 9,\\; s = 1.5,\\; \\approx 77.8\\%$",
+    "spec": {
+      "type": "sample_statistics_range_check",
+      "data": [
+        7,
+        9,
+        11,
+        12,
+        7,
+        12,
+        8,
+        8,
+        8,
+        10,
+        9,
+        6,
+        9,
+        9,
+        10,
+        9,
+        10,
+        8
+      ],
+      "check_interval": true,
+      "answer_expr": {
+        "mean": 9,
+        "std_dev": 1.5,
+        "percent_in_interval": "14/18"
+      }
+    }
+  }
+],
+"C" : [
+  {
+    "definition_et": "$\\text{100 inimest hindasid jäätist 5-palli skaalal: }\\begin{tabular}{cc}Hinnang & Inimeste arv\\\\1 & 2\\\\2 & 8\\\\3 & 12\\\\4 & 34\\\\5 & 44\\end{tabular} \\text{Leidke:}$\\begin{enumerate}\\item $\\text{keskmine, mood, mediaan}$\\item $\\text{standardhälve}$\\item $\\text{mis muutub, kui lisandub hinnang}$\\item $\\text{kas 1 või 5 muudab rohkem s-hälvet?}$\\end{enumerate}",
+    "definition_en": "$\\text{100 people rated ice cream on 5-point scale: }\\begin{tabular}{cc}Rating & Count\\\\1 & 2\\\\2 & 8\\\\3 & 12\\\\4 & 34\\\\5 & 44\\end{tabular} Find:$\\begin{enumerate}\\item $\\text{mean, mode, median}$\\item $\\text{std deviation}$\\item $\\text{effect of 1 new rating}$\\item $\\text{which affects std dev more: 1 or 5?}$\\end{enumerate}",
+    "solution": "$\\bar{x} \\approx 4.1,\\; \\text{mediaan} = 4,\\; \\text{mood} = 5,\\; s \\approx 1.0,\\; \\text{1 muudab rohkem}$",
+    "spec": {
+      "type": "frequency_table_statistics",
+      "frequency_table": {
+        "1": 2,
+        "2": 8,
+        "3": 12,
+        "4": 34,
+        "5": 44
+      },
+      "answer_expr": {
+        "mean": 4.1,
+        "median": 4,
+        "mode": 5,
+        "std_dev": 1.0,
+        "most_influential_addition": 1
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{3 jäätist (vanilje, maasika, šokolaadi) said hinnanguid: }\\begin{tabular}{cccc}Hinnang & Vanilje & Maasikas & Šokolaad\\\\1 & 1 & 2 & 8\\\\2 & 6 & 12 & 7\\\\3 & 15 & 15 & 10\\\\4 & 48 & 36 & 27\\\\5 & 30 & 35 & 48\\end{tabular} \\text{Võrdle:}$\\begin{enumerate}\\item $\\text{keskmine, mediaan}$\\item $\\text{standardhälve}$\\item $\\text{kumb jäätis tootmisse?}$\\end{enumerate}",
+    "definition_en": "$\\text{Ratings for 3 ice creams (vanilla, strawberry, chocolate): }\\begin{tabular}{cccc}Rating & Vanilla & Strawberry & Chocolate\\\\1 & 1 & 2 & 8\\\\2 & 6 & 12 & 7\\\\3 & 15 & 15 & 10\\\\4 & 48 & 36 & 27\\\\5 & 30 & 35 & 48\\end{tabular} Compare:$\\begin{enumerate}\\item $\\text{mean, median}$\\item $\\text{std deviation}$\\item $\\text{which to produce?}$\\end{enumerate}",
+    "solution": "$\\text{Kõige ühtlasem hinnang vaniljele, suurim varieeruvus šokolaadil, enim kõrgeid hindeid šokolaadil → tootmisse}$",
+    "spec": {
+      "type": "compare_distributions",
+      "frequency_tables": {
+        "vanilla": [
+          1,
+          6,
+          15,
+          48,
+          30
+        ],
+        "strawberry": [
+          2,
+          12,
+          15,
+          36,
+          35
+        ],
+        "chocolate": [
+          8,
+          7,
+          10,
+          27,
+          48
+        ]
+      },
+      "metrics": [
+        "mean",
+        "median",
+        "std_dev"
+      ],
+      "recommendation": "chocolate"
+    }
+  }
+]
+  },
+  "FUNKTSIOONID" : {
+    "A" : [
+  {
+    "definition_et": "$\\text{Leidke funktsiooni } f(x) = \\frac{1}{x-4} \\text{ määramispiirkond ja nullkohad.}$",
+    "definition_en": "$\\text{Find the domain and zeros of the function } f(x) = \\frac{1}{x-4}.$",
+    "solution": "$D(f) = \\mathbb{R} \\setminus \\{4\\},\\; f(x) = 0 \\Rightarrow \\text{puudub}$",
+    "spec": {
+      "type": "function_properties",
+      "expression": "1 / (x - 4)",
+      "answer_expr": {
+        "domain": "x != 4",
+        "zeros": []
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Funktsioon } f(x) = 3x - x^2. \\text{ Leidke nullkohad, positiivsus- ja negatiivsuspiirkond.}$",
+    "definition_en": "$\\text{Function } f(x) = 3x - x^2. \\text{ Find zeros, positive and negative intervals.}$",
+    "solution": "$x(3 - x) = 0 \\Rightarrow x = 0 \\text{ ja } 3,\\; f(x) > 0: (0, 3),\\; f(x) < 0: (-\\infty, 0) \\cup (3, \\infty)$",
+    "spec": {
+      "type": "function_sign_analysis",
+      "expression": "3*x - x**2",
+      "answer_expr": {
+        "zeros": [
+          0,
+          3
+        ],
+        "positive_intervals": "(0, 3)",
+        "negative_intervals": "(-oo, 0) ∪ (3, oo)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Kas funktsioon } f(x) = \\frac{1}{x} \\text{ on paaris või paaritu?}$",
+    "definition_en": "$\\text{Is the function } f(x) = \\frac{1}{x} \\text{ even or odd?}$",
+    "solution": "$f(-x) = -\\frac{1}{x} = -f(x) \\Rightarrow \\text{paaritu}$",
+    "spec": {
+      "type": "function_parity",
+      "expression": "1/x",
+      "answer_expr": "odd"
+    }
+  },
+  {
+    "definition_et": "$\\text{Funktsioon } f(x) = x^2 - 6x + 7. \\text{ Leidke kasvamisvahemikud ja ekstreemum.}$",
+    "definition_en": "$\\text{Function } f(x) = x^2 - 6x + 7. \\text{ Find intervals of increase/decrease and extrema.}$",
+    "solution": "$f'(x) = 2x - 6,\\; f'(x) = 0 \\Rightarrow x = 3,\\; \\text{miinimumpunkt } (3, -2)$",
+    "spec": {
+      "type": "function_extrema",
+      "expression": "x**2 - 6*x + 7",
+      "answer_expr": {
+        "min_point": "(3, -2)",
+        "increasing": "(3, ∞)",
+        "decreasing": "(-∞, 3)"
+      }
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Funktsioonid } f(x) = (x - 3)^2 - 4 \\text{ ja } g(x) = -x^2 + 2x. \\text{Leidke mõlema väärtuste hulk ja ühine positiivsuspiirkond.}$",
+    "definition_en": "$\\text{Functions } f(x) = (x - 3)^2 - 4 \\text{ and } g(x) = -x^2 + 2x. Find both ranges and their common positive interval.}$",
+    "solution": "$f(x) \\ge -4,\\; g(x) \\le 1,\\; f(x) > 0 \\text{ for } x < 1 \\cup x > 5,\\; g(x) > 0 \\text{ for } x \\in (0, 2)$, Ühine: $(0,1) \\cup (5,2)$ → $(0,1)$",
+    "spec": {
+      "type": "function_overlap_analysis",
+      "functions": {
+        "f": "(x - 3)**2 - 4",
+        "g": "-x**2 + 2*x"
+      },
+      "answer_expr": {
+        "range_f": "[-4, ∞)",
+        "range_g": "(-∞, 1]",
+        "positive_overlap": "(0, 1)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Funktsioonid } f(x) = |x - 2| \\text{ ja } g(x) = -(x - 1)(x - 7). \\text{Leidke nende nullkohad, ekstreemumid ja kasvamisvahemikud.}$",
+    "definition_en": "$\\text{Functions } f(x) = |x - 2| \\text{ and } g(x) = -(x - 1)(x - 7). Find their zeros, extrema, and intervals of increase/decrease.}$",
+    "solution": "$f: x = 2\\text{ nullkoht ja min}, g: x = 1,7\\text{ nullid, max } x=4$",
+    "spec": {
+      "type": "function_comparative_analysis",
+      "functions": {
+        "f": "Abs(x - 2)",
+        "g": "-(x - 1)*(x - 7)"
+      },
+      "answer_expr": {
+        "zeros": {
+          "f": [
+            2
+          ],
+          "g": [
+            1,
+            7
+          ]
+        },
+        "extrema": {
+          "f": {
+            "min": "(2, 0)"
+          },
+          "g": {
+            "max": "(4, 9)"
+          }
+        }
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke pöördfunktsioon funktsioonile } f(x) = \\frac{2x}{7 - x}.$",
+    "definition_en": "$\\text{Find the inverse of the function } f(x) = \\frac{2x}{7 - x}.$",
+    "solution": "$f^{-1}(x) = \\frac{7x}{x + 2}$",
+    "spec": {
+      "type": "inverse_function",
+      "function": "2*x / (7 - x)",
+      "answer_expr": "7*x / (x + 2)"
+    }
+  }
+],
+"C" : [
+  {
+    "definition_et": "$\\text{Leidke funktsiooni } f(x) = \\sqrt{\\frac{3 - x}{6x + 1}} + \\sqrt{4 - x^2} \\text{ määramispiirkond.}$",
+    "definition_en": "$\\text{Find the domain of the function } f(x) = \\sqrt{\\frac{3 - x}{6x + 1}} + \\sqrt{4 - x^2}.$",
+    "solution": "$\\frac{3 - x}{6x + 1} \\ge 0,\\; 4 - x^2 \\ge 0 \\Rightarrow x \\in [-2, 1) \\cup (1/6, 2]$",
+    "spec": {
+      "type": "function_domain_radicals",
+      "expression": "sqrt((3 - x)/(6*x + 1)) + sqrt(4 - x**2)",
+      "answer_expr": "intersection of domain conditions"
+    }
+  },
+  {
+    "definition_et": "$\\text{Milliste parameetri } m \\text{ väärtuste korral on funktsiooni } f(x) = (2m - 5)x^2 - 4(m - 1)x + 3m \\text{ väärtused kogu määramispiirkonnas negatiivsed?}$",
+    "definition_en": "$\\text{For which values of } m \\text{ is the function } f(x) = (2m - 5)x^2 - 4(m - 1)x + 3m \\text{ negative for all x?}$",
+    "solution": "$a < 0,\\; D < 0 \\Rightarrow 2m - 5 < 0 \\Rightarrow m < 2.5$",
+    "spec": {
+      "type": "parameter_condition_negative_quadratic",
+      "expression": "(2*m - 5)*x**2 - 4*(m - 1)*x + 3*m",
+      "answer_expr": "m < 2.5"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke funktsioonide } y = \\frac{8}{x},\\; y = \\frac{1}{x^2},\\; y = x \\text{ piiratud kujundi pindala.}$",
+    "definition_en": "$\\text{Find the area of the region bounded by } y = \\frac{8}{x},\\; y = \\frac{1}{x^2},\\; y = x.$",
+    "solution": "$\\text{Leida lõikepunktid ja arvutada määratud integraalid}$",
+    "spec": {
+      "type": "bounded_area_between_curves",
+      "curves": [
+        "8/x",
+        "1/x**2",
+        "x"
+      ],
+      "answer_expr": "area computed via definite integrals"
+    }
+  }
+]
+  },
+  "ARVJADAD" : {
+    "A" : [
+  {
+    "definition_et": "$\\text{Aritmeetilise jada liikmed: } a_2 = 100,\\; a_{10} = 50. Leidke esimene liige ja vahe.}$",
+    "definition_en": "$\\text{Arithmetic sequence terms: } a_2 = 100,\\; a_{10} = 50. Find the first term and common difference.}$",
+    "solution": "$d = \\frac{a_{10} - a_2}{8} = \\frac{50 - 100}{8} = -6.25,\\; a_1 = a_2 - d = 106.25$",
+    "spec": {
+      "type": "arithmetic_sequence_find_terms",
+      "known": {
+        "a_2": 100,
+        "a_10": 50
+      },
+      "answer_expr": {
+        "a_1": "106.25",
+        "d": "-6.25"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Jada üldliige on } a_n = \\frac{2n + 5}{n - 8}. \\text{Leidke } a_6, a_{n-2}, a_{n+1}.$",
+    "definition_en": "$\\text{Sequence has general term } a_n = \\frac{2n + 5}{n - 8}. \\text{Find } a_6, a_{n-2}, a_{n+1}.$",
+    "solution": "$a_6 = \\frac{17}{-2} = -8.5,\\; a_{n-2} = \\frac{2(n-2) + 5}{(n-2) - 8},\\; a_{n+1} = \\frac{2(n+1) + 5}{(n+1) - 8}$",
+    "spec": {
+      "type": "sequence_general_term",
+      "term": "(2*n + 5)/(n - 8)",
+      "evaluate_at": [
+        6,
+        "n-2",
+        "n+1"
+      ],
+      "answer_expr": {
+        "a_6": "-8.5",
+        "a_{n-2}": "(2*(n-2)+5)/((n-2)-8)",
+        "a_{n+1}": "(2*(n+1)+5)/((n+1)-8)"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Esitage jada 4 esimest liiget ja üldliige, kui liikmed on 1-st suuremad arvud, mis } \\bmod 3 = 1.$",
+    "definition_en": "$\\text{Give first 4 terms and general formula for numbers > 1 with remainder 1 when divided by 3.}$",
+    "solution": "$4, 7, 10, 13;\\; a_n = 3n + 1$",
+    "spec": {
+      "type": "modulo_sequence",
+      "modulus": 3,
+      "remainder": 1,
+      "min_value": 2,
+      "answer_expr": {
+        "first_terms": [
+          4,
+          7,
+          10,
+          13
+        ],
+        "general_term": "3*n + 1"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Paigutage arvude 7 ja 35 vahele 6 arvu, et kõik oleksid aritmeetilise jada liikmed.}$",
+    "definition_en": "$\\text{Insert 6 numbers between 7 and 35 so that they form an arithmetic sequence.}$",
+    "solution": "$d = \\frac{35 - 7}{7} = 4,\\; \\text{Jada: } 7, 11, 15, 19, 23, 27, 31, 35$",
+    "spec": {
+      "type": "arithmetic_insert_between",
+      "endpoints": [
+        7,
+        35
+      ],
+      "insert_count": 6,
+      "answer_expr": {
+        "sequence": [
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35
+        ],
+        "d": 4
+      }
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Kell 12:00–12:10 mõtlesid 3 inimest välja kuulujutu ja hakkasid seda levitama. Levijate arv kahekordistub iga 10 minuti järel. Mitu inimest teab \"uudist\" kell 14:50–15:00?}$",
+    "definition_en": "$\\text{At 12:00–12:10, 3 people start spreading a rumor. The number of knowers doubles every 10 minutes. How many know by 14:50–15:00?}$",
+    "solution": "$n = 18\\text{ perioodi },\\; 3\\cdot2^{18} = 786432$",
+    "spec": {
+      "type": "geometric_growth",
+      "initial": 3,
+      "ratio": 2,
+      "periods": 18,
+      "answer_expr": "3 * 2**18"
+    }
+  },
+  {
+    "definition_et": "$\\text{Metsas on algselt 200 tm puitu. Igaaastane juurdekasv 3\\%. Mitu tm on 10 a pärast?}$",
+    "definition_en": "$\\text{A forest initially has 200 m³ wood. Annual growth is 3\\%. How much after 10 years?}$",
+    "solution": "$200 \\cdot 1.03^{10} \\approx 268.78$",
+    "spec": {
+      "type": "compound_growth",
+      "initial": 200,
+      "rate": 0.03,
+      "periods": 10,
+      "answer_expr": "200 * (1.03)**10"
+    }
+  },
+  {
+    "definition_et": "$\\text{Kasvava aritmeetilise jada } a_3 + a_7 = 350,\\; a_5 - a_4 = 35. Leidke } a_9 \\text{ ja esimese 9 liikme summa.}$",
+    "definition_en": "$\\text{Arithmetic sequence with } a_3 + a_7 = 350,\\; a_5 - a_4 = 35. Find } a_9 \\text{ and sum of first 9 terms.}$",
+    "solution": "$d = 35,\\; a_1 = 30,\\; a_9 = 8\\cdot35 + 30 = 310,\\; S_9 = \\frac{9}{2}(30 + 310) = 1530$",
+    "spec": {
+      "type": "arithmetic_sum_and_term",
+      "conditions": {
+        "a_3 + a_7": 350,
+        "a_5 - a_4": 35
+      },
+      "answer_expr": {
+        "a_9": "310",
+        "S_9": "1530"
+      }
+    }
+  }
+],
+"C" : [
+  {
+    "definition_et": "$\\text{Toas temperatuur tõuseb: 0°C → 5°C esimesel tunnil, seejärel iga tunni muutus võrdeliselt eelneva tunni muutusega. Kolmanda tunni lõpuks 10°C. Leidke } q, \\text{ ja piirtase, kuhu temperatuur läheneb.}$",
+    "definition_en": "$\\text{Room temperature rises: 0°C → 5°C in first hour, then change each hour is a fixed ratio of previous. At end of third hour: 10°C. Find } q \\text{ and limiting temperature.}$",
+    "solution": "$\\Delta_1 = 5,\\; \\Delta_2 = 5q,\\; \\Delta_3 = 5q^2,\\; 0 + 5 + 5q + 5q^2 = 10 \\Rightarrow q = 0.5,\\; T_{limit} = \\frac{5}{1 - 0.5} = 10$",
+    "spec": {
+      "type": "geometric_change_limit",
+      "initial": 0,
+      "delta_1": 5,
+      "target_after": 10,
+      "n": 3,
+      "answer_expr": {
+        "q": "0.5",
+        "limit": "10"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Kuulike veereb: } l_2 = 9 cm, l_4 = 30 cm. Iga sekundi jooksul suureneb teepikkus võrdeliselt eelneva muutusega. Millal jõuab kuulike lõppu } L = 900 cm?$",
+    "definition_en": "$\\text{Rolling ball: } l_2 = 9 cm, l_4 = 30 cm. Each second's length grows by fixed amount over previous. When does it reach } L = 900 cm?$",
+    "solution": "$\\text{Aritmeetiline jada: } a_2 = 5, d = 4, l_n = 5 + (n-2)4, S_n = \\text{sum } \\ge 900$",
+    "spec": {
+      "type": "arithmetic_path_reach",
+      "given": {
+        "l_2": 9,
+        "l_4": 30
+      },
+      "target": 900,
+      "answer_expr": "n for S_n ≥ 900"
+    }
+  },
+  {
+    "definition_et": "$\\text{2 keha liiguvad: 1. keha jada } a_1 = 63 mm, S_3 = 252 mm. 2. keha iga järgmine tee on eelmise \\cdot q. Leidke 1. keha 4. sekundi teepikkus.}$",
+    "definition_en": "$\\text{Two bodies move: 1st body path arithmetic } a_1 = 63 mm, S_3 = 252 mm. 2nd body each move = previous \\cdot q. Find distance of 1st body during 4th second.}$",
+    "solution": "$d = \\frac{S_3 - 3a_1}{3} \\Rightarrow a_4 = a_1 + 3d$",
+    "spec": {
+      "type": "motion_arithmetic_geometric",
+      "a1": 63,
+      "S3": 252,
+      "target": "a_4",
+      "answer_expr": "a_4 = 63 + 3*((252 - 3*63)/3)"
+    }
+  }
+]
+  },
+  "LIITPROTSENDID" : {
+    "A" : [
+  {
+    "definition_et": "$\\text{Toode kallines iga aasta 6\\% võrra. Kui palju maksab 100€ toode 5 aasta pärast?}$",
+    "definition_en": "$\\text{A product increases in price by 6\\% annually. What will a 100€ item cost after 5 years?}$",
+    "solution": "$100 \\cdot 1.06^5 = 133.82€$",
+    "spec": {
+      "type": "compound_growth",
+      "initial": 100,
+      "rate": 0.06,
+      "periods": 5,
+      "answer_expr": "100 * (1.06)**5"
+    }
+  },
+  {
+    "definition_et": "$\\text{Auto väärtus väheneb igal aastal 20\\%. Kui vana auto maksis 25 000€, palju see maksab 4 aasta pärast?}$",
+    "definition_en": "$\\text{A car loses 20\\% of its value yearly. If it cost 25,000€, what is its value after 4 years?}$",
+    "solution": "$25,000 \\cdot 0.8^4 = 10240€$",
+    "spec": {
+      "type": "compound_decay",
+      "initial": 25000,
+      "rate": 0.2,
+      "periods": 4,
+      "answer_expr": "25000 * (0.8)**4"
+    }
+  },
+  {
+    "definition_et": "$\\text{Hoiusele pandi 1200€, intressimäär on 2\\% aastas. Kui suur on summa 6 aasta pärast?}$",
+    "definition_en": "$\\text{Deposit of 1200€ earns 2\\% interest annually. What is the amount after 6 years?}$",
+    "solution": "$1200 \\cdot 1.02^6 = 1352.47€$",
+    "spec": {
+      "type": "compound_growth",
+      "initial": 1200,
+      "rate": 0.02,
+      "periods": 6,
+      "answer_expr": "1200 * (1.02)**6"
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Toote hind oli eelmisel aastal 80€. Selle aasta hind on 86.40€. Mitu protsenti toote hind muutus?}$",
+    "definition_en": "$\\text{Product cost was 80€ last year and is 86.40€ this year. What is the percentage change?}$",
+    "solution": "$\\frac{86.4 - 80}{80} = 0.08 = 8\\%$",
+    "spec": {
+      "type": "percentage_change",
+      "old_price": 80,
+      "new_price": 86.4,
+      "answer_expr": "(86.4 - 80) / 80"
+    }
+  },
+  {
+    "definition_et": "$\\text{Toode kallineb 5\\% võrra aastas. Mitme aasta pärast on selle hind 1.5 korda algsest suurem?}$",
+    "definition_en": "$\\text{A product increases in price by 5\\% annually. After how many years will the price be 1.5 times higher?}$",
+    "solution": "$1.05^n = 1.5 \\Rightarrow n \\approx \\frac{\\log(1.5)}{\\log(1.05)} \\approx 8.3$",
+    "spec": {
+      "type": "time_to_growth_factor",
+      "rate": 0.05,
+      "factor": 1.5,
+      "answer_expr": "log(1.5)/log(1.05)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Toode odavnes 10\\% võrra aastas. Kui palju odavnes toode 3 aasta jooksul kokku?}$",
+    "definition_en": "$\\text{A product depreciates 10\\% annually. What is the total depreciation over 3 years?}$",
+    "solution": "$1 - 0.9^3 = 0.271 = 27.1\\%$",
+    "spec": {
+      "type": "total_percentage_decrease",
+      "rate": 0.1,
+      "periods": 3,
+      "answer_expr": "1 - 0.9**3"
+    }
+  }
+],
+"C" : [
+  {
+    "definition_et": "$\\text{Toote hind kallineb igal aastal } x\\%\\text{ võrra. 5 aasta pärast on hind 40\\% suurem. Leidke aastane kasvuprotsent.}$",
+    "definition_en": "$\\text{A product increases by } x\\%\\text{ annually. After 5 years it's 40\\% more expensive. Find the annual growth rate.}$",
+    "solution": "$1.4 = (1 + x)^5 \\Rightarrow x = \\sqrt[5]{1.4} - 1 \\approx 0.0697 = 6.97\\%$",
+    "spec": {
+      "type": "solve_growth_rate",
+      "factor": 1.4,
+      "periods": 5,
+      "answer_expr": "(1.4)**(1/5) - 1"
+    }
+  },
+  {
+    "definition_et": "$\\text{Toode odavnes 15\\% esimesel aastal ja 10\\% teisel aastal. Kui palju on toote lõpphind võrreldes algusega muutunud protsentuaalselt?}$",
+    "definition_en": "$\\text{A product decreased by 15\\% the first year and 10\\% the second year. What is the total percentage change from the start?}$",
+    "solution": "$0.85 \\cdot 0.9 = 0.765 \\Rightarrow 1 - 0.765 = 0.235 = 23.5\\% odavnemine$",
+    "spec": {
+      "type": "compound_combined_decrease",
+      "rates": [
+        0.15,
+        0.1
+      ],
+      "answer_expr": "1 - (0.85 * 0.9)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Toote hind muutus aasta kaupa: +5\\%, -3\\%, +10\\%. Kui suur on kogumuutus protsentides?}$",
+    "definition_en": "$\\text{Product price changed by: +5\\%, -3\\%, +10\\%. What is the total percentage change?}$",
+    "solution": "$1.05 \\cdot 0.97 \\cdot 1.1 = 1.12035 \\Rightarrow +12.035\\%$",
+    "spec": {
+      "type": "compound_mixed_changes",
+      "factors": [
+        1.05,
+        0.97,
+        1.1
+      ],
+      "answer_expr": "1.05 * 0.97 * 1.10 - 1"
+    }
+  }
+]
+  },
+  "EKSPONENTFUNKTSIOON" : {
+    "A" : [
+  {
+    "definition_et": "$\\text{Eksponentfunktsioon on } f(x) = 2^x. \\text{Arvutage } f(-2), f(0), f(3).$",
+    "definition_en": "$\\text{The exponential function is } f(x) = 2^x. \\text{Calculate } f(-2), f(0), f(3).$",
+    "solution": "$f(-2) = \\frac{1}{4},\\; f(0) = 1,\\; f(3) = 8$",
+    "spec": {
+      "type": "evaluate_exponential",
+      "function": "2**x",
+      "values": [
+        -2,
+        0,
+        3
+      ],
+      "answer_expr": {
+        "f(-2)": "1/4",
+        "f(0)": "1",
+        "f(3)": "8"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke funktsiooni } f(x) = 3^x \\text{ kasvamis- või kahanemispiirkond.}$",
+    "definition_en": "$\\text{Find the interval where the function } f(x) = 3^x \\text{ is increasing or decreasing.}$",
+    "solution": "$f(x) = 3^x \\text{ kasvab kõikjal, sest baasi } a = 3 > 1$",
+    "spec": {
+      "type": "exponential_growth_analysis",
+      "base": 3,
+      "answer_expr": "increasing on ℝ"
+    }
+  },
+  {
+    "definition_et": "$\\text{Eksponentfunktsioon } f(x) = \\left(\\frac{1}{2}\\right)^x. \\text{Uurige selle kahanemist.}$",
+    "definition_en": "$\\text{Exponential function } f(x) = (1/2)^x. \\text{Analyze its decreasing behavior.}$",
+    "solution": "$f(x) \\text{ kahanev, kuna } 0 < \\frac{1}{2} < 1$",
+    "spec": {
+      "type": "exponential_growth_analysis",
+      "base": 0.5,
+      "answer_expr": "decreasing on ℝ"
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Eksponentvõrrand: } 5^x = 125. \\text{Lahendage võrrand.}$",
+    "definition_en": "$\\text{Exponential equation: } 5^x = 125. \\text{Solve the equation.}$",
+    "solution": "$125 = 5^3 \\Rightarrow x = 3$",
+    "spec": {
+      "type": "solve_exponential_equation",
+      "equation": "5**x = 125",
+      "solve_var": "x",
+      "answer_expr": [
+        "3"
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: } 3^{2x} = 81.$",
+    "definition_en": "$\\text{Solve the equation: } 3^{2x} = 81.$",
+    "solution": "$81 = 3^4 \\Rightarrow 2x = 4 \\Rightarrow x = 2$",
+    "spec": {
+      "type": "solve_exponential_equation",
+      "equation": "3**(2*x) = 81",
+      "solve_var": "x",
+      "answer_expr": [
+        "2"
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Eksponentvõrrand: } 2^x = 7. \\text{Leidke } x \\text{ logaritmide abil.}$",
+    "definition_en": "$\\text{Exponential equation: } 2^x = 7. \\text{Find } x \\text{ using logarithms.}$",
+    "solution": "$x = \\log_2 7 = \\frac{\\log 7}{\\log 2} \\approx 2.807$",
+    "spec": {
+      "type": "solve_exponential_equation_log",
+      "equation": "2**x = 7",
+      "solve_var": "x",
+      "answer_expr": [
+        "log(7)/log(2)"
+      ]
+    }
+  }
+],
+"C" : [
+  {
+    "definition_et": "$\\text{Lahendage võrrand: } 2^{x+1} - 2^{x-1} = 6.$",
+    "definition_en": "$\\text{Solve the equation: } 2^{x+1} - 2^{x-1} = 6.$",
+    "solution": "$2\\cdot 2^x - \\frac{1}{2}\\cdot 2^x = \\frac{3}{2} \\cdot 2^x = 6 \\Rightarrow 2^x = 4 \\Rightarrow x = 2$",
+    "spec": {
+      "type": "solve_exponential_equation",
+      "equation": "2**(x + 1) - 2**(x - 1) = 6",
+      "solve_var": "x",
+      "answer_expr": [
+        "2"
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: } 3^x + 3^{x+1} = 36.$",
+    "definition_en": "$\\text{Solve the equation: } 3^x + 3^{x+1} = 36.$",
+    "solution": "$3^x(1 + 3) = 36 \\Rightarrow 4 \\cdot 3^x = 36 \\Rightarrow 3^x = 9 \\Rightarrow x = 2$",
+    "spec": {
+      "type": "solve_exponential_equation",
+      "equation": "3**x + 3**(x + 1) = 36",
+      "solve_var": "x",
+      "answer_expr": [
+        "2"
+      ]
+    }
+  },
+  {
+    "definition_et": "$\\text{Lahendage võrrand: } 5^x = 2^x + 3^x.$",
+    "definition_en": "$\\text{Solve the equation: } 5^x = 2^x + 3^x.$",
+    "solution": "$x = 1$ on lahend, teised lahendid puuduvad (kontrolliga)$",
+    "spec": {
+      "type": "solve_exponential_equation",
+      "equation": "5**x = 2**x + 3**x",
+      "solve_var": "x",
+      "answer_expr": [
+        "1"
+      ]
+    }
+  }
+]
+  },
+  "LOGARITMI_DEFINITSIOON" : {
+    "A" : [
+  {
+    "definition_et": "$\\text{Avaldage logaritmivõrrandi alusel: } \\log_2 8 = x.$",
+    "definition_en": "$\\text{Rewrite the logarithmic equation: } \\log_2 8 = x.$",
+    "solution": "$2^x = 8$",
+    "spec": {
+      "type": "logarithmic_definition_conversion",
+      "log_eq": "log(8, 2) = x",
+      "answer_expr": "2**x = 8"
+    }
+  },
+  {
+    "definition_et": "$\\text{Avaldage logaritmivõrrandi alusel: } \\log_3 x = 4.$",
+    "definition_en": "$\\text{Rewrite the logarithmic equation: } \\log_3 x = 4.$",
+    "solution": "$x = 3^4 = 81$",
+    "spec": {
+      "type": "logarithmic_definition_conversion",
+      "log_eq": "log(x, 3) = 4",
+      "answer_expr": "x = 3**4"
+    }
+  },
+  {
+    "definition_et": "$\\text{Kirjutage võrdus } 10^x = 1000 \\text{ logaritmilisel kujul.}$",
+    "definition_en": "$\\text{Write the equation } 10^x = 1000 \\text{ in logarithmic form.}$",
+    "solution": "$\\log_{10} 1000 = x$",
+    "spec": {
+      "type": "logarithmic_definition_conversion",
+      "exp_eq": "10**x = 1000",
+      "answer_expr": "log(1000, 10) = x"
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Arvutage: } \\log_3 81$",
+    "definition_en": "$\\text{Calculate: } \\log_3 81$",
+    "solution": "$81 = 3^4 \\Rightarrow \\log_3 81 = 4$",
+    "spec": {
+      "type": "evaluate_logarithm",
+      "expression": "log(81, 3)",
+      "answer_expr": "4"
+    }
+  },
+  {
+    "definition_et": "$\\text{Arvutage: } \\log_2 \\frac{1}{8}$",
+    "definition_en": "$\\text{Calculate: } \\log_2 \\frac{1}{8}$",
+    "solution": "$\\frac{1}{8} = 2^{-3} \\Rightarrow \\log_2 \\frac{1}{8} = -3$",
+    "spec": {
+      "type": "evaluate_logarithm",
+      "expression": "log(1/8, 2)",
+      "answer_expr": "-3"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke } x: \\log_5 x = 2.3$",
+    "definition_en": "$\\text{Find } x: \\log_5 x = 2.3$",
+    "solution": "$x = 5^{2.3} \\approx 199.526$",
+    "spec": {
+      "type": "solve_logarithmic_equation",
+      "equation": "log(x, 5) = 2.3",
+      "solve_var": "x",
+      "answer_expr": "5**2.3"
+    }
+  }
+]
+  },
+  "LOGARITMFUNKTSIOON" : {
+    "A" : [
+  {
+    "definition_et": "$\\text{Arvutage funktsiooni } f(x) = \\log_2 x \\text{ väärtused punktides } x = 1, 2, 4.$",
+    "definition_en": "$\\text{Evaluate the function } f(x) = \\log_2 x \\text{ at } x = 1, 2, 4.$",
+    "solution": "$f(1) = 0,\\; f(2) = 1,\\; f(4) = 2$",
+    "spec": {
+      "type": "evaluate_log_function",
+      "function": "log(x, 2)",
+      "values": [
+        1,
+        2,
+        4
+      ],
+      "answer_expr": {
+        "f(1)": "0",
+        "f(2)": "1",
+        "f(4)": "2"
+      }
+    }
+  },
+  {
+    "definition_et": "$\\text{Funktsioon } f(x) = \\log_5 x. \\text{Määrake kasvamis- ja kahanemispiirkonnad.}$",
+    "definition_en": "$\\text{Function } f(x) = \\log_5 x. \\text{Determine intervals of increase and decrease.}$",
+    "solution": "$f(x) \\text{ kasvab kogu määramispiirkonnas } x > 0$",
+    "spec": {
+      "type": "log_function_behavior",
+      "base": 5,
+      "answer_expr": "increasing on (0, ∞)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Milline on funktsiooni } f(x) = \\log_{1/2} x \\text{ kasvamis- või kahanemispiirkond?}$",
+    "definition_en": "$\\text{What is the behavior of the function } f(x) = \\log_{1/2} x?}$",
+    "solution": "$\\text{Kuna alus on } < 1,\\; f(x) \\text{ on kahanev } (0, ∞)$",
+    "spec": {
+      "type": "log_function_behavior",
+      "base": 0.5,
+      "answer_expr": "decreasing on (0, ∞)"
+    }
+  }
+],
+"B" : [
+  {
+    "definition_et": "$\\text{Leidke funktsiooni } y = \\log_2(x^2 - 9) \\text{ määramispiirkond.}$",
+    "definition_en": "$\\text{Find the domain of the function } y = \\log_2(x^2 - 9).$",
+    "solution": "$x^2 - 9 > 0 \\Rightarrow x < -3 \\text{ või } x > 3$",
+    "spec": {
+      "type": "log_function_domain",
+      "expression": "log(x**2 - 9, 2)",
+      "answer_expr": "x < -3 or x > 3"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke antud funktsiooni pöördfunktsioon ja joonistage mõlema graafik samale teljestikule: } y = 4^x$",
+    "definition_en": "$\\text{Find the inverse function of } y = 4^x \\text{ and sketch both graphs in one coordinate system.}$",
+    "solution": "$x = 4^y \\Rightarrow y = \\log_4 x$",
+    "spec": {
+      "type": "inverse_function_graph",
+      "original_function": "4**x",
+      "inverse_function": "log(x, 4)"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke antud funktsiooni pöördfunktsioon ja joonistage mõlema graafik samale teljestikule: } y = \\log_{0.5}x$",
+    "definition_en": "$\\text{Find the inverse function of } y = \\log_{0.5}x \\text{ and sketch both graphs in one coordinate system.}$",
+    "solution": "$x = \\log_{0.5}y \\Rightarrow y = (0.5)^x$",
+    "spec": {
+      "type": "inverse_function_graph",
+      "original_function": "log(x, 0.5)",
+      "inverse_function": "0.5**x"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke antud funktsiooni pöördfunktsioon ja joonistage mõlema graafik samale teljestikule: } y = \\log_3 x$",
+    "definition_en": "$\\text{Find the inverse function of } y = \\log_3 x \\text{ and sketch both graphs in one coordinate system.}$",
+    "solution": "$x = \\log_3 y \\Rightarrow y = 3^x$",
+    "spec": {
+      "type": "inverse_function_graph",
+      "original_function": "log(x, 3)",
+      "inverse_function": "3**x"
+    }
+  }
+],
+"C" : [
+  {
+    "definition_et": "$\\text{Leidke funktsiooni } y = \\log_2(x^2 - 4) \\text{ määramispiirkond.}$",
+    "definition_en": "$\\text{Find the domain of the function } y = \\log_2(x^2 - 4).$",
+    "solution": "$x^2 - 4 > 0 \\Rightarrow x < -2 \\text{ või } x > 2$",
+    "spec": {
+      "type": "log_function_domain",
+      "expression": "log(x**2 - 4, 2)",
+      "answer_expr": "x < -2 or x > 2"
+    }
+  },
+  {
+    "definition_et": "$\\text{Leidke funktsiooni } y = \\log_3(9 - x^2) \\text{ määramispiirkond.}$",
+    "definition_en": "$\\text{Find the domain of the function } y = \\log_3(9 - x^2).$",
+    "solution": "$9 - x^2 > 0 \\Rightarrow -3 < x < 3$",
+    "spec": {
+      "type": "log_function_domain",
+      "expression": "log(9 - x**2, 3)",
+      "answer_expr": "-3 < x < 3"
+    }
+  }
+]
+  },
+   "VÕRRANDID JA VÕRRATUSED": {
+    "A" : [
+    {
+      "definition_et": "$\\left(\\frac{2}{3}\\right)^x \\cdot \\left(\\frac{9}{4}\\right)^{x-1} = 1.5$",
+      "definition_en": "$\\left(\\frac{2}{3}\\right)^x \\cdot \\left(\\frac{9}{4}\\right)^{x-1} = 1.5$",
+      "solution": "$x = 3$",
+      "spec": {
+        "type": "solve_exponential_equation",
+        "equation": "(2/3)**x * (9/4)**(x - 1) = 1.5",
+        "solve_var": "x",
+        "answer_expr": "3"
+      }
+    },
+    {
+      "definition_et": "$\\left(\\sqrt{2}\\right)^{x^2 + 4x} \\cdot \\left(\\frac{1}{\\sqrt{2}}\\right)^5 = 1$",
+      "definition_en": "$\\left(\\sqrt{2}\\right)^{x^2 + 4x} \\cdot \\left(\\frac{1}{\\sqrt{2}}\\right)^5 = 1$",
+      "solution": "$x = -5 \\text{ või } x = 1$",
+      "spec": {
+        "type": "solve_exponential_equation",
+        "equation": "(sqrt(2))**(x**2 + 4*x) * (1/sqrt(2))**5 = 1",
+        "solve_var": "x",
+        "answer_expr": "[-5, 1]"
+      }
+    },
+    {
+      "definition_et": "$\\log_3(2x^2 - 23) = 2$",
+      "definition_en": "$\\log_3(2x^2 - 23) = 2$",
+      "solution": "$x = -4 \\text{ või } x = 4$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "log(2*x**2 - 23, 3) = 2",
+        "solve_var": "x",
+        "answer_expr": "[-4, 4]"
+      }
+    },
+    {
+      "definition_et": "$3(\\log x)^2 - 5\\log x + 2 = 0$",
+      "definition_en": "$3(\\log x)^2 - 5\\log x + 2 = 0$",
+      "solution": "$x = e \\text{ või } x = e^{2/3}$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "3*log(x)**2 - 5*log(x) + 2 = 0",
+        "solve_var": "x",
+        "answer_expr": "[E, exp(2/3)]"
+      }
+    }
+  ],
+  "B" : [
+    {
+      "definition_et": "$2^x(2^{x+1} - 5 \\cdot 2^x + 96) = 0$",
+      "definition_en": "$2^x(2^{x+1} - 5 \\cdot 2^x + 96) = 0$",
+      "solution": "$x = 3$",
+      "spec": {
+        "type": "solve_exponential_equation",
+        "equation": "2**x * (2**(x + 1) - 5*2**x + 96) = 0",
+        "solve_var": "x",
+        "answer_expr": "3"
+      }
+    },
+    {
+      "definition_et": "$2^{x+2} + 2^{x-2} = 34$",
+      "definition_en": "$2^{x+2} + 2^{x-2} = 34$",
+      "solution": "$x = 2$",
+      "spec": {
+        "type": "solve_exponential_equation",
+        "equation": "2**(x + 2) + 2**(x - 2) = 34",
+        "solve_var": "x",
+        "answer_expr": "2"
+      }
+    },
+    {
+      "definition_et": "$\\log(36 - x^3) - \\log 6 = 2 + \\log \\frac{1}{6}$",
+      "definition_en": "$\\log(36 - x^3) - \\log 6 = 2 + \\log(1/6)$",
+      "solution": "$x = 2$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "log(36 - x**3, 10) - log(6, 10) = 2 + log(1/6, 10)",
+        "solve_var": "x",
+        "answer_expr": "2"
+      }
+    },
+    {
+      "definition_et": "$\\log_2(x + 3) + \\log_2(x - 4) = 3 \\log_2 2$",
+      "definition_en": "$\\log_2(x + 3) + \\log_2(x - 4) = 3 \\log_2 2$",
+      "solution": "$x = 5$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "log(x + 3, 2) + log(x - 4, 2) = 3*log(2, 2)",
+        "solve_var": "x",
+        "answer_expr": "5"
+      }
+    },
+    {
+      "definition_et": "$2\\log_3(x + 2) = 2 + \\log_3 4$",
+      "definition_en": "$2\\log_3(x + 2) = 2 + \\log_3 4$",
+      "solution": "$x = 3$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "2*log(x + 2, 3) = 2 + log(4, 3)",
+        "solve_var": "x",
+        "answer_expr": "3"
+      }
+    },
+    {
+      "definition_et": "$\\log_2 x - \\log_2(2) = 0$",
+      "definition_en": "$\\log_2 x - \\log_2(2) = 0$",
+      "solution": "$x = 2$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "log(x, 2) - log(2, 2) = 0",
+        "solve_var": "x",
+        "answer_expr": "2"
+      }
+    },
+    {
+      "definition_et": "$\\log_2(\\log_3(\\log_4 x)) = 0$",
+      "definition_en": "$\\log_2(\\log_3(\\log_4 x)) = 0$",
+      "solution": "$x = 64$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "log(log(log(x, 4), 3), 2) = 0",
+        "solve_var": "x",
+        "answer_expr": "64"
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$3^{5 - 2x} \\leq \\sqrt{3}$",
+      "definition_en": "$3^{5 - 2x} \\leq \\sqrt{3}$",
+      "solution": "$x \\geq 2$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "3**(5 - 2*x) <= sqrt(3)",
+        "solve_var": "x",
+        "answer_interval": "[2, ∞)"
+      }
+    },
+    {
+      "definition_et": "$\\log(3x - 1) - \\log 6 > 0$",
+      "definition_en": "$\\log(3x - 1) - \\log 6 > 0$",
+      "solution": "$x > \\frac{7}{3}$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "log(3*x - 1, 10) - log(6, 10) > 0",
+        "solve_var": "x",
+        "answer_interval": "(7/3, ∞)"
+      }
+    },
+    {
+      "definition_et": "$\\left(\\frac{1}{3}\\right)^{7x - 4} > 3^{-x}$",
+      "definition_en": "$(1/3)^{7x - 4} > 3^{-x}$",
+      "solution": "$x < 0.5$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "(1/3)**(7*x - 4) > 3**(-x)",
+        "solve_var": "x",
+        "answer_interval": "(-∞, 0.5)"
+      }
+    },
+    {
+      "definition_et": "$\\log_{0.5}(x^2 - 9) \\geq \\log_{0.5} 5$",
+      "definition_en": "$\\log_{0.5}(x^2 - 9) \\geq \\log_{0.5} 5$",
+      "solution": "$0 < |x| < \\sqrt{14}$, $x \\in (-\\sqrt{14}, -3) \\cup (3, \\sqrt{14})$",
+      "spec": {
+        "type": "solve_logarithmic_inequality",
+        "inequality": "log(x**2 - 9, 0.5) >= log(5, 0.5)",
+        "solve_var": "x",
+        "answer_expr": "Union(Interval.open(-sqrt(14), -3), Interval.open(3, sqrt(14)))"
+      }
+    },
+    {
+      "definition_et": "$\\log_{81}x + \\log_9 x + \\log_3 x = 3.5$",
+      "definition_en": "$\\log_{81}x + \\log_9 x + \\log_3 x = 3.5$",
+      "solution": "$x = 3$",
+      "spec": {
+        "type": "solve_logarithmic_equation",
+        "equation": "log(x, 81) + log(x, 9) + log(x, 3) = 3.5",
+        "solve_var": "x",
+        "answer_expr": "3"
+      }
+    }
+  ]
+
+
+},
+  "TRIGONOMEETRILISED FUNKTSIOONID": {
+  "A" :[
+    {
+      "definition_et": "$\\text{Joonestage funktsiooni } y = \\cos x \\text{ graafik, kui } x \\in (-\\pi, \\pi), \\text{ ning leidke nullkohad.}$",
+      "definition_en": "$\\text{Graph the function } y = \\cos x \\text{ for } x \\in (-\\pi, \\pi), \\text{ and find its zeros.}$",
+      "solution": "$x = \\pm \\frac{\\pi}{2}$",
+      "spec": {
+        "type": "graph_and_zeros",
+        "function": "cos(x)",
+        "domain": "(-pi, pi)",
+        "zeros": [
+          "-pi/2",
+          "pi/2"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrrand } 2 \\cos x - \\sqrt{2} = 0.$",
+      "definition_en": "$\\text{Solve the equation } 2 \\cos x - \\sqrt{2} = 0.$",
+      "solution": "$x = \\frac{\\pi}{4},\\; \\frac{7\\pi}{4}$",
+      "spec": {
+        "type": "solve_trig_equation",
+        "equation": "2*cos(x) - sqrt(2) = 0",
+        "solve_var": "x",
+        "domain": "[0, 2*pi]",
+        "answer_expr": [
+          "pi/4",
+          "7*pi/4"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrrand } 2 \\sin x - \\sqrt{3} = 0, \\text{ kui } x \\in [0, 2\\pi].$",
+      "definition_en": "$\\text{Solve the equation } 2 \\sin x - \\sqrt{3} = 0, \\text{ for } x \\in [0, 2\\pi].$",
+      "solution": "$x = \\frac{\\pi}{3},\\; \\frac{2\\pi}{3}$",
+      "spec": {
+        "type": "solve_trig_equation",
+        "equation": "2*sin(x) - sqrt(3) = 0",
+        "solve_var": "x",
+        "domain": "[0, 2*pi]",
+        "answer_expr": [
+          "pi/3",
+          "2*pi/3"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage graafiliselt lõigul } [0, 2\\pi] \\text{ võrratused } \\sin x \\geq 0 \\text{ ja } \\sin x < 0.5.$",
+      "definition_en": "$\\text{Solve graphically on } [0, 2\\pi]:\\; \\sin x \\geq 0 \\text{ and } \\sin x < 0.5$",
+      "solution": "$\\sin x \\geq 0 \\Rightarrow x \\in [0, \\pi],\\; \\sin x < 0.5 \\Rightarrow x \\in [0, \\pi/6) \\cup (5\\pi/6, 2\\pi)$",
+      "spec": {
+        "type": "solve_trig_inequalities_graphically",
+        "conditions": [
+          "sin(x) >= 0",
+          "sin(x) < 0.5"
+        ],
+        "domain": "[0, 2*pi]",
+        "answer_intervals": {
+          "sin_ge_0": "[0, pi]",
+          "sin_lt_0.5": "[0, pi/6) U (5*pi/6, 2*pi)"
+        }
+      }
+    }
+  ],
+  "B" :[
+    {
+      "definition_et": "$\\text{Lahendage võrrand } \\sin x = 0.5.$",
+      "definition_en": "$\\text{Solve the equation } \\sin x = 0.5.$",
+      "solution": "$x = \\frac{\\pi}{6},\\; \\frac{5\\pi}{6}$",
+      "spec": {
+        "type": "solve_trig_equation",
+        "equation": "sin(x) = 0.5",
+        "solve_var": "x",
+        "domain": "[0, 2*pi]",
+        "answer_expr": [
+          "pi/6",
+          "5*pi/6"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrrand } 2\\cos^2 x + 5\\cos x + 2 = 0.$",
+      "definition_en": "$\\text{Solve the equation } 2\\cos^2 x + 5\\cos x + 2 = 0.$",
+      "solution": "$x = \\frac{2\\pi}{3},\\; \\frac{4\\pi}{3}$",
+      "spec": {
+        "type": "solve_trig_equation",
+        "equation": "2*cos(x)**2 + 5*cos(x) + 2 = 0",
+        "solve_var": "x",
+        "domain": "[0, 2*pi]",
+        "answer_expr": [
+          "2*pi/3",
+          "4*pi/3"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage graafiliselt lõigul } [0, 2\\pi] \\text{ võrratus } 2\\cos x - 1 > 0.$",
+      "definition_en": "$\\text{Solve graphically on } [0, 2\\pi]:\\; 2\\cos x - 1 > 0$",
+      "solution": "$x \\in (-\\frac{\\pi}{3}, \\frac{\\pi}{3})$",
+      "spec": {
+        "type": "solve_trig_inequality_graphically",
+        "inequality": "2*cos(x) - 1 > 0",
+        "domain": "[0, 2*pi]",
+        "answer_expr": "(0, pi/3) U (5*pi/3, 2*pi)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Joonestage funktsiooni } y = \\sin 2x \\text{ graafik, leidke nullkohad ja positiivsuspiirkond } x \\in (-\\pi, \\pi).$",
+      "definition_en": "$\\text{Graph } y = \\sin 2x \\text{ and find its zeros and positivity interval on } (-\\pi, \\pi)$",
+      "solution": "$\\text{Nullkohad: } x = -\\pi, -\\frac{\\pi}{2}, 0, \\frac{\\pi}{2}, \\pi$",
+      "spec": {
+        "type": "graph_analysis",
+        "function": "sin(2*x)",
+        "domain": "(-pi, pi)",
+        "zeros": [
+          "-pi",
+          "-pi/2",
+          "0",
+          "pi/2",
+          "pi"
+        ],
+        "positive_intervals": "(-pi, -pi/2) U (0, pi/2)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Joonestage funktsiooni } y = 2\\cos x \\text{ graafik ja leidke muutumispiirkond, nullkohad, kasvamis- ja kahanemisvahemikud } x \\in (-\\pi, \\pi).$",
+      "definition_en": "$\\text{Graph } y = 2\\cos x \\text{ and find its range, zeros, increasing/decreasing intervals on } (-\\pi, \\pi)$",
+      "solution": "$\\text{Nullkohad: } x = -\\frac{\\pi}{2}, \\frac{\\pi}{2};\\; \\text{Kasvav } (-\\pi, 0);\\; \\text{Kahanev } (0, \\pi)$",
+      "spec": {
+        "type": "graph_analysis",
+        "function": "2*cos(x)",
+        "domain": "(-pi, pi)",
+        "range": "[-2, 2]",
+        "zeros": [
+          "-pi/2",
+          "pi/2"
+        ],
+        "increasing": "(-pi, 0)",
+        "decreasing": "(0, pi)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrrand } \\sin 2x = \\sin x,\\; x \\in (0, 2\\pi).$",
+      "definition_en": "$\\text{Solve } \\sin 2x = \\sin x \\text{ for } x \\in (0, 2\\pi)$",
+      "solution": "$x = \\frac{\\pi}{3},\\; \\pi$",
+      "spec": {
+        "type": "solve_trig_equation",
+        "equation": "sin(2*x) = sin(x)",
+        "solve_var": "x",
+        "domain": "(0, 2*pi)",
+        "answer_expr": [
+          "pi",
+          "pi/3"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrrand } (2 \\sin x - 1)(2 \\cos x + \\sqrt{2}) = 0,\\; x \\in [-\\pi, 3\\pi].$",
+      "definition_en": "$\\text{Solve } (2 \\sin x - 1)(2 \\cos x + \\sqrt{2}) = 0 \\text{ for } x \\in [-\\pi, 3\\pi]$",
+      "solution": "$x = -\\frac{3\\pi}{4},\\; \\frac{\\pi}{6},\\; \\frac{3\\pi}{4},\\; \\frac{5\\pi}{6},\\; \\frac{5\\pi}{4},\\; \\frac{13\\pi}{6},\\; \\frac{11\\pi}{4},\\; \\frac{17\\pi}{6}$",
+      "spec": {
+        "type": "solve_trig_equation",
+        "equation": "(2*sin(x) - 1)*(2*cos(x) + sqrt(2)) = 0",
+        "solve_var": "x",
+        "domain": "[-pi, 3*pi]",
+        "answer_expr": [
+          "-3*pi/4",
+          "pi/6",
+          "3*pi/4",
+          "5*pi/6",
+          "5*pi/4",
+          "13*pi/6",
+          "11*pi/4",
+          "17*pi/6"
+        ]
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$(RE~2008)~\\text{Lihtsustage avaldis } \\cos 2x + \\sin 2x \\cdot \\tan x + \\cos x$",
+      "definition_en": "$(RE~2008)~\\text{Simplify the expression } \\cos 2x + \\sin 2x \\cdot \\tan x + \\cos x$",
+      "solution": "$1$",
+      "spec": {
+        "type": "simplify_trig_expression",
+        "expression": "cos(2*x) + sin(2*x)*tan(x) + cos(x)",
+        "answer_expr": "1"
+      }
+    },
+    {
+      "definition_et": "$\\text{Joonestage funktsioonid } f(x) = \\cos x \\text{ ja } g(x) = \\cos 2x \\text{ lõigul } [0, 2\\pi], \\text{ leidke lõikepunktide abstsissid.}$",
+      "definition_en": "$\\text{Graph } f(x) = \\cos x \\text{ and } g(x) = \\cos 2x \\text{ on } [0, 2\\pi] \\text{ and find the x-values where they intersect.}$",
+      "solution": "$x = 0, \\pi, 2\\pi$",
+      "spec": {
+        "type": "intersection_points",
+        "functions": [
+          "cos(x)",
+          "cos(2*x)"
+        ],
+        "domain": "[0, 2*pi]",
+        "answer_expr": [
+          "0",
+          "pi",
+          "2*pi"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke lõigul } [0, 2\\pi] \\text{ need } x\\text{-väärtused, mille korral } g(x) < f(x)$",
+      "definition_en": "$\\text{Find } x \\text{-values in } [0, 2\\pi] \\text{ where } g(x) < f(x)$",
+      "solution": "$x \\in (\\frac{\\pi}{2}, \\pi) \\cup (\\frac{3\\pi}{2}, 2\\pi)$",
+      "spec": {
+        "type": "inequality_analysis",
+        "functions": {
+          "f": "cos(x)",
+          "g": "cos(2*x)"
+        },
+        "inequality": "g(x) < f(x)",
+        "domain": "[0, 2*pi]",
+        "answer_expr": "(pi/2, pi) U (3*pi/2, 2*pi)"
+      }
+    },
+    {
+      "definition_et": "$(RE~2009)~\\text{Näidake, et } f(x) = \\sin(x - \\frac{\\pi}{6}) - \\sin(\\frac{5\\pi}{6} - x) = -\\cos x$",
+      "definition_en": "$(RE~2009)~\\text{Show that } f(x) = \\sin(x - \\frac{\\pi}{6}) - \\sin(\\frac{5\\pi}{6} - x) = -\\cos x$",
+      "solution": "$f(x) = -\\cos x$",
+      "spec": {
+        "type": "verify_identity",
+        "expression": "sin(x - pi/6) - sin(5*pi/6 - x)",
+        "answer_expr": "-cos(x)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lahendage võrrand } \\sin 2x = -\\cos x, \\; x \\in [0, 2\\pi]$",
+      "definition_en": "$\\text{Solve } \\sin 2x = -\\cos x \\text{ for } x \\in [0, 2\\pi]$",
+      "solution": "$x = \\frac{\\pi}{2},\\; \\frac{7\\pi}{6},\\; \\frac{11\\pi}{6}$",
+      "spec": {
+        "type": "solve_trig_equation",
+        "equation": "sin(2*x) = -cos(x)",
+        "solve_var": "x",
+        "domain": "[0, 2*pi]",
+        "answer_expr": [
+          "pi/2",
+          "7*pi/6",
+          "11*pi/6"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Joonestage funktsioon } y = \\cos x - 1, \\text{ leidke muutumispiirkond, nullkohad, positiivsus-/negatiivsuspiirkonnad, kasvamis-/kahanemisvahemikud, ning } y = \\sin x \\text{ graafikuga ühine kasvamispiirkond.}$",
+      "definition_en": "$\\text{Graph } y = \\cos x - 1, \\text{ and find range, zeros, positivity/negativity, increasing/decreasing intervals, and common increasing intervals with } y = \\sin x.$",
+      "solution": "$\\text{Muutumispiirkond: } [-2, 0],\\; \\text{Nullkohad: } x = \\pm\\frac{\\pi}{2},\\; \\text{Ühine kasvamispiirkond: } (-\\pi, 0)$",
+      "spec": {
+        "type": "graph_behavior_analysis",
+        "function": "cos(x) - 1",
+        "range": "[-2, 0]",
+        "zeros": [
+          "-pi/2",
+          "pi/2"
+        ],
+        "common_increasing_with": "sin(x)",
+        "common_increasing_interval": "(-pi, 0)"
+      }
+    }
+  ]
+
+},
+ "FUNKTSIOONI PIIRVÄÄRTUS JA TULETIS": {
+  "A": [
+    {
+      "definition_et": "$\\lim\\limits_{x \\to -2}(4x^3 + 32)$",
+      "definition_en": "$\\lim\\limits_{x \\to -2}(4x^3 + 32)$",
+      "solution": "$= 0$",
+      "spec": {
+        "type": "limit",
+        "expression": "4*x**3 + 32",
+        "variable": "x",
+        "approaches": -2,
+        "answer_expr": "0"
+      }
+    },
+    {
+      "definition_et": "$\\lim\\limits_{x \\to 0} \\frac{3x^2 - 2x^3}{2x^2}$",
+      "definition_en": "$\\lim\\limits_{x \\to 0} \\frac{3x^2 - 2x^3}{2x^2}$",
+      "solution": "$= \\frac{3}{2}$",
+      "spec": {
+        "type": "limit",
+        "expression": "(3*x**2 - 2*x**3)/(2*x**2)",
+        "variable": "x",
+        "approaches": 0,
+        "answer_expr": "3/2"
+      }
+    },
+    {
+      "definition_et": "$\\lim\\limits_{x \\to 0} \\frac{3x + 4x^2 - 5x^3}{2x^3 - 4x^5}$",
+      "definition_en": "$\\lim\\limits_{x \\to 0} \\frac{3x + 4x^2 - 5x^3}{2x^3 - 4x^5}$",
+      "solution": "$= \\infty$",
+      "spec": {
+        "type": "limit",
+        "expression": "(3*x + 4*x**2 - 5*x**3)/(2*x**3 - 4*x**5)",
+        "variable": "x",
+        "approaches": 0,
+        "answer_expr": "oo"
+      }
+    },
+    {
+      "definition_et": "$\\lim\\limits_{x \\to \\infty} \\frac{2x^3}{2 + x^2}$",
+      "definition_en": "$\\lim\\limits_{x \\to \\infty} \\frac{2x^3}{2 + x^2}$",
+      "solution": "$= \\infty$",
+      "spec": {
+        "type": "limit",
+        "expression": "2*x**3 / (2 + x**2)",
+        "variable": "x",
+        "approaches": "oo",
+        "answer_expr": "oo"
+      }
+    },
+    {
+      "definition_et": "$f(x) = 2x^3 - 3x^2 + 2 \\Rightarrow f'(x)$",
+      "definition_en": "$f(x) = 2x^3 - 3x^2 + 2 \\Rightarrow f'(x)$",
+      "solution": "$f'(x) = 6x^2 - 6x$",
+      "spec": {
+        "type": "derivative",
+        "expression": "2*x**3 - 3*x**2 + 2",
+        "variable": "x",
+        "answer_expr": "6*x**2 - 6*x"
+      }
+    },
+    {
+      "definition_et": "$g(x) = \\frac{1}{5}x^5 - 2.5x^2 + 5x + 12 \\Rightarrow g'(x)$",
+      "definition_en": "$g(x) = \\frac{1}{5}x^5 - 2.5x^2 + 5x + 12 \\Rightarrow g'(x)$",
+      "solution": "$g'(x) = x^4 - 5x + 5$",
+      "spec": {
+        "type": "derivative",
+        "expression": "1/5*x**5 - 2.5*x**2 + 5*x + 12",
+        "variable": "x",
+        "answer_expr": "x**4 - 5*x + 5"
+      }
+    },
+    {
+      "definition_et": "$h(x) = x \\cos x \\Rightarrow h'(x)$",
+      "definition_en": "$h(x) = x \\cos x \\Rightarrow h'(x)$",
+      "solution": "$h'(x) = \\cos x - x \\sin x$",
+      "spec": {
+        "type": "derivative",
+        "expression": "x*cos(x)",
+        "variable": "x",
+        "answer_expr": "cos(x) - x*sin(x)"
+      }
+    },
+    {
+      "definition_et": "$k(x) = \\frac{\\sin x}{3x} \\Rightarrow k'(x)$",
+      "definition_en": "$k(x) = \\frac{\\sin x}{3x} \\Rightarrow k'(x)$",
+      "solution": "$k'(x) = \\frac{x \\cos x - \\sin x}{3x^2}$",
+      "spec": {
+        "type": "derivative",
+        "expression": "sin(x)/(3*x)",
+        "variable": "x",
+        "answer_expr": "(x*cos(x) - sin(x))/(3*x**2)"
+      }
+    }
+  ],
+  "B" : [
+    {
+      "definition_et": "$f(x) = \\frac{2 \\cos x - 1}{\\sin x} \\Rightarrow f'(x)$",
+      "definition_en": "$f(x) = \\frac{2 \\cos x - 1}{\\sin x} \\Rightarrow f'(x)$",
+      "solution": "$f'(x) = \\frac{-2 \\sin x \\cdot \\sin x - (2 \\cos x - 1) \\cdot \\cos x}{\\sin^2 x}$",
+      "spec": {
+        "type": "derivative",
+        "expression": "(2*cos(x) - 1)/sin(x)",
+        "variable": "x",
+        "answer_expr": "(-2*sin(x)*sin(x) - (2*cos(x) - 1)*cos(x))/sin(x)**2"
+      }
+    },
+    {
+      "definition_et": "$g(x) = x^2(1 - \\ln x) \\Rightarrow g'(x)$",
+      "definition_en": "$g(x) = x^2(1 - \\ln x) \\Rightarrow g'(x)$",
+      "solution": "$g'(x) = 2x(1 - \\ln x) - x$",
+      "spec": {
+        "type": "derivative",
+        "expression": "x**2 * (1 - log(x))",
+        "variable": "x",
+        "answer_expr": "2*x*(1 - log(x)) - x"
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$f(x) = \\frac{1}{3}x^3 - \\frac{1}{2}x^2 - 12x - 13.\\; \\text{Lahendage võrratus } f'(x) \\leq 0$",
+      "definition_en": "$f(x) = \\frac{1}{3}x^3 - \\frac{1}{2}x^2 - 12x - 13.\\; \\text{Solve the inequality } f'(x) \\leq 0$",
+      "solution": "$f'(x) = x^2 - x - 12 \\Rightarrow x \\in [-3, 4]$",
+      "spec": {
+        "type": "solve_derivative_inequality",
+        "expression": "(1/3)*x**3 - (1/2)*x**2 - 12*x - 13",
+        "variable": "x",
+        "inequality": "<=",
+        "answer_expr": "Interval(-3, 4)"
+      }
+    },
+    {
+      "definition_et": "$f(x) = x^3 - 4x^2 + 5x - 19 \\Rightarrow f''(4)$",
+      "definition_en": "$f(x) = x^3 - 4x^2 + 5x - 19 \\Rightarrow f''(4)$",
+      "solution": "$f''(x) = 6x - 8 \\Rightarrow f''(4) = 16$",
+      "spec": {
+        "type": "second_derivative_evaluation",
+        "expression": "x**3 - 4*x**2 + 5*x - 19",
+        "variable": "x",
+        "evaluate_at": 4,
+        "answer_expr": "16"
+      }
+    },
+    {
+      "definition_et": "$f(x) = \\cos^2 x + \\sin^2 x \\Rightarrow f'(x)$",
+      "definition_en": "$f(x) = \\cos^2 x + \\sin^2 x \\Rightarrow f'(x)$",
+      "solution": "$f'(x) = 0$",
+      "spec": {
+        "type": "derivative",
+        "expression": "cos(x)**2 + sin(x)**2",
+        "variable": "x",
+        "answer_expr": "0"
+      }
+    }
+  ]
+},
+"TULETISE RAKENDUSED": {
+  "A" :[
+    {
+      "definition_et": "$\\text{Leidke funktsiooni } f(x) = 2x^2 - 3x + 1 \\text{ graafiku puutuja tõus kohal } x_0 = 2$",
+      "definition_en": "$\\text{Find the slope of the tangent to } f(x) = 2x^2 - 3x + 1 \\text{ at } x_0 = 2$",
+      "solution": "$f'(x) = 4x - 3 \\Rightarrow f'(2) = 5$",
+      "spec": {
+        "type": "tangent_slope",
+        "expression": "2*x**2 - 3*x + 1",
+        "variable": "x",
+        "at_point": 2,
+        "answer_expr": "5"
+      }
+    },
+    {
+      "definition_et": "$\\text{Koostage puutuja võrrand funktsioonile } f(x) = x^3 - 3x^2 + 2 \\text{ punktis } (2; 6)$",
+      "definition_en": "$\\text{Find the tangent line to } f(x) = x^3 - 3x^2 + 2 \\text{ at point } (2, 6)$",
+      "solution": "$f'(x) = 3x^2 - 6x \\Rightarrow f'(2) = -6 \\Rightarrow y - 6 = -6(x - 2)$",
+      "spec": {
+        "type": "tangent_line_equation",
+        "expression": "x**3 - 3*x**2 + 2",
+        "variable": "x",
+        "point": [
+          2,
+          6
+        ],
+        "answer_expr": "y = -6*x + 18"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke ekstreemumpunktid ja kahanemisvahemik funktsioonil } f(x) = x^3 - 6x^2 + 9x$",
+      "definition_en": "$\\text{Find extrema and decreasing interval for } f(x) = x^3 - 6x^2 + 9x$",
+      "solution": "$f'(x) = 3x^2 - 12x + 9 = 0 \\Rightarrow x = 1, 3;\\; f \\text{ is decreasing on } (1, 3)$",
+      "spec": {
+        "type": "extrema_and_monotonicity",
+        "expression": "x**3 - 6*x**2 + 9*x",
+        "variable": "x",
+        "answer_extrema_x": [
+          1,
+          3
+        ],
+        "decreasing_interval": "(1, 3)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke funktsiooni } f(x) = 2x - 7 \\text{ suurim väärtus lõigul } [-1; 3]$",
+      "definition_en": "$\\text{Find the maximum value of } f(x) = 2x - 7 \\text{ on interval } [-1, 3]$",
+      "solution": "$f(-1) = -9,\\; f(3) = -1 \\Rightarrow \\max f(x) = -1$",
+      "spec": {
+        "type": "extreme_value_on_interval",
+        "expression": "2*x - 7",
+        "variable": "x",
+        "interval": [
+          -1,
+          3
+        ],
+        "answer_expr": "-1"
+      }
+    }
+  ],
+  "B" : [
+    {
+      "definition_et": "$f(x) = x^3 - 3x^2 + 3.\\; \\text{Leidke puutujate tõusud punktides, mille ordinaat on } 3$",
+      "definition_en": "$f(x) = x^3 - 3x^2 + 3.\\; \\text{Find slopes of tangents at points where } f(x) = 3$",
+      "solution": "$f(x) = 3 \\Rightarrow x = 0, 3 \\Rightarrow f'(x) = 3x^2 - 6x \\Rightarrow f'(0) = 0, f'(3) = 9$",
+      "spec": {
+        "type": "tangent_slopes_given_y",
+        "expression": "x**3 - 3*x**2 + 3",
+        "variable": "x",
+        "y_value": 3,
+        "answer_expr": {
+          "x_values": [
+            0,
+            3
+          ],
+          "slopes": [
+            0,
+            9
+          ]
+        }
+      }
+    },
+    {
+      "definition_et": "$(RE~2002)~y = x^3 - 3x^2.\\; \\text{Leidke tuletis, kasvamis-/kahanemisvahemikud, maksimum-/miinimumpunktid, puutuja tõus punktis } x = 3$",
+      "definition_en": "$(RE~2002)~y = x^3 - 3x^2.\\; \\text{Find derivative, intervals of increase/decrease, max/min, tangent slope at } x = 3$",
+      "solution": "$y' = 3x^2 - 6x,\\; y' = 0 \\Rightarrow x = 0, 2,\\; \\text{Kasvav: } (2, \\infty),\\; \\text{Kahanev: } (-\\infty, 0),\\; \\text{Max at } x = 0,\\; \\text{Min at } x = 2,\\; y'(3) = 9$",
+      "spec": {
+        "type": "function_analysis",
+        "expression": "x**3 - 3*x**2",
+        "variable": "x",
+        "analyze_at": 3,
+        "answer_expr": {
+          "derivative": "3*x**2 - 6*x",
+          "critical_points": [
+            0,
+            2
+          ],
+          "increasing": "(2, ∞)",
+          "decreasing": "(-∞, 0)",
+          "max_at": 0,
+          "min_at": 2,
+          "slope_at_3": 9
+        }
+      }
+    },
+    {
+      "definition_et": "$(RE~2005)~f(x) = x^3 - 4x,\\; g(x) = x^2 - 1.\\; \\text{Leidke } f(x) \\text{ nullkohad, max/min punktid ja joonestage mõlemad graafikud}$",
+      "definition_en": "$(RE~2005)~f(x) = x^3 - 4x,\\; g(x) = x^2 - 1.\\; \\text{Find zeros and extrema of } f(x),\\; \\text{plot both graphs}$",
+      "solution": "$f'(x) = 3x^2 - 4 = 0 \\Rightarrow x = \\pm \\sqrt{4/3},\\; f(x) = 0 \\Rightarrow x = 0, \\pm2$",
+      "spec": {
+        "type": "zero_and_extrema_and_graphs",
+        "functions": {
+          "f": "x**3 - 4*x",
+          "g": "x**2 - 1"
+        },
+        "variable": "x",
+        "answer_expr": {
+          "zeros_f": [
+            0,
+            -2,
+            2
+          ],
+          "extrema_points_f": [
+            "-sqrt(4/3)",
+            "sqrt(4/3)"
+          ]
+        }
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$\\text{Risttahuka põhjaks on ruut. Millised mõõtmed maksimeerivad ruumala, kui põhja pindala ja külgpindala summa on } 108 \\text{ cm}^2?$",
+      "definition_en": "$\\text{A rectangular prism has a square base. What dimensions maximize volume if the sum of base area and lateral area is 108 cm}^2$?",
+      "solution": "$x = 6, h = 3 \\Rightarrow V = x^2 h = 108$",
+      "spec": {
+        "type": "optimize_geometry",
+        "constraint_expr": "x**2 + 4*x*h = 108",
+        "target_expr": "x**2 * h",
+        "solve_vars": [
+          "x",
+          "h"
+        ],
+        "answer_expr": {
+          "x": "6",
+          "h": "3"
+        }
+      }
+    },
+    {
+      "definition_et": "$(RE~2010)~f(x) = ax^2 + b \\ln x + c$ läbigu punkti $P(1;3)$ ja omagu puutujat $y = 4x + a$ punktis $x = 1$",
+      "definition_en": "$(RE~2010)~f(x) = ax^2 + b \\ln x + c$ passes through $P(1,3)$ and has tangent $y = 4x + a$ at $x = 1$",
+      "solution": "$a = 2, b = 1, c = 0$",
+      "spec": {
+        "type": "determine_function_parameters",
+        "expression_template": "a*x**2 + b*log(x) + c",
+        "conditions": {
+          "point": {
+            "x": 1,
+            "y": 3
+          },
+          "tangent_slope_at": {
+            "x": 1,
+            "slope": "4"
+          }
+        },
+        "solve_vars": [
+          "a",
+          "b",
+          "c"
+        ],
+        "answer_expr": {
+          "a": "2",
+          "b": "1",
+          "c": "0"
+        }
+      }
+    },
+    {
+      "definition_et": "$(RE~2001)~y = \\ln\\left(\\frac{x}{e^x - x^2}\\right).\\; \\text{Leidke määramispiirkond, lihtsustage, uurige kasvamist ja maksimaalväärtust}$",
+      "definition_en": "$(RE~2001)~y = \\ln\\left(\\frac{x}{e^x - x^2}\\right).\\; \\text{Find domain, simplify, analyze increasing/decreasing, compute maximum}$",
+      "solution": "$D: x > 0,\\; \\text{Kasvav: } (0, 1),\\; \\text{Kahanev: } (1, \\infty),\\; \\max y = \\ln(1/(e - 1)) = 1 - e$",
+      "spec": {
+        "type": "function_analysis_log",
+        "expression": "log(x / (exp(x) - x**2))",
+        "variable": "x",
+        "domain": "(0, ∞)",
+        "increasing": "(0, 1)",
+        "decreasing": "(1, ∞)",
+        "max_point": "x = 1",
+        "max_value_expr": "1 - E"
+      }
+    }
+  ]
+
+},
+"INTEGRAAL": {
+"A": [
+    {
+      "definition_et": "$\\int (4x^5 + 2x^{-3})\\,dx$",
+      "definition_en": "$\\int (4x^5 + 2x^{-3})\\,dx$",
+      "solution": "$\\frac{2}{3}x^6 - \\frac{1}{x^2} + C$",
+      "spec": {
+        "type": "indefinite_integral",
+        "integrand": "4*x**5 + 2*x**(-3)",
+        "variable": "x",
+        "answer_expr": "2*x**6/3 - 1/x**2"
+      }
+    },
+    {
+      "definition_et": "$\\int (x + 5)(2x - x^2)\\,dx$",
+      "definition_en": "$\\int (x + 5)(2x - x^2)\\,dx$",
+      "solution": "$-\\frac{1}{4}x^4 - x^3 + 5x^2 + C$",
+      "spec": {
+        "type": "indefinite_integral",
+        "integrand": "(x + 5)*(2*x - x**2)",
+        "variable": "x",
+        "answer_expr": "-x**4/4 - x**3 + 5*x**2"
+      }
+    },
+    {
+      "definition_et": "$\\int \\frac{x^2 - 25}{x + 5}\\,dx$",
+      "definition_en": "$\\int \\frac{x^2 - 25}{x + 5}\\,dx$",
+      "solution": "$\\frac{1}{2}x^2 - 5x + C$",
+      "spec": {
+        "type": "indefinite_integral",
+        "integrand": "(x**2 - 25)/(x + 5)",
+        "variable": "x",
+        "answer_expr": "x**2/2 - 5*x"
+      }
+    },
+    {
+      "definition_et": "$\\int_{-1}^2 (2x^3 - x^2 + 5)\\,dx$",
+      "definition_en": "$\\int_{-1}^2 (2x^3 - x^2 + 5)\\,dx$",
+      "solution": "$\\frac{39}{2}$",
+      "spec": {
+        "type": "definite_integral",
+        "integrand": "2*x**3 - x**2 + 5",
+        "variable": "x",
+        "lower_limit": -1,
+        "upper_limit": 2,
+        "answer_expr": "39/2"
+      }
+    },
+    {
+      "definition_et": "$\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{3}} \\cos x\\,dx$",
+      "definition_en": "$\\int_{\\frac{\\pi}{4}}^{\\frac{\\pi}{3}} \\cos x\\,dx$",
+      "solution": "$\\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2}$",
+      "spec": {
+        "type": "definite_integral",
+        "integrand": "cos(x)",
+        "variable": "x",
+        "lower_limit": "pi/4",
+        "upper_limit": "pi/3",
+        "answer_expr": "-sqrt(2)/2 + sqrt(3)/2"
+      }
+    },
+    {
+      "definition_et": "$\\int_0^1 (e^{x - 2} - 3x)\\,dx$",
+      "definition_en": "$\\int_0^1 (e^{x - 2} - 3x)\\,dx$",
+      "solution": "$-\\frac{3}{2} - e^{-2} + e^{-1}$",
+      "spec": {
+        "type": "definite_integral",
+        "integrand": "exp(x - 2) - 3*x",
+        "variable": "x",
+        "lower_limit": 0,
+        "upper_limit": 1,
+        "answer_expr": "-3/2 - exp(-2) + exp(-1)"
+      }
+    }
+  ],
+  "B" : [
+    {
+      "definition_et": "$\\int \\frac{2x^2 + 10x + 12}{x + 3}\\,dx$",
+      "definition_en": "$\\int \\frac{2x^2 + 10x + 12}{x + 3}\\,dx$",
+      "solution": "$x^2 + 4x + C$",
+      "spec": {
+        "type": "indefinite_integral",
+        "integrand": "(2*x**2 + 10*x + 12)/(x + 3)",
+        "variable": "x",
+        "answer_expr": "x**2 + 4*x"
+      }
+    },
+    {
+      "definition_et": "$\\int \\frac{(5x - 2)^2}{x^2}\\,dx$",
+      "definition_en": "$\\int \\frac{(5x - 2)^2}{x^2}\\,dx$",
+      "solution": "$25x - 20\\ln x - \\frac{4}{x} + C$",
+      "spec": {
+        "type": "indefinite_integral",
+        "integrand": "((5*x - 2)**2)/(x**2)",
+        "variable": "x",
+        "answer_expr": "25*x - 20*log(x) - 4/x"
+      }
+    },
+    {
+      "definition_et": "$\\int \\frac{\\cos^2 x}{1 - \\sin x}\\,dx$",
+      "definition_en": "$\\int \\frac{\\cos^2 x}{1 - \\sin x}\\,dx$",
+      "solution": "$x - \\cos x - 1 + C$",
+      "spec": {
+        "type": "indefinite_integral",
+        "integrand": "cos(x)**2 / (1 - sin(x))",
+        "variable": "x",
+        "answer_expr": "x - cos(x) - 1"
+      }
+    },
+    {
+      "definition_et": "$\\int \\frac{e^{2x} - 2e^x - 3}{e^x - 3}\\,dx$",
+      "definition_en": "$\\int \\frac{e^{2x} - 2e^x - 3}{e^x - 3}\\,dx$",
+      "solution": "$x + e^x + C$",
+      "spec": {
+        "type": "indefinite_integral",
+        "integrand": "(exp(2*x) - 2*exp(x) - 3)/(exp(x) - 3)",
+        "variable": "x",
+        "answer_expr": "x + exp(x)"
+      }
+    },
+    {
+      "definition_et": "$\\int_{-3}^{-2} \\frac{2x^2 + 5x - 3}{3x + 9}\\,dx$",
+      "definition_en": "$\\int_{-3}^{-2} \\frac{2x^2 + 5x - 3}{3x + 9}\\,dx$",
+      "solution": "$-2$",
+      "spec": {
+        "type": "definite_integral",
+        "integrand": "(2*x**2 + 5*x - 3)/(3*x + 9)",
+        "variable": "x",
+        "lower_limit": -3,
+        "upper_limit": -2,
+        "answer_expr": "-2"
+      }
+    },
+    {
+      "definition_et": "$\\int_2^4 \\pi (x - 3)^2\\,dx$",
+      "definition_en": "$\\int_2^4 \\pi (x - 3)^2\\,dx$",
+      "solution": "$\\frac{2\\pi}{3}$",
+      "spec": {
+        "type": "definite_integral",
+        "integrand": "pi*(x - 3)**2",
+        "variable": "x",
+        "lower_limit": 2,
+        "upper_limit": 4,
+        "answer_expr": "2*pi/3"
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$\\int_0^{\\frac{\\pi}{2}} (\\sin x + \\cos x)^2\\,dx$",
+      "definition_en": "$\\int_0^{\\frac{\\pi}{2}} (\\sin x + \\cos x)^2\\,dx$",
+      "solution": "$1 + \\frac{\\pi}{2}$",
+      "spec": {
+        "type": "definite_integral",
+        "integrand": "(sin(x) + cos(x))**2",
+        "variable": "x",
+        "lower_limit": 0,
+        "upper_limit": "pi/2",
+        "answer_expr": "1 + pi/2"
+      }
+    }
+  ]
+
+},
+"KUJUNDI PINDALA JA RUUMALA": {
+  "A":[
+    {
+      "definition_et": "$\\text{Leia pindala funktsioonide } y = -2x^2 + 7x - 3 \\text{ ja } y = 0 \\text{ vahele jääval alal.}$",
+      "definition_en": "$\\text{Find the area between } y = -2x^2 + 7x - 3 \\text{ and } y = 0.$",
+      "solution": "$\\frac{125}{24}$",
+      "spec": {
+        "type": "area_between_curve_and_axis",
+        "curve": "-2*x**2 + 7*x - 3",
+        "axis": "y=0",
+        "variable": "x",
+        "integration_limits_from_zeros": true,
+        "answer_expr": "125/24"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leia pindala funktsioonide } y = x^2 - 4 \\text{ ja } y = 0 \\text{ vahel lõigul } x \\in [3, 4].$",
+      "definition_en": "$\\text{Find the area between } y = x^2 - 4 \\text{ and } y = 0 \\text{ on } x \\in [3, 4].$",
+      "solution": "$\\frac{25}{3}$",
+      "spec": {
+        "type": "area_between_curve_and_axis",
+        "curve": "x**2 - 4",
+        "axis": "y=0",
+        "variable": "x",
+        "lower_limit": 3,
+        "upper_limit": 4,
+        "answer_expr": "25/3"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leia pindala funktsioonide } y = x^2 - 3,\\; y = x - 1 \\text{ ja } y$-telje vahel.$",
+      "definition_en": "$\\text{Find the area between } y = x^2 - 3,\\; y = x - 1 \\text{ and the y-axis.}$",
+      "solution": "$\\frac{10}{3}$",
+      "spec": {
+        "type": "area_between_curves_and_axis",
+        "curves": [
+          "x - 1",
+          "x**2 - 3"
+        ],
+        "variable": "x",
+        "lower_limit": 0,
+        "upper_limit": "(1 + sqrt(13))/2",
+        "answer_expr": "10/3"
+      }
+    },
+    {
+      "definition_et": "$(RE~2017)~\\text{Leia kõvertrapetsi pindala funktsioonide } y = x^2 - 4x + 6 \\text{ ja } y = 1 \\text{ vahel, } x \\in [1, 4].$",
+      "definition_en": "$(RE~2017)~\\text{Find the area between } y = x^2 - 4x + 6 \\text{ and } y = 1, \\text{ on } [1, 4].$",
+      "solution": "$6$",
+      "spec": {
+        "type": "area_between_curves",
+        "curves": [
+          "x**2 - 4*x + 6",
+          "1"
+        ],
+        "variable": "x",
+        "lower_limit": 1,
+        "upper_limit": 4,
+        "answer_expr": "6"
+      }
+    }
+  ],
+  "B" :   [
+    {
+      "definition_et": "$\\text{Leia pindala funktsioonide } y = -x^2 + 6x - 3 \\text{ ja } y = x^2 - 4x + 5 \\text{ vahel}$",
+      "definition_en": "$\\text{Find the area between } y = -x^2 + 6x - 3 \\text{ and } y = x^2 - 4x + 5$",
+      "solution": "$\\frac{256}{15}$",
+      "spec": {
+        "type": "area_between_curves",
+        "curves": [
+          "-x**2 + 6*x - 3",
+          "x**2 - 4*x + 5"
+        ],
+        "variable": "x",
+        "lower_limit": "1",
+        "upper_limit": "4",
+        "answer_expr": "256/15"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leia pindala lõigul } x \\in [1, 3] \\text{ funktsioonide } y = x^2 - 4 \\text{ ja } y = 0 \\text{ vahel}$",
+      "definition_en": "$\\text{Find the area between } y = x^2 - 4 \\text{ and } y = 0 \\text{ from } x = 1 \\text{ to } x = 3$",
+      "solution": "$\\frac{10}{3}$",
+      "spec": {
+        "type": "area_between_curve_and_axis",
+        "curve": "x**2 - 4",
+        "axis": "y=0",
+        "variable": "x",
+        "lower_limit": 1,
+        "upper_limit": 3,
+        "answer_expr": "10/3"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leia pöördkeha ruumala, kui } y = x^2 + 1 \\text{ pöörleb ümber } x\\text{-telje lõigul } [0, 2]$",
+      "definition_en": "$\\text{Find the volume of the solid formed by rotating } y = x^2 + 1 \\text{ around the } x\\text{-axis from } 0 \\text{ to } 2$",
+      "solution": "$\\frac{272\\pi}{15}$",
+      "spec": {
+        "type": "volume_of_solid_of_revolution",
+        "curve": "x**2 + 1",
+        "axis": "x",
+        "variable": "x",
+        "lower_limit": 0,
+        "upper_limit": 2,
+        "answer_expr": "272*pi/15"
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$\\text{Leia pöördkeha ruumala, kui ümber } x\\text{-telje pöörleb kujund, mida piiravad } y = x^2 \\text{ ja } y = \\sqrt{x}$",
+      "definition_en": "$\\text{Find volume of solid formed by rotating the region between } y = x^2 \\text{ and } y = \\sqrt{x} \\text{ around the } x\\text{-axis}$",
+      "solution": "$\\frac{3\\pi}{10}$",
+      "spec": {
+        "type": "volume_of_solid_between_curves",
+        "curves": [
+          "sqrt(x)",
+          "x**2"
+        ],
+        "axis": "x",
+        "variable": "x",
+        "lower_limit": 0,
+        "upper_limit": 1,
+        "answer_expr": "3*pi/10"
+      }
+    }
+  ]
+
+},
+"PUNKTI KOORDINAADID JA VEKTOR RUUMIS": {
+  "A":[
+    {
+      "definition_et": "$\\text{Antud on punktid } P(-1; 5; 4),\\; R(2; 0; 2),\\; S(-1; 1; 5).\\; \\text{Leidke nende kohavektorid ühikvektorite summana.}$",
+      "definition_en": "$\\text{Given points } P(-1, 5, 4), R(2, 0, 2), S(-1, 1, 5).\\; \\text{Find their position vectors as sums of unit vectors.}$",
+      "solution": "$\\vec{OP} = -\\vec{i} + 5\\vec{j} + 4\\vec{k},\\; \\vec{OR} = 2\\vec{i} + 0\\vec{j} + 2\\vec{k},\\; \\vec{OS} = -\\vec{i} + \\vec{j} + 5\\vec{k}$",
+      "spec": {
+        "type": "position_vectors_from_coords",
+        "points": {
+          "P": [
+            -1,
+            5,
+            4
+          ],
+          "R": [
+            2,
+            0,
+            2
+          ],
+          "S": [
+            -1,
+            1,
+            5
+          ]
+        },
+        "answer_expr": {
+          "P": "[-1, 5, 4]",
+          "R": "[2, 0, 2]",
+          "S": "[-1, 1, 5]"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Antud vektorid } \\vec{a} = (5; 4; 3),\\; \\vec{b} = (3; -2; 1).\\; \\text{Leidke } 3\\vec{a} - 2\\vec{b}.$",
+      "definition_en": "$\\text{Given vectors } a = (5, 4, 3),\\; b = (3, -2, 1).\\; \\text{Find } 3a - 2b.$",
+      "solution": "$(9, 16, 7)$",
+      "spec": {
+        "type": "vector_linear_combination",
+        "a": [
+          5,
+          4,
+          3
+        ],
+        "b": [
+          3,
+          -2,
+          1
+        ],
+        "expression": "3*a - 2*b",
+        "answer_expr": [
+          9,
+          16,
+          7
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Kontrolli, kas vektorid } \\vec{a} = (-2, 3, -3),\\; \\vec{b} = (-6, 4, 4) \\text{ on kollineaarsed.}$",
+      "definition_en": "$\\text{Check if vectors } a = (-2, 3, -3),\\; b = (-6, 4, 4) \\text{ are collinear.}$",
+      "solution": "$\\text{Ei ole kollineaarsed}$",
+      "spec": {
+        "type": "vector_collinearity_check",
+        "vectors": [
+          [
+            -2,
+            3,
+            -3
+          ],
+          [
+            -6,
+            4,
+            4
+          ]
+        ],
+        "answer_expr": false
+      }
+    },
+    {
+      "definition_et": "$\\text{Milliste } a \\text{ ja } b \\text{ väärtuste korral on vektorid } \\vec{p} = (b, 4, -2),\\; \\vec{r} = (-15, 12, a) \\text{ kollineaarsed?}$",
+      "definition_en": "$\\text{Find values of } a \\text{ and } b \\text{ so that vectors } p = (b, 4, -2),\\; r = (-15, 12, a) \\text{ are collinear}$",
+      "solution": "$a = 6,\\; b = -5$",
+      "spec": {
+        "type": "vector_collinearity_solve",
+        "p": [
+          "b",
+          4,
+          -2
+        ],
+        "r": [
+          -15,
+          12,
+          "a"
+        ],
+        "solve_vars": [
+          "a",
+          "b"
+        ],
+        "answer_expr": {
+          "a": "6",
+          "b": "-5"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Missuguse } k \\text{ väärtuse korral on vektorid } \\vec{s} = (2, 3k, -1),\\; \\vec{t} = (6, 2, 2k) \\text{ risti?}$",
+      "definition_en": "$\\text{For what value of } k \\text{ are the vectors } s = (2, 3k, -1),\\; t = (6, 2, 2k) \\text{ perpendicular?}$",
+      "solution": "$k = \\frac{1}{6}$",
+      "spec": {
+        "type": "vector_orthogonality_condition",
+        "s": [
+          2,
+          "3*k",
+          -1
+        ],
+        "t": [
+          6,
+          2,
+          "2*k"
+        ],
+        "solve_var": "k",
+        "answer_expr": "1/6"
+      }
+    }
+  ],
+  "B" : [
+    {
+      "definition_et": "$\\text{Kanna punktid } A(4,6,12), B(4,0,6), C(4,6,0), D(4,12,6), E(8,6,6), F(0,6,6) \\text{ koordinaatteljestikku ja ühenda need oktaeedriks.}$",
+      "definition_en": "$\\text{Plot points } A(4,6,12), B(4,0,6), C(4,6,0), D(4,12,6), E(8,6,6), F(0,6,6) \\text{ and connect to form an octahedron.}$",
+      "solution": "$\\text{Oktaeeder moodustub keskpunktiga A ja ümbritsevate punktidega.}$",
+      "spec": {
+        "type": "construct_shape_from_points",
+        "points": {
+          "A": [
+            4,
+            6,
+            12
+          ],
+          "B": [
+            4,
+            0,
+            6
+          ],
+          "C": [
+            4,
+            6,
+            0
+          ],
+          "D": [
+            4,
+            12,
+            6
+          ],
+          "E": [
+            8,
+            6,
+            6
+          ],
+          "F": [
+            0,
+            6,
+            6
+          ]
+        },
+        "shape": "octahedron"
+      }
+    },
+    {
+      "definition_et": "$(a)$ \\text{Leia } K(1,5,1) \\text{ kohavektor ühikvektorite summana. }$",
+      "definition_en": "$(a)$ \\text{Find position vector of } K(1,5,1)$",
+      "solution": "$\\vec{OK} = \\vec{i} + 5\\vec{j} + \\vec{k}$",
+      "spec": {
+        "type": "position_vector",
+        "point": [
+          1,
+          5,
+          1
+        ],
+        "answer_expr": [
+          1,
+          5,
+          1
+        ]
+      }
+    },
+    {
+      "definition_et": "$(b)$ \\text{Leia vektorite } \\vec{KL} \\text{ ja } \\vec{MK} \\text{ koordinaadid, kui } L(4,2,-1), M(1,1,2)$",
+      "definition_en": "$(b)$ \\text{Find vectors } KL \\text{ and } MK",
+      "solution": "$\\vec{KL} = (3,-3,-2),\\; \\vec{MK} = (0,4,-1)$",
+      "spec": {
+        "type": "vector_between_points",
+        "vectors": {
+          "KL": {
+            "from": [
+              1,
+              5,
+              1
+            ],
+            "to": [
+              4,
+              2,
+              -1
+            ]
+          },
+          "MK": {
+            "from": [
+              1,
+              1,
+              2
+            ],
+            "to": [
+              1,
+              5,
+              1
+            ]
+          }
+        },
+        "answer_expr": {
+          "KL": [
+            3,
+            -3,
+            -2
+          ],
+          "MK": [
+            0,
+            4,
+            -1
+          ]
+        }
+      }
+    },
+    {
+      "definition_et": "$(c)$ \\text{Arvutage vektorite } \\vec{KL}, \\vec{MK} \\text{ pikkused}$",
+      "definition_en": "$(c)$ \\text{Compute lengths of } KL, MK",
+      "solution": "$|KL| = \\sqrt{22},\\; |MK| = \\sqrt{17}$",
+      "spec": {
+        "type": "vector_magnitude",
+        "vectors": {
+          "KL": [
+            3,
+            -3,
+            -2
+          ],
+          "MK": [
+            0,
+            4,
+            -1
+          ]
+        },
+        "answer_expr": {
+          "KL": "sqrt(22)",
+          "MK": "sqrt(17)"
+        }
+      }
+    },
+    {
+      "definition_et": "$(d)$ \\text{Leidke sisenurk tipus } K \\text{ kolmnurgas KLM}$",
+      "definition_en": "$(d)$ \\text{Find internal angle at vertex K in triangle KLM}$",
+      "solution": "$\\theta = \\cos^{-1}\\left(\\frac{-10}{\\sqrt{22}\\cdot\\sqrt{17}}\\right)$",
+      "spec": {
+        "type": "angle_between_vectors",
+        "vectors": {
+          "a": [
+            3,
+            -3,
+            -2
+          ],
+          "b": [
+            0,
+            4,
+            -1
+          ]
+        },
+        "answer_expr": "acos(-10 / (sqrt(22)*sqrt(17)))"
+      }
+    },
+    {
+      "definition_et": "$(e)$ \\text{Leidke kolmnurga KLM pindala ja ümbermõõt}$",
+      "definition_en": "$(e)$ \\text{Find area and perimeter of triangle KLM}$",
+      "solution": "$S = \\frac{1}{2}\\sqrt{(\\vec{KL} \\times \\vec{MK})^2},\\; P = |KL| + |LM| + |MK|$",
+      "spec": {
+        "type": "triangle_area_perimeter",
+        "points": {
+          "K": [
+            1,
+            5,
+            1
+          ],
+          "L": [
+            4,
+            2,
+            -1
+          ],
+          "M": [
+            1,
+            1,
+            2
+          ]
+        },
+        "vectors": {
+          "KL": [
+            3,
+            -3,
+            -2
+          ],
+          "MK": [
+            0,
+            4,
+            -1
+          ]
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Koonuse tipp on } T(7, 3, 0),\\; R(9, 6, \\sqrt{73}) \\text{ on põhjaringjoonel, raadius } r = 6.\\; \\text{Leidke ruumala}$",
+      "definition_en": "$\\text{Cone tip at } T(7, 3, 0), base point } R(9, 6, sqrt(73)), radius = 6.\\; \\text{Find volume}$",
+      "solution": "$h = \\sqrt{(9-7)^2 + (6-3)^2 + (\\sqrt{73} - 0)^2} = 10 \\Rightarrow V = \\frac{1}{3}\\pi r^2 h = 120\\pi$",
+      "spec": {
+        "type": "cone_volume_from_points",
+        "tip": [
+          7,
+          3,
+          0
+        ],
+        "base_point": [
+          9,
+          6,
+          "sqrt(73)"
+        ],
+        "radius": 6,
+        "answer_expr": "120*pi"
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$\\text{Nelinurk KLMN: } K(1, 1, 7), L(3, 3, 7), M(9, 1, 1), N(4, 0, 4). \\text{Leidke, millised lõigud on alused, ja kas trapets on võrdhaarne.}$",
+      "definition_en": "$\\text{Quadrilateral KLMN: } K(1, 1, 7), L(3, 3, 7), M(9, 1, 1), N(4, 0, 4). \\text{Identify the bases and test if it is isosceles.}$",
+      "solution": "$KL \\parallel MN \\Rightarrow \\text{trapets};\\; KL, MN \\text{ alused},\\; LM \\ne KN \\Rightarrow \\text{ei ole võrdhaarne}$",
+      "spec": {
+        "type": "check_trapezoid_and_isosceles",
+        "points": {
+          "K": [
+            1,
+            1,
+            7
+          ],
+          "L": [
+            3,
+            3,
+            7
+          ],
+          "M": [
+            9,
+            1,
+            1
+          ],
+          "N": [
+            4,
+            0,
+            4
+          ]
+        },
+        "bases": [
+          "KL",
+          "MN"
+        ],
+        "isosceles": false
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke trapetsi KLMN kesklõigu otspunktid ja pikkus.}$",
+      "definition_en": "$\\text{Find the midpoints of the bases and the length of the midsegment of trapezoid KLMN.}$",
+      "solution": "$\\text{Otspunktid: keskpunktid } KL, MN;\\; \\text{Pikkus } d = \\sqrt{13}$",
+      "spec": {
+        "type": "trapezoid_midsegment",
+        "points": {
+          "K": [
+            1,
+            1,
+            7
+          ],
+          "L": [
+            3,
+            3,
+            7
+          ],
+          "M": [
+            9,
+            1,
+            1
+          ],
+          "N": [
+            4,
+            0,
+            4
+          ]
+        },
+        "midsegment_length_expr": "sqrt(13)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke trapetsi haarade pikenduste vaheline nurga koosinus.}$",
+      "definition_en": "$\\text{Find the cosine of the angle between the extensions of the non-parallel sides (legs) of trapezoid KLMN.}$",
+      "solution": "$\\cos(\\theta) = \\frac{1}{\\sqrt{2}\\cdot\\sqrt{29}}$",
+      "spec": {
+        "type": "cosine_between_extended_sides",
+        "vectors": {
+          "LM": [
+            6,
+            -2,
+            -6
+          ],
+          "NK": [
+            -3,
+            1,
+            3
+          ]
+        },
+        "answer_expr": "1 / (sqrt(2)*sqrt(29))"
+      }
+    },
+    {
+      "definition_et": "$(RE~2018)~\\text{Kera diameetri otspunktid } A(-1, 3, 4), B(3, -4, 0).\\; \\text{Leidke keskpunkt ja ruumala.}$",
+      "definition_en": "$(RE~2018)~\\text{Sphere diameter endpoints } A(-1, 3, 4), B(3, -4, 0).\\; \\text{Find center and volume.}$",
+      "solution": "$\\text{Keskpunkt: } (1, -0.5, 2),\\; r = 5 \\Rightarrow V = \\frac{4}{3}\\pi 125 = \\frac{500}{3}\\pi$",
+      "spec": {
+        "type": "sphere_center_and_volume",
+        "points": {
+          "A": [
+            -1,
+            3,
+            4
+          ],
+          "B": [
+            3,
+            -4,
+            0
+          ]
+        },
+        "center_expr": [
+          1,
+          -0.5,
+          2
+        ],
+        "radius": 5,
+        "volume_expr": "500*pi/3"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke nurk } ACB,\\; C(4,1,-1) \\text{ asub kera pinnal}$",
+      "definition_en": "$\\text{Find angle } ACB,\\; C(4,1,-1) \\text{ lies on the sphere}$",
+      "solution": "$\\cos(\\angle ACB) = \\frac{1}{\\sqrt{38}\\cdot\\sqrt{38}}$",
+      "spec": {
+        "type": "angle_on_sphere",
+        "points": {
+          "A": [
+            -1,
+            3,
+            4
+          ],
+          "B": [
+            3,
+            -4,
+            0
+          ],
+          "C": [
+            4,
+            1,
+            -1
+          ]
+        },
+        "answer_expr": "1 / (sqrt(38)*sqrt(38))"
+      }
+    },
+    {
+      "definition_et": "$\\text{Punktid } A(1, 3, 0), B(1, 0, 4), C(-2, 1, 6). \\text{Leidke kolmnurga pindala, ümbermõõt ja lühim kõrgus.}$",
+      "definition_en": "$\\text{Points } A(1, 3, 0), B(1, 0, 4), C(-2, 1, 6). \\text{Find triangle area, perimeter, and shortest altitude.}$",
+      "solution": "$S = \\frac{1}{2}AB \\cdot AC \\sin(\\theta),\\; \\text{P = AB + BC + CA, min height } = \\frac{2S}{\\text{max side}}$",
+      "spec": {
+        "type": "triangle_metrics",
+        "points": {
+          "A": [
+            1,
+            3,
+            0
+          ],
+          "B": [
+            1,
+            0,
+            4
+          ],
+          "C": [
+            -2,
+            1,
+            6
+          ]
+        }
+      }
+    }
+  ]
+
+},
+"SIRGE JA TASAND RUUMIS": {
+  "A" : [
+    {
+      "definition_et": "$\\text{Punkt asub 7 cm kaugusel nurga servast. Kahetahulise nurga suurus on } 30^\\circ. \\text{Leidke kaugus teisest tahust.}$",
+      "definition_en": "$\\text{Point lies 7 cm from the edge of a dihedral angle. The angle is } 30^\\circ. \\text{Find distance to other face.}$",
+      "solution": "$d = 7 \\cdot \\tan 15^\\circ$",
+      "spec": {
+        "type": "distance_from_point_to_plane_in_angle",
+        "distance_to_edge": 7,
+        "half_angle_deg": 15,
+        "answer_expr": "7*tan(15*pi/180)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Risttahuka mõõtmed: põhiservad 3 cm ja 5 cm, kõrgus 6 cm. Missuguse nurga moodustab diagonaal a) põhitahuga, b) külgtahkudega?}$",
+      "definition_en": "$\\text{A cuboid has base 3 cm x 5 cm and height 6 cm. What angle does a diagonal form with a) base, b) sides?}$",
+      "solution": "$a) \\theta = \\arccos\\left(\\frac{\\sqrt{34}}{\\sqrt{70}}\\right),\\; b) \\arccos\\left(\\frac{3}{\\sqrt{70}}\\right), \\arccos\\left(\\frac{5}{\\sqrt{70}}\\right)$",
+      "spec": {
+        "type": "angle_between_diagonal_and_faces",
+        "cuboid_dimensions": [
+          3,
+          5,
+          6
+        ],
+        "answer_expr": {
+          "base_angle": "acos(sqrt(34)/sqrt(70))",
+          "side_angle_1": "acos(3/sqrt(70))",
+          "side_angle_2": "acos(5/sqrt(70))"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Post 8 m kõrge, maja kaugus 9 m, ühenduspunkt 20 m kõrgusel. Kui pikk peab olema kaabel?}$",
+      "definition_en": "$\\text{A pole is 8 m high and 9 m from a wall. Connect to a point 20 m high. How long must the cable be?}$",
+      "solution": "$d = \\sqrt{(20 - 8)^2 + 9^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15$",
+      "spec": {
+        "type": "cable_length_between_heights",
+        "pole_height": 8,
+        "wall_distance": 9,
+        "connection_height": 20,
+        "answer_expr": "15"
+      }
+    },
+    {
+      "definition_et": "$\\text{Lõigu otspunktide kaugused tasandist: 2 dm ja 7 dm. Ristprojektsioon tasandile on 12 dm. Arvuta lõigu pikkus.}$",
+      "definition_en": "$\\text{Endpoints of segment are 2 dm and 7 dm from a plane. Projection on the plane is 12 dm. Find length of segment.}$",
+      "solution": "$d = \\sqrt{(7 - 2)^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$",
+      "spec": {
+        "type": "segment_length_from_projection",
+        "projection_length": 12,
+        "distance1": 2,
+        "distance2": 7,
+        "answer_expr": "13"
+      }
+    }
+  ],
+  "B" : [
+    {
+      "definition_et": "$\\text{Risttahuka diagonaal moodustab tahkudega nurgad } 30^\\circ, 45^\\circ, 60^\\circ. \\text{Leidke nurgad servadega ühest tipust.}$",
+      "definition_en": "$\\text{A cuboid diagonal forms angles } 30^\\circ, 45^\\circ, 60^\\circ \\text{ with the faces. Find the angles it makes with edges from one vertex.}$",
+      "solution": "$\\theta_1 = 90^\\circ - 30^\\circ = 60^\\circ,\\; \\theta_2 = 45^\\circ,\\; \\theta_3 = 30^\\circ$",
+      "spec": {
+        "type": "angle_with_edges_from_faces",
+        "face_angles_deg": [
+          30,
+          45,
+          60
+        ],
+        "edge_angles_deg": [
+          60,
+          45,
+          30
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Sirged AB, AC, AD on paarikaupa ristuvad. } AB = 3, BC = 7, AD = 1.5. \\text{Leidke lõigu CD pikkus.}$",
+      "definition_en": "$\\text{Lines AB, AC, AD are pairwise perpendicular. Given AB = 3, BC = 7, AD = 1.5. Find length of CD.}$",
+      "solution": "$CD = \\sqrt{BC^2 + AD^2} = \\sqrt{49 + 2.25} = \\sqrt{51.25}$",
+      "spec": {
+        "type": "length_in_orthogonal_system",
+        "segments": {
+          "AB": 3,
+          "BC": 7,
+          "AD": 1.5
+        },
+        "answer_expr": "sqrt(51.25)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Täisnurkse kolmnurga hüpotenuus tasapinnal, tipp 6 cm kaugusel. Kaatetid: 12 cm, 15 cm. Leidke nurgad kaatetite ja tasapinna vahel.}$",
+      "definition_en": "$\\text{Right triangle with hypotenuse on the plane, vertex 6 cm above. Legs: 12 cm, 15 cm. Find angles with the plane.}$",
+      "solution": "$\\theta_1 = \\arcsin(6 / 12),\\; \\theta_2 = \\arcsin(6 / 15)$",
+      "spec": {
+        "type": "angles_with_plane_from_height",
+        "height": 6,
+        "legs": [
+          12,
+          15
+        ],
+        "angle_exprs": [
+          "asin(6/12)",
+          "asin(6/15)"
+        ]
+      }
+    },
+    {
+      "definition_et": "$\\text{Kahetahulise nurga suurus } 60^\\circ, punktist teiseni kaugus 16 cm. Leidke kaugus punktist servani.$",
+      "definition_en": "$\\text{Dihedral angle } 60^\\circ, point is 16 cm from one face. Find distance to the edge.}$",
+      "solution": "$d = 16 / \\tan 30^\\circ$",
+      "spec": {
+        "type": "distance_to_edge_in_angle",
+        "distance_to_face": 16,
+        "half_angle_deg": 30,
+        "answer_expr": "16 / tan(30*pi/180)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Risttahuka põhiservad: 5 cm ja 12 cm, kõrgus: 13 cm. Lõigatud tasand põhja diagonaali ja külgservade kaudu. Leidke nurgad põhja diagonaalidega.}$",
+      "definition_en": "$\\text{Cuboid base: 5 x 12 cm, height 13 cm. A plane cuts through base diagonal and side edges. Find angles with base diagonals.}$",
+      "solution": "$\\theta = \\arctan(13 / d_{diag}) = \\arctan(13 / \\sqrt{5^2 + 12^2})$",
+      "spec": {
+        "type": "plane_diagonal_angle_in_cuboid",
+        "base": [
+          5,
+          12
+        ],
+        "height": 13,
+        "answer_expr": "atan(13 / sqrt(5**2 + 12**2))"
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$\\text{Kolmnurk moodustab tasandiga } 30^\\circ \\text{ nurga, tipp on 12 cm kaugusel, külg 8 cm. Arvuta pindala.}$",
+      "definition_en": "$\\text{Triangle forms a } 30^\\circ \\text{ angle with plane, vertex 12 cm above, base 8 cm. Find area.}$",
+      "solution": "$S = \\frac{1}{2}ab \\sin \\theta = \\frac{1}{2} \\cdot 8 \\cdot 12 \\cdot \\sin 30^\\circ = 24$",
+      "spec": {
+        "type": "triangle_area_from_inclination",
+        "base": 8,
+        "height_from_plane": 12,
+        "angle_deg": 30,
+        "answer_expr": "24"
+      }
+    },
+    {
+      "definition_et": "$\\text{Korrapärase kuusnurkse püramiidi põhiserv = 2 cm, külgserv = 10 cm. Arvuta külgservade vaheline nurk.}$",
+      "definition_en": "$\\text{Regular hexagonal pyramid with base edge 2 cm, lateral edge 10 cm. Find angle between lateral edges.}$",
+      "solution": "$\\theta = \\arccos\\left(1 - \\frac{1}{100}\\right)$",
+      "spec": {
+        "type": "angle_between_lateral_edges",
+        "base_edge": 2,
+        "lateral_edge": 10,
+        "answer_expr": "acos(1 - 1/100)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Risttahuka diagonaal = 10 cm, põhiserv = 4 cm, diagonaal moodustab } 60^\\circ \\text{ nurga põhitahuga.}$",
+      "definition_en": "$\\text{Cuboid diagonal = 10 cm, base side = 4 cm, diagonal forms 60° with base. Find height and other base side.}$",
+      "solution": "$d = 10 \\cos 60^\\circ = 5,\\; h = \\sqrt{100 - (4^2 + 5^2)} = \\sqrt{71}$",
+      "spec": {
+        "type": "cuboid_dimensions_from_diagonal",
+        "diagonal": 10,
+        "known_base_side": 4,
+        "angle_deg": 60,
+        "answer_expr": {
+          "second_base_side": "5",
+          "height": "sqrt(71)"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Kolmnurkse püramiidi põhiserv = 4 cm, nurk põhja ja külgtahu vahel } = 60^\\circ.\\; \\text{Arvuta kõrgus ja külgserv.}$",
+      "definition_en": "$\\text{Regular triangle pyramid base edge = 4 cm, angle between base and side face } = 60^\\circ. Find height and slant edge.}$",
+      "solution": "$\\text{Kõrgus } = \\sqrt{3},\\; \\text{Külgserv } = 2$",
+      "spec": {
+        "type": "triangle_pyramid_height_edge",
+        "base_edge": 4,
+        "angle_deg": 60,
+        "answer_expr": {
+          "height": "sqrt(3)",
+          "edge": "2"
+        }
+      }
+    },
+    {
+      "definition_et": "$(RE~2019)~\\text{Püramiidi } EABCD \\text{ põhi on ruut, külgtahu } ADE \\text{ pindala } 18\\sqrt{3},\\; \\angle AEB = 60^\\circ$.\\; \\text{Leidke } BE \\text{ pikkus ja selle nurk põhitahuga.}$",
+      "definition_en": "$(RE~2019)~\\text{Pyramid base ABCD is a square, lateral face ADE has area } 18\\sqrt{3},\\; \\angle AEB = 60^\\circ$. Find length and angle of BE.$",
+      "solution": "$\\text{BE} = 6,\\; \\text{Nurk } = \\arccos\\left(\\frac{3}{6}\\right)$",
+      "spec": {
+        "type": "pyramid_lateral_edge_and_angle",
+        "face_area_expr": "18*sqrt(3)",
+        "angle_deg": 60,
+        "known_height_from_D": 3,
+        "answer_expr": {
+          "edge_BE": "6",
+          "angle_with_base": "acos(3/6)"
+        }
+      }
+    }
+  ]
+
+
+},
+"STEREOMEETRIA": {
+  "A" :[
+    {
+      "definition_et": "$\\text{Korrapärase kuusnurkse püstprisma põhiserv } 6\\sqrt{3}\\text{ m, külgtahud ruudud. Leia täispindala.}$",
+      "definition_en": "$\\text{Regular hexagonal prism with base edge } 6\\sqrt{3} \\text{ m, lateral faces are squares. Find total surface area.}$",
+      "solution": "$S = 6 \\cdot \\frac{a^2\\sqrt{3}}{4} + 6a^2 = 972$",
+      "spec": {
+        "type": "prism_surface_area",
+        "base_shape": "regular_hexagon",
+        "base_edge_expr": "6*sqrt(3)",
+        "lateral_height_expr": "6*sqrt(3)",
+        "answer_expr": "972"
+      }
+    },
+    {
+      "definition_et": "$\\text{Kolmnurkse püstprisma kujuline vaas: kõrgus 20 cm, põhiserv 14 cm. 0.5 l vett. Arvuta veetaseme kõrgus.}$",
+      "definition_en": "$\\text{Triangular prism-shaped vase: height 20 cm, base edge 14 cm. Filled with 0.5 liters of water. Find water level.}$",
+      "solution": "$h = \\frac{0.5 \\cdot 1000}{\\frac{\\sqrt{3}}{4} \\cdot 14^2} = \\frac{500}{49\\sqrt{3}}$",
+      "spec": {
+        "type": "water_level_in_prism",
+        "base_shape": "equilateral_triangle",
+        "base_edge": 14,
+        "total_height": 20,
+        "volume_liters": 0.5,
+        "answer_expr": "500 / (49*sqrt(3))"
+      }
+    },
+    {
+      "definition_et": "$\\text{Korrapärase nelinurkse püramiidi põhiserv 4 cm, apoteem 3 cm. Arvuta täispindala.}$",
+      "definition_en": "$\\text{Regular square pyramid with base edge 4 cm and apothem 3 cm. Find total surface area.}$",
+      "solution": "$S = a^2 + 4 \\cdot \\frac{a \\cdot l}{2} = 16 + 24 = 40$",
+      "spec": {
+        "type": "pyramid_surface_area",
+        "base_shape": "square",
+        "base_edge": 4,
+        "slant_height": 3,
+        "answer_expr": "40"
+      }
+    },
+    {
+      "definition_et": "$\\text{Silindri telg 15 cm, telglõike diagonaal 17 cm. Arvuta täispindala.}$",
+      "definition_en": "$\\text{Cylinder axis 15 cm, axial cross-section diagonal 17 cm. Find total surface area.}$",
+      "solution": "$r = 8,\\; S = 2\\pi r^2 + 2\\pi r h = 128\\pi + 240\\pi = 368\\pi$",
+      "spec": {
+        "type": "cylinder_surface_area_from_diagonal",
+        "height": 15,
+        "diagonal": 17,
+        "answer_expr": "368*pi"
+      }
+    },
+    {
+      "definition_et": "$\\text{Koonuse kõrgus 6 cm, moodustaja 10 cm. Arvuta ruumala.}$",
+      "definition_en": "$\\text{Cone with height 6 cm, slant 10 cm. Find volume.}$",
+      "solution": "$r = 8,\\; V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi \\cdot 64 \\cdot 6 = 128\\pi$",
+      "spec": {
+        "type": "cone_volume_from_slant_height",
+        "height": 6,
+        "slant": 10,
+        "answer_expr": "128*pi"
+      }
+    },
+    {
+      "definition_et": "$\\text{Kolm kera raadiustega } 1.5, 2, 2.5 \\text{ dm sulatatakse kokku. Leia saadud kera raadius.}$",
+      "definition_en": "$\\text{Three spheres of radii 1.5, 2, and 2.5 dm melted into one. Find resulting radius.}$",
+      "solution": "$r = \\sqrt[3]{r_1^3 + r_2^3 + r_3^3} = \\sqrt[3]{27} = 3$",
+      "spec": {
+        "type": "merged_sphere_radius",
+        "radii": [
+          1.5,
+          2,
+          2.5
+        ],
+        "answer_expr": "3"
+      }
+    }
+  ],
+  "B" :  [
+    {
+      "definition_et": "$\\text{Korrapärase nelinurkse prisma diagonaal on 35 cm, külgtahu diagonaal on 25 cm. Arvutage ruumala.}$",
+      "definition_en": "$\\text{A regular square prism has a body diagonal of 35 cm and face diagonal of 25 cm. Find the volume.}$",
+      "solution": "$a = 15, h = 20 \\Rightarrow V = a^2 h = 4500$",
+      "spec": {
+        "type": "volume_from_diagonals_square_prism",
+        "body_diagonal": 35,
+        "face_diagonal": 25,
+        "answer_expr": "4500"
+      }
+    },
+    {
+      "definition_et": "$\\text{Kolmnurkse püramiidi põhiserv on 6 cm, nurk põhja ja külgtahu vahel } = 60^\\circ. Arvutage külgpindala ja ruumala.}$",
+      "definition_en": "$\\text{Triangular pyramid base edge = 6 cm, angle between base and side face = 60°. Find lateral surface area and volume.}$",
+      "solution": "$S_{külg} = 3 \\cdot \\frac{6 \\cdot 3\\sqrt{3}}{2}, V = \\frac{1}{3} \\cdot \\frac{6^2 \\sqrt{3}}{4} \\cdot 3\\sqrt{3} = 81$",
+      "spec": {
+        "type": "triangular_pyramid_surface_volume",
+        "base_edge": 6,
+        "face_angle_deg": 60,
+        "answer_expr": {
+          "lateral_area": "27*sqrt(3)",
+          "volume": "81"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Püramiidi põhjaks on kolmnurk külgedega 9, 21, 24 cm. Kõik külgservad 74 cm. Arvutage kõrgus ja ruumala.}$",
+      "definition_en": "$\\text{Pyramid has triangular base with sides 9, 21, 24 cm. All lateral edges = 74 cm. Find height and volume.}$",
+      "solution": "$S_{base} = 84, h = \\sqrt{74^2 - 8^2}, V = \\frac{1}{3} \\cdot 84 \\cdot h$",
+      "spec": {
+        "type": "pyramid_volume_from_base_and_edge",
+        "base_sides": [
+          9,
+          21,
+          24
+        ],
+        "lateral_edge": 74,
+        "answer_expr": {
+          "base_area": "84",
+          "height_expr": "sqrt(5476 - 64)",
+          "volume_expr": "(1/3)*84*sqrt(5476 - 64)"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Võrdkülgse telglõikega koonuse kõrgus = 14 cm. Arvuta ruumala ja külgpindala.}$",
+      "definition_en": "$\\text{Cone with isosceles triangle cross-section and height 14 cm. Find volume and lateral area.}$",
+      "solution": "$r = \\sqrt{l^2 - h^2} = \\sqrt{196 - r^2}, l = r + h$",
+      "spec": {
+        "type": "cone_volume_lateral_area_from_height",
+        "height": 14,
+        "answer_expr": {
+          "radius_expr": "sqrt(14**2 - r**2)",
+          "volume_expr": "(1/3)*pi*r**2*14",
+          "lateral_area_expr": "pi*r*sqrt(r**2 + 196)"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Ristkülik mõõtmetega 8 cm × 10 cm pöörleb ümber pikema külje. Arvuta täispindala ja ruumala.}$",
+      "definition_en": "$\\text{A rectangle 8 × 10 cm rotates about the longer side. Find total surface area and volume of resulting solid.}$",
+      "solution": "$R = 10, H = 8, V = \\pi R^2 H, S = 2\\pi R H + 2\\pi R^2$",
+      "spec": {
+        "type": "rotated_cylinder_surface_volume",
+        "radius": 10,
+        "height": 8,
+        "answer_expr": {
+          "volume": "800*pi",
+          "surface_area": "360*pi"
+        }
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$\\text{Trapetsipõhjaga püstprisma küljed: 5, 7, 4, 8 cm. Kõrgus 10 cm. Arvuta põhja pindala, täispindala ja ruumala.}$",
+      "definition_en": "$\\text{Prism with trapezoid base: sides 5, 7, 4, 8 cm. Height 10 cm. Find base area, surface area, and volume.}$",
+      "solution": "$S_{base} = 27,\\; V = 270,\\; S_{total} = 2\\cdot27 + (5+7+4+8)\\cdot10 = 54 + 240 = 294$",
+      "spec": {
+        "type": "trapezoidal_prism_geometry",
+        "base_sides": [
+          5,
+          7,
+          4,
+          8
+        ],
+        "height": 10,
+        "answer_expr": {
+          "base_area": "27",
+          "volume": "270",
+          "surface_area": "294"
+        }
+      }
+    },
+    {
+      "definition_et": "$(RE~2012)~\\text{Püramiid } ABCD \\text{ aluseks kolmnurk küljepikkustega 6, 7, 8 cm. Kõrgus 5 cm. Nurk AB ja AD vahel } = 60^\\circ.$",
+      "definition_en": "$(RE~2012)~\\text{Pyramid with triangle base: sides 6, 7, 8 cm, height 5 cm. Angle between AB and AD is } 60^\\circ$",
+      "solution": "$S_{base} = 20.98,\\; V = \\frac{1}{3}\\cdot 20.98 \\cdot 5 = 34.97$",
+      "spec": {
+        "type": "pyramid_volume_from_triangle_base",
+        "base_sides": [
+          6,
+          7,
+          8
+        ],
+        "height": 5,
+        "angle_between_edges_deg": 60,
+        "answer_expr": {
+          "base_area": "20.98",
+          "volume": "34.97"
+        }
+      }
+    },
+    {
+      "definition_et": "$(RE~2014)~\\text{Püstprisma telglõige on võrdhaarne kolmnurk (alus 10 cm, kõrgus 12 cm). Aluseks ruut küljepikkusega 6 cm.}$",
+      "definition_en": "$(RE~2014)~\\text{Prism axial section is isosceles triangle (base 10 cm, height 12 cm). Base is square 6 cm.}$",
+      "solution": "$V = 6^2 \\cdot 12 = 432,\\; S = 2\\cdot 36 + 4\\cdot\\sqrt{(12^2 + 5^2)}\\cdot 6$",
+      "spec": {
+        "type": "prism_from_axial_section",
+        "base": "square",
+        "base_edge": 6,
+        "axial_triangle": {
+          "base": 10,
+          "height": 12
+        },
+        "answer_expr": {
+          "volume": "432",
+          "surface_area": "252 + 4*6*sqrt(169)"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Püramiidi kõik külgtahkude kõrgused on 15 cm. Alus on nelinurk: küljed 4, 4, 6, 6 cm, diagonaal 8 cm.}$",
+      "definition_en": "$\\text{Pyramid with lateral face altitudes 15 cm. Base: quadrilateral with sides 4,4,6,6 and diagonal 8 cm.}$",
+      "solution": "$S_{base} = 48,\\; V = \\frac{1}{3}\\cdot48\\cdot15 = 240$",
+      "spec": {
+        "type": "pyramid_from_quad_with_equal_heights",
+        "base_sides": [
+          4,
+          4,
+          6,
+          6
+        ],
+        "diagonal": 8,
+        "height": 15,
+        "answer_expr": {
+          "base_area": "48",
+          "volume": "240"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Korrapärane kolmnurkne püramiid, kõik servad 8 cm. Arvuta täispindala ja ruumala.}$",
+      "definition_en": "$\\text{Regular triangular pyramid, all edges 8 cm. Find total surface area and volume.}$",
+      "solution": "$S = a^2\\sqrt{3} + 3\\cdot\\frac{a\\cdot l}{2},\\; V = \\frac{1}{3}\\cdot S_{base} \\cdot h$",
+      "spec": {
+        "type": "regular_triangular_pyramid_geometry",
+        "edge": 8,
+        "answer_expr": {
+          "surface_area": "16*sqrt(3) + 3*(8*sqrt(3)/2)",
+          "volume": "(1/3)*(16*sqrt(3))*sqrt(8^2 - 4^2)/sqrt(3)"
+        }
+      }
+    }
+  ]
+
+
+},
+"MATEMAATIKA RAKENDUSED": {
+  "A" :[
+    {
+      "definition_et": "$\\left(\\frac{1 - a}{1 + b}\\right)^{-1} + \\left(\\frac{1 + b}{1 - a}\\right)^{-1}$",
+      "definition_en": "$\\left(\\frac{1 - a}{1 + b}\\right)^{-1} + \\left(\\frac{1 + b}{1 - a}\\right)^{-1}$",
+      "solution": "$= \\frac{1 + b}{1 - a} + \\frac{1 - a}{1 + b}$",
+      "spec": {
+        "type": "simplify_expression",
+        "expression": "(1 - a)/(1 + b)**-1 + (1 + b)/(1 - a)**-1",
+        "answer_expr": "(1 + b)/(1 - a) + (1 - a)/(1 + b)"
+      }
+    },
+    {
+      "definition_et": "$x^2 - 4x < 0$",
+      "definition_en": "$x^2 - 4x < 0$",
+      "solution": "$x \\in (0, 4)$",
+      "spec": {
+        "type": "solve_inequality",
+        "inequality": "x**2 - 4*x < 0",
+        "solve_var": "x",
+        "answer_interval": "(0, 4)"
+      }
+    },
+    {
+      "definition_et": "$\\begin{cases} x + 1 < 6 \\\\ x - 1 > -2 \\end{cases}$",
+      "definition_en": "$\\begin{cases} x + 1 < 6 \\\\ x - 1 > -2 \\end{cases}$",
+      "solution": "$x \\in (-1, 5)$",
+      "spec": {
+        "type": "solve_inequality_system",
+        "inequalities": [
+          "x + 1 < 6",
+          "x - 1 > -2"
+        ],
+        "solve_var": "x",
+        "answer_interval": "(-1, 5)"
+      }
+    },
+    {
+      "definition_et": "$\\frac{\\log 98}{\\log 14} - 7$",
+      "definition_en": "$\\frac{\\log 98}{\\log 14} - 7$",
+      "solution": "$= 2 - 7 = -5$",
+      "spec": {
+        "type": "evaluate_log_expression",
+        "expression": "log(98)/log(14) - 7",
+        "answer_expr": "-5"
+      }
+    },
+    {
+      "definition_et": "$2\\sin(180^\\circ + x)\\cos(180^\\circ - x)$",
+      "definition_en": "$2\\sin(180^\\circ + x)\\cos(180^\\circ - x)$",
+      "solution": "$= -\\sin(2x)$",
+      "spec": {
+        "type": "simplify_trig_expression",
+        "expression": "2*sin(pi + x)*cos(pi - x)",
+        "answer_expr": "-sin(2*x)"
+      }
+    },
+    {
+      "definition_et": "$\\left(\\frac{1}{25}\\right)^{x-0.24} = 125$",
+      "definition_en": "$\\left(\\frac{1}{25}\\right)^{x-0.24} = 125$",
+      "solution": "$x = -0.76$",
+      "spec": {
+        "type": "solve_exponential_equation",
+        "equation": "(1/25)**(x - 0.24) = 125",
+        "solve_var": "x",
+        "answer_expr": "-0.76"
+      }
+    },
+    {
+      "definition_et": "$\\text{Leidke joone } y = x^2 - 2x + 5 \\text{ puutuja tõus punktis } (1, 4)$",
+      "definition_en": "$\\text{Find the slope of the tangent to } y = x^2 - 2x + 5 \\text{ at } (1, 4)$",
+      "solution": "$f'(x) = 2x - 2,\\; f'(1) = 0$",
+      "spec": {
+        "type": "tangent_slope",
+        "expression": "x**2 - 2*x + 5",
+        "variable": "x",
+        "at_point": 1,
+        "answer_expr": "0"
+      }
+    },
+    {
+      "definition_et": "$\\frac{\\sin(180^\\circ - x) \\cdot \\sin^2 x}{\\sin 2x \\cdot \\sin(360^\\circ - x)}$",
+      "definition_en": "$\\frac{\\sin(180^\\circ - x) \\cdot \\sin^2 x}{\\sin 2x \\cdot \\sin(360^\\circ - x)}$",
+      "solution": "$= \\frac{\\sin^2 x}{\\sin 2x}$",
+      "spec": {
+        "type": "simplify_trig_expression",
+        "expression": "sin(pi - x)*sin(x)**2 / (sin(2*x)*sin(2*pi - x))",
+        "answer_expr": "sin(x)**2 / sin(2*x)"
+      }
+    },
+    {
+      "definition_et": "$\\int_{\\frac{\\pi}{2}}^{\\pi} (\\cos x - 4)\\,dx$",
+      "definition_en": "$\\int_{\\frac{\\pi}{2}}^{\\pi} (\\cos x - 4)\\,dx$",
+      "solution": "$= -4.57$",
+      "spec": {
+        "type": "definite_integral",
+        "integrand": "cos(x) - 4",
+        "variable": "x",
+        "lower_limit": "pi/2",
+        "upper_limit": "pi",
+        "answer_expr": "-4.57"
+      }
+    }
+  ],
+  "B" :  [
+    {
+      "definition_et": "$\\begin{cases} 2x + 2y = -1 \\\\ 3.5 \\cdot 2^x + 1 - 20y = 146 \\end{cases}$",
+      "definition_en": "$\\begin{cases} 2x + 2y = -1 \\\\ 3.5 \\cdot 2^x + 1 - 20y = 146 \\end{cases}$",
+      "solution": "$x = 4,\\; y = -2.5$",
+      "spec": {
+        "type": "solve_equation_system",
+        "equations": [
+          "2*x + 2*y = -1",
+          "3.5*2**x + 1 - 20*y = 146"
+        ],
+        "solve_vars": [
+          "x",
+          "y"
+        ],
+        "answer_expr": {
+          "x": "4",
+          "y": "-2.5"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Auto kiirus 5 km/h suurem kui bussi oma. Vahe 9 min, teekond 180 km. Leidke kiirused.}$",
+      "definition_en": "$\\text{Car is 5 km/h faster than bus. Arrives 9 min earlier on 180 km trip. Find both speeds.}$",
+      "solution": "$v = 60,\\; v + 5 = 65$",
+      "spec": {
+        "type": "relative_speed_time_problem",
+        "distance": 180,
+        "time_diff_hr": 0.15,
+        "speed_diff": 5,
+        "answer_expr": {
+          "bus": "60",
+          "car": "65"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Ristkülikut muudetakse: 25\\% pikemaks ja teist poolt pooleks, ümbermõõt 26 cm. Siis +4 cm ja –2 cm → ümbermõõt 32 cm.}$",
+      "definition_en": "$\\text{Rectangle: 25% longer + half, then +4cm/-2cm. First perimeter 26, second 32. Find sides and angle between diagonals.}$",
+      "solution": "$a = 4,\\; b = 6,\\; \\cos \\theta = \\frac{7}{12}$",
+      "spec": {
+        "type": "rectangle_transformation_and_angle",
+        "initial_conditions": {
+          "0.25a + 0.5b": "26"
+        },
+        "final_conditions": {
+          "(a+4)+(b-2)": "32"
+        },
+        "answer_expr": {
+          "a": "4",
+          "b": "6",
+          "cos_angle": "7/12"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Müük 52 paari/päev, hind 40 €. Iga 2 € hinnatõus → –1 paar/päev. Maksimaalne tulu?}$",
+      "definition_en": "$\\text{52 pairs/day at 40 €. Every 2 € increase lowers by 1 pair/day. Max revenue?}$",
+      "solution": "$hind = 60,\\; maksimaalne tulu = 3000$",
+      "spec": {
+        "type": "revenue_maximization_piecewise_linear",
+        "initial_price": 40,
+        "initial_sales": 52,
+        "price_step": 2,
+        "sales_drop_per_step": 1,
+        "answer_expr": {
+          "optimal_price": "60",
+          "max_revenue": "3000"
+        }
+      }
+    },
+    {
+      "definition_et": "$\\text{Hind sisaldab 18\\% tööjõukulu. Kui see tõuseb 10\\%, kui palju tõuseb hind?}$",
+      "definition_en": "$\\text{Price includes 18% labor. Labor cost increases 10%. How much does final price increase?}$",
+      "solution": "$\\Delta = 1.8\\%$",
+      "spec": {
+        "type": "price_increase_from_cost_component",
+        "labor_percent": 18,
+        "increase_percent": 10,
+        "answer_expr": "1.8"
+      }
+    },
+    {
+      "definition_et": "$\\text{Aritmeetilise jada } \\frac{a_4}{a_1} = 7,\\; a_6 a_3 = 220. Leidke } a_1$",
+      "definition_en": "$\\text{Arithmetic sequence } a_4/a_1 = 7,\\; a_6 \\cdot a_3 = 220. Find } a_1$",
+      "solution": "$a_1 = 2$",
+      "spec": {
+        "type": "arithmetic_sequence_solver",
+        "conditions": [
+          "a4 / a1 = 7",
+          "a6 * a3 = 220"
+        ],
+        "solve_var": "a1",
+        "answer_expr": "2"
+      }
+    },
+    {
+      "definition_et": "$A = \\left(\\frac{\\sqrt{2a} - \\sqrt{b}}{\\sqrt{2a} + \\sqrt{b}} - \\frac{\\sqrt{2a} + \\sqrt{b}}{\\sqrt{2a} - \\sqrt{b}}\\right) \\cdot \\left(\\sqrt{\\frac{b}{4a}} - \\sqrt{\\frac{a}{b}}\\right)$",
+      "definition_en": "$A = \\left(\\frac{\\sqrt{2a} - \\sqrt{b}}{\\sqrt{2a} + \\sqrt{b}} - \\frac{\\sqrt{2a} + \\sqrt{b}}{\\sqrt{2a} - \\sqrt{b}}\\right) \\cdot \\left(\\sqrt{\\frac{b}{4a}} - \\sqrt{\\frac{a}{b}}\\right)$",
+      "solution": "$A = -4$",
+      "spec": {
+        "type": "simplify_nested_radicals",
+        "expression": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))",
+        "answer_expr": "-4"
+      }
+    }
+  ],
+  "C" : [
+    {
+      "definition_et": "$\\frac{x^2 - 4x + 3}{x^2 + 5x - 6} \\geq 1$",
+      "definition_en": "$\\frac{x^2 - 4x + 3}{x^2 + 5x - 6} \\geq 1$",
+      "solution": "$x \\in (-3, -2) \\cup (3, \\infty)$",
+      "spec": {
+        "type": "solve_rational_inequality",
+        "inequality": "(x**2 - 4*x + 3)/(x**2 + 5*x - 6) >= 1",
+        "solve_var": "x",
+        "answer_interval": "(-3, -2) U (3, ∞)"
+      }
+    },
+    {
+      "definition_et": "$\\text{Võrratusüsteem:}\\begin{cases}2x^2 < (x - 1)(1 + x) + 10 \\\\ \\frac{x - 1}{2 - x} + \\frac{1}{2} \\geq 0\\end{cases}$",
+      "definition_en": "$\\text{System of inequalities:}\\begin{cases}2x^2 < (x - 1)(1 + x) + 10 \\\\ \\frac{x - 1}{2 - x} + \\frac{1}{2} \\geq 0\\end{cases}$",
+      "solution": "$x = -1$",
+      "spec": {
+        "type": "solve_inequality_system",
+        "inequalities": [
+          "2*x**2 < (x - 1)*(1 + x) + 10",
+          "(x - 1)/(2 - x) + 1/2 >= 0"
+        ],
+        "solve_var": "x",
+        "answer_values": [
+          -1
+        ]
+      }
+    },
+    {
+      "definition_et": "$h(x) = x(x + 3)^2 + 1$",
+      "definition_en": "$h(x) = x(x + 3)^2 + 1$",
+      "solution": "$\\text{max: } (x,y) = (-3, 1),\\; \\text{decreasing: } (-∞, -1),\\; \\text{concave: } (-1, 0),\\; \\text{inflection: } x = -1$",
+      "spec": {
+        "type": "analyze_cubic_function",
+        "expression": "x*(x + 3)**2 + 1",
+        "variable": "x",
+        "answer_expr": {
+          "max_point": "(-3, 1)",
+          "decreasing_interval": "(-∞, -1)",
+          "concave_interval": "(-1, 0)",
+          "inflection_point": -1
+        }
+      }
+    },
+    {
+      "definition_et": "$\\cos^2 5 + \\cos\\left(\\frac{\\pi}{2} - x\\right) + 3 \\sin(\\pi + x) + \\sin^2 5$",
+      "definition_en": "$\\cos^2 5 + \\cos\\left(\\frac{\\pi}{2} - x\\right) + 3 \\sin(\\pi + x) + \\sin^2 5$",
+      "solution": "$= 1 + \\sin x - 3 \\sin x = 1 - 2 \\sin x$",
+      "spec": {
+        "type": "simplify_trig_expression",
+        "expression": "cos(5)**2 + cos(pi/2 - x) + 3*sin(pi + x) + sin(5)**2",
+        "answer_expr": "1 - 2*sin(x)"
+      }
+    }
+  ]
+
+
 }
+}
+
+
+
+
+
+
+
+

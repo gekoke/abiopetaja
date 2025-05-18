@@ -2295,3 +2295,2173 @@ Solution: $1$
  definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
  solution: $A=2\sqrt{2},\;B=\tfrac14$
  spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4, 'B': 4, 'C': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Lihtsustage avaldis: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Lihtsustage avaldis: }\sqrt{98} - 5\sqrt{0,02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Lihtsustage avaldis: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Arvutage avaldise väärtus ilma kalkulaatorita: }60^{6}\cdot0{,}15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+# hard EXAMPLES
+ definition:  $\text{Lihtsustage avaldis } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Lihtsustage avaldis }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{seejärel arvutage }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Lihtsustage avaldis }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{ja arvutage, kui }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }\frac{2a^{2}-2}{2}$
+ solution: $a^{2}-1$
+ spec: {"type": "simplify", "expr": "(2*a**2 - 2)/2", "answer_expr": "a**2 - 1"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }\frac{2a^{2}-2}{2}$
+ solution: $a^{2}-1$
+ spec: {"type": "simplify", "expr": "(2*a**2 - 2)/2", "answer_expr": "a**2 - 1"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }\frac{2a^{2}-2}{2}$
+ solution: $a^{2}-1$
+ spec: {"type": "simplify", "expr": "(2*a**2 - 2)/2", "answer_expr": "a**2 - 1"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }\frac{2a^{2}-2}{2}$
+ solution: $a^{2}-1$
+ spec: {"type": "simplify", "expr": "(2*a**2 - 2)/2", "answer_expr": "a**2 - 1"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\sqrt{98} - 5\sqrt{0.02} + \sqrt{50} - \sqrt{242}$
+ solution: $\tfrac{\sqrt{2}}{2}$
+ spec: {"type": "simplify", "expr": "sqrt(98) - 5*sqrt(1/50) + sqrt(50) - sqrt(242)", "answer_expr": "sqrt(2)/2"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:   Fractions are given $A=\frac{a-4}{a+\sqrt{a}},\;B=\frac{a\sqrt{a}+a}{a+2\sqrt{a}}$. 1) Form the product $A\cdot B$ and simplify. 2) Find $a$ for which $A\cdot B=1$.
+ solution: $a=9$
+ spec: {"type": "simplify_then_evaluate", "expr": "(a - 4)/(a + sqrt(a)) * (a*sqrt(a) + a)/(a + 2*sqrt(a))", "answer_expr": "sqrt(a) - 2", "equation_rhs": 1, "solve_var": "a", "answer": 9}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-\sqrt{4a}}{a} : \Bigl( \frac{a+4}{\sqrt{a}} - 4 \Bigr)$
+ solution: $\tfrac{1}{\sqrt{a}-2}$
+ spec: {"type": "simplify", "expr": "((a - sqrt(4*a))/a) / (((a + 4)/sqrt(a)) - 4)", "answer_expr": "1/(sqrt(a) - 2)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{6} - 2\sqrt{5})(4 - 3\sqrt{6})$
+ solution: $-18 + 4\sqrt{6} - 8\sqrt{5} + 6\sqrt{30}$
+ spec: {"type": "simplify", "expr": "(sqrt(6)-2*sqrt(5))*(4-3*sqrt(6))", "answer_expr": "-18 + 4*sqrt(6) - 8*sqrt(5) + 6*sqrt(30)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{6} - 2\sqrt{5})(4 - 3\sqrt{6})$
+ solution: $-18 + 4\sqrt{6} - 8\sqrt{5} + 6\sqrt{30}$
+ spec: {"type": "simplify", "expr": "(sqrt(6)-2*sqrt(5))*(4-3*sqrt(6))", "answer_expr": "-18 + 4*sqrt(6) - 8*sqrt(5) + 6*sqrt(30)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{6} - 2\sqrt{5})(4 - 3\sqrt{6})$
+ solution: $-18 + 4\sqrt{6} - 8\sqrt{5} + 6\sqrt{30}$
+ spec: {"type": "simplify", "expr": "(sqrt(6)-2*sqrt(5))*(4-3*sqrt(6))", "answer_expr": "-18 + 4*sqrt(6) - 8*sqrt(5) + 6*sqrt(30)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{6} - 2\sqrt{5})(4 - 3\sqrt{6})$
+ solution: $-18 + 4\sqrt{6} - 8\sqrt{5} + 6\sqrt{30}$
+ spec: {"type": "simplify", "expr": "(sqrt(6)-2*sqrt(5))*(4-3*sqrt(6))", "answer_expr": "-18 + 4*sqrt(6) - 8*sqrt(5) + 6*sqrt(30)"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\text{Calculate without a calculator: }\left(\tfrac{1}{3}\right)^{-10}\cdot27^{-3}+0.2^{-4}\cdot25^{-2}+\left(64^{-1/2}\right)^{-3}$
+ solution: $516$
+ spec: {"type": "evaluate", "expr": "(1/3)**(-10) * 27**(-3) + (0.2)**(-4) * 25**(-2) + (64**(-1/2))**(-3)", "answer_expr": "516"}
+ definition:  $\displaystyle \frac{3\sqrt{x}-x}{12x}\div\left[\frac{9-x}{(3+\sqrt{x})^{2}-(3-\sqrt{x})^{2}}\right]$
+ solution: $\tfrac{1}{3+\sqrt{x}}$
+ spec: {"type": "simplify", "expr": "((3*sqrt(x) - x)/(12*x)) / ((9 - x)/(((3 + sqrt(x))**2) - ((3 - sqrt(x))**2)))", "answer_expr": "1/(3 + sqrt(x))"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }(5 + \sqrt{10})^2$
+ solution: $35 + 10\sqrt{10}$
+ spec: {"type": "simplify", "expr": "(5+sqrt(10))**2", "answer_expr": "35 + 10*sqrt(10)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }\frac{x-1}{\sqrt{x}-1}$
+ solution: $\sqrt{x}+1$
+ spec: {"type": "simplify", "expr": "(x - 1) / (sqrt(x) - 1)", "answer_expr": "sqrt(x) + 1"}
+ definition:  $\text{Simplify the expression: }(\sqrt{3} + 7)(\sqrt{3} - 7)$
+ solution: $-46$
+ spec: {"type": "simplify", "expr": "(sqrt(3)+7)*(sqrt(3)-7)", "answer_expr": "-46"}
+ definition:  $\text{Simplify the expression: }(\sqrt{72}/\sqrt{35})\times(\sqrt{7}/\sqrt{40})$
+ solution: $\tfrac{3}{5}$
+ spec: {"type": "simplify", "expr": "(sqrt(72)/sqrt(35))*(sqrt(7)/sqrt(40))", "answer_expr": "3/5"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\bigl(\tfrac{1}{\sqrt{1-x}} + \sqrt{1+x}\bigr)^{-1} \cdot \bigl(1 + \sqrt{1-x^{2}}\bigr)$
+ solution: $\sqrt{1-x}$
+ spec: {"type": "simplify", "expr": "(1/sqrt(1 - x) + sqrt(1 + x))**-1 * (1 + sqrt(1 - x**2))", "answer_expr": "sqrt(1 - x)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\bigl(\tfrac{1}{\sqrt{1-x}} + \sqrt{1+x}\bigr)^{-1} \cdot \bigl(1 + \sqrt{1-x^{2}}\bigr)$
+ solution: $\sqrt{1-x}$
+ spec: {"type": "simplify", "expr": "(1/sqrt(1 - x) + sqrt(1 + x))**-1 * (1 + sqrt(1 - x**2))", "answer_expr": "sqrt(1 - x)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\bigl(\tfrac{1}{\sqrt{1-x}} + \sqrt{1+x}\bigr)^{-1} \cdot \bigl(1 + \sqrt{1-x^{2}}\bigr)$
+ solution: $\sqrt{1-x}$
+ spec: {"type": "simplify", "expr": "(1/sqrt(1 - x) + sqrt(1 + x))**-1 * (1 + sqrt(1 - x**2))", "answer_expr": "sqrt(1 - x)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\text{Calculate without a calculator: }60^{6}\cdot0.15^{6}\cdot27^{4}+\tfrac{23}{3}$
+ solution: $\tfrac{11}{3}$
+ spec: {"type": "evaluate", "expr": "60**6 * 0.15**6 / 27**4 + (2**3)/3", "answer_expr": "11/3"}
+ definition:  $\bigl(\tfrac{1}{\sqrt{1-x}} + \sqrt{1+x}\bigr)^{-1} \cdot \bigl(1 + \sqrt{1-x^{2}}\bigr)$
+ solution: $\sqrt{1-x}$
+ spec: {"type": "simplify", "expr": "(1/sqrt(1 - x) + sqrt(1 + x))**-1 * (1 + sqrt(1 - x**2))", "answer_expr": "sqrt(1 - x)"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+
+=== Topic: AVALDISED; Counts: {'A': 4} ===
+# easy EXAMPLES
+ definition:  $\text{Simplify the expression: }(2a + 3\sqrt{b})^2$
+ solution: $4a^2 + 12a\sqrt{b} + 9b$
+ spec: {"type": "simplify", "expr": "(2*a + 3*sqrt(b))**2", "answer_expr": "4*a**2 + 12*a*sqrt(b) + 9*b"}
+ definition:  $\text{Simplify the expression: }\dfrac{2a^{-1}}{2a-2}$
+ solution: $\dfrac{1}{a\,(a-1)}$
+ spec: {"type": "simplify", "expr": "(2*a**-1) / (2*a - 2)", "answer_expr": "1 / (a*(a - 1))"}
+ definition:  $\text{Simplify the expression: }\frac{\sqrt{a}}{a}$
+ solution: $\tfrac{1}{\sqrt{a}}$
+ spec: {"type": "simplify", "expr": "sqrt(a)/a", "answer_expr": "1/sqrt(a)"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'B': 4} ===
+# medium EXAMPLES
+ definition:  $\displaystyle \bigl(\tfrac{y-x}{\sqrt{x}-\sqrt{y}} + 2\sqrt{x}\bigr)^{-1} : (\sqrt{x}+\sqrt{y})$
+ solution: $\tfrac{1}{x-y}$
+ spec: {"type": "simplify", "expr": "(( (y - x)/(sqrt(x) - sqrt(y)) + 2*sqrt(x) )**-1) / (sqrt(x) + sqrt(y))", "answer_expr": "1/(x - y)"}
+ definition:  $\displaystyle \frac{\bigl((\tfrac{18a}{b})^{4}\cdot(\tfrac{b}{6a})^{4}\bigr)-a^{7}}{a^{3}+(\tfrac{a}{18})^{9}}$
+ solution: $81$
+ spec: {"type": "simplify", "expr": "((18*a)/b)**4 * (b/(6*a))**4 - a**(7/2) / a**3 + (a**(1/18))**9", "answer_expr": "81"}
+ definition:  $\displaystyle \frac{a-9}{a\sqrt{a}+3a} \cdot \bigl(\tfrac{2}{a}\bigr)^{-1}$
+ solution: $\tfrac{\sqrt{a}-3}{2}$
+ spec: {"type": "simplify", "expr": "((a - 9)/(a*sqrt(a) + 3*a)) * (2/a)**-1", "answer_expr": "(sqrt(a) - 3)/2"}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
+=== Topic: AVALDISED; Counts: {'C': 4} ===
+# hard EXAMPLES
+ definition:  $\text{Simplify the expression }\bigl(\tfrac{a^{2}-b^{2}}{a\sqrt{a}+a\sqrt{b}}-\tfrac{a-b}{\sqrt{b}+\sqrt{a}}\bigr)\Bigl(\tfrac{b}{a}\Bigr)^{-1}\;\text{and calculate, if }a=4^{-2},\,b=27^{2/3}$
+ solution: $-\tfrac{11}{4}$
+ spec: {"type": "simplify_then_evaluate", "expr": "((a**2 - b**2)/(a*sqrt(a) + a*sqrt(b)) - (a - b)/(sqrt(b) + sqrt(a))) * (b/a)**-1", "answer_expr": "sqrt(a) - sqrt(b)", "vars": {"a": "4**-2", "b": "27**(2/3)"}, "answer": "-11/4"}
+ definition:  $\text{Simplify the expression } \frac{\tfrac{y-\sqrt{xy}}{\sqrt{x}+\sqrt{y}}+\sqrt{x}}{\tfrac{y}{\sqrt{xy}-x}+\tfrac{x}{\sqrt{xy}+y}-\tfrac{x+y}{\sqrt{xy}}}$
+ solution: $\sqrt{y}-\sqrt{x}$
+ spec: {"type": "simplify", "expr": "((y - sqrt(x*y))/(sqrt(x) + sqrt(y)) + sqrt(x)) / (y/(sqrt(x*y) - x) + x/(sqrt(x*y) + y) - (x + y)/sqrt(x*y))", "answer_expr": "sqrt(y) - sqrt(x)"}
+ definition:  $\text{Simplify the expression }A=\Bigl(\tfrac{\sqrt{2a}-\sqrt{b}}{\sqrt{2a}+\sqrt{b}}-\tfrac{\sqrt{2a}+\sqrt{b}}{\sqrt{2a}-\sqrt{b}}\Bigr)\Bigl(\sqrt{\tfrac{b}{4a}}-\sqrt{\tfrac{a}{b}}\Bigr)$,\;\text{and then calculate }B=\tfrac{2^{-0.5}}{A}$
+ solution: $A=2\sqrt{2},\;B=\tfrac14$
+ spec: {"type": "simplify_then_evaluate", "expr": "((sqrt(2*a) - sqrt(b))/(sqrt(2*a) + sqrt(b)) - (sqrt(2*a) + sqrt(b))/(sqrt(2*a) - sqrt(b))) * (sqrt(b/(4*a)) - sqrt(a/b))", "answer_expr": "2*sqrt(2)", "follow_up": {"expr": "2**(-0.5) / (2*sqrt(2))", "answer": "1/4"}}
+
