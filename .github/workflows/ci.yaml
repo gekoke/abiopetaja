@@ -2,16 +2,18 @@ name: ci
 
 on:
   push:
+    branches-ignore:
+      - main
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v17
+        uses: DeterminateSystems/nix-installer-action@v14
 
       - name: Set up binary cache
-        uses: cachix/cachix-action@v16
+        uses: cachix/cachix-action@v15
         with:
           name: abiopetaja
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"

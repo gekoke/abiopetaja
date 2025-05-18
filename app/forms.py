@@ -1,5 +1,6 @@
 import logging
 
+from django import forms
 from django.contrib.auth.models import AbstractBaseUser, AnonymousUser, User
 from django.db.models import Q
 from django.forms import (
@@ -13,7 +14,8 @@ from django.forms import (
 from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
 
-from app.models import ProblemKind, Template, TemplateProblem, Test, TestGenerationParameters
+# Import only the models that are still used.
+from app.models import Template, TemplateProblem, Test, TestGenerationParameters
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +26,6 @@ class GenerateTestForm(Form):
         label=_("Template to generate test from"),
         empty_label=None,
     )
-
     test_version_count = IntegerField(
         min_value=1, max_value=6, initial=1, label=_("Number of test versions")
     )
@@ -62,7 +63,6 @@ class SaveTestForm(ModelForm):
         name = self.cleaned_data["name"]
         if Test.objects.filter(name=name, author=self.user).exists():
             raise ValidationError(_("A test with this name already exists"), code="exists")
-
         return name
 
 
@@ -80,7 +80,6 @@ class TestUpdateForm(ModelForm):
         name = self.cleaned_data["name"]
         if Test.objects.filter(~Q(pk=self.instance.pk), name=name, author=self.user).exists():
             raise ValidationError(_("Another test with this name already exists"), code="exists")
-
         return name
 
 
@@ -110,7 +109,6 @@ class TemplateUpdateForm(ModelForm):
             raise ValidationError(
                 _("Another template with this name already exists"), code="exists"
             )
-
         return name
 
 
@@ -118,28 +116,45 @@ TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(
     min_value=1,
     max_value=20,
     initial=1,
-    label=_("Number of occurences"),
+    label=_("Number of occurrences"),
 )
 
 
-class TemplateProblemCreateFrom(ModelForm):
+class TemplateProblemCreateForm(ModelForm):
     count = TEMPLATE_PROBLEM_COUNT_FIELD
 
     def __init__(self, *args, **kwargs) -> None:
         self.user: User = kwargs.pop("user")
         self.template: Template = kwargs.pop("template")
         super().__init__(*args, **kwargs)
+        # Optionally: prepopulate the available topics from a lookup list (for instance from the JSON)
+        self.fields["topic"].initial = "ARVUHULGAD"
+        self.fields["difficulty"].initial = "A"
 
     class Meta:
         model = TemplateProblem
-        fields = ["problem_kind", "count"]
+        fields = ["topic", "difficulty", "count"]
 
-    def clean_problem_kind(self):
-        problem_kind: ProblemKind = self.cleaned_data["problem_kind"]
-        template_already_has_problem_kind = problem_kind in self.template.problem_kinds
-        if template_already_has_problem_kind:
-            raise ValidationError(_("This template already contains this problem kind"))
-        return problem_kind
+    def clean_topic(self):
+        topic = self.cleaned_data["topic"]
+        if topic == "":
+            raise ValidationError(_("Topic cannot be empty"))
+        return topic
+
+    def clean(self):
+        cleaned_data = super().clean()
+        # Optionally: check that template does not already have a problem for the same topic and difficulty
+        topic = cleaned_data.get("topic")
+        difficulty = cleaned_data.get("difficulty")
+        if topic and difficulty:
+            if (
+                topic in self.template.problem_topics
+                and difficulty in self.template.problem_difficulties
+            ):
+                raise ValidationError(
+                    _("This template already contains a problem for this topic and difficulty")
+                )
+        return cleaned_data
 
 
 class TemplateProblemUpdateForm(ModelForm):
@@ -148,3 +163,31 @@ class TemplateProblemUpdateForm(ModelForm):
     class Meta:
         model = TemplateProblem
         fields = ["count"]
+
+
+DIFFICULTY_CHOICES = [
+    ("A", "Easy"),
+    ("B", "Medium"),
+    ("C", "Hard"),
+]
+
+
+class AITestGenerationForm(forms.Form):
+    topic = forms.CharField(
+        label="Topic",
+        max_length=100,
+        widget=forms.TextInput(attrs={"placeholder": "e.g., Trigonometry"}),
+        required=True,
+    )
+    difficulty = forms.ChoiceField(
+        label="Difficulty",
+        choices=DIFFICULTY_CHOICES,
+        required=True,
+    )
+    number_of_problems = forms.IntegerField(
+        label="Number of Problems",
+        min_value=1,
+        max_value=20,
+        initial=5,
+        required=True,
+    )

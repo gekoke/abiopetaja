@@ -2,7 +2,6 @@ from django.urls import path
 
 from app.views import (
     DashboardView,
-    ProblemKindListView,
     TemplateCreateView,
     TemplateDeleteView,
     TemplateDetailView,
@@ -15,6 +14,7 @@ from app.views import (
     TestDetailView,
     TestListView,
     TestUpdateView,
+    TopicDifficultyListView,
     UserFeedbackCreateView,
     test_download,
     test_generate,
@@ -64,7 +64,7 @@ urlpatterns = [
         TemplateProblemDeleteView.as_view(),
         name="templateproblem-delete",
     ),
-    path("problem-kinds/", ProblemKindListView.as_view(), name="problemkind-list"),
+    path("topic-difficulties/", TopicDifficultyListView.as_view(), name="topic-difficulty-list"),
     path(
         "test-generation/<uuid:preview_test_pk>",
         test_generation,

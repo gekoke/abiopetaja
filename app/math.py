@@ -1,247 +1,224 @@
-import random
+############################ math.py ################################
+# Local generation with Qwen/Qwen2.5‑Math‑7B‑Instruct (plain FP16)
+# All text **must be English**.
+# All mathematics **must be written in LaTeX math mode**, i.e. wrap
+#   inline formulas in `$ ... $` and multi‑line in `$$ ... $$` or `\[ ... \]`.
+########################################################################
 
-from sympy import Expr, S, simplify, solveset, sympify
-from sympy.core import UnevaluatedExpr, symbols
-from sympy.printing.latex import latex
+from __future__ import annotations
+
+import json
+import logging
+import os
+import re
+from dataclasses import dataclass
+from typing import List
+
+# import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
+
+###############################################################################
+# Model initialisation (loads once per process)
+###############################################################################
+_MODEL_NAME = "Qwen/Qwen2.5-Math-7B-Instruct"
+_tokenizer = AutoTokenizer.from_pretrained(
+    _MODEL_NAME,
+    trust_remote_code=True,
+)
+_model = AutoModelForCausalLM.from_pretrained(
+    _MODEL_NAME,
+    #  torch_dtype=torch.float16,
+    device_map="auto",
+    trust_remote_code=True,
+)
+_streamer = TextStreamer(_tokenizer, skip_prompt=True, skip_special_tokens=True)
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+###############################################################################
+# Helper dataclass and JSON example‑loading utilities
+###############################################################################
 
 
-def _latex(expr):
-    return latex(expr, decimal_separator="comma")
-
-
-def _make_plus_or_minus():
-    return random.choice(["+", "-"])
-
-
-def _make_comparison_operator(allow_eq: bool = True):
-    """allow_eq: Whether to allow generating the '=' operator."""
-    return random.choice(["<", "<=", ">=", ">"] + (["=="] if allow_eq else []))
-
-
-def make_quadratic() -> Expr:
-    def make_coeffiecient():
-        return random.randint(-12, 12)
-
-    a, b, c = make_coeffiecient(), make_coeffiecient(), make_coeffiecient()
-    op1, op2 = _make_plus_or_minus(), _make_plus_or_minus()
-    return sympify(f"{a}*x**2 {op1} {b}*x {op2} {c}", evaluate=False)
-
-
-class Problem:
+@dataclass
+class ProblemExample:
     definition: str
     solution: str
 
 
-def make_linear_inequality_problem() -> Problem:
-    """
-    Make a linear inequality problem.
+def _read_json(path: str | os.PathLike) -> object | None:
+    try:
+        with open(path, "r", encoding="utf‑8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        logger.warning("Example JSON file '%s' not found", path)
+    except json.JSONDecodeError as e:
+        logger.error("Malformed JSON in '%s': %s", path, e)
+    return None
 
-    Example:
-    -------
-    `2(x - 3) - 1 > 3(x - 2) - 4(x + 1)`.
-    """
 
-    def make_coefficient():
-        return random.randint(2, 5)
+def get_examples_from_json(
+    topic: str,
+    difficulty: str,
+    json_file_path: str | os.PathLike = "problems.json",
+) -> List[ProblemExample]:
+    """Return a list of `ProblemExample`s filtered by *topic* and *difficulty*."""
+    data = _read_json(json_file_path)
+    if data is None:
+        return []
 
-    c1, c2, c3, c4, c5, c6, c7 = (make_coefficient() for _ in range(7))
-    o1, o2, o3, o4, o5 = (_make_plus_or_minus() for _ in range(5))
-    comparison = _make_comparison_operator(allow_eq=False)
+    examples: List[ProblemExample] = []
 
-    problem_definition = sympify(
-        f"{c1}*(x {o1} {c2}) {o2} {c3} {comparison} {c4}*(x {o3} {c5}) {o4} {c6}*(x {o5} {c7})",
-        evaluate=False,
+    if isinstance(data, dict):
+        topic_entry = data.get(topic)
+        if isinstance(topic_entry, dict):
+            for item in topic_entry.get(difficulty, []):
+                examples.append(
+                    ProblemExample(
+                        definition=item.get("definition", ""),
+                        solution=item.get("solution", ""),
+                    )
+                )
+        else:  # flat dict list per topic
+            for item in topic_entry or []:
+                if item.get("difficulty") == difficulty:
+                    examples.append(
+                        ProblemExample(
+                            definition=item.get("definition", ""),
+                            solution=item.get("solution", ""),
+                        )
+                    )
+    elif isinstance(data, list):  # completely flat
+        for item in data:
+            if (
+                isinstance(item, dict)
+                and item.get("topic") == topic
+                and item.get("difficulty") == difficulty
+            ):
+                examples.append(
+                    ProblemExample(
+                        definition=item.get("definition", ""),
+                        solution=item.get("solution", ""),
+                    )
+                )
+    else:
+        logger.error("Unexpected JSON schema in '%s'", json_file_path)
+
+    return examples
+
+
+###############################################################################
+# Utility for light post‑processing (optional)
+###############################################################################
+
+
+def format_math_expression(raw_text: str) -> str:
+    """Ensure math part is wrapped in `$ ... $` if the problem statement includes a label."""
+    if ":" in raw_text:
+        label, expr = raw_text.split(":", 1)
+        label = label.strip() + ":"
+        expr = expr.strip()
+    else:
+        label, expr = "", raw_text.strip()
+
+    if not (expr.startswith("$") and expr.endswith("$")):
+        expr = f"${expr}$"
+    return f"{label} {expr}" if label else expr
+
+
+###############################################################################
+# LLM wrapper
+###############################################################################
+
+
+def _generate_with_llm(prompt: str, max_new_tokens: int = 512, temperature: float = 0.7) -> str:
+    """Query Qwen model and return decoded text."""
+    input_ids = _tokenizer(prompt, return_tensors="pt").to(_model.device).input_ids
+
+
+#    with torch.no_grad():
+#       output_ids = _model.generate(
+#          input_ids,
+#         max_new_tokens=max_new_tokens,
+#        do_sample=True,
+#       temperature=temperature,
+#      streamer=None,  # not streaming because we need full text
+# )
+# return _tokenizer.decode(output_ids[0][input_ids.shape[-1] :], skip_special_tokens=True).strip()
+
+
+###############################################################################
+# Public API – generate_problem_with_ai / generate_ai_test_problems
+###############################################################################
+
+
+def _build_prompt(topic: str, difficulty: str, examples: List[ProblemExample]) -> str:
+    examples_txt = "\n".join(
+        f"### Example {i+1}\nProblem: {ex.definition}\nSolution: {ex.solution}"
+        for i, ex in enumerate(examples[:3])
     )
-    problem_solution = solveset(problem_definition, "x", S.Reals)
-
-    problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
-    return problem
-
-
-def make_quadratic_inequality_problem() -> Problem:
-    """
-    Make a quadratic inequality problem.
-
-    Example:
-    -------
-    `-5x**2 + 9x + 2 > 0`.
-    """
-    quadratic = make_quadratic()
-    comparison = _make_comparison_operator(allow_eq=False)
-
-    problem_definition = sympify(f"{quadratic} {comparison} 0")
-    problem_solution = solveset(problem_definition, "x", S.Reals)
-
-    problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
-    return problem
+    return (
+        "You are a helpful mathematical problem composer. "
+        "Create a *new* high‑school mathematics problem and its fully worked solution.\n"
+        "Requirements:\n"
+        "- **Language:** English only.\n"
+        "- **Math:** Every mathematical expression *must* be in LaTeX (math mode).\n"
+        "  Use inline `$ ... $` for short expressions and `\\[ ... \\]` for multi‑line when necessary.\n"
+        "- Include enough randomness so that consecutive calls differ.\n"
+        "- Follow the structural pattern shown in the examples below.\n"
+        "- At the end, verify your answer by recomputing. If you find a mistake, correct it before replying.\n"
+        "- Output *only* two paragraphs, with no extra commentary:\n"
+        "  1️⃣ The problem statement (labelled 'Problem:').\n"
+        "  2️⃣ The solution (labelled 'Solution:').\n"
+        "### Topic: {topic}\n"
+        "### Difficulty: {difficulty}\n"
+        "\n"
+        f"{examples_txt}\n\n"
+        "### Your Turn\n"
+        "Problem:"
+    )
 
 
-def make_fractional_inequality_problem() -> Problem:
-    """
-    Make a fractional inequality problem.
+def generate_problem_with_ai(topic: str, difficulty: str) -> dict[str, str]:
+    """Return a dict containing 'definition' and 'solution' generated by Qwen."""
+    examples = get_examples_from_json(topic, difficulty)
+    prompt = _build_prompt(topic, difficulty, examples)
 
-    Example:
-    -------
-    `2*(x - 2) / (x + 2) > 4`.
-    """
+    logger.info("[LLM‑call] generating problem for topic=%s difficulty=%s", topic, difficulty)
+    ai_output = _generate_with_llm(prompt, max_new_tokens=512, temperature=0.7)
 
-    def make_fraction() -> Expr:
-        """
-        Make a fraction.
+    # Capture first occurrence of "Solution:" (case‑insensitive)
+    match = re.search(r"(?i)solution:\s*", ai_output)
+    if match:
+        def_part = ai_output[: match.start()].strip()
+        sol_part = ai_output[match.end() :].strip()
+    else:
+        def_part, sol_part = ai_output, "Solution not generated; please retry."
 
-        Example:
-        -------
-        4*(x - 2) / (x + 3)
-        """
+    # Append to logs for debugging
+    try:
+        with open("ai_raw_output.txt", "a", encoding="utf‑8") as f:
+            f.write(f"Topic: {topic} | Difficulty: {difficulty}\n{ai_output}\n\n")
+    except Exception as e:
+        logger.error("Failed writing raw output: %s", e)
 
-        def make_coeffiecient():
-            return random.randint(1, 8)
-
-        c1, c2, c3 = (make_coeffiecient() for _ in range(3))
-        op1, op2 = _make_plus_or_minus(), _make_plus_or_minus()
-        # Use empty string if c1==1 to avoid multiplying by 1.
-        c1 = "" if c1 == 1 else f"{c1}*"
-        return sympify(f"{c1}(x {op1} {c2}) / (x {op2} {c3})", evaluate=False)
-
-    fraction = make_fraction()
-    comparsion = _make_comparison_operator(allow_eq=False)
-
-    problem_definition = sympify(f"{fraction} {comparsion} {random.randint(-9, 9)}", evaluate=False)
-    problem_solution = solveset(problem_definition, "x", S.Reals)
-
-    problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
-    return problem
+    return {
+        "definition": format_math_expression(def_part),
+        "solution": sol_part,
+    }
 
 
-def make_exponent_reduction_problem() -> Problem:
-    m, n, w, x, y = symbols("m n w x y")
-
-    def variant_1() -> Problem:
-        coef_1 = random.randint(10, 50)
-        coef_2 = random.randint(10, 50)
-        exp_1 = random.randint(2, 9)
-        exp_2 = random.randint(2, 9)
-        exp_3 = random.randint(2, 9)
-        exp_4 = random.randint(2, 9)
-        exp_5 = random.randint(2, 9)
-        exp_6 = random.randint(2, 9)
-
-        numerator = UnevaluatedExpr(coef_1 * w**exp_1 * x**exp_2 * y**exp_3)
-        denominator = coef_2 * w**exp_4 * x**exp_5 * y**exp_6
-
-        problem_definition = numerator / denominator
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_2() -> Problem:
-        coef_1 = random.randint(10, 50)
-        coef_2 = random.randint(10, 50)
-        exp_1 = random.randint(2, 9)
-        exp_2 = random.randint(2, 9)
-        exp_4 = random.randint(2, 9)
-        exp_5 = random.randint(2, 9)
-
-        numerator = UnevaluatedExpr(coef_1 * m**exp_1 * n**exp_2)
-        denominator = coef_2 * m**exp_4 * n**exp_5
-
-        problem_definition = numerator / denominator
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    variants = [
-        variant_1,
-        variant_2,
-    ]
-    return random.choice(variants)()
+def generate_ai_test_problems(topic: str, difficulty: str, count: int) -> list[dict[str, str]]:
+    """Generate *count* problems via `generate_problem_with_ai`."""
+    return [generate_problem_with_ai(topic, difficulty) for _ in range(count)]
 
 
-def make_exponent_operation_problem() -> Problem:
-    u, v, x, y, z = symbols("u v x y z")
+###############################################################################
+# __main__ quick testcase (optional)
+###############################################################################
 
-    def variant_1() -> Problem:
-        coef_1 = random.choice(list(range(-9, 0)) + list(range(1, 9)))
-        coef_2 = random.randint(1, 9)
-        exp = random.randint(2, 3)
-        numerator = UnevaluatedExpr(coef_1 * x * z)
-        denominator = coef_2 * y
-
-        problem_definition = UnevaluatedExpr(numerator / denominator) ** exp
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_2() -> Problem:
-        coef_1 = random.choice(list(i / 10 for i in range(1, 10)))
-        coef_2 = random.randint(2, 9)
-        exp_1 = random.randint(2, 3)
-        exp_2 = random.randint(2, 3)
-        exp_3 = random.randint(2, 3)
-
-        fact_1 = UnevaluatedExpr(coef_1 * x**exp_1 * y**exp_2)
-        fact_2 = coef_2 * x * y**exp_3
-
-        problem_definition = fact_1 * fact_2
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_3() -> Problem:
-        coef_1 = random.randint(-4, -2)
-        coef_2 = random.randint(2, 6)
-        exp_1 = random.randint(2, 4)
-        exp_2 = random.randint(2, 4)
-
-        problem_definition = UnevaluatedExpr(coef_1 * u * v**exp_1) / (coef_2 * u * v**exp_2)
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_4() -> Problem:
-        exp_1 = random.randint(1, 3)
-        exp_2 = random.randint(2, 3)
-        exp_3 = random.randint(2, 3)
-
-        problem_definition = (UnevaluatedExpr(x**exp_1 * y**exp_2) ** exp_3) * (-x * y)
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    variants = [
-        variant_1,
-        variant_2,
-        variant_3,
-        variant_4,
-    ]
-    return random.choice(variants)()
+if __name__ == "__main__":
+    sample = generate_problem_with_ai("ALGEBRA", "A")
+    print("\n# Generated Problem\n", sample["definition"])
+    print("\n# Solution\n", sample["solution"])

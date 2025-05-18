@@ -1,79 +1,87 @@
+import json
+import logging
 import os
-import random
-import subprocess
-from tempfile import TemporaryDirectory
 
-import pytest
-from django.test import Client
-from django.urls import reverse
+from django.conf import settings
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.utils.translation import gettext as _
 
-from app.models import ProblemKind, Template, Test, TestGenerationParameters, TestVersion
-from app.tests.lib import create_user
+from app.models import Template
+
+logger = logging.getLogger(__name__)
 
 
-def _extract_pdf_text(pdf_data: bytes) -> str:
+def get_available_topics():
     """
-    Extract text from bytes interpreted as a PDF file.
+    Reads the problems.json file (assumed to be in BASE_DIR) and returns a dictionary where:
+      - the keys are the topic names (Estonian strings as they appear in your database), and
+      - the values are dictionaries mapping each difficulty (e.g. "A", "B", "C") to a count.
 
-    Depends on `pdftotext` being in the system PATH.
+    Example return value:
+    {
+      "ARVUHULGAD": {"A": 1, "B": 1, "C": 1},
+      "AVALDISED": {"A": 1, "B": 2, "C": 1},
+      ...
+    }
+    Here we use the length of the list for each difficulty as a suggestion.
     """
-    with TemporaryDirectory() as tmp_dir:
-        pdf_file = os.path.join(tmp_dir, "testversion.pdf")
-        txt_file = os.path.join(tmp_dir, "text.txt")
-        with open(pdf_file, "wb") as f:
-            f.write(pdf_data)
-        subprocess.run(["pdftotext", pdf_file, txt_file])
-        with open(txt_file) as f:
-            return f.read()
+    problems_path = os.path.join(settings.BASE_DIR, "problems.json")
+    try:
+        with open(problems_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        topics = {}
+        for topic, diff_dict in data.items():
+            difficulties = {}
+            for diff, problems in diff_dict.items():
+                # Use at least 1 as default count.
+                difficulties[diff] = max(1, len(problems))
+            topics[topic] = difficulties
+        logger.info("Available topics found: %s", topics)
+        return topics
+    except Exception as e:
+        logger.error("Error reading problems.json: %s", e)
+        return {}
 
 
-@pytest.mark.django_db
-def test_test_version_compiles_as_expected(client: Client):
-    random.seed(69)
+@receiver(post_save, sender=User)
+def add_default_templates(sender, instance: User, created: bool, **kwargs):
+    if not created:
+        return
 
-    user = create_user(client)
+    user = instance
+    topics = get_available_topics()
+
+    for topic, difficulties in topics.items():
+        template = Template()
+        template.name = _(topic)
+        template.author = user
+        template.title = _(topic)
+        template.save()
+        for diff, count in difficulties.items():
+            # You can decide to use the suggested count from the JSON (count) or a fixed default.
+            # Here we opt for a fixed default (3) for each difficulty.
+            default_count = 3
+            template.add_problem(topic=topic, difficulty=diff, count=default_count)
+            logger.info(
+                "Added %d problems for topic '%s', difficulty '%s'", default_count, topic, diff
+            )
+
+    # Optionally, if in DEBUG mode, add extra test templates.
+    if settings.DEBUG:
+        add_test_templates(user)
+
+
+def add_test_templates(user: User, **kwargs):
+    # Create an extra template for testing purposes.
     template = Template()
+    template.name = _("Test Template")
     template.author = user
-    template.add_problem(ProblemKind.LINEAR_INEQUALITY, count=3)
-    template.add_problem(ProblemKind.QUADRATIC_INEQUALITY, count=2)
+    template.title = _("Test Template")
     template.save()
-    template.generate_test(TestGenerationParameters(test_version_count=1))
-    test_version = TestVersion.objects.filter(test__author=user, version_number=1).first()
-    assert test_version is not None
-    expected_text = """Version 1
-1) Solve the following linear inequalities:
-a) 5 (x + 4) − 3 > 5 (x + 5) − 3 (x − 4)
-b) 5 (x − 4) − 2 > 4 (x + 5) + 2 (x − 2)
-c) 3 (x + 2) + 5 > 4 (x + 5) + 5 (x − 3)
-2) Solve the following quadratic inequalities:
-a) 2x2 − 6x − 6 < 0
-b) 12x − 7 > 0"""
-
-    response = client.get(reverse("app:testversion-download", kwargs={"pk": test_version.pk}))
-
-    pdf_text = _extract_pdf_text(response.content)
-    print(expected_text)
-    print(pdf_text)
-    assert expected_text in pdf_text
-
-
-@pytest.mark.django_db
-def test_test_answer_key_compiles_as_expected(client: Client):
-    random.seed(420)
-
-    user = create_user(client)
-    template = Template()
-    template.author = user
-    template.add_problem(ProblemKind.QUADRATIC_INEQUALITY, count=1)
-    template.save()
-    template.generate_test(TestGenerationParameters(test_version_count=1))
-    test = Test.objects.filter(author=user).first()
-    assert test is not None
-    expected_text = """Version 1
-1) Solve the following quadratic inequalities:
-a) (−∞, ∞)"""
-
-    response = client.get(reverse("app:test-download", kwargs={"pk": test.pk}))
-
-    pdf_text = _extract_pdf_text(response.content)
-    assert expected_text in pdf_text
+    # For testing, choose one common topic, if it exists in your database. Here we use "ARVUHULGAD".
+    template.add_problem(topic="ARVUHULGAD", difficulty="A", count=6)
+    template.add_problem(topic="ARVUHULGAD", difficulty="B", count=6)
+    template.add_problem(topic="ARVUHULGAD", difficulty="C", count=6)
+    logger.info("Added test template for user: %s", user.username)

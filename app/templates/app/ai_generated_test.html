@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AI Generated Math Test</title>
+  </head>
+  <body>
+    <h1>AI Generated Math Test</h1>
+    <h2>{{ test.title }}</h2>
+    <ol>
+      {% for problem in test_version.testversionproblem_set.all %}
+        <li>
+          <div><strong>Problem:</strong> {{ problem.definition|safe }}</div>
+          <div><em>Solution:</em> {{ problem.solution|safe }}</div>
+        </li>
+      {% endfor %}
+    </ol>
+    <a href="{% url 'ai_generate_test' %}">Generate Another Test</a>
+  </body>
+</html>

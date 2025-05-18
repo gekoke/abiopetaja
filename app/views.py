@@ -1,5 +1,5 @@
 import logging
-from typing import Any, Iterable
+from typing import Any
 from uuid import UUID
 
 import django.views.generic
@@ -18,26 +18,28 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.base import ContextMixin, TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from app.annoying import get_object_or_None
 from app.forms import (
+    AITestGenerationForm,
     GenerateTestForm,
     SaveTestForm,
     TemplateCreateForm,
-    TemplateProblemCreateFrom,
+    TemplateProblemCreateForm,  # updated form name
     TemplateProblemUpdateForm,
     TemplateUpdateForm,
     TestUpdateForm,
 )
+from app.math import generate_ai_test_problems
 from app.models import (
     EmptyTemplate,
-    ProblemKind,
     Template,
     TemplateProblem,
     Test,
     TestVersion,
+    TestVersionProblem,
     UserFeedback,
 )
 
@@ -56,6 +58,15 @@ class CancellationMixin(ContextMixin):
         return context
 
 
+class TopicDifficultyListView(ListView):
+    template_name = "app/topic_difficulty_list.html"  # Create a corresponding template file.
+    context_object_name = "topic_difficulties"
+
+    def get_queryset(self) -> list:
+        qs = TemplateProblem.objects.values_list("topic", "difficulty").distinct()
+        return list(qs)
+
+
 class CreateView(django.views.generic.CreateView):
     template_name_suffix = "_create_form"
 
@@ -69,11 +80,22 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # Count the number of templates for the user.
+        template_count = Template.objects.filter(author=self.request.user).count()
+        # Count the number of saved tests for the user.
+        test_count = Test.objects.filter(author=self.request.user, is_saved=True).count()
+        # Compute distinct topics from TemplateProblem for the current user's templates.
+        topic_count = (
+            TemplateProblem.objects.filter(template__author=self.request.user)
+            .values("topic")
+            .distinct()
+            .count()
+        )
         context.update(
             user=self.request.user,
-            template_count=Template.objects.filter(author=self.request.user).count(),
-            problemkind_count=len(ProblemKind.values),
-            test_count=Test.objects.filter(author=self.request.user, is_saved=True).count(),
+            template_count=template_count,
+            test_count=test_count,
+            topic_count=topic_count,
         )
         return context
 
@@ -99,6 +121,44 @@ def test_generation(
         "save_test_form": save_test_form,
     }
     return render(request, "app/test_generation.html", context)
+
+
+def ai_generate_test_view(request):
+    if request.method == "POST":
+        form = AITestGenerationForm(request.POST)
+        if form.is_valid():
+            topic = form.cleaned_data["topic"]
+            difficulty = form.cleaned_data["difficulty"]
+            count = form.cleaned_data["number_of_problems"]
+
+            # Create a new Test and TestVersion (unsaved)
+            test = Test(
+                author=request.user,
+                title=f"AI Test: {topic} ({difficulty})",
+                is_saved=False,
+            )
+            test.save()
+
+            test_version = TestVersion(test=test, version_number=1)
+            test_version.save()
+
+            # Generate problems
+            generated_problems = generate_ai_test_problems(topic, difficulty, count)
+
+            for prob in generated_problems:
+                problem = TestVersionProblem()
+                problem.topic = topic
+                problem.difficulty = difficulty
+                problem.definition = prob["definition"]
+                problem.solution = prob["solution"]
+                problem.test_version = test_version
+                problem.save()
+
+            # Instead of rendering a separate template, redirect to test_generation
+            return redirect("app:test-generation", preview_test_pk=test.pk)
+    else:
+        form = AITestGenerationForm()
+    return render(request, "app/ai_generate_test_form.html", {"form": form})
 
 
 @login_required
@@ -163,18 +223,16 @@ def test_download(request: HttpRequest, pk: UUID):
     return redirect("app:test-detail", kwargs={"pk": pk})
 
 
-class ProblemKindListView(LoginRequiredMixin, ListView):
-    template_name = "app/problemkind_list.html"
-
-    def get_queryset(self) -> Iterable[ProblemKind]:  # pyright: ignore
-        # get_queryset may return any iterable according to Django docs,
-        # despite the type hint of the superclass implementation
-        return list(ProblemKind)  # type: ignore
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["examples"] = [kind.generate() for kind in self.get_queryset()]
-        return context
+#
+#     def get_queryset(self) -> Iterable:
+#         # Return distinct topic/difficulty pairs from TemplateProblem objects.
+#         qs = TemplateProblem.objects.all().values_list("topic", "difficulty").distinct()
+#         return qs
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["examples"] = list(self.get_queryset())
+#         return context
 
 
 class TemplateListView(LoginRequiredMixin, ListView):
@@ -191,7 +249,6 @@ class TemplateCreateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMi
     success_message = _("The template was created successfully.")
     success_url = reverse_lazy("app:template-list")
     cancellation_url = success_url
-
     model = Template
     form_class = TemplateCreateForm
 
@@ -202,7 +259,6 @@ class TemplateCreateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMi
 
 class TemplateUpdateView(LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, UpdateView):
     form_class = TemplateUpdateForm
-
     success_message = _("The template was updated successfully.")
 
     def get_success_url(self) -> str:
@@ -245,7 +301,6 @@ class TestDetailView(LoginRequiredMixin, DetailView):
 class TestUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("app:test-list")
     success_message = _("The test was updated successfully.")
-
     form_class = TestUpdateForm
 
     def get_cancellation_url(self):
@@ -263,8 +318,7 @@ class TestUpdateView(LoginRequiredMixin, UpdateView):
 class TemplateProblemCreateView(
     LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, CreateView
 ):
-    form_class = TemplateProblemCreateFrom
-
+    form_class = TemplateProblemCreateForm  # Updated form name
     model = TemplateProblem
 
     def get_template(self) -> Template:
@@ -294,7 +348,6 @@ class TemplateProblemUpdateView(
     LoginRequiredMixin, CancellationMixin, SuccessMessageMixin, UpdateView
 ):
     form_class = TemplateProblemUpdateForm
-
     success_message = _("The problem entry was updated successfully.")
 
     def get_success_url(self) -> str:
@@ -340,10 +393,8 @@ class UserFeedbackCreateView(
 ):
     model = UserFeedback
     fields = ["content"]
-
     success_url = reverse_lazy("app:dashboard")
     success_message = _("Your feedback was submitted. Thanks!")
-
     cancellation_url = success_url
 
     def form_valid(self, form):

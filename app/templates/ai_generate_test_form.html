@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generate AI Math Test</title>
+  </head>
+  <body>
+    <h1>Generate a New AI–Based Math Test</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Generate Test</button>
+    </form>
+  </body>
+</html>

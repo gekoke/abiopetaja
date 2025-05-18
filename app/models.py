@@ -13,8 +13,6 @@ from django.db.models import (
     CASCADE,
     CheckConstraint,
     ForeignKey,
-    IntegerChoices,
-    IntegerField,
     Model,
     PositiveIntegerField,
     Q,
@@ -27,7 +25,6 @@ from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
 from typing_extensions import TYPE_CHECKING
 
-import app.math
 from app.latex import render_answer_key, render_test_version
 from app.pdf import PDF, PDFCompilationError, compile_pdf
 
@@ -43,41 +40,6 @@ class Entity(Model):
         abstract = True
 
 
-class ProblemKind(IntegerChoices):
-    LINEAR_INEQUALITY = 1, _("Linear inequality")
-    QUADRATIC_INEQUALITY = 2, _("Quadratic inequality")
-    FRACTIONAL_INEQUALITY = 3, _("Fractional inequality")
-    EXPONENT_REDUCTION_PROBLEM = 4, _("Exponent reduction problem")
-    EXPONENT_OPERATION_PROBLEM = 5, _("Exponent operation problem")
-
-    def generate(self) -> TestVersionProblem:
-        problem_generator = {
-            ProblemKind.LINEAR_INEQUALITY: app.math.make_linear_inequality_problem,
-            ProblemKind.QUADRATIC_INEQUALITY: app.math.make_quadratic_inequality_problem,
-            ProblemKind.FRACTIONAL_INEQUALITY: app.math.make_fractional_inequality_problem,
-            ProblemKind.EXPONENT_REDUCTION_PROBLEM: app.math.make_exponent_reduction_problem,
-            ProblemKind.EXPONENT_OPERATION_PROBLEM: app.math.make_exponent_operation_problem,
-        }
-        generated_problem = problem_generator[self]()
-
-        problem = TestVersionProblem()
-        problem.kind = self
-        problem.definition = generated_problem.definition
-        problem.solution = generated_problem.solution
-        return problem
-
-    @staticmethod
-    def get_problem_text(problem_kind: ProblemKind) -> str:
-        PROBLEM_TEXT = {
-            ProblemKind.LINEAR_INEQUALITY: _("Solve the following linear inequalities:"),
-            ProblemKind.QUADRATIC_INEQUALITY: _("Solve the following quadratic inequalities:"),
-            ProblemKind.FRACTIONAL_INEQUALITY: _("Solve the following fractional inequalities:"),
-            ProblemKind.EXPONENT_REDUCTION_PROBLEM: _("Reduce the following expressions:"),
-            ProblemKind.EXPONENT_OPERATION_PROBLEM: _("Perform the following operations:"),
-        }
-        return PROBLEM_TEXT[problem_kind]
-
-
 class TestGenerationParameters(BaseModel):
     test_version_count: int = Field(default=1, ge=1, le=6)
 
@@ -90,7 +52,9 @@ class EmptyTemplate:
 
 
 class Template(Entity):
-    """A template is a collection of `ProblemKind` entities that can be rendered into a `Test`."""
+    """A template is a collection of problem selection entries (TemplateProblem)
+    that are later rendered into a Test.
+    """
 
     if TYPE_CHECKING:  # Add missing type hints.
         from django.db.models.manager import RelatedManager
@@ -122,18 +86,19 @@ class Template(Entity):
         return TemplateProblem.objects.filter(template=self).count()
 
     @property
-    def problem_kinds(self) -> Iterable[ProblemKind]:
-        return [ProblemKind(entry.problem_kind) for entry in self.templateproblem_set.all()]
-
-    @property
-    def problem_kind_labels(self) -> Iterable[str]:
-        return [kind.label for kind in self.problem_kinds]
+    def problem_kinds(self) -> Iterable[str]:
+        # Now each TemplateProblem has a topic and difficulty.
+        return [
+            f"{entry.topic} ({entry.get_difficulty_display()})"
+            for entry in self.templateproblem_set.all()
+        ]
 
     @transaction.atomic
-    def add_problem(self, kind: ProblemKind, count: int = 1):
+    def add_problem(self, topic: str, difficulty: str, count: int = 1):
         entry = TemplateProblem()
         entry.template = self
-        entry.problem_kind = kind
+        entry.topic = topic
+        entry.difficulty = difficulty
         entry.count = count
         entry.save()
 
@@ -141,24 +106,27 @@ class Template(Entity):
     def generate_test(
         self, test_generation_parameters: TestGenerationParameters
     ) -> Test | TestGenerationError:
-        test = Test()
-        test.author = self.author
-        test.is_saved = False
-        test.title = self.title
+        test = Test(author=self.author, is_saved=False, title=self.title)
+        test.save()  # Save here so that test has a primary key before adding versions.
 
         if not self.problem_count:
             return EmptyTemplate()
 
-        for i in range(test_generation_parameters.test_version_count):
-            test_version = TestVersion()
-            test_version.test = test
-            test_version.version_number = i + 1
+        from app.math import generate_problem_with_ai
 
+        for i in range(test_generation_parameters.test_version_count):
+            test_version = TestVersion(test=test, version_number=i + 1)
+            test_version.save()  # Save the test version early if needed.
+            # Generate and attach problems.
             for entry in self.templateproblem_set.all():
-                for __ in range(entry.count):
-                    problem_kind = ProblemKind(entry.problem_kind)
-                    problem = problem_kind.generate()
-                    problem.test_version = test_version
+                for _ in range(entry.count):
+                    generated = generate_problem_with_ai(entry.topic, entry.difficulty)
+                    problem = TestVersionProblem(
+                        test_version=test_version,
+                        definition=generated["definition"],
+                        solution=generated["solution"],
+                        # 'kind' is deprecated or can be set to a default value.
+                    )
                     problem.save()
 
             match test_version.generate_pdf():
@@ -187,38 +155,55 @@ class Template(Entity):
         return self.name
 
 
-class TemplateProblem(Entity):
-    """A `ProblemKind` instance in the given `Template`."""
+DIFFICULTY_CHOICES = [
+    ("A", "Easy"),
+    ("B", "Medium"),
+    ("C", "Hard"),
+]
 
-    template = ForeignKey(Template, on_delete=CASCADE)
-    # We add a default value so forms render nicer (don't have a empty placeholder '-----')
-    problem_kind = IntegerField(choices=ProblemKind.choices, default=1)
+
+class TemplateProblem(Entity):
+    """
+    A TemplateProblem now represents a chosen topic and difficulty for generating math problems.
+    """
+
+    template = models.ForeignKey(Template, on_delete=models.CASCADE)
+    topic = models.CharField(
+        max_length=100,
+        default="ARVUHULGAD",  # Default topic; change this as needed
+        # You can change this default as needed
+    )
+    difficulty = models.CharField(
+        max_length=1,
+        choices=DIFFICULTY_CHOICES,
+        default="A",  # Default difficulty; change if needed
+        # This sets "A" as the default value for existing rows
+    )
+
     count = PositiveIntegerField(
         validators=[
             MinValueValidator(1),
             MaxValueValidator(20),
         ]
     )
-    """
-    The number of times the problem should appear in the test
-    """
+    # The number of times the problem should appear in the test
 
     class Meta:
         constraints = [
             UniqueConstraint(
-                fields=["template", "problem_kind"],
-                name="problemkind_only_appears_once_per_template",
+                fields=["template", "topic", "difficulty"],
+                name="unique_topic_difficulty_per_template",
             )
         ]
 
     def __str__(self):
-        return gettext(ProblemKind(self.problem_kind).label)
+        return f"{self.topic} - {self.get_difficulty_display()}"
 
 
 class TestVersion(Entity):
-    """A version of a `Test`."""
+    """A version of a Test."""
 
-    if TYPE_CHECKING:  # Add missing type hints.
+    if TYPE_CHECKING:
         from django.db.models.manager import RelatedManager
 
         from app.pdf import PDFCompilationError
@@ -248,20 +233,36 @@ class TestVersion(Entity):
 
 
 class TestVersionProblem(Entity):
-    kind = IntegerField(choices=ProblemKind.choices)
-    definition = TextField()
-    solution = TextField()
-    test_version = ForeignKey(TestVersion, on_delete=CASCADE)
+    # Remove or ignore the old kind field if not needed:
+    # kind = models.IntegerField(choices=ProblemKind.choices, default=0)
+    topic = models.CharField(
+        max_length=100,
+        help_text=_("The topic of the problem (e.g., ARVUHULGAD, AVALDISED, etc.)"),
+        default="",  # Set an empty default or a sensible default if needed.
+    )
+    difficulty = models.CharField(
+        max_length=1,
+        choices=[("A", _("Lihtne")), ("B", _("Keskmine")), ("C", _("Raske"))],
+        help_text=_("The difficulty of the problem"),
+        default="A",
+    )
+    definition = models.TextField()
+    solution = models.TextField()
+    test_version = models.ForeignKey(TestVersion, on_delete=models.CASCADE)
 
     @property
     def problem_text(self) -> str:
-        return ProblemKind.get_problem_text(ProblemKind(self.kind))
+        # If topic/difficulty are set, group problems by those;
+        # Otherwise, if these are not set, fall back on a default message.
+        if self.topic:
+            return f"{self.topic} ({self.get_difficulty_display()})"
+        return _("Generated Problem")
 
 
 class Test(Entity):
-    """A test composed of documents rendered from a `Template`."""
+    """A test composed of rendered documents from a Template."""
 
-    if TYPE_CHECKING:  # Add missing type hints.
+    if TYPE_CHECKING:
         from django.db.models.manager import RelatedManager
 
         from app.pdf import PDFCompilationError
@@ -276,10 +277,6 @@ class Test(Entity):
         null=True,
     )
     is_saved = models.BooleanField(default=False)
-    """
-    Whether the test should be persisted.
-    Any test that is not marked as saved is due for deletion.
-    """
     title = models.CharField(max_length=1000, blank=True)
     answer_key_pdf = models.FileField()
 
@@ -317,5 +314,5 @@ class Test(Entity):
 
 
 class UserFeedback(Entity):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = ForeignKey(User, on_delete=CASCADE)
     content = TextField(pgettext_lazy("of a user feedback", "Content"), blank=False)

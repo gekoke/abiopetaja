@@ -1,0 +1,49 @@
+{% extends "common/base.html" %}
+{% load i18n %}
+
+{% block head_title %}
+    {% translate "Topics and Difficulties" %}
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+        <nav aria-label="breadcrumb">
+            <ul>
+                <li><a href="{% url 'app:dashboard' %}">{% translate "Dashboard" %}</a></li>
+                <li><a href="{% url 'app:template-list' %}">{% translate "Templates" %}</a></li>
+                <li>{% translate "Topics & Difficulties" %}</li>
+            </ul>
+        </nav>
+        <h1>{% translate "Topics and Difficulties" %}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>{% translate "Topic" %}</th>
+                    <th>{% translate "Difficulty" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for topic, difficulty in topic_difficulties %}
+                    <tr>
+                        <td>{{ topic }}</td>
+                        <td>
+                            {% if difficulty == "A" %}
+                                {% translate "Easy" %}
+                            {% elif difficulty == "B" %}
+                                {% translate "Medium" %}
+                            {% elif difficulty == "C" %}
+                                {% translate "Hard" %}
+                            {% else %}
+                                {{ difficulty }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="2">{% translate "No topics found." %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

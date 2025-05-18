@@ -18,11 +18,10 @@ def test_unauthenticated_user_can_get_signup_page(client: Client):
 
 
 views = [
-    # only views that don't take an argument in their path
     "app:dashboard",
     "app:template-list",
     "app:template-create",
-    "app:problemkind-list",
+    "app:topic-difficulty-list",  # Updated view name
     "app:test-generation",
     "app:test-list",
     "app:test-generate",

@@ -1,0 +1,497 @@
+{
+  "ARVUHULGAD": {
+    "A": [
+      {
+        "type": "visualization",
+        "problem_text": "Joonestage arvuhulk: kujutage ette lõiku, poollõiku, vahemikku, lõpmatut vahemikku ja lõpmatut poollõiku arvteljel.",
+        "definition": [],
+        "solution": "10",
+        "tags": [
+          "visualization",
+          "number line"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "set-operations",
+        "problem_text": "Leidke kahe arvuhulga ühisosa ja ühinemäär, kui märgite ära kõik reaalarvud vahemikus",
+        "definition": [
+          "(-infty, 4)"
+        ],
+        "solution": "8",
+        "tags": [
+          "set theory"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "proof",
+        "problem_text": "Tõestage, et kui paaritu arvu ruutu ühe võrra vähendada, siis jagub tulemus alati arvuga 8.",
+        "definition": [],
+        "solution": "3",
+        "tags": [
+          "proof"
+        ]
+      }
+    ]
+  },
+  "AVALDISED": {
+    "A": [
+      {
+        "type": "simplify",
+        "problem_text": "Lihtsustage avaldis:",
+        "definition": [
+          "sqrt 98 - 5 sqrt 0.02 + sqrt 50 - sqrt 242"
+        ],
+        "solution": "0.707107",
+        "tags": [
+          "simplification",
+          "radicals"
+        ]
+      },
+      {
+        "type": "simplify",
+        "problem_text": "Lihtsustage avaldis:",
+        "definition": [
+          "(sqrt 3 + 7) ( sqrt 3 - 7)"
+        ],
+        "solution": "-46",
+        "tags": [
+          "simplification",
+          "difference of squares"
+        ]
+      },
+      {
+        "type": "power",
+        "problem_text": "Arvutage avaldis:",
+        "definition": [
+          "(5 + sqrt 10)^2"
+        ],
+        "solution": "9",
+        "tags": [
+          "exponents",
+          "simplification"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "evaluate",
+        "problem_text": "Arvutage avaldise väärtus ilma kalkulaatorita:",
+        "definition": [
+          "(1/3)^-10*27^-3+0.2^-4*25^-2+(64^(-1/2))^-3"
+        ],
+        "solution": "516",
+        "tags": [
+          "evaluation",
+          "exponents"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "evaluate-simplify",
+        "problem_text": "Lihtsustage avaldis ja arvutage täpne väärtus:",
+        "definition": [
+          "( (18a/b)^4 cdot (b/(6a))^4 - a^{7/2} )",
+          "( a^3 + (a^{1/18})^9 )"
+        ],
+        "solution": "4",
+        "tags": [
+          "complex expressions"
+        ]
+      }
+    ]
+  },
+  "EKSPONENT- ja LOGARITMFUNKTSIOON": {
+    "A": [
+      {
+        "type": "depreciation",
+        "problem_text": "Auto kaotab igal aastal 15% oma väärtusest. Neli aastat pärast ostmist on auto väärtus 26,100 €. (1.) Arvutage auto ostuhind. (2.) Mitme euro võrra väheneb auto väärtus esimese aasta lõpuks?",
+        "definition": [],
+        "tags": [
+          "exponential",
+          "depreciation"
+        ]
+      },
+      {
+        "type": "bank-interest",
+        "problem_text": "Hoiuse suurus on 1000 €. (1.) Kui suur on hoius nelja aasta pärast? (2.) Kui suur on hoiuse intressimäär, kui viie aasta pärast on hoius ligikaudu 1159 €? (3.) Mitu aastat on hoius pangas olnud, kui intress on 126 €?",
+        "definition": [],
+        "tags": [
+          "exponential",
+          "interest"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "interest-rate",
+        "problem_text": "Ameerika onu pärandas pangaarve, millel oli 9005 dollarit. Kui palju protsenti maksis pank aastas intressi, kui onu pannud 15 aastat tagasi panka 5000 dollarit?",
+        "definition": [],
+        "tags": [
+          "exponential",
+          "interest rate"
+        ]
+      },
+      {
+        "type": "bacteria-growth",
+        "problem_text": "Streptokokkide bakterikultuur kasvab eksponentsiaalselt 3% minutis. (1.) Kui kiiresti tuhandekordistub bakterikultuur? (2.) Kui palju kasvab bakterikultuur tunni jooksul?",
+        "definition": [],
+        "tags": [
+          "exponential",
+          "growth"
+        ]
+      },
+      {
+        "type": "tractor-depreciation",
+        "problem_text": "(RE 2018) Uus aiatraktor maksab 30,000 €. Traktori hind väheneb iga aastaga ühesama protsendi võrra ning kahe aasta pärast on see 26,508 €. (1.) Arvutage, mitu protsenti väheneb hind aastas. (2.) Mis on aiatraktori hind 5 aasta pärast (ümardatuna 10 € täpsusega)? (3.) Millal on hind vähemalt poole väiksem algse hinnast?",
+        "definition": [],
+        "tags": [
+          "exponential",
+          "depreciation"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "doubling-half-life",
+        "problem_text": "Leidke ajavahemik, mille jooksul antud aine hulk kahekordistub või poolestub.",
+        "definition": [],
+        "tags": [
+          "exponential",
+          "doubling time"
+        ]
+      },
+      {
+        "type": "bacteria-mass",
+        "problem_text": "Bakterite mass kasvab ühe ööpäeva jooksul 6 korda. Praegu on bakterite mass 420 mikrogrammi. (1.) Moodustage funktsioon, mis kirjeldab bakterite massi pärast x ööpäeva. (2.) Milline on bakterite mass 2 ööpäeva pärast? (3.) 2,5 ööpäeva pärast? (4.) 6 tunni pärast?",
+        "definition": [],
+        "tags": [
+          "exponential",
+          "growth"
+        ]
+      }
+    ]
+  },
+  "FUNKTSIOONID JA ARVJADAD": {
+    "A": [
+      {
+        "type": "domain-zeros",
+        "problem_text": "Leidke funktsiooni määramispiirkond ja nullkohad:",
+        "definition": [
+          "f(x) = frac{x-3}{x+2}"
+        ],
+        "tags": [
+          "functions",
+          "domain",
+          "zeros"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "maximization",
+        "problem_text": "Leidke funktsiooni maksimum ja selle saavutamise x-väärtus:",
+        "definition": [
+          "f(x) = -x^2+2x+3"
+        ],
+        "tags": [
+          "functions",
+          "quadratic",
+          "optimization"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "sequence",
+        "problem_text": "Arvjas, mille esimene liige on 4 ja vahe on 3, leiutage 15. liige ja esimese 15 liikme summa.",
+        "definition": [],
+        "tags": [
+          "sequence",
+          "arithmetic"
+        ]
+      }
+    ]
+  },
+  "TRIGONOMEETRILISED I JA II": {
+    "A": [
+      {
+        "type": "trig-values",
+        "problem_text": "Leidke sin alpha, cos alpha ja tan alpha juhul, kui nurga lõpphaaral on punkt A(1,-3).",
+        "definition": [],
+        "tags": [
+          "trigonometry",
+          "coordinates"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "simplify-trig",
+        "problem_text": "Lihtsustage avaldis:",
+        "definition": [
+          "sin^2 x + cos^2 x"
+        ],
+        "tags": [
+          "trigonometry",
+          "identity"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "triangle-area",
+        "problem_text": "Arvutage kolmnurga pindala, kui antud on kaks külge ja nendevaheline nurk.",
+        "definition": [],
+        "tags": [
+          "trigonometry",
+          "geometry"
+        ]
+      }
+    ]
+  },
+  "VÕRRANDID JA VÕRRANDISÜSTEEMID": {
+    "A": [
+      {
+        "type": "quadratic-equation",
+        "problem_text": "Lahendage võrrand:",
+        "definition": [
+          "x^2+5x+6=0"
+        ],
+        "tags": [
+          "equation",
+          "quadratic"
+        ]
+      },
+      {
+        "type": "quadratic-equation",
+        "problem_text": "Lahendage võrrand:",
+        "definition": [
+          "x^2-9=0"
+        ],
+        "tags": [
+          "equation",
+          "quadratic"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "system-of-equations",
+        "problem_text": "Lahendage võrrandisüsteem:",
+        "definition": [
+          "begin{cases} x+y=7  x-y=-5 end{cases}"
+        ],
+        "tags": [
+          "equation",
+          "system"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "complex-equation",
+        "problem_text": "Lahendage võrrand:",
+        "definition": [
+          "5-3(x-2(x-2(x-2)))=2"
+        ],
+        "tags": [
+          "equation",
+          "nested"
+        ]
+      }
+    ]
+  },
+  "VEKTOR TASANDIL JA JOONE VÕRRAND": {
+    "A": [
+      {
+        "type": "distance",
+        "problem_text": "Leidke kahe punkti A(1,3) ja B(4,7) vaheline kaugus ja keskpunkt.",
+        "definition": [],
+        "tags": [
+          "vector",
+          "distance"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "vector-calculation",
+        "problem_text": "Arvutage vektori vec{v}=(2,-1) pikkus ja vektori vec{w}=(-3,4) pikkuste summa.",
+        "definition": [],
+        "tags": [
+          "vector",
+          "calculation"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "angle-between",
+        "problem_text": "Leidke nurk kahe vektori vec{a}=(8,-6) ja vec{b}=(3,4) vahel.",
+        "definition": [],
+        "tags": [
+          "vector",
+          "angle"
+        ]
+      }
+    ]
+  },
+  "TRIGONOMEETRILISED FUNKTSIOONID. FUNKTSIOONI PIIRVÄÄRTUS JA TULETIS": {
+    "A": [
+      {
+        "type": "graph-cos",
+        "problem_text": "Joonestage funktsiooni graafik, kui ning leidke selle nullkohad.",
+        "definition": [
+          "y=cos x",
+          "x in(-pi,pi)"
+        ],
+        "tags": [
+          "trigonometry",
+          "graph"
+        ]
+      },
+      {
+        "type": "solve-cos",
+        "problem_text": "Lahendage võrrand:",
+        "definition": [
+          "2cos x - sqrt{2}=0"
+        ],
+        "tags": [
+          "trigonometry",
+          "equation"
+        ]
+      },
+      {
+        "type": "solve-cosine",
+        "problem_text": "Lahendage võrrand ja joonistage graafik, et näha, millal kehtib, kui",
+        "definition": [
+          "2cos x = 1",
+          "2cos x < 1",
+          "x in [0,2pi]"
+        ],
+        "tags": [
+          "trigonometry",
+          "equation"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "graph-sin2x",
+        "problem_text": "Joonestage funktsiooni graafik ja leidke selle nullkohad, kui",
+        "definition": [
+          "y=sin 2x",
+          "x in(-pi,pi)"
+        ],
+        "tags": [
+          "trigonometry",
+          "graph"
+        ]
+      },
+      {
+        "type": "solve-sin",
+        "problem_text": "Lahendage võrrand lõigul",
+        "definition": [
+          "sin^2 x + sin x - cos^2 x = 0",
+          "[0,2pi]"
+        ],
+        "tags": [
+          "trigonometry",
+          "equation"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "complex-trig",
+        "problem_text": "Lihtsustage avaldis:",
+        "definition": [
+          "sin(alpha+beta)-frac{cos^3alpha}{sin2alpha}",
+          "beta=90°"
+        ],
+        "tags": [
+          "trigonometry",
+          "simplification"
+        ]
+      }
+    ]
+  },
+  "TULETISE RAKENDUSED": {
+    "A": [
+      {
+        "type": "tangent-line",
+        "problem_text": "Leidke funktsiooni graafiku puutuja tõus punktis",
+        "definition": [
+          "f(x)=2x^2-3x+1",
+          "x=2"
+        ],
+        "tags": [
+          "calculus",
+          "derivative"
+        ]
+      },
+      {
+        "type": "tangent-equation",
+        "problem_text": "Koostage võrrand joone puutuja leidmiseks funktsioonile punktis",
+        "definition": [
+          "f(x)=x^3-3x^2+2",
+          "(2,6)"
+        ],
+        "tags": [
+          "calculus",
+          "derivative"
+        ]
+      }
+    ],
+    "B": [
+      {
+        "type": "extremum",
+        "problem_text": "Leidke funktsiooni maksimum- ja miinimumpunktid ning kahanemisvahemik.",
+        "definition": [
+          "f(x)=x^3-6x^2+9x"
+        ],
+        "tags": [
+          "calculus",
+          "optimization"
+        ]
+      }
+    ],
+    "C": [
+      {
+        "type": "max-value",
+        "problem_text": "Leidke funktsiooni suurim väärtus lõigul",
+        "definition": [
+          "f(x)=2x-7",
+          "[-1,3]"
+        ],
+        "tags": [
+          "calculus",
+          "optimization"
+        ]
+      },
+      {
+        "type": "cost-calculation",
+        "problem_text": "Ehitusmaterjali hind koos veokuludega on 445,20 €. Veokulud moodustavad 6% hinnast. Arvutage materjali hind ilma veokuludeta.",
+        "definition": [],
+        "tags": [
+          "application",
+          "cost"
+        ]
+      },
+      {
+        "type": "relative-speed",
+        "problem_text": "Auto ja motoroller väljuvad linnast A. Auto kiirus on 80% suurem kui motorolleri. Motorolleri sõiduaeg on 48 minutit pikem ja läbitav kaugus 72 km. Leidke kummagi sõiduki kiirus.",
+        "definition": [],
+        "tags": [
+          "speed",
+          "relative"
+        ]
+      }
+    ]
+  }
+}
