@@ -138,11 +138,3 @@ tofu destroy
 ```
 
 
-### Muutused mida veel vaja teha
-
--   Kõik probleemid JSON file'i 
--   Keelte vahetus 
--   AI prompti parandada (Liiga lihtsad ja mitte teemakohased ülesanded osad vastused valed. Step by step kaudu paljud õiged.) 
--   Lisada kastid ülesande lahendamiseks 
--   Kustutada ära mittevajalik stuff 
-

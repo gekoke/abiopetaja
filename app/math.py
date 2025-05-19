@@ -5,14 +5,14 @@ from dataclasses import dataclass
 from typing import Dict, List
 from app.models import get_short_lang
 from openai import OpenAI
-
+import os
 # SymPy‑powered verification helper
 from .validators import verify
 
 logger = logging.getLogger(__name__)
 
 # ─────────────── CONFIG ───────────────
-OPENAI_API_KEY      = "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"                          # put in .env in production!
+OPENAI_API_KEY      = os.environ.get("MY_API_KEY")                         # put in .env in production!
 OPENAI_MODEL        = "gpt-4.1-mini"
 # gpt-4.1-mini , gpt-4o-mini, gpt-4.1-nano,
 PROBLEMS_JSON_PATH  = "problems.json"             # seed examples
@@ -184,13 +184,6 @@ The spec fields must be sympy parsable, for verification. Use the keys from the 
         line = line.strip()
         if not line:
             continue
-
-        try:
-            with open("ai_raw_output2.txt","a",encoding="utf-8") as f2:
-              f2.write(f"=== Topic: {topic}; Counts: {counts} ===\n")
-              f2.write(line + "\n\n")
-        except Exception as e:
-            logger.error("Failed to write ai_example2.txt: %s", e)
         try:
             obj = json.loads(line)
             ok, _msg = verify(obj["spec"])
