@@ -114,7 +114,7 @@ LANGUAGES = [
     ("en", _("English")),
 ]
 
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "et"
 
 LOCALE_PATHS = [
     BASE_DIR / "app" / "locale",
@@ -144,5 +144,5 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {"console": {"class": "logging.StreamHandler"}},
-    "root": {"handlers": ["console"], "level": "INFO"},
+    "root": {"handlers": ["console"], "level": "DEBUG"},
 }

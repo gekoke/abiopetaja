@@ -1,10 +1,10 @@
 from __future__ import annotations
-
+from collections import defaultdict
 import logging
 import uuid
-from base64 import b64encode
-from typing import Iterable
 
+from collections import Counter
+from base64 import b64encode
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.core.validators import MaxValueValidator, MinLengthValidator, MinValueValidator
@@ -13,25 +13,38 @@ from django.db.models import (
     CASCADE,
     CheckConstraint,
     ForeignKey,
-    IntegerChoices,
-    IntegerField,
     Model,
     PositiveIntegerField,
     Q,
+    JSONField,
     TextField,
 )
+from django.utils import translation
+import json
+from app.topics import get_all_topic_choices
+import asyncio
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from django.db.models.constraints import UniqueConstraint
 from django.urls import reverse
-from django.utils.translation import gettext, pgettext_lazy
+from django.utils.translation import gettext, pgettext_lazy, get_language
 from django.utils.translation import gettext_lazy as _
 from pydantic import BaseModel, Field
+from typing import Iterable
 from typing_extensions import TYPE_CHECKING
 
-import app.math
 from app.latex import render_answer_key, render_test_version
 from app.pdf import PDF, PDFCompilationError, compile_pdf
 
 logger = logging.getLogger(__name__)
+
+
+def get_short_lang() -> str:
+    """
+    Return 'et' if the current active language starts with 'et',
+    otherwise return 'en'.
+    """
+    lang = get_language() or "et"
+    return "et" if lang.startswith("et") else "en"
 
 
 class Entity(Model):
@@ -43,46 +56,11 @@ class Entity(Model):
         abstract = True
 
 
-class ProblemKind(IntegerChoices):
-    LINEAR_INEQUALITY = 1, _("Linear inequality")
-    QUADRATIC_INEQUALITY = 2, _("Quadratic inequality")
-    FRACTIONAL_INEQUALITY = 3, _("Fractional inequality")
-    EXPONENT_REDUCTION_PROBLEM = 4, _("Exponent reduction problem")
-    EXPONENT_OPERATION_PROBLEM = 5, _("Exponent operation problem")
-
-    def generate(self) -> TestVersionProblem:
-        problem_generator = {
-            ProblemKind.LINEAR_INEQUALITY: app.math.make_linear_inequality_problem,
-            ProblemKind.QUADRATIC_INEQUALITY: app.math.make_quadratic_inequality_problem,
-            ProblemKind.FRACTIONAL_INEQUALITY: app.math.make_fractional_inequality_problem,
-            ProblemKind.EXPONENT_REDUCTION_PROBLEM: app.math.make_exponent_reduction_problem,
-            ProblemKind.EXPONENT_OPERATION_PROBLEM: app.math.make_exponent_operation_problem,
-        }
-        generated_problem = problem_generator[self]()
-
-        problem = TestVersionProblem()
-        problem.kind = self
-        problem.definition = generated_problem.definition
-        problem.solution = generated_problem.solution
-        return problem
-
-    @staticmethod
-    def get_problem_text(problem_kind: ProblemKind) -> str:
-        PROBLEM_TEXT = {
-            ProblemKind.LINEAR_INEQUALITY: _("Solve the following linear inequalities:"),
-            ProblemKind.QUADRATIC_INEQUALITY: _("Solve the following quadratic inequalities:"),
-            ProblemKind.FRACTIONAL_INEQUALITY: _("Solve the following fractional inequalities:"),
-            ProblemKind.EXPONENT_REDUCTION_PROBLEM: _("Reduce the following expressions:"),
-            ProblemKind.EXPONENT_OPERATION_PROBLEM: _("Perform the following operations:"),
-        }
-        return PROBLEM_TEXT[problem_kind]
-
-
 class TestGenerationParameters(BaseModel):
     test_version_count: int = Field(default=1, ge=1, le=6)
 
 
-type TestGenerationError = EmptyTemplate | PDFCompilationError
+type TestGenerationError = "EmptyTemplate | PDFCompilationError"
 
 
 class EmptyTemplate:
@@ -90,7 +68,9 @@ class EmptyTemplate:
 
 
 class Template(Entity):
-    """A template is a collection of `ProblemKind` entities that can be rendered into a `Test`."""
+    """A template is a collection of problem selection entries (TemplateProblem)
+    that are later rendered into a Test.
+    """
 
     if TYPE_CHECKING:  # Add missing type hints.
         from django.db.models.manager import RelatedManager
@@ -122,62 +102,135 @@ class Template(Entity):
         return TemplateProblem.objects.filter(template=self).count()
 
     @property
-    def problem_kinds(self) -> Iterable[ProblemKind]:
-        return [ProblemKind(entry.problem_kind) for entry in self.templateproblem_set.all()]
-
-    @property
-    def problem_kind_labels(self) -> Iterable[str]:
-        return [kind.label for kind in self.problem_kinds]
+    def problem_kinds(self) -> Iterable[str]:
+        # Now each TemplateProblem has a topic and difficulty.
+        return [
+            f"{entry.topic} ({entry.get_difficulty_display()})"
+            for entry in self.templateproblem_set.all()
+        ]
 
     @transaction.atomic
-    def add_problem(self, kind: ProblemKind, count: int = 1):
+    def add_problem(self, topic: str, difficulty: str, count: int = 1):
         entry = TemplateProblem()
         entry.template = self
-        entry.problem_kind = kind
+        entry.topic = topic
+        entry.difficulty = difficulty
         entry.count = count
         entry.save()
 
-    @transaction.atomic
-    def generate_test(
-        self, test_generation_parameters: TestGenerationParameters
-    ) -> Test | TestGenerationError:
-        test = Test()
-        test.author = self.author
-        test.is_saved = False
-        test.title = self.title
+
+    
+    def generate_test(self, params: TestGenerationParameters) -> Test | TestGenerationError:
+        # 1) Create the Test shell
+        test = Test.objects.create(author=self.author, is_saved=False, title=self.title)
 
         if not self.problem_count:
             return EmptyTemplate()
 
-        for i in range(test_generation_parameters.test_version_count):
-            test_version = TestVersion()
-            test_version.test = test
-            test_version.version_number = i + 1
+        # 2) Pre-create stub versions
+        version_ids = [
+            TestVersion.objects.create(test=test, version_number=v).id
+            for v in range(1, params.test_version_count + 1)
+        ]
+        current_lang = translation.get_language() or "et"
+        # ───────────────────────── version worker ─────────────────────────
+        def _populate_version(tv_id: int, lang: str) -> TestVersion:
+            tv = TestVersion.objects.get(id=tv_id)
+            translation.activate(lang)
+            # ------------------------------------------------------------------
+            # A. collect quotas per topic/difficulty for this template
+            # ------------------------------------------------------------------
+            quotas: dict[str, dict[str, int]] = defaultdict(lambda: {"A": 0, "B": 0, "C": 0})
+            for row in self.templateproblem_set.all():
+                quotas[row.topic][row.difficulty] += row.count
 
-            for entry in self.templateproblem_set.all():
-                for __ in range(entry.count):
-                    problem_kind = ProblemKind(entry.problem_kind)
-                    problem = problem_kind.generate()
-                    problem.test_version = test_version
-                    problem.save()
+            # ------------------------------------------------------------------
+            # B. generate AI batches per topic *concurrently*
+            # ------------------------------------------------------------------
+            from app.math import generate_mixed_difficulty_problems
 
-            match test_version.generate_pdf():
-                case PDF() as pdf:
-                    test_version.pdf.save(f"{test_version.id}.pdf", ContentFile(pdf.data))
-                case _ as err:
-                    return err
+            ai_batches: dict[str, list[dict]] = {}  # topic -> list[problem]
+            
+            with ThreadPoolExecutor(max_workers=min(8, len(quotas))) as pool:
+                fut_map = {
+                    pool.submit(
+                        generate_mixed_difficulty_problems,
+                        topic=topic,
+                        lang=lang,
+                        counts = {d: c + 1 for d, c in diff.items() if c > 0},  # +1 slack
+                    ): topic
+                        
+                    for topic, diff in quotas.items()
+                }
+                for fut in as_completed(fut_map):
+                    topic = fut_map[fut]
+                    try:
+                        ai_batches[topic] = fut.result()
+                    except Exception as exc:
+                        logger.error("AI generation failed for topic %s: %s", topic, exc)
+                        ai_batches[topic] = []
 
-            test_version.save()
-            test.add_version(test_version)
+            # ------------------------------------------------------------------
+            # C. write problems back respecting quotas
+            # ------------------------------------------------------------------
+            accepted: dict[tuple[str, str], int] = defaultdict(int)  # (topic, diff) -> count
+            for topic, batch in ai_batches.items():
+                for obj in batch:
+                    diff = obj["difficulty"]
+                    key = (topic, diff)
+                    if accepted[key] >= quotas[topic][diff]:
+                        continue
+                    TestVersionProblem.objects.create(
+                        test_version=tv,
+                        topic=topic,
+                        difficulty=diff,
+                        definition=obj["definition"],
+                        solution=obj["solution"],
+                        spec=obj["spec"],
+                    )
+                    accepted[key] += 1
 
-        match test.generate_answer_key_pdf():
-            case PDF() as pdf:
-                test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(pdf.data))
-            case _ as err:
-                return err
+            # ------------------------------------------------------------------
+            # D. build PDF (retry loop unchanged)
+            # ------------------------------------------------------------------
+            while True:
+                pdf_result = tv.generate_pdf()
+                if isinstance(pdf_result, PDF):
+                    tv.pdf.save(f"{tv.id}.pdf", ContentFile(pdf_result.data))
+                    break
+                bad = tv.testversionproblem_set.order_by("-created_at").first()
+                if not bad:
+                    break
+                bad.delete()
+
+            tv.save()
+            return tv
+
+        # 3) populate versions in parallel
+        populated: list[TestVersion] = []
+        with ThreadPoolExecutor(max_workers=len(version_ids)) as vexec:
+            futures = [vexec.submit(_populate_version, vid, current_lang) for vid in version_ids]
+            populated = [f.result() for f in as_completed(futures)]
+            for f in as_completed(futures):
+                populated.append(f.result())
+
+        # 4) attach versions & build answer key
+        for tv in populated:
+            test.add_version(tv)
+
+        ak = test.generate_answer_key_pdf()
+        if isinstance(ak, PDF):
+            test.answer_key_pdf.save(f"{test.id}.pdf", ContentFile(ak.data))
+        else:
+            return ak
 
         test.save()
         return test
+
+        # ───────────────────────────────────────────────────────────────────
+
+
+        
 
     @property
     def entries(self):
@@ -187,38 +240,50 @@ class Template(Entity):
         return self.name
 
 
-class TemplateProblem(Entity):
-    """A `ProblemKind` instance in the given `Template`."""
+DIFFICULTY_CHOICES = [
+    ("A", "Easy"),
+    ("B", "Medium"),
+    ("C", "Hard"),
+]
 
-    template = ForeignKey(Template, on_delete=CASCADE)
-    # We add a default value so forms render nicer (don't have a empty placeholder '-----')
-    problem_kind = IntegerField(choices=ProblemKind.choices, default=1)
+
+class TemplateProblem(Entity):
+    """
+    A TemplateProblem now represents a chosen topic and difficulty for generating math problems.
+    """
+
+    template = models.ForeignKey(Template, on_delete=models.CASCADE)
+    topic = models.CharField(max_length=100, choices=get_all_topic_choices())
+    
+    difficulty = models.CharField(
+        max_length=1,
+        choices=DIFFICULTY_CHOICES,
+        default="A",  # Default difficulty; change if needed
+    )
+
     count = PositiveIntegerField(
         validators=[
             MinValueValidator(1),
             MaxValueValidator(20),
         ]
     )
-    """
-    The number of times the problem should appear in the test
-    """
 
     class Meta:
         constraints = [
             UniqueConstraint(
-                fields=["template", "problem_kind"],
-                name="problemkind_only_appears_once_per_template",
+                fields=["template", "topic", "difficulty"],
+                name="unique_topic_difficulty_per_template",
             )
         ]
 
     def __str__(self):
-        return gettext(ProblemKind(self.problem_kind).label)
+        return f"{self.topic} - {self.get_difficulty_display()}"
 
 
 class TestVersion(Entity):
-    """A version of a `Test`."""
+    """A version of a Test."""
 
-    if TYPE_CHECKING:  # Add missing type hints.
+    if TYPE_CHECKING:
         from django.db.models.manager import RelatedManager
 
         from app.pdf import PDFCompilationError
@@ -240,7 +305,7 @@ class TestVersion(Entity):
     def problem_count(self) -> int:
         return self.testversionproblem_set.count()
 
-    def generate_pdf(self) -> PDFCompilationError | PDF:
+    def generate_pdf(self) -> "PDFCompilationError | PDF":
         return compile_pdf(render_test_version(self))
 
     def pdf_b64_str(self) -> str:
@@ -248,25 +313,38 @@ class TestVersion(Entity):
 
 
 class TestVersionProblem(Entity):
-    kind = IntegerField(choices=ProblemKind.choices)
-    definition = TextField()
-    solution = TextField()
-    test_version = ForeignKey(TestVersion, on_delete=CASCADE)
+    topic = models.CharField(
+        max_length=100,
+        help_text=_("The topic of the problem (e.g., ARVUHULGAD, AVALDISED, etc.)"),
+        default="AVALDISED",
+    )
+    difficulty = models.CharField(
+        max_length=1,
+        choices=[("A", _("Lihtne")), ("B", _("Keskmine")), ("C", _("Raske"))],
+        help_text=_("The difficulty of the problem"),
+        default="A",
+    )
+    definition = models.TextField()
+    solution = models.TextField()
+    test_version = models.ForeignKey(TestVersion, on_delete=CASCADE)
+    spec = models.JSONField(null=True, blank=True)
 
     @property
     def problem_text(self) -> str:
-        return ProblemKind.get_problem_text(ProblemKind(self.kind))
+        if self.topic:
+            return f"{self.topic} ({self.get_difficulty_display()})"
+        return _("Generated Problem")
 
 
 class Test(Entity):
-    """A test composed of documents rendered from a `Template`."""
+    """A test composed of rendered documents from a Template."""
 
-    if TYPE_CHECKING:  # Add missing type hints.
+    if TYPE_CHECKING:
         from django.db.models.manager import RelatedManager
 
         from app.pdf import PDFCompilationError
 
-        testversion_set = RelatedManager[TestVersion]()
+        testversion_set = RelatedManager["TestVersion"]()
 
     author = ForeignKey(User, on_delete=CASCADE)
     name = models.CharField(
@@ -276,10 +354,6 @@ class Test(Entity):
         null=True,
     )
     is_saved = models.BooleanField(default=False)
-    """
-    Whether the test should be persisted.
-    Any test that is not marked as saved is due for deletion.
-    """
     title = models.CharField(max_length=1000, blank=True)
     answer_key_pdf = models.FileField()
 
@@ -297,19 +371,19 @@ class Test(Entity):
         return self.testversion_set.count()
 
     @property
-    def versions(self) -> Iterable[TestVersion]:
+    def versions(self) -> Iterable["TestVersion"]:
         return self.testversion_set.all()
 
     def get_absolute_url(self) -> str:
         return reverse("app:test-detail", kwargs={"pk": self.pk})
 
-    def add_version(self, test_version: TestVersion) -> None:
+    def add_version(self, test_version: "TestVersion") -> None:
         self.testversion_set.add(test_version)
 
     def answer_key_pdf_b64_str(self) -> str:
         return b64encode(self.answer_key_pdf.read()).decode("utf-8")
 
-    def generate_answer_key_pdf(self) -> PDFCompilationError | PDF:
+    def generate_answer_key_pdf(self) -> "PDFCompilationError | PDF":
         return compile_pdf(render_answer_key(self))
 
     def __str__(self):
@@ -317,5 +391,5 @@ class Test(Entity):
 
 
 class UserFeedback(Entity):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = ForeignKey(User, on_delete=CASCADE)
     content = TextField(pgettext_lazy("of a user feedback", "Content"), blank=False)

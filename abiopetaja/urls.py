@@ -32,7 +32,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = i18n_patterns(
     path("", RedirectView.as_view(pattern_name="app:dashboard", permanent=False)),
-    path("accounts/signup/", signup, name="account_signup"),
+    #path("accounts/signup/", signup, name="account_signup"),
     path("accounts/login/", login, name="account_login"),
     path("accounts/logout/", logout, name="account_logout"),
     path("accounts/password/set/", password_set, name="account_set_password"),

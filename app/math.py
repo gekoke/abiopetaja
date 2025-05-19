@@ -1,247 +1,242 @@
-import random
+import json
+import logging
+import time
+from dataclasses import dataclass
+from typing import Dict, List
+from app.models import get_short_lang
+from openai import OpenAI
+import os
+# SymPy‑powered verification helper
+from .validators import verify
 
-from sympy import Expr, S, simplify, solveset, sympify
-from sympy.core import UnevaluatedExpr, symbols
-from sympy.printing.latex import latex
+logger = logging.getLogger(__name__)
 
+# ─────────────── CONFIG ───────────────
+OPENAI_API_KEY      = os.environ.get("MY_API_KEY")                         # put in .env in production!
+OPENAI_MODEL        = "gpt-4.1-mini"
+# gpt-4.1-mini , gpt-4o-mini, gpt-4.1-nano,
+PROBLEMS_JSON_PATH  = "problems.json"             # seed examples
+RAW_LOG_PATH        = "ai_raw_output2.txt"        # full AI reply
+PROMPT_LOG_PATH     = "ai_example2.txt"           # prompt snippet
 
-def _latex(expr):
-    return latex(expr, decimal_separator="comma")
-
-
-def _make_plus_or_minus():
-    return random.choice(["+", "-"])
-
-
-def _make_comparison_operator(allow_eq: bool = True):
-    """allow_eq: Whether to allow generating the '=' operator."""
-    return random.choice(["<", "<=", ">=", ">"] + (["=="] if allow_eq else []))
-
-
-def make_quadratic() -> Expr:
-    def make_coeffiecient():
-        return random.randint(-12, 12)
-
-    a, b, c = make_coeffiecient(), make_coeffiecient(), make_coeffiecient()
-    op1, op2 = _make_plus_or_minus(), _make_plus_or_minus()
-    return sympify(f"{a}*x**2 {op1} {b}*x {op2} {c}", evaluate=False)
+client = OpenAI(api_key=OPENAI_API_KEY)
+# ───────────────────────────────────────
 
 
-class Problem:
-    definition: str
-    solution: str
+# ────────────────────────── helpers ──────────────────────────
+@dataclass
+class ProblemExample:
+    definition_et: str = ""
+    definition_en: str = ""
+    solution: str = ""
+    spec: dict | None = None
 
 
-def make_linear_inequality_problem() -> Problem:
-    """
-    Make a linear inequality problem.
+def _load_examples(
+    topic: str,
+    difficulty: str,
+    json_file_path: str = PROBLEMS_JSON_PATH,
+    max_examples: int = 10,
+) -> List[ProblemExample]:
+    """Pull up to `max_examples` rows for the prompt."""
+    try:
+        with open(json_file_path, encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        logger.error("Failed loading JSON examples: %s", e)
+        return []
 
-    Example:
-    -------
-    `2(x - 3) - 1 > 3(x - 2) - 4(x + 1)`.
-    """
-
-    def make_coefficient():
-        return random.randint(2, 5)
-
-    c1, c2, c3, c4, c5, c6, c7 = (make_coefficient() for _ in range(7))
-    o1, o2, o3, o4, o5 = (_make_plus_or_minus() for _ in range(5))
-    comparison = _make_comparison_operator(allow_eq=False)
-
-    problem_definition = sympify(
-        f"{c1}*(x {o1} {c2}) {o2} {c3} {comparison} {c4}*(x {o3} {c5}) {o4} {c6}*(x {o5} {c7})",
-        evaluate=False,
+    raw_list = (
+        data.get(topic, {}).get(difficulty, []) if isinstance(data, dict) else []
     )
-    problem_solution = solveset(problem_definition, "x", S.Reals)
+    from random import shuffle
 
-    problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
-    return problem
+    shuffle(raw_list)
+
+    examples = []
+    for item in raw_list[:max_examples]:
+        examples.append(
+            ProblemExample(
+                definition_et=item.get("definition_et", ""),
+                definition_en=item.get("definition_en", ""),
+                solution=item.get("solution", ""),
+                spec=item.get("spec"),          # may be None
+            )
+        )
+    return examples
 
 
-def make_quadratic_inequality_problem() -> Problem:
+# ────────────────────────── generator ──────────────────────────
+
+def generate_mixed_difficulty_problems(
+    topic: str,
+    counts: Dict[str, int],  # e.g. {"A": 3, "B": 3, "C": 3}
+    max_examples_per_diff: int = 2,
+    model: str | None = None,
+    temperature: float = 0.4,
+    max_tokens: int = 4500,
+    lang: str | None = None 
+) -> List[Dict[str, str]]:
     """
-    Make a quadratic inequality problem.
+    Return a verified list of problem dicts, each carrying:
+        {"spec": ..., "definition_et": ..., "definition_en": ..., "difficulty": ...}
 
-    Example:
-    -------
-    `-5x**2 + 9x + 2 > 0`.
-    """
-    quadratic = make_quadratic()
-    comparison = _make_comparison_operator(allow_eq=False)
-
-    problem_definition = sympify(f"{quadratic} {comparison} 0")
-    problem_solution = solveset(problem_definition, "x", S.Reals)
-
-    problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
-    return problem
-
-
-def make_fractional_inequality_problem() -> Problem:
-    """
-    Make a fractional inequality problem.
-
-    Example:
-    -------
-    `2*(x - 2) / (x + 2) > 4`.
+    The caller can specify `lang` – "et" or "en" – to indicate which language
+    should be used for the problem wording.  Only that language will be shown
+    in the few‑shot examples and the AI will be instructed to output the
+    wording in the same language (filling only the corresponding definition
+    field and leaving the other empty).
     """
 
-    def make_fraction() -> Expr:
-        """
-        Make a fraction.
+    logger.debug("AI-generator language detected by get_short_lang(): %s", lang)
+    language_name = "Estonian" if lang == "et" else "English"
 
-        Example:
-        -------
-        4*(x - 2) / (x + 3)
-        """
+    model = model or OPENAI_MODEL
+    total = sum(counts.values())
 
-        def make_coeffiecient():
-            return random.randint(1, 8)
+    # 1)  Few‑shot examples
+    example_chunks: list[str] = []
+    diff_labels = {"A": "easy", "B": "medium", "C": "hard"}
 
-        c1, c2, c3 = (make_coeffiecient() for _ in range(3))
-        op1, op2 = _make_plus_or_minus(), _make_plus_or_minus()
-        # Use empty string if c1==1 to avoid multiplying by 1.
-        c1 = "" if c1 == 1 else f"{c1}*"
-        return sympify(f"{c1}(x {op1} {c2}) / (x {op2} {c3})", evaluate=False)
+    for diff in "ABC":
+        need = counts.get(diff, 0)
+        if need == 0:
+            continue
 
-    fraction = make_fraction()
-    comparsion = _make_comparison_operator(allow_eq=False)
+        exs = _load_examples(topic, diff, max_examples=max_examples_per_diff)
+        if exs:
+            chunk: list[str] = [f"# {diff_labels[diff]} EXAMPLES"]
+            for e in exs:
+                # Only keep the examples in the desired language
+                if lang == "et":
+                    chunk.append(f" definition:  {e.definition_et}")
+                else:
+                    chunk.append(f" definition:  {e.definition_en}")
+                chunk.append(f" solution: {e.solution}")
+                if e.spec:
+                    chunk.append(f" spec: {json.dumps(e.spec, ensure_ascii=False)}")
+            example_chunks.append("\n".join(chunk))
 
-    problem_definition = sympify(f"{fraction} {comparsion} {random.randint(-9, 9)}", evaluate=False)
-    problem_solution = solveset(problem_definition, "x", S.Reals)
+    examples_text = "\n\n".join(example_chunks)
 
-    problem = Problem()
-    problem.definition = _latex(problem_definition)
-    problem.solution = _latex(problem_solution)
-    return problem
+    # 2)  Log the few‑shot block
+
+    # 3)  Build the prompt
+    prompt = f"""
+### TASK
+Generate {total} new **high‑school mathematics problems** on the topic \"{topic}\" based on the examples given below.
+
+### LANGUAGE
+Write the *definition* in **{language_name}**. **Wrap the entire definition and solution in exactly one pair of `$` characters.**
+
+### DIFFICULTY DISTRIBUTION (must match exactly)
+A (easy): {counts.get('A',0)}  B (medium): {counts.get('B',0)}  C (hard): {counts.get('C',0)}
+
+### SOLUTION 
+You must solve the problems you generated step by step and show the result in solutions. SHOW THE STEPS MATHEMATICALLY, NO TEXTUAL EXPLANATIONS OR WORDS. the steps in solution should be short.
+Wrap the *whole derivation* in one pair of `$` as in this example:
+"$5*3x+2=15x+2$"
+– For evaluation tasks, avoid approximations; compute symbolic/numeric values exactly.
+MOST IMPORTANT.MAKE SURE THE ANSWER IS CORRECT.
+
+The spec fields must be sympy parsable, for verification. Use the keys from the examples.
+### OUTPUT – ONE JSON OBJECT PER LINE
+{{
+  "difficulty": "A" | "B" | "C",
+  "definition": "$…$",  # problem wording in {language_name}
+  "solution"  : "$…$",  # derivation as described above
+  "spec": {{
+      "type"       : string,           
+
+  }}
+}}
+
+### STRICT RULES
+1. **Start and end both `definition` and `solution` with `$`.**. Use \\text for text in math mode.
+2. **Return only JSON lines – no Markdown, no back‑ticks, no extra commentary.**
+3. Use `*` for multiplication and `**` for powers inside `spec` (never `^`).
+4. Write every backslash as `\\` in the JSON output for python to parse it correctly. DO ONLY DOUBLE BACKSLASHES
+
+### Make your problems similiar to the examples below. 
+{examples_text}
+"""
+
+    # 4)  OpenAI call
+    try:
+        t_ai0 = time.perf_counter()
+        resp = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        raw_text = resp.choices[0].message.content.strip()
+        t_ai1 = time.perf_counter()
+    except Exception as e:
+        logger.error("OpenAI error: %s", e)
+        raise
+
+    # 5)  Save raw model reply
+
+    # 6)  Parse & verify
+    problems: list[dict] = []
+    for line in raw_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            obj = json.loads(line)
+            ok, _msg = verify(obj["spec"])
+        except Exception as e:
+            logger.error("verify() crashed: %s", e)
+            ok = False
+
+        if not ok:
+            logger.warning("Failed verification, skipping: %s", line[:120])
+            continue
+
+        # Make sure language rule is respected; if not, fix keys to always exist
+        problems.append(obj)
+        t_verify_done = time.perf_counter()
+        logger.info(
+            "TIMES ai=%4.1fs verify=%4.1fs",
+            t_ai1 - t_ai0,
+            t_verify_done - t_ai1,
+        )
+    if len(problems) < total:
+        logger.warning(
+            "Needed %d problems, validated %d (raw lines %d)",
+            total, len(problems), len(raw_text.splitlines())
+        )
+
+    return problems
 
 
-def make_exponent_reduction_problem() -> Problem:
-    m, n, w, x, y = symbols("m n w x y")
+# ─────────────────── compatibility wrappers ───────────────────
 
-    def variant_1() -> Problem:
-        coef_1 = random.randint(10, 50)
-        coef_2 = random.randint(10, 50)
-        exp_1 = random.randint(2, 9)
-        exp_2 = random.randint(2, 9)
-        exp_3 = random.randint(2, 9)
-        exp_4 = random.randint(2, 9)
-        exp_5 = random.randint(2, 9)
-        exp_6 = random.randint(2, 9)
-
-        numerator = UnevaluatedExpr(coef_1 * w**exp_1 * x**exp_2 * y**exp_3)
-        denominator = coef_2 * w**exp_4 * x**exp_5 * y**exp_6
-
-        problem_definition = numerator / denominator
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_2() -> Problem:
-        coef_1 = random.randint(10, 50)
-        coef_2 = random.randint(10, 50)
-        exp_1 = random.randint(2, 9)
-        exp_2 = random.randint(2, 9)
-        exp_4 = random.randint(2, 9)
-        exp_5 = random.randint(2, 9)
-
-        numerator = UnevaluatedExpr(coef_1 * m**exp_1 * n**exp_2)
-        denominator = coef_2 * m**exp_4 * n**exp_5
-
-        problem_definition = numerator / denominator
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    variants = [
-        variant_1,
-        variant_2,
-    ]
-    return random.choice(variants)()
+def generate_problems_with_ai(
+    topic: str,
+    difficulty: str,
+    count: int,
+    max_examples: int = 3,
+    model: str | None = None,
+    temperature: float = 0.6,
+    max_tokens: int = 2000,
+    *,
+    lang: str = "et",
+) -> List[Dict[str, str]]:
+    """Legacy single‑difficulty wrapper."""
+    return generate_mixed_difficulty_problems(
+        topic=topic,
+        counts={difficulty: count},
+        max_examples_per_diff=max_examples,
+        model=model,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        lang=lang,
+    )
 
 
-def make_exponent_operation_problem() -> Problem:
-    u, v, x, y, z = symbols("u v x y z")
-
-    def variant_1() -> Problem:
-        coef_1 = random.choice(list(range(-9, 0)) + list(range(1, 9)))
-        coef_2 = random.randint(1, 9)
-        exp = random.randint(2, 3)
-        numerator = UnevaluatedExpr(coef_1 * x * z)
-        denominator = coef_2 * y
-
-        problem_definition = UnevaluatedExpr(numerator / denominator) ** exp
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_2() -> Problem:
-        coef_1 = random.choice(list(i / 10 for i in range(1, 10)))
-        coef_2 = random.randint(2, 9)
-        exp_1 = random.randint(2, 3)
-        exp_2 = random.randint(2, 3)
-        exp_3 = random.randint(2, 3)
-
-        fact_1 = UnevaluatedExpr(coef_1 * x**exp_1 * y**exp_2)
-        fact_2 = coef_2 * x * y**exp_3
-
-        problem_definition = fact_1 * fact_2
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_3() -> Problem:
-        coef_1 = random.randint(-4, -2)
-        coef_2 = random.randint(2, 6)
-        exp_1 = random.randint(2, 4)
-        exp_2 = random.randint(2, 4)
-
-        problem_definition = UnevaluatedExpr(coef_1 * u * v**exp_1) / (coef_2 * u * v**exp_2)
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    def variant_4() -> Problem:
-        exp_1 = random.randint(1, 3)
-        exp_2 = random.randint(2, 3)
-        exp_3 = random.randint(2, 3)
-
-        problem_definition = (UnevaluatedExpr(x**exp_1 * y**exp_2) ** exp_3) * (-x * y)
-        problem_solution = simplify(problem_definition)
-
-        problem = Problem()
-        problem.definition = _latex(problem_definition)
-        problem.solution = _latex(problem_solution)
-
-        return problem
-
-    variants = [
-        variant_1,
-        variant_2,
-        variant_3,
-        variant_4,
-    ]
-    return random.choice(variants)()
+def generate_ai_test_problems(topic: str, difficulty: str, count: int, *, lang: str = "et"):
+    """Old alias kept alive for imports that haven’t migrated."""
+    return generate_problems_with_ai(topic, difficulty, count, lang=lang)

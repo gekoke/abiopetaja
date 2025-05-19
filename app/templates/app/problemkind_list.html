@@ -3,7 +3,7 @@
 {% load functional %}
 
 {% block head_title %}
-    {% translate "Problems" context "view in the application" %}
+    {% translate "Teemad ja raskusastmed" context "view in the application" %}
 {% endblock %}
 
 {% block extra_head %}
@@ -14,24 +14,25 @@
     <main class="container">
         <nav aria-label="breadcrumb">
             <ul>
-                <li><a href="{% url 'app:dashboard' %}">{% translate "Dashboard" %}</a></li>
-                <li></li>
+                <li><a href="{% url 'app:dashboard' %}">{% translate "Peamenüü" %}</a></li>
             </ul>
         </nav>
-        <h1>{% translate "Problems" context "math problems" %}</h1>
+        <h1>{% translate "Kõik teemad ja raskusastmed" %}</h1>
         <div class="overflow-auto">
             <table>
                 <thead>
                     <tr>
-                        <th>{% translate "Problem type" context "of a math problem" %}</th>
-                        <th>{% translate "Example" %}</th>
-                        <th>{% translate "Solution" context "for a math problem" %}</th>
+                        <th>{% translate "Teema" %}</th>
+                        <th>{% translate "Raskusaste" %}</th>
+                        <th>{% translate "Näide" %}</th>
+                        <th>{% translate "Lahend" %}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for problem_kind, example in object_list|zip:examples %}
+                    {% for topic, difficulty, example in topic_difficulty_list %}
                         <tr>
-                            <td>{{ problem_kind.label }}</td>
+                            <td>{{ topic }}</td>
+                            <td>{{ difficulty }}</td>
                             <td>$$ {{ example.definition }} $$</td>
                             <td>$$ {{ example.solution }} $$</td>
                         </tr>
