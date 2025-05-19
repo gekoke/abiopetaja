@@ -11,7 +11,7 @@ from django.forms import (
     Textarea,
     ValidationError,
 )
-from app.constants import TOPIC_CHOICES
+from app.topics import get_all_topic_choices
 from django.forms.widgets import TextInput
 from django.utils.translation import gettext_lazy as _
 
@@ -123,12 +123,12 @@ TEMPLATE_PROBLEM_COUNT_FIELD = IntegerField(
 
 class TemplateProblemCreateForm(ModelForm):
     count = TEMPLATE_PROBLEM_COUNT_FIELD
-    topic = forms.ChoiceField(choices= TOPIC_CHOICES, label=_("topic"))
+    topic = forms.ChoiceField(choices= get_all_topic_choices(), label=_("topic"))
     def __init__(self, *args, **kwargs) -> None:
         self.user: User = kwargs.pop("user")
         self.template: Template = kwargs.pop("template")
         super().__init__(*args, **kwargs)
-        self.fields["topic"].initial = "ARVUHULGAD"
+        self.fields["topic"].initial = "AVALDISED"
 
     class Meta:
         model = TemplateProblem

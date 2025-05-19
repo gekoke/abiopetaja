@@ -114,7 +114,7 @@ LANGUAGES = [
     ("en", _("English")),
 ]
 
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "et"
 
 LOCALE_PATHS = [
     BASE_DIR / "app" / "locale",

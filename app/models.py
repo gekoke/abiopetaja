@@ -19,8 +19,9 @@ from django.db.models import (
     JSONField,
     TextField,
 )
+from django.utils import translation
 import json
-from app.constants import TOPIC_CHOICES
+from app.topics import get_all_topic_choices
 import asyncio
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from django.db.models.constraints import UniqueConstraint
@@ -42,7 +43,7 @@ def get_short_lang() -> str:
     Return 'et' if the current active language starts with 'et',
     otherwise return 'en'.
     """
-    lang = get_language() or "en"
+    lang = get_language() or "et"
     return "et" if lang.startswith("et") else "en"
 
 
@@ -118,75 +119,84 @@ class Template(Entity):
         entry.save()
 
 
+    
     def generate_test(self, params: TestGenerationParameters) -> Test | TestGenerationError:
-        # 1) Create the Test
-        test = Test.objects.create(
-            author=self.author,
-            is_saved=False,
-            title=self.title,
-        )
+        # 1) Create the Test shell
+        test = Test.objects.create(author=self.author, is_saved=False, title=self.title)
 
         if not self.problem_count:
             return EmptyTemplate()
 
-        # 2) Pre-create all version stubs
-        version_ids = []
-        for vnum in range(1, params.test_version_count + 1):
-            tv = TestVersion.objects.create(
-                test=test,
-                version_number=vnum
-            )
-            version_ids.append(tv.id)
-
-        # 3) Worker: populate one version by its ID
-        def _populate_version(tv_id):
-            #  each thread gets its own DB connection
+        # 2) Pre-create stub versions
+        version_ids = [
+            TestVersion.objects.create(test=test, version_number=v).id
+            for v in range(1, params.test_version_count + 1)
+        ]
+        current_lang = translation.get_language() or "et"
+        # ───────────────────────── version worker ─────────────────────────
+        def _populate_version(tv_id: int, lang: str) -> TestVersion:
             tv = TestVersion.objects.get(id=tv_id)
+            translation.activate(lang)
+            # ------------------------------------------------------------------
+            # A. collect quotas per topic/difficulty for this template
+            # ------------------------------------------------------------------
+            quotas: dict[str, dict[str, int]] = defaultdict(lambda: {"A": 0, "B": 0, "C": 0})
+            for row in self.templateproblem_set.all():
+                quotas[row.topic][row.difficulty] += row.count
 
-            # gather topics once
-            topics = list({
-                e.topic for e in self.templateproblem_set.all()
-            })
+            # ------------------------------------------------------------------
+            # B. generate AI batches per topic *concurrently*
+            # ------------------------------------------------------------------
+            from app.math import generate_mixed_difficulty_problems
 
-            # inner per-topic worker
-            def _work_topic(topic):
-                from app.math import generate_mixed_difficulty_problems
-                # collect difficulty counts
-                diff_counts = {}
-                for e in self.templateproblem_set.filter(topic=topic):
-                    diff_counts.setdefault(e.difficulty, 0)
-                    diff_counts[e.difficulty] += e.count
+            ai_batches: dict[str, list[dict]] = {}  # topic -> list[problem]
+            
+            with ThreadPoolExecutor(max_workers=min(8, len(quotas))) as pool:
+                fut_map = {
+                    pool.submit(
+                        generate_mixed_difficulty_problems,
+                        topic=topic,
+                        lang=lang,
+                        counts = {d: c + 1 for d, c in diff.items() if c > 0},  # +1 slack
+                    ): topic
+                        
+                    for topic, diff in quotas.items()
+                }
+                for fut in as_completed(fut_map):
+                    topic = fut_map[fut]
+                    try:
+                        ai_batches[topic] = fut.result()
+                    except Exception as exc:
+                        logger.error("AI generation failed for topic %s: %s", topic, exc)
+                        ai_batches[topic] = []
 
-                batch = generate_mixed_difficulty_problems(topic, {
-                    d: c + 1 for d, c in diff_counts.items()
-                })
-
-                accepted = {d: 0 for d in diff_counts}
+            # ------------------------------------------------------------------
+            # C. write problems back respecting quotas
+            # ------------------------------------------------------------------
+            accepted: dict[tuple[str, str], int] = defaultdict(int)  # (topic, diff) -> count
+            for topic, batch in ai_batches.items():
                 for obj in batch:
-                    d = obj["difficulty"]
-                    if accepted[d] >= diff_counts[d]:
+                    diff = obj["difficulty"]
+                    key = (topic, diff)
+                    if accepted[key] >= quotas[topic][diff]:
                         continue
                     TestVersionProblem.objects.create(
                         test_version=tv,
                         topic=topic,
-                        difficulty=d,
+                        difficulty=diff,
                         definition=obj["definition"],
                         solution=obj["solution"],
                         spec=obj["spec"],
                     )
-                    accepted[d] += 1
+                    accepted[key] += 1
 
-            # 4) Parallelize topics
-            with ThreadPoolExecutor(max_workers=len(topics)) as topic_exec:
-                futures = [topic_exec.submit(_work_topic, t) for t in topics]
-                for f in as_completed(futures):
-                    f.result()  # raise on any topic failure
-
-            # 5) Build PDF (retry on LaTeX errors)
+            # ------------------------------------------------------------------
+            # D. build PDF (retry loop unchanged)
+            # ------------------------------------------------------------------
             while True:
-                result = tv.generate_pdf()
-                if isinstance(result, PDF):
-                    tv.pdf.save(f"{tv.id}.pdf", ContentFile(result.data))
+                pdf_result = tv.generate_pdf()
+                if isinstance(pdf_result, PDF):
+                    tv.pdf.save(f"{tv.id}.pdf", ContentFile(pdf_result.data))
                     break
                 bad = tv.testversionproblem_set.order_by("-created_at").first()
                 if not bad:
@@ -196,15 +206,15 @@ class Template(Entity):
             tv.save()
             return tv
 
-        # 6) Parallelize versions
-        populated = []
+        # 3) populate versions in parallel
+        populated: list[TestVersion] = []
         with ThreadPoolExecutor(max_workers=len(version_ids)) as vexec:
-            futures = [vexec.submit(_populate_version, vid)
-                       for vid in version_ids]
+            futures = [vexec.submit(_populate_version, vid, current_lang) for vid in version_ids]
+            populated = [f.result() for f in as_completed(futures)]
             for f in as_completed(futures):
                 populated.append(f.result())
 
-        # 7) Attach them and build answer key
+        # 4) attach versions & build answer key
         for tv in populated:
             test.add_version(tv)
 
@@ -243,7 +253,7 @@ class TemplateProblem(Entity):
     """
 
     template = models.ForeignKey(Template, on_delete=models.CASCADE)
-    topic = models.CharField(max_length=100, choices=TOPIC_CHOICES)
+    topic = models.CharField(max_length=100, choices=get_all_topic_choices())
     
     difficulty = models.CharField(
         max_length=1,

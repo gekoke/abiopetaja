@@ -1,1 +1,0 @@
-/nix/store/jgvr5576yv6vxaxn9ps09222ii889zhk-postgresql-17.5/bin/postgres "-F" "-p" "5432" "-k" "/home/eztni/abiopetaja/.pgdata"

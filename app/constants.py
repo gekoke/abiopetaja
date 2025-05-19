@@ -1,7 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
 TOPIC_CHOICES = [
-    ("ARVUHULGAD", _("Arvuhulgad")),
     ("AVALDISED", _("Avaldised")),
     ("EKSPONENT_JA_LOG", _("Eksponent- ja logaritmfunktsioon")),
     ("FUNKTSIOONID_JA_ARVJADAD", _("Funktsioonid ja arvjadad")),

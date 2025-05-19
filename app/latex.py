@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from app.topics import DEFAULT_TRANSLATIONS      # maps code → human label
 from string import ascii_lowercase
 
 from django.utils.translation import(
@@ -103,18 +103,35 @@ def render_test_version(version: TestVersion) -> str:
     return latex
 
 
-# Updated function for rendering answers without explicit "\\newline"
-def _render_problem_group_answer(
-    group_key: tuple[str, str], problems: list[TestVersionProblem], group_index: int
-) -> str:
-    topic, difficulty = group_key
-    header = f"{topic} - {difficulty}"
-    # Join each answer with two newlines.
+
+# latex.py
+# ──────────────────────────────────────────────────────────
+def _tex_escape(s: str) -> str:
+    """Escape characters that break LaTeX in text-mode."""
+    return (s
+            .replace("\\", r"\\")
+            .replace("_",  r"\_")
+            .replace("%", r"\%")
+            .replace("&", r"\&")
+            .replace("#", r"\#")
+            .replace("^", r"\textasciicircum{}")
+            .replace("~", r"\textasciitilde{}"))
+
+def _code_to_label(code: str) -> str:
+    """LOGARITMI_DEFINITSIOON  →  Logaritmi definitsioon"""
+    return _tex_escape(code.replace("_", " ").capitalize())
+# ──────────────────────────────────────────────────────────
+
+def _render_problem_group_answer(group_key, problems, group_index):
+    topic_code, difficulty = group_key
+    
+    label  = _code_to_label(topic_code)          # ← real topic
+    header = f"{label} – {difficulty}"
+
     answers = "\n\n".join(
-        _render_problem_answer(problem, idx) for idx, problem in enumerate(problems)
+        _render_problem_answer(p, i) for i, p in enumerate(problems)
     )
     return f"\\noindent {group_index + 1}) {header}\n\n{answers}\n\n"
-
 # ───── helper ────────────────────────────────────
 def _ensure_dollar_wrapped(text: str) -> str:
     """

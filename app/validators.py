@@ -1,11 +1,8 @@
-# validators.py  ─── add at top
 from sympy import Eq, S, simplify, solveset, symbols
 from sympy.parsing.sympy_parser import parse_expr
-import logging
-import random
-# … keep your existing imports …
+import logging, random
+from sympy import log, simplify
 
-# ───────────────── helpers ─────────────────
 def _to_expr(value):
     """
     Robustly turn strings / numbers into a SymPy expression.
@@ -38,61 +35,147 @@ def _expressions_equal(sym_expr, sym_ref, trials: int = 6, tol=1e-8) -> bool:
             return False
     return True
 
-
-# ───────────────── main verifier ─────────────────
-def verify(spec: dict) -> tuple[bool, str]:
-    logger = logging.getLogger(__name__)
-    """
-    Return (is_ok, kind).  Supports: simplify, evaluate, simplify_then_evaluate,
-    solve, simplify_then_solve … extend further as you add more types.
-    """
+def verify(spec: dict) -> tuple[bool,str]:
     kind = spec.get("type")
-    logger.debug(">> verify START: kind=%r, spec=%r", kind, spec)
     try:
-        # 1)  Simplify  ────────────────────────────
-        if  kind == "evaluate":
-            ans_expr = spec.get("answer_expr")
-            expr = spec.get("expr")
-            diff = simplify(_to_expr(expr) - _to_expr(ans_expr))
-            logger.debug(" evaluate: expr=%r  ans_expr=%r diff=%r", expr, ans_expr, diff)
-            ok = diff == 0
-        elif kind == "simplify" or kind == "simplify_then_evaluate":
-            expr = _to_expr(spec["expr"])
-            ref  = _to_expr(spec["answer_expr"])
-            ok   = _expressions_equal(expr, ref)
-            logger.debug(" %r: expr=%r  ans_expr=%r diff=%r", kind, expr, ref, ok)
+        if kind in ("simplify", "simplify_then_evaluate"):
+            ok = _verify_simplify(spec)
 
+        elif kind in ("evaluate", "evaluate_expression"):
+            ok = _verify_evaluate(spec)
 
+        elif kind == "evaluate_logarithm":
+            ok = _verify_evaluate_logarithm(spec)
 
-        # 3)  Simplify → Evaluate  ─────────────────
-        
+        elif kind == "evaluate_exponential":
+            ok = _verify_evaluate_exponential(spec)
 
-        # 4)  Solve linear/quad/etc. equations  ────
+        elif kind in ("solve_equation",
+                      "solve_exponential_equation",
+                      "solve_logarithmic_equation"):
+            ok = _verify_solve(spec)
 
         else:
-            ok = False
+            ok = True
 
         return ok, kind
 
+    except KeyError as e:
+        return False, f"Missing field: {e}"
     except Exception as e:
         return False, f"Exception: {e}"
 
-"""elif kind == "simplify_then_evaluate":
-            # 3 a) algebraic part
-            simplified = simplify(_to_expr(spec["expr"]))
-            ans_expr = spec.get("answer_expr")
-            ok1 = simplify(simplified - _to_expr(ans_expr)) == 0
+def _verify_solve(spec: dict) -> bool:
+    """
+    Verifies specs of type solve_equation*, solve_exponential_equation,
+    or solve_logarithmic_equation.
+    Expects:
+      - "equation": a string like "2*x+1=5" or "x**2-4"
+      - "solve_var": the variable name as a string, e.g. "x"
+      - either "answer_expr" (single solution or list) or "answer" (list)
+    """
+    eq_str   = spec["equation"]
+    var_name = spec["solve_var"]
+    sym      = symbols(var_name)
 
-            # 3 b) numeric part — two possible schemas
-            if "vars" in spec and "answer" in spec:
-                subs = {symbols(k): _to_expr(v) for k, v in spec["vars"].items()}
-                num_val = simplified.subs(subs).evalf()
-                ok2 = simplify(num_val - _to_expr(spec["answer"])) == 0
-            elif "follow_up" in spec:
-                fu_expr = _to_expr(spec["follow_up"]["expr"])
-                fu_ans  = _to_expr(spec["follow_up"]["answer"])
-                ok2 = simplify(fu_expr.evalf() - fu_ans) == 0
-            else:          # only the simplification was requested
-                ok2 = True
+    # build the Sympy Solveset
+    if "=" in eq_str:
+        lhs, rhs = eq_str.split("=", 1)
+        sol_set  = solveset(Eq(_to_expr(lhs), _to_expr(rhs)), sym)
+    else:
+        sol_set  = solveset(_to_expr(eq_str), sym)
 
-            ok = ok1 and ok2"""
+    # pull out expected answers
+    raw_ans = spec.get("answer_expr") or spec.get("answer", [])
+    if isinstance(raw_ans, (list, tuple)):
+        want = { _to_expr(a) for a in raw_ans }
+    else:
+        want = { _to_expr(raw_ans) }
+
+    # compare sets
+    return set(sol_set) == want
+
+def _verify_evaluate_exponential(spec: dict) -> bool:
+    """
+    Verifies specs of type "evaluate_exponential".
+    Expects exactly the schema:
+      - "function": a string f(x)
+      - "values":  list of numeric x-values
+      - "answer_dict": mapping "f(v)" → result
+    """
+    # sanity check
+    required = {"function", "values", "answer_dict"}
+    if not required <= spec.keys():
+        missing = required - spec.keys()
+        raise KeyError(f"Missing fields for evaluate_exponential: {missing}")
+
+    x     = symbols("x")
+    f_expr = _to_expr(spec["function"])
+    answers = spec["answer_dict"]
+
+    for v in spec["values"]:
+        key = f"f({v})"
+        if key not in answers:
+            raise KeyError(f"No answer_dict entry for {key}")
+        expected = _to_expr(answers[key])
+        actual   = f_expr.subs({x: v})
+        if not _expressions_equal(actual, expected):
+            return False
+    return True
+
+def _verify_simplify(spec: dict) -> bool:
+    """
+    Verifies specs of type "simplify" or "simplify_then_evaluate".
+    Expects keys:
+      - "expr": the original expression to simplify
+      - "answer_expr": the proposed simplified form
+    """
+    # parse both sides to Sympy
+    orig = _to_expr(spec["expr"])
+    fmt  = _to_expr(spec["answer_expr"])
+    # check symbolically or numerically
+    return _expressions_equal(orig, fmt)
+# ──────────────────────────────────────────────────────────────────────────
+def _verify_evaluate_logarithm(spec: dict) -> bool:
+    """
+    Verifies specs of type "evaluate_logarithm".
+    Supports two schemas:
+      A) { base, argument, answer }
+      B) { expr, answer_expr }
+    """
+    # Schema A: explicit base & argument
+    if {"base", "argument", "answer"} <= spec.keys():
+        base = _to_expr(spec["base"])
+        arg  = _to_expr(spec["argument"])
+        got  = simplify(log(arg, base))
+        want = _to_expr(spec["answer"])
+        return _expressions_equal(got, want)
+
+    # Schema B: generic diff-check
+    if "expr" in spec and "answer_expr" in spec:
+        diff = simplify(_to_expr(spec["expr"]) -
+                        _to_expr(spec["answer_expr"]))
+        return diff == 0
+
+    raise KeyError("evaluate_logarithm needs either (base,argument,answer) or (expr,answer_expr)")
+
+def _verify_evaluate(spec: dict) -> bool:
+    """
+    Verifies specs of type "evaluate" or "evaluate_expression".
+    Expects either:
+      - "expr" key, or
+      - "expression" key,
+    plus:
+      - "answer_expr": the proposed numerical/symbolic result
+    """
+    # pick whichever key is present
+    if "expr" in spec:
+        raw = spec["expr"]
+    elif "expression" in spec:
+        raw = spec["expression"]
+    else:
+        raise KeyError("Missing 'expr' or 'expression' in spec")
+
+    # compute the difference and check if it simplifies to zero
+    diff = simplify(_to_expr(raw) - _to_expr(spec["answer_expr"]))
+    return diff == 0

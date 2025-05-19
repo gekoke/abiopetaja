@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 # ─────────────── CONFIG ───────────────
 OPENAI_API_KEY      = "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"                          # put in .env in production!
-OPENAI_MODEL        = "gpt-4o-mini"
+OPENAI_MODEL        = "gpt-4.1-mini"
 # gpt-4.1-mini , gpt-4o-mini, gpt-4.1-nano,
 PROBLEMS_JSON_PATH  = "problems.json"             # seed examples
 RAW_LOG_PATH        = "ai_raw_output2.txt"        # full AI reply
@@ -74,8 +74,8 @@ def generate_mixed_difficulty_problems(
     max_examples_per_diff: int = 2,
     model: str | None = None,
     temperature: float = 0.4,
-    max_tokens: int = 4000,
-    
+    max_tokens: int = 4500,
+    lang: str | None = None 
 ) -> List[Dict[str, str]]:
     """
     Return a verified list of problem dicts, each carrying:
@@ -88,7 +88,7 @@ def generate_mixed_difficulty_problems(
     field and leaving the other empty).
     """
 
-    lang = get_short_lang()
+    logger.debug("AI-generator language detected by get_short_lang(): %s", lang)
     language_name = "Estonian" if lang == "et" else "English"
 
     model = model or OPENAI_MODEL
@@ -133,12 +133,13 @@ Write the *definition* in **{language_name}**. **Wrap the entire definition and 
 A (easy): {counts.get('A',0)}  B (medium): {counts.get('B',0)}  C (hard): {counts.get('C',0)}
 
 ### SOLUTION 
-You must solve the problems you generated step by step and show the result in solutions. SHOW THE STEPS MATHEMATICALLY, NO TEXTUAL EXPLANATIONS OR WORDS. Show a maximum on 3 steps per problem.
+You must solve the problems you generated step by step and show the result in solutions. SHOW THE STEPS MATHEMATICALLY, NO TEXTUAL EXPLANATIONS OR WORDS. the steps in solution should be short.
 Wrap the *whole derivation* in one pair of `$` as in this example:
 "$5*3x+2=15x+2$"
 – For evaluation tasks, avoid approximations; compute symbolic/numeric values exactly.
 MOST IMPORTANT.MAKE SURE THE ANSWER IS CORRECT.
 
+The spec fields must be sympy parsable, for verification. Use the keys from the examples.
 ### OUTPUT – ONE JSON OBJECT PER LINE
 {{
   "difficulty": "A" | "B" | "C",
@@ -146,16 +147,15 @@ MOST IMPORTANT.MAKE SURE THE ANSWER IS CORRECT.
   "solution"  : "$…$",  # derivation as described above
   "spec": {{
       "type"       : string,           
-      "expr"       : string,            # SymPy‑parsable
-      "answer_expr": string            # SymPy‑parsable
+
   }}
 }}
 
 ### STRICT RULES
-1. **Start and end both `definition` and `solution` with `$`.**
+1. **Start and end both `definition` and `solution` with `$`.**. Use \\text for text in math mode.
 2. **Return only JSON lines – no Markdown, no back‑ticks, no extra commentary.**
 3. Use `*` for multiplication and `**` for powers inside `spec` (never `^`).
-4. Write every backslash as `\\` in the JSON output for python to parse it correctly.
+4. Write every backslash as `\\` in the JSON output for python to parse it correctly. DO ONLY DOUBLE BACKSLASHES
 
 ### Make your problems similiar to the examples below. 
 {examples_text}
@@ -191,7 +191,6 @@ MOST IMPORTANT.MAKE SURE THE ANSWER IS CORRECT.
               f2.write(line + "\n\n")
         except Exception as e:
             logger.error("Failed to write ai_example2.txt: %s", e)
-
         try:
             obj = json.loads(line)
             ok, _msg = verify(obj["spec"])
