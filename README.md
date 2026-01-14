@@ -37,7 +37,7 @@ This will:
 To run the application:
 
 ```
-python manage.py runserver
+python3.12 manage.py runserver
 ```
 
 > [!TIP]
