@@ -9,9 +9,6 @@
       {
         ec2 = mkSystem {
           inherit system;
-          specialArgs = {
-            inherit (self.packages.${system}) abiopetaja;
-          };
           modules = [
             "${inputs.nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
             self.nixosModules.abiopetaja

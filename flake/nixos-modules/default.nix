@@ -2,7 +2,7 @@
 {
   flake = {
     nixosModules = {
-      abiopetaja = ./services/abiopetaja.nix;
+      abiopetaja = import ./services/abiopetaja.nix { inherit self; };
       default = self.nixosModules.abiopetaja;
     };
   };

@@ -1,8 +1,11 @@
 {
+  self,
+  ...
+}:
+{
   config,
   lib,
   pkgs,
-  abiopetaja,
   ...
 }:
 let
@@ -17,6 +20,10 @@ in
     provisionCertificates = mkOption {
       type = bool;
       default = true;
+    };
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = self.packages.${pkgs.stdenv.hostPlatform.system}.abiopetaja;
     };
   };
 
@@ -91,7 +98,7 @@ in
           User = "abiopetaja";
           ExecStart =
             let
-              env = abiopetaja.dependencyEnv;
+              env = cfg.package.dependencyEnv;
               activationScript = pkgs.writeShellScriptBin "activate" ''
                 set -e
 
