@@ -118,7 +118,7 @@ in
 
     security.acme = lib.mkIf cfg.provisionCertificates {
       acceptTerms = true;
-      defaults.email = "gregor@grigorjan.net";
+      defaults.email = lib.mkDefault "gregor@grigorjan.net";
     };
   };
 }
